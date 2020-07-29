@@ -1,0 +1,130 @@
+@charset "UTF-8";
+.fixedLayerRemote {
+    /* position: fixed !important; */
+    /* top: 0px !important; */
+    /* background: #ffffff !important; */
+    /* z-index: 100 !important; */
+}
+.class_wrap {
+    padding-top: 5%;
+}
+.class_wrap .class_price {
+    width: 25%;
+    float: right;
+    background: #fff;
+    padding: 20px 20px 10px 20px;
+}
+.class_price .regions .title {
+    color: #333;
+    font-size: 1em;
+    font-weight: bold;
+}
+.class_price .regions .region {
+    height: 130px;
+    margin: 20px 0;
+    overflow-x: hidden;
+    overflow: hidden;
+}
+.class_price .regions .region .option:first-child {
+    border-top: 1px solid #ddd;
+}
+.class_price .regions .region .option .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: #555555;
+    font-size: 0.8em;
+    padding: 13px 0;
+    border-bottom: 1px solid #ddd;
+}
+.class_price .regions .region .option .top .timedetail {
+    width: 180px;
+    letter-spacing: -0.7px;
+    display: inline-block;
+}
+.class_price .regions .region .option .top .timedetail .indate {
+    width: 83px;
+    display: inline-block;
+    color: #555;
+}
+.class_price .regions .region .option .top span {
+    color: #ddd;
+}
+
+.class_price .regions .region .option .top .region_name {
+    color: #555;
+    display: inline-block;
+    max-width: 77px;
+    overflow: hidden;
+}
+.class_price .regions #more {
+    position: relative;
+    margin-bottom: 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    text-align: center;
+    color: #333;
+    font-weight: bold;
+    letter-spacing: -0.35px;
+    font-size: 14px;
+}
+.class_price .more {
+    cursor: pointer;
+    text-align: center;
+    padding-top: 10px;
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+}
+.class_wrap .class_price .btn_talk {
+    color: #49b5e7;
+    height: 65px;
+    line-height: 65px;
+    text-align: center;
+    display: inline-block;
+    width: 99px;
+    border: 1px solid #49b5e7;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+.class_wrap .class_price .btn_payment {
+    display: inline-block;
+    width: 50%;
+    margin-left: 10px;
+    margin-top: -1px;
+}
+.class_wrap .class_price .btn_payment a {
+    text-align: center;
+    display: block;
+    background: #49b5e7;
+    padding: 18px 0;
+    color: #fff;
+    line-height: 200%;
+    transition: all 0.3s ease 0s;
+}
+.class_wrap .class_price .btn_payment .btntxt_s {
+    font-size: 18px;
+    font-weight: bold;
+}
+.class_wrap .class_price .price {
+    padding: 30px 0 10px 0;
+    overflow: hidden;
+    line-height: 150%;
+}
+.class_wrap .class_price .price .hp1 {
+    color: #333;
+    text-align: center;
+}
+.class_wrap .class_price .price .tp1 {
+    color: #49b5e7;
+    text-align: center;
+    font-weight: bold;
+}
+.class_wrap .class_img {
+    width: 75%;
+    height: 540px;
+    background: #000;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+}
