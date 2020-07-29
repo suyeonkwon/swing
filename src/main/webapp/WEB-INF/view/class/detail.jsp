@@ -71,6 +71,47 @@
 		<div class="class_img">
 			<iframe width="840" height="540" scrolling="no" frameborder="0" src="${path}/assets/img/hero-img.png"></iframe>
 		</div>
+		<div class="class_d_wrqp">
+			<div id="class_navi" class="class_navi" style="left:0px;">
+				<ul>
+					<li>
+						<a href="">요약</a>
+					</li>
+					<li>
+						<a href="">튜터</a>
+					</li>
+					<li>
+						<a href="">수업정보</a>
+					</li>
+					<li>
+						<a href="">리뷰</a>
+					</li>
+				</ul>
+			</div>
+			<div class="class_detail" id="sumary">
+				<div class="class_name">
+					<div class="tutor_img" style="background-image:url('');"></div>
+					<div class="name">튜터 이름</div>
+				</div>
+				<div class="class_title">
+					<div class="title">클래스 제목</div>
+					<a id="wishBtn" class="bnt_wishlist">찜하기</a>
+					<div class="info">
+						<a class="starimg">
+							★★★★★(10)
+						</a>
+					</div>
+					<div class="info">
+						<ul>
+							<li class="ar" id="regionAll">건대</li>
+							<li class="hu"><font color="blue">2</font>시간/회</li>
+							<li class="gr">최대인원<font color="blue">3~6명</font></li>
+							<li class="ohu"><font color="blue">\10,000</font>/시간</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 	</div>
 </section>
