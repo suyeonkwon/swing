@@ -6,88 +6,54 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인페이지</title>
+<link href="${path}/assets/css/user-style.css" rel="stylesheet">
+<style type="text/css">
+i{
+padding-right: 2px;
+    color: #49b5e7;
+    font-size: 18px;
+    line-height: 1;
+}
+
+a{
+
+
+color: #777777;
+    transition: 0.3s;
+    display: inline-block;
+    line-height: 1;
+}
+
+.div{
+  font-size: 16px;
+  color: #fff;
+  line-height: 1;
+  padding: 50px 0;
+  text-align: center;
+  width: 100%;
+  transition: 0.3s;
+}
+</style>
 </head>
 <body>
-    <div class="login">
+	<section class="login d-flex align-items-center">
       <div class="container">
         <div class="row justify-content-center">
-          <div class="col-lg-6">
-            <h4>Login</h4>
+          <div class="col-lg-3">
+            <h4>로그인</h4>
             <p></p>
             <form action="" method="post">
-              <input type="text" name="pass">
-              <input type="text" name="pass">
+              <input type="text" name="id" placeholder="아이디">
+              <input type="text" name="pass" placeholder="비밀번호">
             </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer-top">
-      <div class="container">
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>Butterfly</h3>
-            <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
-            </p>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Social Networks</h4>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
-            <div class="social-links mt-3">
-              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            <a href="#about" class="bnt">로그인</a>
+            <div class="div">
+	          <i class="bx bx-chevron-right"></i> <a href="join.shop">회원가입</a>
+	          <i class="bx bx-chevron-right"></i> <a href="find.shop">ID/PW찾기</a>
             </div>
           </div>
-
         </div>
       </div>
-    </div>
-
-    <div class="container py-4">
-      <div class="copyright">
-        © Copyright <strong><span>Butterfly</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/butterfly-free-bootstrap-theme/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-           
+      </section>
 </body>
 </html>

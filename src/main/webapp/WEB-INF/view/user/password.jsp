@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원탈퇴페이지</title>
+<title>비밀번호 변경</title>
 <link href="${path}/assets/css/user-style.css" rel="stylesheet">
 </head>
 <body>
@@ -15,9 +15,10 @@
           <div class="col-lg-4 col-md-6" data-wow-delay="0.1s">
             <div class="icon-box">
               <div class="icon"><i class="las la-file-alt" style="color: #3fcdc7;"></i></div>
-              <h4 class="title"><a href="">회원 탈퇴</a></h4>
+              <h4 class="title"><a href="">비밀번호 변경</a></h4>
 	          <form action="" method="post">
 	              <input type="text" name="phone" placeholder="비밀번호를 입력해주세요.">
+	              <input type="text" name="phone" placeholder="비밀번호를 한번 더 입력해주세요.">
 	              <a href="#about" class="bnt">확인</a>
 	          </form>
             </div>
@@ -25,6 +26,6 @@
         </div>
 
       </div>
-    </section>
+</section>
 </body>
 </html>

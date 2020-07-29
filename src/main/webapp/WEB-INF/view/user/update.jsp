@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원정보수정페이지</title>
+<link href="${path}/assets/css/user-style.css" rel="stylesheet">
 </head>
 <body>
 </body>
