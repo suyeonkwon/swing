@@ -79,7 +79,7 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
           <li class="drop-down"><a href="">마이 페이지</a>
             <ul>
               <li><a href="${path}/user/info.shop">내 프로필</a></li>
-              <li><a href="${path}/user/update.shop">비밀번호 변경</a></li>
+              <li><a href="${path}/user/password.shop">비밀번호 변경</a></li>
               <li><a href="${path}/user/delete.shop">회원탈퇴</a></li>
               <li><a href="${path}/user/login.shop">로그아웃</a></li>
             </ul>
