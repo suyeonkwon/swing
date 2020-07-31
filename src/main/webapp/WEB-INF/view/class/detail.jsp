@@ -111,6 +111,61 @@
 					</div>
 				</div>
 			</div>
+			<div class="class_detail detail_sec_bor" id="tutorinfo">
+				<div class="section01" id="tutor">
+					<h1>튜터정보</h1>
+					<div class="cert">
+						<ul>
+							<li class="com">OO대학교 OO학과</li>
+						</ul>
+					</div>
+					<div class="d_info">
+						내용 내용 내용 내용<br>
+						내용 내용 내용 내용
+					</div>
+				</div>
+			</div>
+			<div class="class_detail detail_sec_bor" id="Introduction">
+				<div class="section01">
+					<h1>수업소개</h1>
+					<div class="d_info">
+						내용 내용 내용 내용<br>
+						내용 내용 내용 내용						
+					</div>
+				</div>"
+			</div>
+			<div class="class_detail detail_sec_bor" id="review">
+				<div class="section01">
+					<h1>리뷰(10)</h1>
+					<a class="btn_st" id="btn-write-review">리뷰쓰기</a>
+					<div class="review_box">
+						★★★★★ 4.5
+					</div>
+					<div class="review_list">
+						<ul>
+							<div id="innerReviewDiv">
+								<li>
+									<div class="review">
+										<div class="profilebox">
+											<div class="profile" style="background-image:url('')">
+											</div>
+											<div class="name">
+												리뷰 작성자 이름
+											</div>
+										</div>
+										<div class="review_content">
+											<div class="content">
+												너무 너무 좋아요
+											</div>
+											<div class="date">2020-01-01 00:00:00</div>
+										</div>
+									</div>
+								</li>
+							</div>
+						</ul>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	</div>

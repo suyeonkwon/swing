@@ -47,10 +47,10 @@
 				<div class="inbox">
 					<div class="left">지역</div>
 					<div class="right" id="regionSub">
-						<select>
-							<option>지역</option>
-							<option>서울</option>
-							<option>경기</option>
+						<select id="city">
+							<option value="">지역</option>
+							<option value="seoul">서울</option>
+							<option value="">경기</option>
 						</select>
 					</div>
 				</div>
