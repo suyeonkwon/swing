@@ -4,16 +4,24 @@ import java.util.Date;
 
 public class Review {
 	private int reviewno;
+	private String userid;
+	private int classid;
 	private String content;
 	private double star;
 	private Date regdate;
-	private int classid;
+	
 	// getter, setter, toString
 	public int getReviewno() {
 		return reviewno;
 	}
 	public void setReviewno(int reviewno) {
 		this.reviewno = reviewno;
+	}
+	public String getUserid() {
+		return userid;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
 	public String getContent() {
 		return content;
@@ -41,7 +49,8 @@ public class Review {
 	}
 	@Override
 	public String toString() {
-		return "Review [reviewno=" + reviewno + ", content=" + content + ", star=" + star + ", regdate=" + regdate
-				+ ", classid=" + classid + "]";
+		return "Review [reviewno=" + reviewno + ", userid=" + userid + ", classid=" + classid + ", content=" + content
+				+ ", star=" + star + ", regdate=" + regdate + "]";
 	}
+	
 }

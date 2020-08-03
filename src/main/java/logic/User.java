@@ -8,6 +8,7 @@ public class User {
 	private String email;
 	private String file;
 	
+	// getter, setter, toString
 	public String getUserid() {
 		return userid;
 	}

@@ -9,6 +9,7 @@ public class Chatting {
 	private String userid;
 	private String chat;
 	private Date chatdate;
+	
 	// getter, setter, toString
 	public int getRoomno() {
 		return roomno;

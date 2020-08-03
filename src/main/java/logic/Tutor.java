@@ -2,16 +2,24 @@ package logic;
 
 public class Tutor {
 	private int tutorno;
+	private String nickname;
 	private int edulevel;
 	private String school;
 	private String major;
 	private String edufile;
+	
 	// getter, setter, toString
 	public int getTutorno() {
 		return tutorno;
 	}
 	public void setTutorno(int tutorno) {
 		this.tutorno = tutorno;
+	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 	public int getEdulevel() {
 		return edulevel;
@@ -39,7 +47,7 @@ public class Tutor {
 	}
 	@Override
 	public String toString() {
-		return "Tutor [tutorno=" + tutorno + ", edulevel=" + edulevel + ", school=" + school + ", major=" + major
-				+ ", edufile=" + edufile + "]";
+		return "Tutor [tutorno=" + tutorno + ", nickname=" + nickname + ", edulevel=" + edulevel + ", school=" + school
+				+ ", major=" + major + ", edufile=" + edufile + "]";
 	}
 }

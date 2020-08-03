@@ -4,6 +4,8 @@ public class ApplyList {
 	private String userid;
 	private int classid;
 	private String level;
+	private int payment;
+	
 	// getter, setter, toString
 	public String getUserid() {
 		return userid;
@@ -23,10 +25,15 @@ public class ApplyList {
 	public void setLevel(String level) {
 		this.level = level;
 	}
+	public int getPayment() {
+		return payment;
+	}
+	public void setPayment(int payment) {
+		this.payment = payment;
+	}
 	@Override
 	public String toString() {
-		return "ApplyList [userid=" + userid + ", classid=" + classid + ", level=" + level + "]";
+		return "ApplyList [userid=" + userid + ", classid=" + classid + ", level=" + level + ", payment=" + payment
+				+ "]";
 	}
-	
-	
 }

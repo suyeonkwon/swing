@@ -1,21 +1,27 @@
 package logic;
 
+import java.util.Date;
+
 public class Class {
 	private int classid;
-	private String location;
+	private int tutorno;
+	private String location1;
+	private String location2;
 	private int category;
-	private String type;
+	private int type;
 	private int maxtutee;
 	private String subject;
 	private String coverimg;
-	private int price;
-	private int time;
-	private int totaltime;
-	private int totalprice;
+	private int price; // 시간당 가격
+	private int time;  // 회당 수업시간
+	private int totaltime; // 총 수업 횟수
+	private int totalprice; // 총 가격
 	private String tutorintro;
 	private String classintro;
 	private int readcnt;
-	private int tutorno;
+	private int state;
+	private Date regdate;
+	
 	// getter, setter, toString
 	public int getClassid() {
 		return classid;
@@ -23,11 +29,23 @@ public class Class {
 	public void setClassid(int classid) {
 		this.classid = classid;
 	}
-	public String getLocation() {
-		return location;
+	public int getTutorno() {
+		return tutorno;
 	}
-	public void setLocation(String location) {
-		this.location = location;
+	public void setTutorno(int tutorno) {
+		this.tutorno = tutorno;
+	}
+	public String getLocation1() {
+		return location1;
+	}
+	public void setLocation1(String location1) {
+		this.location1 = location1;
+	}
+	public String getLocation2() {
+		return location2;
+	}
+	public void setLocation2(String location2) {
+		this.location2 = location2;
 	}
 	public int getCategory() {
 		return category;
@@ -35,10 +53,10 @@ public class Class {
 	public void setCategory(int category) {
 		this.category = category;
 	}
-	public String getType() {
+	public int getType() {
 		return type;
 	}
-	public void setType(String type) {
+	public void setType(int type) {
 		this.type = type;
 	}
 	public int getMaxtutee() {
@@ -101,17 +119,24 @@ public class Class {
 	public void setReadcnt(int readcnt) {
 		this.readcnt = readcnt;
 	}
-	public int getTutorno() {
-		return tutorno;
+	public int getState() {
+		return state;
 	}
-	public void setTutorno(int tutorno) {
-		this.tutorno = tutorno;
+	public void setState(int state) {
+		this.state = state;
+	}
+	public Date getRegdate() {
+		return regdate;
+	}
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
 	}
 	@Override
 	public String toString() {
-		return "Class [classid=" + classid + ", location=" + location + ", category=" + category + ", type=" + type
-				+ ", maxtutee=" + maxtutee + ", subject=" + subject + ", coverimg=" + coverimg + ", price=" + price
-				+ ", time=" + time + ", totaltime=" + totaltime + ", totalprice=" + totalprice + ", tutorintro="
-				+ tutorintro + ", classintro=" + classintro + ", readcnt=" + readcnt + ", tutorno=" + tutorno + "]";
+		return "Class [classid=" + classid + ", tutorno=" + tutorno + ", location1=" + location1 + ", location2="
+				+ location2 + ", category=" + category + ", type=" + type + ", maxtutee=" + maxtutee + ", subject="
+				+ subject + ", coverimg=" + coverimg + ", price=" + price + ", time=" + time + ", totaltime="
+				+ totaltime + ", totalprice=" + totalprice + ", tutorintro=" + tutorintro + ", classintro=" + classintro
+				+ ", readcnt=" + readcnt + ", state=" + state + ", regdate=" + regdate + "]";
 	}
 }

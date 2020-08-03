@@ -1,22 +1,23 @@
 package logic;
 
 public class License {
-	private int tutorno;
 	private int lcno;
+	private int tutorno;
 	private String lctitle;
 	private String lcfile;
+	
 	// getter, setter, toString
-	public int getTutorno() {
-		return tutorno;
-	}
-	public void setTutorno(int tutorno) {
-		this.tutorno = tutorno;
-	}
 	public int getLcno() {
 		return lcno;
 	}
 	public void setLcno(int lcno) {
 		this.lcno = lcno;
+	}
+	public int getTutorno() {
+		return tutorno;
+	}
+	public void setTutorno(int tutorno) {
+		this.tutorno = tutorno;
 	}
 	public String getLctitle() {
 		return lctitle;

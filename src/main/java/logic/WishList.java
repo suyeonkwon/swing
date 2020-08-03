@@ -3,6 +3,7 @@ package logic;
 public class WishList {
 	private String userid;
 	private int classid;
+	
 	// getter, setter, toString
 	public String getUserid() {
 		return userid;
