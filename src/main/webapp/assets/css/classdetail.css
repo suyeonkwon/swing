@@ -7,12 +7,14 @@
 }
 .class_wrap {
     padding-top: 5%;
+    position: relative;
 }
 .class_wrap .class_price {
     width: 25%;
     float: right;
     background: #fff;
     padding: 20px 20px 10px 20px;
+    /* height: 1000px; */
 }
 .class_price .regions .title {
     color: #333;
@@ -128,7 +130,7 @@
     overflow: hidden;
     position: relative;
 }
-/*수업정보 네비*/
+/*navi*/
 .class_wrap .class_d_wrqp .class_navi {
     width: 840px;
     background: #fff;
@@ -138,9 +140,6 @@
     top: 0;
     z-index: 1;
     border-bottom: 1px solid #999;
-}
-.class_wrap .class_d_wrqp .class_navi ul {
-    margin-bottom:0;
 }
 .class_wrap .class_d_wrqp .class_navi ul li {
     width: 24%;
@@ -155,38 +154,40 @@
     font-size: 18px;
     padding: 17px 0 17px 0;
 }
+/*클래스 디테일 서머리*/
 .class_wrap .class_detail {
     width: 840px;
     float: left;
     background: #fff;
     padding: 0 80px 0 80px;
 }
-/*클래스 디테일 서머리*/
- .class_wrap .class_detail .class_name {
+.class_wrap .class_detail .class_name {
     width: 180px;
     float: left;
     color: #000;
     text-align: center;
-    margin: 100px 0 50px 0;
+    margin: 30px 0 40px 0;
 }
- .class_wrap .class_detail .class_name .tutor_img {
+.class_wrap .class_detail .class_name .tutor_img {
     width: 180px;
     height: 180px;
     border-radius: 100px;
     overflow: hidden;
+    background-color: blue;
 }
- .class_wrap .class_detail .class_name .name {
+.class_wrap .class_detail .class_name .name {
     width: 180px;
     font-size: 20px;
     line-height: 200%;
+    margin-top: 20px;
 }
 .class_wrap .class_detail .class_title {
     width: 460px;
     float: right;
     padding-top: 40px;
-    margin: 100px 0 50px 0;
+    margin: 30px 0 40px 0;
 }
- .class_wrap .class_detail .class_title .title {
+.class_wrap .class_detail .class_title .title {
     font-size: 26px;
     font-weight: 400;
     line-height: 130%;
@@ -210,8 +211,111 @@
     padding: 20px 0;
 }
 .class_wrap .class_detail .class_title .info ul li {
-    width: 115px;
+    width: fit-content;
     text-align: center;
     float: left;
     padding-top: 40px;
+    margin: 0 3%;
+}
+/*클래스 디테일 메인*/
+.class_wrap .detail_sec_bor {
+    border-top: 1px solid #e3e3e3;
+    overflow: hidden;
+}
+.class_wrap .class_detail {
+    width: 840px;
+    float: left;
+    background: #fff;
+    padding: 0 80px 0 80px;
+    /* position: relative; */
+}
+.class_wrap .class_detail .section01 {
+    margin: 80px 0;
+    position: relative;
+}
+.class_wrap .class_detail .section01 h1 {
+    font-size: 30px;
+    color: #000;
+    line-height: 200%;
+}
+.class_wrap .class_detail .section01 .cert {
+    margin-top: 30px;
+}
+.class_wrap .class_detail .section01 .cert ul li {
+    background: url(https://front-img.taling.me/Content/Images/class/icon_info08.png) left top no-repeat;
+    color: #999;
+    font-size: 20px;
+    padding: 5px 10px 5px 20px;
+    margin-bottom: 10px;
+}
+.class_wrap .class_detail .section01 .cert ul li.com {
+    background: url(https://front-img.taling.me/Content/Images/class/icon_info07.png) left top no-repeat;
+    color: #666;
+    font-size: 16px;
+}
+.class_wrap .class_detail .section01 .d_info {
+    margin-top: 30px;
+    font-size: 16px;
+    color: #666;
+    line-height: 180%;
+    clear: both;
+}
+/*리뷰*/
+.class_detail .section01 .btn_st {
+    position: absolute;
+    right: 0;
+    top: 10px;
+    padding: 7px 15px 7px 15px;
+    border: 1px solid #49b5e7;
+    line-height: 100%;
+    font-size: 14px;
+    color: #49b5e7;
+    transition: all 0.3s ease 0s;
+}
+#container_detail .class_wrap .class_detail .review_box {
+    text-align: center;
+    padding: 30px;
+    background: #f2f2f2;
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+    vertical-align: middle;
+}
+.class_wrap .class_detail .section01 .review_list ul li {
+    border-bottom: 1px solid #e5e5e5;
+    padding: 30px 0;
+    overflow: hidden;
+    cursor: default;
+}
+ .class_wrap .class_detail .section01 .review_list .profilebox {
+    width: 86px;
+    float: left;
+    text-align: center;
+    font-size: 16px;
+    color: #000;
+    cursor: default;
+    line-height: 100%;
+}
+.class_wrap .class_detail .section01 .review_list .profilebox .profile {
+    width: 86px;
+    height: 86px;
+    border-radius: 100px;
+    overflow: hidden;
+    background-color: blue;
+}
+ .class_wrap .class_detail .section01 .review_list .profilebox .name {
+	padding-top:10px;
+}
+.class_wrap .class_detail .section01 .review_list .review_content {
+    width: 580px;
+    float: right;
+    line-height: 160%;
+    font-size: 14px;
+    cursor: default;
+    line-height: 160%;
+    letter-spacing: -1px;
+    padding: 20px 0 0 20px;
+}
+.class_wrap .class_detail .section01 .review_list .review_content .date {
+    color: #ccc;
 }

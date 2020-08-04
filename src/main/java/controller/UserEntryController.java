@@ -16,6 +16,7 @@ public class UserEntryController {
 	@RequestMapping("*") //  /index.shop 요청시 호출되는 메서드
 	public ModelAndView userForm() {
 		ModelAndView mav = new ModelAndView();
+		System.out.println(service.userList());
 		return mav;
 	}
 }
