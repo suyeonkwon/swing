@@ -14,7 +14,7 @@ public interface UserMapper {
 	@Insert("")
 	void insert(User user);
 	
-	@Select({""})
+	@Select("select * from user")
 	List<User> select(Map<String, Object> param);
 	
 	@Update("")
