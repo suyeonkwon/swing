@@ -11,7 +11,9 @@ import org.apache.ibatis.annotations.Update;
 import logic.User;
 
 public interface UserMapper {
-	@Insert("")
+	@Insert("insert into user "
+			+ " (userid,pass,name,email,file) "
+			+ " values(#{userid},#{pass},#{name},#{email},#{file})")
 	void insert(User user);
 	
 	@Select("select * from user")
