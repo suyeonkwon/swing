@@ -12,14 +12,6 @@
 </head>
 <body>
 	<div id="pop_qna">
-		<div class="top">
-		로고<span>
-			실시간으로 간편하게 문의하세요
-			<span>
-				<div class="close">x</div>
-			</span>
-		    </span>
-		</div>
 		<div class="q_tab">
 			<ul>
 				<li><a href="">수강생</a></li>

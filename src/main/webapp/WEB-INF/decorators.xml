@@ -4,10 +4,13 @@
 	<decorator name="main" page="index.jsp">
 		<pattern>*.shop</pattern>
 	</decorator>
+	<decorator name="talk" page="talkLayout.jsp">
+		<pattern>/talk/*</pattern>
+	</decorator>
 	<excludes>
 		<pattern>/board/imgupload*</pattern>
 		<pattern>/admin/graph*</pattern>
 		<pattern>/ajax/*</pattern>
-		<pattern>/talk/*</pattern>
+		<pattern>kakao*</pattern>
 	</excludes>
 </decorators>

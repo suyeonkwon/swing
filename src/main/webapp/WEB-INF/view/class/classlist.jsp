@@ -50,22 +50,55 @@
 						<select id="city">
 							<option value="">지역</option>
 							<option value="seoul">서울</option>
-							<option value="">경기</option>
+							<option value="gg">경기</option>
+							<option value="icn">인천</option>
 						</select>
 					</div>
+					<div class="right2" id="regionSub2">
+						
+					</div>
 				</div>
+				<script>
+					$(function(){
+						$('#city').change(function(){
+							var area = $(this).val();
+							var msg = "";
+							if(area=='seoul'){
+								msg = "<select id='area'>"+
+									"<option value=''>서울ALL</option>"+
+									"<option value='gn'>강남</option>"+
+									"<option value='ge'>건대</option>"+
+									"<option value='js'>잠실</option>"+
+									"<option value='jl'>종료</option>"+
+									"<option value='hd'>홍대</option>"+
+									"</select>";
+							}else if(area=='gg'){
+								msg = "<select id='area'>"+
+								"<option value=''>경기ALL</option>"+
+								"<option value='bd'>분당</option>"+
+								"<option value='bc'>부천</option>"+
+								"<option value='sw'>수원</option>"+
+								"<option value='as'>안산</option>"+
+								"<option value='ay'>안양</option>"+
+								"<option value='il'>일산</option>"+
+								"</select>";
+							}else if(area=='icn'){
+								msg = "<select id='area'>"+
+								"<option value='bp'>부평</option>"+
+								"<option value='sd'>송도</option>"+
+								"</select>"
+							}
+							$("#regionSub2").html(msg);
+						})
+					})
+				</script>
 				<div class="inbox">
 					<div class="left">요일/시간</div>
 					<div class="right">
 						<div class="days">
 							<ul id="days">
-								<li>월</li>
-								<li>화</li>
-								<li>수</li>
-								<li>목</li>
-								<li>금</li>
-								<li>토</li>
-								<li>일</li>
+								<li>평일(월-금)</li>
+								<li>주말(토-일)</li>
 							</ul>
 							<ul id="times">
 								<li style="margin-left:15px;">오전(06:00~12:00)</li>
@@ -75,6 +108,30 @@
 						</div>
 					</div>
 				</div>
+			
+				<script>
+					$(function(){
+						var check=0;
+						$("#days li").click(function(){
+							if(check==0){
+								$(this).addClass("on");
+								check=1;
+							}else{
+								$(this).removeClass("on");
+								check=0;
+							}
+						})
+						$("#times li").click(function(){
+							if(check==0){
+								$(this).addClass("on");
+								check=1;
+							}else{
+								$(this).removeClass("on");
+								check=0;
+							}
+						})
+					})
+				</script>
 				<div class="inbox">
 					<div class="left">수업형태</div>
 					<div class="right">
@@ -98,7 +155,6 @@
 			<div class="sorted">
 				<ul id="sorted">
 					<li>최신 등록순</li>
-					<li>참여자순</li>
 					<li>별점순</li>
 				</ul>
 			</div>

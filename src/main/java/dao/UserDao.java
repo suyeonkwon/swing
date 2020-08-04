@@ -19,6 +19,7 @@ public class UserDao {
 	public void insert(User user) {
 		template.getMapper(UserMapper.class).insert(user);
 	}
+	
 	public User selectOne(String userid) {
 		param.clear();
 		param.put("userid", userid);
@@ -38,5 +39,4 @@ public class UserDao {
 	public List<User> list() {
 		return template.getMapper(UserMapper.class).select(null);
 	}
-	
 }
