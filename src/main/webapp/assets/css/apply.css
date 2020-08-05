@@ -98,7 +98,7 @@
     padding-top: 15px;
 }
 .tutor_cont .sh_box .head img {
-    width: 18px;
+    width: 1.5em;
     vertical-align: middle;
     margin: 0 10px 3px 0;
 }
@@ -122,10 +122,13 @@
     margin-top: 3px;
     margin-right: 5px;
     background-size: cover;
-    background-image: url(https://front-img.taling.me/Content/Images/mClassRegi2/check_disabled@2x.png);
+    background-image: url('/swing/assets/img/icon/select.png');
     margin-left: -25px;
     cursor: pointer;
     float: left;
+}
+.class_price .regions .region .option .top label.on{
+	background-image: url('/swing/assets/img/icon/selected.png');
 }
 .class_price .regions .region .option.select .top label {
     background-image: url(https://front-img.taling.me/Content/Images/mClassRegi2/radio_selected@2x.png);
@@ -154,7 +157,7 @@
 }
 /*apply*/
 .top {
-    border-top: 1px solid #eee;
+    /* border-top: 1px solid #eee; */
 }
 .level {
     height: 80px;
@@ -216,9 +219,11 @@
 .bottom {
     border-bottom: 1px solid #dadada;
 }
+
  .level3 {
-    padding-top: 20px;
-}
+ padding-top: 0.5em;height: 4.5em;
+ }
+ 
 .level3 .left {
     float: left;
     width: 20%;
@@ -226,6 +231,7 @@
     font-size: 16px;
     line-height: 20px;
     padding-left: 10px;
+    /* margin-bottom: 1em; */
 }
 .right2 {
     /* float: left; */
@@ -237,4 +243,6 @@
     text-align: left;
     position: relative;
     top: 25%;
+    /* padding-bottom: 1em; */
+    /* margin-bottom: 10px; */
 }

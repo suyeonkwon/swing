@@ -28,42 +28,33 @@
 			<div class="apply">
 				<div class="profile_box">
 					<div class="profile" style="background-image:url('')"></div>
-					<p class="triangle-border top gray" style="margin-top:50px">
+					<p class="triangle-border top gray" style="margin-top:50px; text-align:center;">
 						수업에 오신걸 환영해요!<br>
-						<span>장소, 수업일, 시간</span>
-						을 선책해주세요
+						결제는<br>
+						<span>카카오페이</span>만 가능합니다.
 					</p>
 				</div>
 				<div class="sh_box class_price">
 					<form action="">
-						<div class="level">
-							<div class="left">레벨</div>
-							<div class="right" id="boxlevel1">
-								<div class="levelbox" id="levelbox1">
-									입문자
-								</div>
-								<div class="levelbox" id="levelbox2">
-									초/중급자
-								</div>
-								<div class="levelbox" id="levelbox3">
-									상급자
+						<div id="alltime">
+							<div class="level3 bottom">
+								<div class="left" style="margin-top:15px;">전체 수업료</div>
+								<div class="right2">
+									<font style="font-size:14px; font-weight:500;">40,000원</font>
 								</div>
 							</div>
-						</div>
-						<div class="level top">
-							<div class="left">결제인원</div>
-							<div class="right" style="margin-top:23px;">
-								<div class="box_num">
-									<button type="button" class="btn_length num_minus" id="totalCntMinus" disabled></button>
-									<input type="text" maxlength="3" value="1" class="inp_length" name="totalCnt" id="totalCnt">명
-									<button type="button" class="btn_length num_plus" id="totalCntPlus"></button>
+							<div class="level bottom" style="padding-top:0.5em;">
+								<div class="left" style="width:20%;">결제금액</div>
+								<div class="right2">
+									<span id="payArea2">44,000</span>원
+									<font color="#666" style="font-size:12px;">(수업가격+VAT 10%)</font>
 								</div>
 							</div>
 						</div>
 					</form>
 				</div>
 			</div>
-			<div id="nextButton" class="next button" onclick="location.href='pay.shop'">다음</div>
+			<div id="nextButton" class="next button" onclick="location.href='pay.shop'">결제</div>
 		</div>
 	</div>
 </section>

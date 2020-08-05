@@ -34,7 +34,7 @@
 			$("#chatStatus").text("info:connection close");
 		}
 	})
-</script>
+</script>  
 </head>
 <body>
 <h1 class="qna_title">

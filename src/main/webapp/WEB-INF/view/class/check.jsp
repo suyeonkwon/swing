@@ -28,25 +28,27 @@
 			<div class="apply">
 				<div class="profile_box">
 					<div class="profile" style="background-image:url('')"></div>
-					<p class="triangle-border top gray" style="margin-top:50px">
+					<p class="triangle-border top gray" style="margin-top:50px; text-align:center;">
 						수업에 오신걸 환영해요!<br>
-						<span>장소, 수업일, 시간</span>
-						을 선책해주세요
+						<span>장소, 수업일, 시간</span>을<br>
+						 선택해주세요
 					</p>
 				</div>
 				<div class="sh_box class_price">
 					<div class="head">
+					<img src="${path}/assets/img/icon/calendar.png">
 						원하시는 수업 일정을 선택해주세요
 					</div>
 					<div class="regions">
 						<div class="region" id="region">
 							<div class="option">
 								<div class="top">
-									<label onclick=""></label>
+									<label></label>
 									<div class="text">
 										01.01(월) 00:00~01:00
 										<span>|</span>
 										<font>강서</font>
+										
 									</div>
 								</div>
 							</div>
@@ -73,6 +75,21 @@
 						</div>
 					</div>
 				</div>
+				<script type="text/javascript">
+					$(function(){
+						var check=0;
+						$(".top label").click(function(){
+							if(check==0){
+								$(this).addClass("on");
+								check=1;
+							}else{
+								$(this).removeClass("on");
+								check=0;
+							}
+							
+						})
+					})
+				</script>
 			</div>
 			<div id="nextButton" class="next button" onclick="location.href='apply.shop'">신청서 작성하러가기</div>
 		</div>
