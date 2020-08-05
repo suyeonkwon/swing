@@ -12,7 +12,7 @@
 	<category_index>0</category_index>
 	<zoom>1.0</zoom>
 	<x>0</x>
-	<y>228</y>
+	<y>96</y>
 	<default_color>
 		<r>128</r>
 		<g>128</g>
@@ -135,7 +135,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2020-07-21 16:40:15</creation_date>
-			<updated_date>2020-08-05 17:49:13</updated_date>
+			<updated_date>2020-08-05 17:50:43</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
@@ -606,7 +606,7 @@
 		</word>
 		<word>
 			<id>27</id>
-			<length>10</length>
+			<length>20</length>
 			<decimal>null</decimal>
 			<array>false</array>
 			<array_dimension>null</array_dimension>
