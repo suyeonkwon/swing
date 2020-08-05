@@ -15,4 +15,8 @@ public class ShopService {
 	public List<User> userList() {
 		return userDao.list();
 	}
+	
+	public void userInsert(User user) {		
+		userDao.insert(user);
+	}
 }
