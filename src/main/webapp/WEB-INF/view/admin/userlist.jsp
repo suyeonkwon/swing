@@ -54,7 +54,7 @@
                           <td><a href="#">수정</a></td>
                           <td><a href="#">탈퇴</a></td>
                           <td><input class="checkbox" type="checkbox"></td>
-                        </tr>
+                         </tr>
                         <tr>
                           <td>3</td>
                           <td>user3</td>

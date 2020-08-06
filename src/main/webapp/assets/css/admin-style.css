@@ -335,7 +335,7 @@ button {
     border-radius: 0;
 }
 
-button:hover {
+button:hover  {
 opacity: 0.85;
 }
 

@@ -156,7 +156,7 @@ body {
 						<p>[위치] 서울시 금천구</p>
 					</div>
 				<div style="float: right;">
-					<button type="button"><label class="badge badge-success">허&nbsp;가</label></button>
+					 <button type="button"><label class="badge badge-success">허&nbsp;가</label></button>
 					<button type="button"><label class="badge badge-danger">반&nbsp;려</label></button>
 					</div>
 				</div>

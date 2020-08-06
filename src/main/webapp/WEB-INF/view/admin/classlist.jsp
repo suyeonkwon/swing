@@ -34,7 +34,7 @@ body {
 <section id="team" class="team">
       <div class="container">
           <div style="text-align: right;">
-          <a href="#info1"><h2>수강 목록</h2></a>
+           <a href="#info1"><h2>수강 목록</h2></a>
           <a href="#info1" class="select">전체(13)</a>&nbsp;|
           <a href="#info2">수강중(11)</a>&nbsp;|
           <a href="#info4">수강완료(2)</a>
