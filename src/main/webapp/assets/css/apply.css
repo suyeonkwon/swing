@@ -246,3 +246,7 @@
     /* padding-bottom: 1em; */
     /* margin-bottom: 10px; */
 }
+.success {
+    text-align: center;
+    padding: 12em 0;
+}

@@ -17,9 +17,9 @@
 				<ul>
 					<li style="color:#49b5e7">01일정/장소</li>
 					<span>></span>
-					<li>02신청서 작성</li>
+					<li>02결제</li>
 					<span>></span>
-					<li>03결제</li>
+					<li>03완료</li>
 				</ul>
 			</div>
 			<div class="class_title">
@@ -43,33 +43,41 @@
 						<div class="region" id="region">
 							<div class="option">
 								<div class="top">
-									<label></label>
-									<div class="text">
-										01.01(월) 00:00~01:00
-										<span>|</span>
-										<font>강서</font>
-										
-									</div>
-								</div>
-							</div>
-							<div class="option">
-								<div class="top">
-									<label onclick=""></label>
+									<label><input type="hidden" class="no" value="1"></label>
 									<div class="text">
 										01.01(월) 00:00~01:00
 										<span>|</span>
 										<font>강서</font>
 									</div>
 								</div>
+								<div class="region2">
+									상세지역: 대륭테크노타운
+								</div>
 							</div>
 							<div class="option">
 								<div class="top">
-									<label onclick=""></label>
+									<label><input type="hidden" class="no" value="2"></label>
 									<div class="text">
 										01.01(월) 00:00~01:00
 										<span>|</span>
 										<font>강서</font>
 									</div>
+								</div>
+								<div class="region2">
+									상세지역: 대륭테크노타운
+								</div>
+							</div>
+							<div class="option">
+								<div class="top">
+									<label><input type="hidden" class="no" value="3"></label>
+									<div class="text">
+										01.01(월) 00:00~01:00
+										<span>|</span>
+										<font>강서</font>
+									</div>
+								</div>
+								<div class="region2">
+									상세지역: 대륭테크노타운
 								</div>
 							</div>
 						</div>
@@ -77,21 +85,25 @@
 				</div>
 				<script type="text/javascript">
 					$(function(){
-						var check=0;
-						$(".top label").click(function(){
-							if(check==0){
-								$(this).addClass("on");
-								check=1;
-							}else{
-								$(this).removeClass("on");
-								check=0;
-							}
-							
+						var classno=0;
+						$(".region2").hide();
+						$(".top").on("click","label",function(){
+							$(".region2").hide();
+							$(".top label").removeClass("on");
+							$(this).addClass("on");
+							var index = $("label").index(this);
+							$(".region2:eq("+index+")").show();
+							classno = $(".no:eq("+index+")").val();
+							alert(index);
+						})
+						$("#nextButton").click(function(){
+							location.href="apply.shop?classid=1&classno="+classno;
 						})
 					})
 				</script>
 			</div>
-			<div id="nextButton" class="next button" onclick="location.href='apply.shop'">신청서 작성하러가기</div>
+			<input type="hidden" id="classno" value="">
+			<div id="nextButton" class="next button">신청서 작성하러가기</div>
 		</div>
 	</div>
 </section>

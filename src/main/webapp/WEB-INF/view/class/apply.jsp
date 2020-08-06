@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <link href="${path}/assets/css/apply.css" rel="stylesheet">
 </head>
 <body>
@@ -17,9 +19,9 @@
 				<ul>
 					<li>01일정/장소</li>
 					<span>></span>
-					<li style="color:#49b5e7">02신청서 작성</li>
+					<li style="color:#49b5e7">02결제</li>
 					<span>></span>
-					<li>03결제</li>
+					<li>03완료</li>
 				</ul>
 			</div>
 			<div class="class_title">
@@ -54,7 +56,36 @@
 					</form>
 				</div>
 			</div>
-			<div id="nextButton" class="next button" onclick="location.href='pay.shop'">결제</div>
+			<div id="nextButton" class="next button" onclick="payPop();">결제</div>
+			<script type="text/javascript">
+				function payPop(){
+			        var IMP = window.IMP; // 생략가능
+			        IMP.init('imp23418340'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
+			        var msg;
+			        
+			        IMP.request_pay({
+			            pg : 'kakaopay',
+			            pay_method : 'card',
+			            merchant_uid : 'merchant_' + new Date().getTime(),
+			            name : 'KH Books 도서 결제',
+			            amount : '1000',
+			            buyer_email : 'ka7900x@naver.com',
+			            buyer_name : '권수연',      
+			          //  buyer_tel:'010-1234-4039',
+			            m_redirect_url : 'http://www.naver.com' //결제 완료 후 보낼 컨트롤러 메소드명
+			        }, function(rsp) {
+			            if ( rsp.success ) {
+			            	var msg="결제가 완료되었습니다."
+			            	location.href='paysuccess.shop'
+			            } else {
+			                msg = '결제에 실패하였습니다.';
+			                msg += '에러내용 : ' + rsp.error_msg;
+			            }
+			            alert(msg);
+			        });
+			        
+				}
+			</script>
 		</div>
 	</div>
 </section>

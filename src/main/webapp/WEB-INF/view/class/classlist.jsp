@@ -37,7 +37,7 @@
 						<div id="cate5">술</div>
 					</a>
 				</li>
-				<li id="menu6" onclick="filterView();" style="background-color:rgba(255,255,255); border-bottom:1px solid rgb(201,201,201);">
+				<li id="menu6" style="background-color:rgba(255,255,255); border-bottom:1px solid rgb(201,201,201);">
 					<div id="filter">필터</div>
 				</li>
 			</ul>
@@ -55,7 +55,9 @@
 						</select>
 					</div>
 					<div class="right2" id="regionSub2">
-						
+						<select id='area'>
+							<option>지역을 선택하세요</option>
+						</select>
 					</div>
 				</div>
 				<script>
@@ -87,59 +89,33 @@
 								"<option value='bp'>부평</option>"+
 								"<option value='sd'>송도</option>"+
 								"</select>"
+							}else{
+								msg="<select id='area'>"+
+									"<option>지역을 선택하세요</option>"+
+									"</select>";
 							}
 							$("#regionSub2").html(msg);
 						})
 					})
-				</script>
-				<div class="inbox">
-					<div class="left">요일/시간</div>
-					<div class="right">
-						<div class="days">
-							<ul id="days">
-								<li>평일(월-금)</li>
-								<li>주말(토-일)</li>
-							</ul>
-							<ul id="times">
-								<li style="margin-left:15px;">오전(06:00~12:00)</li>
-								<li>오후(12:00~18:00)</li>
-								<li>저녁(18:00~24:00)</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			
-				<script>
-					$(function(){
-						var check=0;
-						$("#days li").click(function(){
-							if(check==0){
-								$(this).addClass("on");
-								check=1;
-							}else{
-								$(this).removeClass("on");
-								check=0;
-							}
-						})
-						$("#times li").click(function(){
-							if(check==0){
-								$(this).addClass("on");
-								check=1;
-							}else{
-								$(this).removeClass("on");
-								check=0;
-							}
-						})
-					})
-				</script>
+				</script>			
 				<div class="inbox">
 					<div class="left">수업형태</div>
 					<div class="right">
 						<div class="days">
-                        	<ul id="tTypes">
+							<ul id="tTypes">
+								<li>원데이클래스</li>
+								<li>다회차</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="inbox">
+					<div class="left">수업인원</div>
+					<div class="right">
+						<div class="days">
+                        	<ul id="tTypes2">
                             	<li>1:1수업</li>
                                 <li>그룹</li>
-                                <li>원데이클래스</li>
                            </ul>
                        </div>
                        <div class="filter_button" id="search">
@@ -147,6 +123,22 @@
                        </div>
 					</div>
 				</div>
+				<script>
+				$(function(){
+					$(".catesub.filter").hide();
+					$("#menu6").click(function(){
+						$(".catesub.filter").toggle();
+					})
+					$("#tTypes2 li").click(function(){
+						$(this).siblings().removeClass("on");
+						$(this).addClass("on");
+					})
+					$("#tTypes li").click(function(){
+						$(this).siblings().removeClass("on");
+						$(this).addClass("on");
+					})
+				})
+				</script>
 			</div>
 		</div>
 	</div>

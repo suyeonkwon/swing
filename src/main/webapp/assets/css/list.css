@@ -45,6 +45,7 @@ a:visited {
     /* justify-content: right; */
     padding: 0 5%;
     /* border: 1px solid; */
+    /* padding: 1em 0; */
 }
 .catesub {
     position: static;
@@ -115,6 +116,7 @@ div#regionSub {
 }
 .catesub.filter .inbox .right ul{
     display:inline-block;
+    margin-bottom: 0;
 }
 .catesub.filter .inbox .right .filter_button {
     background: #49b5e7;
