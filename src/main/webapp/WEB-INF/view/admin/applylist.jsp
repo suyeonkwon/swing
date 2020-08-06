@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>수업 목록</title>
+<title>수업 신청 목록</title>
 <link href="${path}/assets/css/tutor-style.css" rel="stylesheet">
 <link href="${path}/assets/css/admin-style.css" rel="stylesheet">
 <style type="text/css">
@@ -34,10 +34,10 @@ body {
 <section id="team" class="team">
       <div class="container">
           <div style="text-align: right;">
-          <a href="#info1"><h2>수강 목록</h2></a>
+          <a href="#info1"><h2>신청 목록</h2></a>
           <a href="#info1" class="select">전체(13)</a>&nbsp;|
-          <a href="#info2">수강중(11)</a>&nbsp;|
-          <a href="#info4">수강완료(2)</a>
+          <a href="#info2">승인요청(11)</a>&nbsp;|
+          <a href="#info4">승인완료(2)</a>
           <hr style="margin-top: 15px;">
           </div>
           <div class="row bg-gray">
@@ -53,6 +53,10 @@ body {
 							<p>[신청일시] 2020-08-05 18:15:01</p>
 							<p>[수업시작일] 2020-09-15</p>
 							<p>[위치] 서울시 금천구</p>
+						</div>
+						<div style="float: right;">
+							<button type="button"><label class="badge badge-success">허&nbsp;가</label></button>
+							<button type="button"><label class="badge badge-danger">반&nbsp;려</label></button>
 						</div>
 					</div>
 				</div>
@@ -70,6 +74,10 @@ body {
 							<p>[수업시작일] 2020-09-15</p>
 							<p>[위치] 서울시 금천구</p>
 						</div>
+						<div style="float: right;">
+							<button type="button"><label class="badge badge-success">허&nbsp;가</label></button>
+							<button type="button"><label class="badge badge-danger">반&nbsp;려</label></button>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -85,7 +93,11 @@ body {
 						<p>[신청일시] 2020-08-05 18:15:01</p>
 						<p>[수업시작일] 2020-09-15</p>
 						<p>[위치] 서울시 금천구</p>
-						</div>
+					</div>
+					<div style="float: right;">
+						<button type="button"><label class="badge badge-success">허&nbsp;가</label></button>
+						<button type="button"><label class="badge badge-danger">반&nbsp;려</label></button>
+					</div>
 					</div>
 				</div>
 			</div>
@@ -102,6 +114,10 @@ body {
 							<p>[수업시작일] 2020-09-15</p>
 							<p>[위치] 서울시 금천구</p>
 						</div>
+						<div style="float: right;">
+							<button type="button"><label class="badge badge-success">허&nbsp;가</label></button>
+							<button type="button"><label class="badge badge-danger">반&nbsp;려</label></button>
+						</div>
 					</div>
 				</div>
 			
@@ -111,15 +127,19 @@ body {
 					<div class="team-img">
 						<img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-2.jpg" alt="">
 					</div>
-					<div class="contetn">
-						<div class="info-text">
-							<h3><a href="#">핸드메이드 강좌</a></h3>
-							<p>이다빈(USER1)</p>
-							<p>[신청일시] 2020-08-05 18:15:01</p>
-							<p>[수업시작일] 2020-09-15</p>
-							<p>[위치] 서울시 금천구</p>
-						</div>
+				<div class="contetn">
+					<div class="info-text">
+						<h3><a href="#">핸드메이드 강좌</a></h3>
+						<p>이다빈(USER1)</p>
+						<p>[신청일시] 2020-08-05 18:15:01</p>
+						<p>[수업시작일] 2020-09-15</p>
+						<p>[위치] 서울시 금천구</p>
 					</div>
+				<div style="float: right;">
+					<button type="button"><label class="badge badge-success">허&nbsp;가</label></button>
+					<button type="button"><label class="badge badge-danger">반&nbsp;려</label></button>
+				</div>
+				</div>
 				</div>
 			</div>
 			<div class="col-lg-6 col-md-12 col-xs-12">
@@ -127,15 +147,19 @@ body {
 					<div class="team-img">
 						<img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-4.jpg" alt="">
 					</div>
-					<div class="contetn">
-						<div class="info-text">
-							<h3><a href="#">핸드메이드 강좌</a></h3>
-							<p>이다빈(USER1)</p>
-							<p>[신청일시] 2020-08-05 18:15:01</p>
-							<p>[수업시작일] 2020-09-15</p>
-							<p>[위치] 서울시 금천구</p>
-						</div>
+				<div class="contetn">
+					<div class="info-text">
+						<h3><a href="#">핸드메이드 강좌</a></h3>
+						<p>이다빈(USER1)</p>
+						<p>[신청일시] 2020-08-05 18:15:01</p>
+						<p>[수업시작일] 2020-09-15</p>
+						<p>[위치] 서울시 금천구</p>
 					</div>
+				<div style="float: right;">
+					<button type="button"><label class="badge badge-success">허&nbsp;가</label></button>
+					<button type="button"><label class="badge badge-danger">반&nbsp;려</label></button>
+					</div>
+				</div>
 				</div>
 			</div>
 		</div>
