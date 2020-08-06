@@ -186,14 +186,18 @@ a.select{
 }
 
 /*--------------------------------------------------------------
-# Contact
+# tutor-regi
 --------------------------------------------------------------*/
-.contact .info {
+.tutor-regi {
+	margin-top: -150px;
+}
+
+.tutor-regi .info {
   width: 100%;
   background: #fff;
 }
 
-.contact .info i {
+.tutor-regi .info i {
   font-size: 20px;
   color: #49b5e7;
   float: left;
@@ -207,7 +211,7 @@ a.select{
   transition: all 0.3s ease-in-out;
 }
 
-.contact .info h4 {
+.tutor-regi .info h4 {
   padding: 0 0 0 60px;
   font-size: 22px;
   font-weight: 600;
@@ -215,32 +219,32 @@ a.select{
   color: #0f394c;
 }
 
-.contact .info p {
+.tutor-regi .info p {
   padding: 0 0 0 60px;
   margin-bottom: 0;
   font-size: 14px;
   color: #2079a1;
 }
 
-.contact .info .email, .contact .info .phone {
+.tutor-regi .info .email, .tutor-regi .info .phone {
   margin-top: 40px;
 }
 
-.contact .info .email:hover i, .contact .info .address:hover i, .contact .info .phone:hover i {
+.tutor-regi .info .email:hover i, .tutor-regi .info .address:hover i, .tutor-regi .info .phone:hover i {
   background: #49b5e7;
   color: #fff;
 }
 
-.contact .php-email-form {
+.tutor-regi .php-email-form {
   width: 100%;
   background: #fff;
 }
 
-.contact .php-email-form .form-group {
+.tutor-regi .php-email-form .form-group {
   padding-bottom: 8px;
 }
 
-.contact .php-email-form .validate {
+.tutor-regi .php-email-form .validate {
   display: none;
   color: red;
   margin: 0 0 15px 0;
@@ -248,7 +252,7 @@ a.select{
   font-size: 13px;
 }
 
-.contact .php-email-form .error-message {
+.tutor-regi .php-email-form .error-message {
   display: none;
   color: #fff;
   background: #ed3c0d;
@@ -257,11 +261,11 @@ a.select{
   font-weight: 600;
 }
 
-.contact .php-email-form .error-message br + br {
+.tutor-regi .php-email-form .error-message br + br {
   margin-top: 25px;
 }
 
-.contact .php-email-form .sent-message {
+.tutor-regi .php-email-form .sent-message {
   display: none;
   color: #fff;
   background: #18d26e;
@@ -270,14 +274,14 @@ a.select{
   font-weight: 600;
 }
 
-.contact .php-email-form .loading {
+.tutor-regi .php-email-form .loading {
   display: none;
   background: #fff;
   text-align: center;
   padding: 15px;
 }
 
-.contact .php-email-form .loading:before {
+.tutor-regi .php-email-form .loading:before {
   content: "";
   display: inline-block;
   border-radius: 50%;
@@ -290,22 +294,22 @@ a.select{
   animation: animate-loading 1s linear infinite;
 }
 
-.contact .php-email-form input, .contact .php-email-form textarea {
+.tutor-regi .php-email-form input, .tutor-regi .php-email-form textarea {
   border-radius: 0;
   box-shadow: none;
   font-size: 14px;
   border-radius: 4px;
 }
 
-.contact .php-email-form input {
+.tutor-regi .php-email-form input {
   height: 44px;
 }
 
-.contact .php-email-form textarea {
+.tutor-regi .php-email-form textarea {
   padding: 10px 12px;
 }
 
-.contact .php-email-form button[type="submit"] {
+.tutor-regi .php-email-form button[type="submit"] {
   background: #49b5e7;
   border: 0;
   padding: 10px 24px;
@@ -314,7 +318,7 @@ a.select{
   border-radius: 4px;
 }
 
-.contact .php-email-form button[type="submit"]:hover {
+.tutor-regi .php-email-form button[type="submit"]:hover {
   background: #1da2e0;
 }
 
@@ -335,3 +339,20 @@ a.select{
     transform: rotate(360deg);
   }
 }
+
+.form-cont {
+  display: block;
+  width : 50%;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
