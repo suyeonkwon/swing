@@ -69,7 +69,7 @@ hr{
           </div>
      </div>
  </section>
- <section id="tutor-regi" class="tutor-regi">
+<section id="tutor-regi" class="tutor-regi">
 <div class="container">
 	<div class="row">
 		<div class="col-lg-3">
