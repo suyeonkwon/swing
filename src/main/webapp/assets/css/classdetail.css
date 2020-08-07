@@ -39,13 +39,26 @@
     padding: 13px 0;
     border-bottom: 1px solid #ddd;
 }
+.class_price .regions .region .option .region2 {
+    background-color: lightgray;
+    /* height: 100px; */
+    padding: 1em;
+    text-align: center;
+    font-size: 0.7em;
+}
+.class_price .regions .region .option .top .drop {
+    cursor: pointer;
+}
+.class_price .regions .region .option .top .drop img {
+    width: 15px;
+}
 .class_price .regions .region .option .top .timedetail {
-    width: 180px;
+    width: 132px;
     letter-spacing: -0.7px;
     display: inline-block;
 }
 .class_price .regions .region .option .top .timedetail .indate {
-    width: 83px;
+    width: 4.5em;
     display: inline-block;
     color: #555;
 }
@@ -63,7 +76,7 @@
     position: relative;
     margin-bottom: 20px;
     cursor: pointer;
-    margin-top: 10px;
+    /* margin-top: 10px; */
     text-align: center;
     color: #333;
     font-weight: bold;
@@ -319,3 +332,92 @@
 .class_wrap .class_detail .section01 .review_list .review_content .date {
     color: #ccc;
 }
+
+/*리뷰 팝업창*/
+.pop_review .top {
+	background-color: #49b5e7;color: white;padding: 0.5em 1em;font-weight: 600;
+}
+.pop_review .star_box{
+    text-align: center;
+    border-bottom: 1px solid #dadada;
+}
+.pop_review .star_box .title{
+    margin: 1.2em 0;
+    font-weight: 600;
+    font-size: 1.4em;
+}
+.pop_review .star_box .input_star .review_point {
+    display: inline-block;
+}
+.pop_review .star_box .input_star #calc_point {
+    display: inline-block;
+    font-size: 2em;
+    padding-left: 0.4em;
+    /* vertical-align: text-bottom; */
+    position: relative;
+    bottom: 0.6em;
+    font-weight: 600;
+}
+.pop_review .star_box .input_star .star{
+  display:inline-block;
+  width: 30px;height: 60px;
+  cursor: pointer;
+}
+.pop_review .star_box .input_star .star_left{
+  background: url('/swing/assets/img/icon/star.png') no-repeat 0 0; 
+  background-size: 60px; 
+  margin-right: -3px;
+}
+.pop_review .star_box .input_star .star_right{
+  background: url('/swing/assets/img/icon/star.png') no-repeat -30px 0; 
+  background-size: 60px; 
+  margin-left: -3px;
+}
+.pop_review .star_box .input_star .star.on{
+  background-image: url('/swing/assets/img/icon/star_on.png');
+}
+.pop_review .star_box .input_star p {
+    font-size: 0.8em;
+    color: dimgray;
+    margin-top: 0;
+}
+.pop_review .input {
+    padding: 2em 3em;
+}
+.pop_review .input textarea{
+	width:100%;
+	resize:none;
+	min-height: 10em;
+	line-height:1.6em;
+	max-height:9em;
+	border-radius: 5px;
+	border: 1px solid #dadada;
+}
+.pop_review .input #counter {
+    position: absolute;
+    right: 3.5em;
+    bottom: 13.5em;
+    color: gray;
+}
+.pop_review .bottom{
+	text-align:center;
+}
+.pop_review .bottom .button {
+    text-align: center;
+    display: inline-block;
+    padding: 0.4em 2em;
+    line-height: 200%;
+}
+.pop_review .bottom #nextButton {
+    background: #49b5e7;
+    color: #fff;
+}
+.pop_review .bottom #cancelButton {
+    border: 1px solid #49b5e7;
+    color: #49b5e7;
+    /* margin-left: 10em; */
+}
+
+
+
+
