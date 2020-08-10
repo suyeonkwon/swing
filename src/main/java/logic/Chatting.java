@@ -5,8 +5,8 @@ import java.util.Date;
 public class Chatting {
 	private int roomno;
 	private int talkno;
-	private int tutorno;
 	private String userid;
+	private int classid;
 	private String chat;
 	private Date chatdate;
 	
@@ -23,11 +23,11 @@ public class Chatting {
 	public void setTalkno(int talkno) {
 		this.talkno = talkno;
 	}
-	public int getTutorno() {
-		return tutorno;
+	public int getClassid() {
+		return classid;
 	}
-	public void setTutorno(int tutorno) {
-		this.tutorno = tutorno;
+	public void setClassid(int classid) {
+		this.classid = classid;
 	}
 	public String getUserid() {
 		return userid;
@@ -49,7 +49,7 @@ public class Chatting {
 	}
 	@Override
 	public String toString() {
-		return "Chatting [roomno=" + roomno + ", talkno=" + talkno + ", tutorno=" + tutorno + ", userid=" + userid
+		return "Chatting [roomno=" + roomno + ", talkno=" + talkno + ", userid=" + userid + ", classid=" + classid
 				+ ", chat=" + chat + ", chatdate=" + chatdate + "]";
 	}
 }

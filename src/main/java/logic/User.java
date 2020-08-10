@@ -2,11 +2,16 @@ package logic;
 
 public class User {
 	private String userid;
-	private int tutorno;
 	private String pass;
 	private String name;
 	private String email;
 	private String file;
+	private String kbn;
+	private String nickname;
+	private int edulevel;
+	private String school;
+	private String major;
+	private String edufile;
 	
 	// getter, setter, toString
 	public String getUserid() {
@@ -14,12 +19,6 @@ public class User {
 	}
 	public void setUserid(String userid) {
 		this.userid = userid;
-	}
-	public int getTutorno() {
-		return tutorno;
-	}
-	public void setTutorno(int tutorno) {
-		this.tutorno = tutorno;
 	}
 	public String getPass() {
 		return pass;
@@ -45,10 +44,47 @@ public class User {
 	public void setFile(String file) {
 		this.file = file;
 	}
+	public String getKbn() {
+		return kbn;
+	}
+	public void setKbn(String kbn) {
+		this.kbn = kbn;
+	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+	public int getEdulevel() {
+		return edulevel;
+	}
+	public void setEdulevel(int edulevel) {
+		this.edulevel = edulevel;
+	}
+	public String getSchool() {
+		return school;
+	}
+	public void setSchool(String school) {
+		this.school = school;
+	}
+	public String getMajor() {
+		return major;
+	}
+	public void setMajor(String major) {
+		this.major = major;
+	}
+	public String getEdufile() {
+		return edufile;
+	}
+	public void setEdufile(String edufile) {
+		this.edufile = edufile;
+	}
 	@Override
 	public String toString() {
-		return "User [userid=" + userid + ", tutorno=" + tutorno + ", pass=" + pass + ", name=" + name + ", email="
-				+ email + ", file=" + file + "]";
+		return "User [userid=" + userid + ", pass=" + pass + ", name=" + name + ", email=" + email + ", file=" + file
+				+ ", kbn=" + kbn + ", nickname=" + nickname + ", edulevel=" + edulevel + ", school=" + school
+				+ ", major=" + major + ", edufile=" + edufile + "]";
 	}
 }
 

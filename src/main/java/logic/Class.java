@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Class {
 	private int classid;
-	private int tutorno;
+	private int userid;
 	private String location1;
 	private String location2;
 	private int category;
@@ -18,6 +18,7 @@ public class Class {
 	private int totalprice; // 총 가격
 	private String tutorintro;
 	private String classintro;
+	private int level;
 	private int readcnt;
 	private int state;
 	private Date regdate;
@@ -29,11 +30,11 @@ public class Class {
 	public void setClassid(int classid) {
 		this.classid = classid;
 	}
-	public int getTutorno() {
-		return tutorno;
+	public int getUserid() {
+		return userid;
 	}
-	public void setTutorno(int tutorno) {
-		this.tutorno = tutorno;
+	public void setUserid(int userid) {
+		this.userid = userid;
 	}
 	public String getLocation1() {
 		return location1;
@@ -113,6 +114,12 @@ public class Class {
 	public void setClassintro(String classintro) {
 		this.classintro = classintro;
 	}
+	public int getLevel() {
+		return level;
+	}
+	public void setLevel(int level) {
+		this.level = level;
+	}
 	public int getReadcnt() {
 		return readcnt;
 	}
@@ -133,10 +140,10 @@ public class Class {
 	}
 	@Override
 	public String toString() {
-		return "Class [classid=" + classid + ", tutorno=" + tutorno + ", location1=" + location1 + ", location2="
+		return "Class [classid=" + classid + ", userid=" + userid + ", location1=" + location1 + ", location2="
 				+ location2 + ", category=" + category + ", type=" + type + ", maxtutee=" + maxtutee + ", subject="
 				+ subject + ", coverimg=" + coverimg + ", price=" + price + ", time=" + time + ", totaltime="
 				+ totaltime + ", totalprice=" + totalprice + ", tutorintro=" + tutorintro + ", classintro=" + classintro
-				+ ", readcnt=" + readcnt + ", state=" + state + ", regdate=" + regdate + "]";
+				+ ", level=" + level + ", readcnt=" + readcnt + ", state=" + state + ", regdate=" + regdate + "]";
 	}
 }

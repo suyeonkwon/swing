@@ -17,7 +17,7 @@
 					<div class="title">
 						원데이 클래스
 					</div>
-					<div class="region" id="region" style="height:130px;">
+					<div class="region" id="region" style="height:180px;">
 						<div class="option">
 							<div class="top">
 								<div class="timedetail">
@@ -26,6 +26,10 @@
 								</div>
 								<span>|</span>
 								<div class="region_name">사당</div>
+								<span class="drop"><img src="${path}/assets/img/icon/drop.png"></span>
+							</div>
+							<div class="region2">
+								상세지역: 대륭테크노타운
 							</div>
 						</div>
 						<div class="option">
@@ -36,6 +40,10 @@
 								</div>
 								<span>|</span>
 								<div class="region_name">사당</div>
+								<span class="drop"><img src="${path}/assets/img/icon/drop.png"></span>
+							</div>
+							<div class="region2">
+								상세지역: 대륭테크노타운
 							</div>
 						</div>
 						<div class="option">
@@ -46,10 +54,44 @@
 								</div>
 								<span>|</span>
 								<div class="region_name">사당</div>
+								<span class="drop"><img src="${path}/assets/img/icon/drop.png"></span>
+							</div>
+							<div class="region2">
+								상세지역: 대륭테크노타운
+							</div>
+						</div>
+						<div class="option extra">
+							<div class="top">
+								<div class="timedetail">
+									<div class="indate">01.01(월)</div>
+									11:00~12:00
+								</div>
+								<span>|</span>
+								<div class="region_name">사당</div>
+								<span class="drop"><img src="${path}/assets/img/icon/drop.png"></span>
+							</div>
+							<div class="region2">
+								상세지역: 대륭테크노타운
 							</div>
 						</div>
 				</div>
-				<div class="more" id="more" onclick="">
+				<script>
+					$(function(){
+						$(".option.extra").hide();
+						$(".region2").hide();
+						
+						$(".drop").on("click","img",function(){
+							$(".region2").hide();
+							var index = $("img").index(this);
+							var idx = index-1;
+							$(".region2:eq("+idx+")").show();
+						})
+						$("#more").click(function(){
+							$(".option.extra").show();
+						})
+					})
+				</script>
+				<div class="more" id="more">
 					+ 다른 일정 더보기
 				</div>
 			</div>
@@ -72,22 +114,28 @@
 			<iframe width="840" height="540" scrolling="no" frameborder="0" src="${path}/assets/img/hero-img.png"></iframe>
 		</div>
 		<div class="class_d_wrqp">
-			<div id="class_navi" class="class_navi" style="left:0px;">
+			<div id="class_navi" class="class_navi fixedLayer" style="left:0px;">
 				<ul>
 					<li>
-						<a href="">요약</a>
+						<a href="javascript:Move('summary')">요약</a>
 					</li>
 					<li>
-						<a href="">튜터</a>
+						<a href="javascript:Move('tutor')">튜터</a>
 					</li>
 					<li>
-						<a href="">수업정보</a>
+						<a href="javascript:Move('Introduction')">수업정보</a>
 					</li>
 					<li>
-						<a href="">리뷰</a>
+						<a href="javascript:Move('review')">리뷰</a>
 					</li>
 				</ul>
 			</div>
+			<script type="text/javascript">
+				function Move(section){
+					var offset = $("#"+section).offset();
+					$('html,body').animate({scrollTop:offset.top},400);
+				}
+			</script>
 			<div class="class_detail" id="sumary">
 				<div class="class_name">
 					<div class="tutor_img" style="background-image:url('');"></div>
@@ -137,7 +185,12 @@
 			<div class="class_detail detail_sec_bor" id="review">
 				<div class="section01">
 					<h1>리뷰(10)</h1>
-					<a class="btn_st" id="btn-write-review">리뷰쓰기</a>
+					<a href="javascript:reviewPop()"class="btn_st" id="btn-write-review">리뷰쓰기</a>
+					<script>
+						function reviewPop(){
+							window.open('review.shop','','width=500,height=600,menubar=no,status=no,toolbar=no')
+						}
+					</script>
 					<div class="review_box">
 						★★★★★ 4.5
 					</div>
