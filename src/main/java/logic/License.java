@@ -2,7 +2,7 @@ package logic;
 
 public class License {
 	private int lcno;
-	private int tutorno;
+	private int userid;
 	private String lctitle;
 	private String lcfile;
 	
@@ -13,11 +13,11 @@ public class License {
 	public void setLcno(int lcno) {
 		this.lcno = lcno;
 	}
-	public int getTutorno() {
-		return tutorno;
+	public int getUserid() {
+		return userid;
 	}
-	public void setTutorno(int tutorno) {
-		this.tutorno = tutorno;
+	public void setUserid(int userid) {
+		this.userid = userid;
 	}
 	public String getLctitle() {
 		return lctitle;
@@ -33,6 +33,6 @@ public class License {
 	}
 	@Override
 	public String toString() {
-		return "License [tutorno=" + tutorno + ", lcno=" + lcno + ", lctitle=" + lctitle + ", lcfile=" + lcfile + "]";
+		return "License [lcno=" + lcno + ", userid=" + userid + ", lctitle=" + lctitle + ", lcfile=" + lcfile + "]";
 	}
 }

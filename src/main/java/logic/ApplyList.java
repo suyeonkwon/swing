@@ -1,12 +1,19 @@
 package logic;
 
 public class ApplyList {
+	private int applyno;
 	private String userid;
 	private int classid;
-	private String level;
-	private int payment;
+	private int classno;
+	private int classseq;
 	
 	// getter, setter, toString
+	public int getApplyno() {
+		return applyno;
+	}
+	public void setApplyno(int applyno) {
+		this.applyno = applyno;
+	}
 	public String getUserid() {
 		return userid;
 	}
@@ -19,21 +26,21 @@ public class ApplyList {
 	public void setClassid(int classid) {
 		this.classid = classid;
 	}
-	public String getLevel() {
-		return level;
+	public int getClassno() {
+		return classno;
 	}
-	public void setLevel(String level) {
-		this.level = level;
+	public void setClassno(int classno) {
+		this.classno = classno;
 	}
-	public int getPayment() {
-		return payment;
+	public int getClassseq() {
+		return classseq;
 	}
-	public void setPayment(int payment) {
-		this.payment = payment;
+	public void setClassseq(int classseq) {
+		this.classseq = classseq;
 	}
 	@Override
 	public String toString() {
-		return "ApplyList [userid=" + userid + ", classid=" + classid + ", level=" + level + ", payment=" + payment
-				+ "]";
+		return "ApplyList [applyno=" + applyno + ", userid=" + userid + ", classid=" + classid + ", classno=" + classno
+				+ ", classseq=" + classseq + "]";
 	}
 }

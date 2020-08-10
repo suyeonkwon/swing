@@ -4,7 +4,8 @@ import java.util.Date;
 
 public class Classinfo {
 	private int classid; // 수업 아이디
-	private int classno; // 회차 번호
+	private int classno; // 수업 차수 
+	private int classseq; // 수업 회차
 	private Date date;
 	private String starttime;
 	private String endtime;
@@ -24,6 +25,12 @@ public class Classinfo {
 	}
 	public void setClassno(int classno) {
 		this.classno = classno;
+	}
+	public int getClassseq() {
+		return classseq;
+	}
+	public void setClassseq(int classseq) {
+		this.classseq = classseq;
 	}
 	public Date getDate() {
 		return date;
@@ -63,7 +70,8 @@ public class Classinfo {
 	}
 	@Override
 	public String toString() {
-		return "Classinfo [classid=" + classid + ", classno=" + classno + ", date=" + date + ", starttime=" + starttime
-				+ ", endtime=" + endtime + ", place=" + place + ", title=" + title + ", curri=" + curri + "]";
+		return "Classinfo [classid=" + classid + ", classno=" + classno + ", classseq=" + classseq + ", date=" + date
+				+ ", starttime=" + starttime + ", endtime=" + endtime + ", place=" + place + ", title=" + title
+				+ ", curri=" + curri + "]";
 	}
 }
