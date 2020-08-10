@@ -25,11 +25,11 @@
                <img src="${path}/assets/img/portfolio/portfolio-1.jpg">
                </div>
                <div class="info">
-               	<h4>강의이름</h4>
-               	<h5>수강인원|위치</h5>
-               	<h5>현재회차</h5>
-               	<h5>수업종료일:2020-07-28</h5>
-               	<br><br>
+                  <h4>강의이름</h4>
+                  <h5>수강인원|위치</h5>
+                  <h5>현재회차</h5>
+                  <h5>수업종료일:2020-07-28</h5>
+                  <br><br>
                </div>
                <p>튜터이름</p>
             </div>
@@ -38,11 +38,11 @@
                <img src="${path}/assets/img/portfolio/portfolio-6.jpg">
                </div>
                <div class="info">
-               	<h4>강의이름</h4>
-               	<h5>수강인원|위치</h5>
-               	<h5>현재회차</h5>
-               	<h5>수업종료일:2020-07-28</h5>
-               	<br><br>
+                  <h4>강의이름</h4>
+                  <h5>수강인원|위치</h5>
+                  <h5>현재회차</h5>
+                  <h5>수업종료일:2020-07-28</h5>
+                  <br><br>
                </div>
                <p>튜터이름</p>
             </div>
@@ -51,11 +51,11 @@
                <img src="${path}/assets/img/portfolio/portfolio-7.jpg">
                </div>
                <div class="info">
-               	<h4>강의이름</h4>
-               	<h5>수강인원|위치</h5>
-               	<h5>현재회차</h5>
-               	<h5>수업종료일:2020-07-28</h5>
-               	<br><br>
+                  <h4>강의이름</h4>
+                  <h5>수강인원|위치</h5>
+                  <h5>현재회차</h5>
+                  <h5>수업종료일:2020-07-28</h5>
+                  <br><br>
                </div>
                <p>튜터이름</p>
             </div>
