@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Class {
 	private int classid;
-	private int userid;
+	private String userid;
 	private String location1;
 	private String location2;
 	private int category;
@@ -30,10 +30,10 @@ public class Class {
 	public void setClassid(int classid) {
 		this.classid = classid;
 	}
-	public int getUserid() {
+	public String getUserid() {
 		return userid;
 	}
-	public void setUserid(int userid) {
+	public void setUserid(String userid) {
 		this.userid = userid;
 	}
 	public String getLocation1() {
