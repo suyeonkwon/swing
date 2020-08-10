@@ -54,6 +54,21 @@ hr{
 }
 .costbox > p{
 }
+
+button {
+    background-color: #3498DB;
+    color: #fff;
+    width: 80px;
+    height: 35px;
+    border-radius: 5px;
+    font-size: 14px;
+    border: 0;
+    outline: none;
+}
+
+button:hover {
+	opacity: 0.85;
+}
 </style>
 </head>
 <body>
@@ -87,7 +102,7 @@ hr{
 	    <div class="form-group">
 	    	<div class="title">프로필-</div>
 			<div style="margin: 30px 0">
-				<img class="upf_b button" src="https://front-img.taling.me/Content/Images/tutor/Images/btn_pfimg.png">
+				<img class="upf_b button" src="${path}/assets/img/icon/camera1.png">
                 <div class="upf" id="picture-cover" style="background-image:url('//img.taling.me/Content/Uploads/Profile/106bb03ba39eaf53e3243d4cc2f6575fd0328e49.jpg')">
                 	<input type="hidden" id="ProfileThumbnailUrl" value="//img.taling.me/Content/Uploads/Profile/106bb03ba39eaf53e3243d4cc2f6575fd0328e49.jpg">
                     <input type="file" id="picture" name="picture" style="width:150px;height:130px;opacity:0;">
@@ -242,6 +257,7 @@ hr{
        </div>  
 	</div>
 	<hr> 
+	<div class="row" style="float: center;"><button type="submit">미리보기</button><button type="submit">임시저장</button><button type="submit">승인요청</button></div>
 </div>
 </section>
 </body>

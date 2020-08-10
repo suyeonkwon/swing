@@ -11,7 +11,7 @@
 <style type="text/css">
 @import url("https://fonts.googleapis.com/css?family=Arvo:700|Open+Sans");
 html {
-  overflow-x: hidden;x
+  overflow-x: hidden;
 }
 
 body {
@@ -41,105 +41,105 @@ body {
           <hr style="margin-top: 15px;">
           </div>
           <div class="row bg-gray">
-			<div class="col-lg-6 col-md-12 col-xs-12">
-				<div class="team-item wow fadeInRight animated" data-wow-delay="0.2s" style="visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;">
-					<div class="team-img">
-						<img class="img-fluid" src="${path}/assets/img/team/team-3.jpg" alt="">
-					</div>
-					<div class="contetn">
-						<div class="info-text">
-							<h3><a href="#">핸드메이드 강좌</a></h3>
-							<p>이다빈(USER1)</p>
-							<p>[신청일시] 2020-08-05 18:15:01</p>
-							<p>[수업시작일] 2020-09-15</p>
-							<p>[위치] 서울시 금천구</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-12 col-xs-12">
-				<div class="team-item wow fadeInRight animated" data-wow-delay="0.4s" style="visibility: visible;-webkit-animation-delay: 0.4s; -moz-animation-delay: 0.4s; animation-delay: 0.4s;">
-					<div class="team-img">
-						<img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-5.jpg" alt="">
-					</div>
-					<div class="contetn">
-						<div class="info-text">
-							<h3><a href="#">핸드메이드 강좌</a></h3>
-							<p>이다빈(USER1)</p>
-							<p>[신청일시] 2020-08-05 18:15:01</p>
-							<p>[수업시작일] 2020-09-15</p>
-							<p>[위치] 서울시 금천구</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-12 col-xs-12">
-				<div class="team-item wow fadeInRight animated" data-wow-delay="0.6s" style="visibility: visible;-webkit-animation-delay: 0.6s; -moz-animation-delay: 0.6s; animation-delay: 0.6s;">
-					<div class="team-img">
-						<img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-7.jpg" alt="">
-					</div>
-					<div class="contetn">
-						<div class="info-text">
-						<h3><a href="#">핸드메이드 강좌</a></h3>
-						<p>이다빈(USER1)</p>
-						<p>[신청일시] 2020-08-05 18:15:01</p>
-						<p>[수업시작일] 2020-09-15</p>
-						<p>[위치] 서울시 금천구</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-12 col-xs-12">
-				<div class="team-item wow fadeInRight animated" data-wow-delay="0.8s" style="visibility: visible;-webkit-animation-delay: 0.8s; -moz-animation-delay: 0.8s; animation-delay: 0.8s;">
-					<div class="team-img">
-						<img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-1.jpg" alt="">
-					</div>
-					<div class="contetn">
-						<div class="info-text">
-							<h3><a href="#">핸드메이드 강좌</a></h3>
-							<p>이다빈(USER1)</p>
-							<p>[신청일시] 2020-08-05 18:15:01</p>
-							<p>[수업시작일] 2020-09-15</p>
-							<p>[위치] 서울시 금천구</p>
-						</div>
-					</div>
-				</div>
-			
-			</div>
-			<div class="col-lg-6 col-md-12 col-xs-12">
-				<div class="team-item wow fadeInRight animated" data-wow-delay="0.8s" style="visibility: visible;-webkit-animation-delay: 0.8s; -moz-animation-delay: 0.8s; animation-delay: 0.8s;">
-					<div class="team-img">
-						<img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-2.jpg" alt="">
-					</div>
-					<div class="contetn">
-						<div class="info-text">
-							<h3><a href="#">핸드메이드 강좌</a></h3>
-							<p>이다빈(USER1)</p>
-							<p>[신청일시] 2020-08-05 18:15:01</p>
-							<p>[수업시작일] 2020-09-15</p>
-							<p>[위치] 서울시 금천구</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-12 col-xs-12">
-				<div class="team-item wow fadeInRight animated" data-wow-delay="0.8s" style="visibility: visible;-webkit-animation-delay: 0.8s; -moz-animation-delay: 0.8s; animation-delay: 0.8s;">
-					<div class="team-img">
-						<img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-4.jpg" alt="">
-					</div>
-					<div class="contetn">
-						<div class="info-text">
-							<h3><a href="#">핸드메이드 강좌</a></h3>
-							<p>이다빈(USER1)</p>
-							<p>[신청일시] 2020-08-05 18:15:01</p>
-							<p>[수업시작일] 2020-09-15</p>
-							<p>[위치] 서울시 금천구</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+         <div class="col-lg-6 col-md-12 col-xs-12" onclick="location.href ='../class/detail.shop'" style="cursor:pointer;">
+            <div class="team-item wow fadeInRight animated" data-wow-delay="0.2s" style="visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;">
+               <div class="team-img">
+                  <img class="img-fluid" src="${path}/assets/img/team/team-3.jpg" alt="">
+               </div>
+               <div class="contetn">
+                  <div class="info-text">
+                     <h3><a href="#">핸드메이드 강좌</a></h3>
+                     <p>이다빈(USER1)</p>
+                     <p>[신청일시] 2020-08-05 18:15:01</p>
+                     <p>[수업시작일] 2020-09-15</p>
+                     <p>[위치] 서울시 금천구</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-lg-6 col-md-12 col-xs-12" onclick="location.href ='../class/detail.shop'" style="cursor:pointer;">
+            <div class="team-item wow fadeInRight animated" data-wow-delay="0.4s" style="visibility: visible;-webkit-animation-delay: 0.4s; -moz-animation-delay: 0.4s; animation-delay: 0.4s;">
+               <div class="team-img">
+                  <img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-5.jpg" alt="">
+               </div>
+               <div class="contetn">
+                  <div class="info-text">
+                     <h3><a href="#">핸드메이드 강좌</a></h3>
+                     <p>이다빈(USER1)</p>
+                     <p>[신청일시] 2020-08-05 18:15:01</p>
+                     <p>[수업시작일] 2020-09-15</p>
+                     <p>[위치] 서울시 금천구</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-lg-6 col-md-12 col-xs-12" onclick="location.href ='../class/detail.shop'" style="cursor:pointer;">
+            <div class="team-item wow fadeInRight animated" data-wow-delay="0.6s" style="visibility: visible;-webkit-animation-delay: 0.6s; -moz-animation-delay: 0.6s; animation-delay: 0.6s;">
+               <div class="team-img">
+                  <img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-7.jpg" alt="">
+               </div>
+               <div class="contetn">
+                  <div class="info-text">
+                  <h3><a href="#">핸드메이드 강좌</a></h3>
+                  <p>이다빈(USER1)</p>
+                  <p>[신청일시] 2020-08-05 18:15:01</p>
+                  <p>[수업시작일] 2020-09-15</p>
+                  <p>[위치] 서울시 금천구</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-lg-6 col-md-12 col-xs-12" onclick="location.href ='../class/detail.shop'" style="cursor:pointer;">
+            <div class="team-item wow fadeInRight animated" data-wow-delay="0.8s" style="visibility: visible;-webkit-animation-delay: 0.8s; -moz-animation-delay: 0.8s; animation-delay: 0.8s;">
+               <div class="team-img">
+                  <img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-1.jpg" alt="">
+               </div>
+               <div class="contetn">
+                  <div class="info-text">
+                     <h3><a href="#">핸드메이드 강좌</a></h3>
+                     <p>이다빈(USER1)</p>
+                     <p>[신청일시] 2020-08-05 18:15:01</p>
+                     <p>[수업시작일] 2020-09-15</p>
+                     <p>[위치] 서울시 금천구</p>
+                  </div>
+               </div>
+            </div>
+         
+         </div>
+         <div class="col-lg-6 col-md-12 col-xs-12" onclick="location.href ='../class/detail.shop'" style="cursor:pointer;">
+            <div class="team-item wow fadeInRight animated" data-wow-delay="0.8s" style="visibility: visible;-webkit-animation-delay: 0.8s; -moz-animation-delay: 0.8s; animation-delay: 0.8s;">
+               <div class="team-img">
+                  <img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-2.jpg" alt="">
+               </div>
+               <div class="contetn">
+                  <div class="info-text">
+                     <h3><a href="#">핸드메이드 강좌</a></h3>
+                     <p>이다빈(USER1)</p>
+                     <p>[신청일시] 2020-08-05 18:15:01</p>
+                     <p>[수업시작일] 2020-09-15</p>
+                     <p>[위치] 서울시 금천구</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-lg-6 col-md-12 col-xs-12" onclick="location.href ='../class/detail.shop'" style="cursor:pointer;">
+            <div class="team-item wow fadeInRight animated" data-wow-delay="0.8s" style="visibility: visible;-webkit-animation-delay: 0.8s; -moz-animation-delay: 0.8s; animation-delay: 0.8s;">
+               <div class="team-img">
+                  <img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-4.jpg" alt="">
+               </div>
+               <div class="contetn">
+                  <div class="info-text">
+                     <h3><a href="#">핸드메이드 강좌</a></h3>
+                     <p>이다빈(USER1)</p>
+                     <p>[신청일시] 2020-08-05 18:15:01</p>
+                     <p>[수업시작일] 2020-09-15</p>
+                     <p>[위치] 서울시 금천구</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
 </section>
 </body>
 </html>
