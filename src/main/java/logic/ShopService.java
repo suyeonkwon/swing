@@ -1,5 +1,6 @@
 package logic;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +33,23 @@ public class ShopService {
 		reviewDao.insert(review);
 	}
 
-	public List<Class> getWishlist(String userid) {
+	/*----WishList----*/
+	public void wishInsert(WishList wish) {
+		wishlistDao.insert(wish);
+	}
+	public List<WishList> getWishlist(String userid) {
 		return wishlistDao.list(userid);
 	}
-
+	public Date getStartTime(int classid) {
+		return wishlistDao.startTime(classid);
+	}
+	public int getStar(int classid) {
+		return wishlistDao.star(classid);
+	}
+	public int getParticiNum(int classid) {
+		return wishlistDao.particiNum(classid);
+	}
+	public void wishDelete(WishList wish) {
+		wishlistDao.delete(wish);
+	}
 }
