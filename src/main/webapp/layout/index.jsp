@@ -75,7 +75,7 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
               <li><a href="${path}/tutor/register.shop">튜터 등록</a></li>
               <li><a href="${path}/tutor/my.shop">승인 상태</a></li>
               <li><a href="${path}/tutor/result.shop">내 수업</a></li>
-              <li><a href="${path}/tutor/applylist.shop">수업 신청 목록</a></li>
+              <li><a href="${path}/tutor/outcome.shop">수업 성과</a></li>
             </ul>
           </li>
           <li><a href="${path}/talk/main.shop">실시간톡</a></li>

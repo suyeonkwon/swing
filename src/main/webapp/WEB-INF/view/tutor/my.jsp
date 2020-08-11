@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>튜터의 내 수업</title>
+<title>튜터의 내 수업 승인 상태</title>
 <link href="${path}/assets/css/tutor-style.css" rel="stylesheet">
 <style type="text/css">
 .team-img label{
@@ -26,33 +26,80 @@
       <div class="container">
           <div style="text-align: right;">
           <a href="my.shop"><h2>내 수업 목록</h2></a>
-          <a href="my.shop" class="select">전체</a>&nbsp;|
-          <a href="my.shop?state=1">등록진행중</a>&nbsp;|
-          <a href="my.shop?state=2">승인대기</a>&nbsp;|
-          <a href="my.shop?state=3">반려</a>&nbsp;|
-          <a href="my.shop?state=4">승인완료</a>
+          <c:choose>
+          	<c:when test="${param.state == 1}">
+          		<a href="my.shop" >전체</a>&nbsp;|
+          		<a href="my.shop?state=1" class="select">등록진행중</a>&nbsp;|
+          		<a href="my.shop?state=2">승인대기</a>&nbsp;|
+          		<a href="my.shop?state=3">반려</a>&nbsp;|
+         	 	<a href="my.shop?state=4">승인완료</a>
+         	</c:when>
+         	<c:when test="${param.state == 2}">
+         		<a href="my.shop" >전체</a>&nbsp;|
+          		<a href="my.shop?state=1" >등록진행중</a>&nbsp;|
+          		<a href="my.shop?state=2" class="select">승인대기</a>&nbsp;|
+          		<a href="my.shop?state=3">반려</a>&nbsp;|
+          		<a href="my.shop?state=4">승인완료</a>
+         	</c:when>
+         	<c:when test="${param.state == 3}">
+         		<a href="my.shop" >전체</a>&nbsp;|
+          		<a href="my.shop?state=1" >등록진행중</a>&nbsp;|
+          		<a href="my.shop?state=2" >승인대기</a>&nbsp;|
+          		<a href="my.shop?state=3" class="select">반려</a>&nbsp;|
+          		<a href="my.shop?state=4">승인완료</a>
+         	</c:when>
+         	<c:when test="${param.state == 4}">
+         		<a href="my.shop" >전체</a>&nbsp;|
+          		<a href="my.shop?state=1" >등록진행중</a>&nbsp;|
+          		<a href="my.shop?state=2" >승인대기</a>&nbsp;|
+          		<a href="my.shop?state=3">반려</a>&nbsp;|
+          		<a href="my.shop?state=4" class="select">승인완료</a>
+         	</c:when>
+         	<c:otherwise>
+         		<a href="my.shop" class="select">전체</a>&nbsp;|
+          		<a href="my.shop?state=1" >등록진행중</a>&nbsp;|
+          		<a href="my.shop?state=2" >승인대기</a>&nbsp;|
+          		<a href="my.shop?state=3">반려</a>&nbsp;|
+          		<a href="my.shop?state=4" >승인완료</a>
+         	</c:otherwise>
+          </c:choose>
           <hr>
           </div>
          <div class="row">
          <c:if test="${classcount > 0}">
-         <c:forEach var="class" items="${classlist}">
-         <div class="col-lg-4" onclick="page('../class/detail.shop?classid=${class.classid}')" style="cursor:pointer;">
+         <c:forEach var="cl" items="${classlist}">
+      	      	
+         <div class="col-lg-4" onclick="page('../class/detail.shop?classid=${cl.classid}')" style="cursor:pointer;">
                <div class="team-img">
-                  <label class="badge badge-success">등록진행중</label>
-                  <img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-3.jpg" alt="">
+               	  <c:if test="${cl.state == 1}">
+                  	<label class="badge badge-success">등록진행중</label>
+                  	<img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-3.jpg" alt="">
+                  </c:if>
+                  <c:if test="${cl.state == 2}">
+                  	<label class="badge badge-success">승인대기중</label>
+                  	<img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-1.jpg" alt="">
+                  </c:if>
+                  <c:if test="${cl.state == 3}">
+                  	<label class="badge badge-danger">반&nbsp;려</label>
+                  	<img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-5.jpg" alt="">
+                  </c:if>
+                  <c:if test="${cl.state == 4}">
+                  	<label class="badge badge-success">승인완료</label>
+                  	<img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-2.jpg" alt="">
+                  </c:if>
                </div>
                <div class="contetn">
                   <div class="info-text">                
-                     <h3><a href="../class/detail.shop?classid=${class.classid}">${class.subject}</a></h3>
-                     <p>이다빈(USER1)</p>
-                     <p>[신청일시] 2020-08-05 18:15:01</p>
-                     <p>[수업시작일] 2020-09-15</p>
-                     <p>[위치] 서울시 금천구</p>
+                     <h4><a href="../class/detail.shop?classid=${cl.classid}">${cl.subject}</a></h4>
+                     <p>${cl.nickname}(${cl.userid})</p>
+                     <p>[신청일시] <fmt:formatDate value="${cl.regdate}" pattern="yyyy-MM-dd HH:mm:ss" /></p>
+                     <p>[수업시작일] <fmt:formatDate value="${cl.date}" pattern="yyyy-MM-dd" /> </p>
+                     <p>[위치] ${cl.location1} ${cl.location2}</p>
                   </div>
                </div>
          </div>
          </c:forEach>	
-         	
+<%--         	
          <div class="col-lg-4" onclick="page('../class/detail.shop')" style="cursor:pointer;">
                <div class="team-img">
                     <label class="badge badge-danger">반&nbsp;려</label>
@@ -136,6 +183,7 @@
                </div>
             </div>
          </div>
+ --%>
          </c:if>
          <c:if test="${classcount == 0}">
          	<div style="font-align:center;">

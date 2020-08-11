@@ -15,24 +15,26 @@
 			<h1>위시리스트</h1>
 		</div>
 		<div class="my-class-list">
+		<c:forEach var="wish" items="${wishlist}">
 			<div class="class-box">
 				<div class="image" style="background-image:url('${path}/assets/img/hero-img.png')"></div>
 				<div class="information-box">
-					<h3>클래스 제목</h3>
+					<h3>${wish.subject}</h3>
 					<div class="start-box">
-						<font class="class-type">원데이 수업</font>
+						<font class="class-type"><c:if test="${wish.type==1}">원데이 수업</c:if>
+												 <c:if test="${wish.type==2}">${wish.totaltime}회차 수업</c:if></font>
 						<span>|</span>
 						<font class="class-type">참여인원</font>
 					</div>
 					<div class="start-date">
 						<font>수업 시작일 : 2020-01-01</font>
 						<span>|</span>
-						<font>건대</font>
+						<font>${wish.location2}</font>
 					</div>
 					<div class="price">
 						<font class="class-start">★★★★★</font>
 						<font>\</font>
-						10,000
+						<fmt:formatNumber value="${wish.totalprice}" type="currency"/>
 					</div>
 					<div class="btn-box">
 						<div class="btn tp1">신청</div>
@@ -40,6 +42,7 @@
 					</div>
 				</div>
 			</div>
+		</c:forEach>
 		</div>
 	</div>
 </section>

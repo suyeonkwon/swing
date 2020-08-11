@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import dao.ReviewDao;
 import dao.TutorDao;
 import dao.UserDao;
+import dao.WishlistDao;
 
 @Service
 public class ShopService {
@@ -17,6 +18,9 @@ public class ShopService {
 	private ReviewDao reviewDao;
 	@Autowired
 	private TutorDao tutorDao;
+	@Autowired
+	private WishlistDao wishlistDao;
+
 	
 	public List<User> userList() {
 		return userDao.list();
@@ -39,4 +43,9 @@ public class ShopService {
 	public int classCount(Integer state) {
 		return tutorDao.count(state);
 	}
+
+	public List<Class> getWishlist(String userid) {
+		return wishlistDao.list(userid);
+	}
+
 }

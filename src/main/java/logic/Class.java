@@ -23,7 +23,12 @@ public class Class {
 	private int state;
 	private Date regdate;
 	
-	// getter, setter, toString
+	// tutor my.jsp 에 join을 통해 가져온 정보
+	private String nickname;
+	private String name;
+	private Date date;
+	
+	// getter, setter
 	public int getClassid() {
 		return classid;
 	}
@@ -138,12 +143,36 @@ public class Class {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
+	
+	// tutor my.jsp 에 join을 통해 가져온 정보의 setter, getter
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	
 	@Override
 	public String toString() {
 		return "Class [classid=" + classid + ", userid=" + userid + ", location1=" + location1 + ", location2="
 				+ location2 + ", category=" + category + ", type=" + type + ", maxtutee=" + maxtutee + ", subject="
 				+ subject + ", coverimg=" + coverimg + ", price=" + price + ", time=" + time + ", totaltime="
 				+ totaltime + ", totalprice=" + totalprice + ", tutorintro=" + tutorintro + ", classintro=" + classintro
-				+ ", level=" + level + ", readcnt=" + readcnt + ", state=" + state + ", regdate=" + regdate + "]";
+				+ ", level=" + level + ", readcnt=" + readcnt + ", state=" + state + ", regdate=" + regdate
+				+ ", nickname=" + nickname + ", name=" + name + ", date=" + date + "]";
 	}
+	
+
 }

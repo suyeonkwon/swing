@@ -94,10 +94,9 @@ $(".star").on('click',function(){
 <section id="team" class="team">
       <div class="container">
           <div style="text-align: right;">
-           <a href="#"><h2>내수업 목록</h2></a>
+           <a href="result.shop"><h2>내수업 목록</h2></a>
           <a href="#" class="select">수업진행중(13)</a>&nbsp;|
-          <a href="#">수업완료(11)</a>&nbsp;|
-          <a href="#services">수업성과(2)</a>
+          <a href="#">수업완료(11)</a>&nbsp;
           <hr style="margin-top: 15px;">
           </div>
           <div class="row bg-gray">
@@ -177,73 +176,5 @@ $(".star").on('click',function(){
       </div>
    </div>
 </section>
-<section id="services" class="services section-bg">
-      <div class="container">
-      <a id="grade" href="#"><h2>내 수업 성과</h2></a>
-        <div class="row justify-content-center">
-          <div class="col-lg-6 col-md-6" data-wow-delay="0.1s">
-            <div class="icon-box">
-            	그래프넣기
-              <h4 class="title">수업 조회수 및 신청수</h4>
-            </div>
-          </div>
-          <div class="col-lg-6 col-md-6" data-wow-delay="0.1s">
-          <div class="icon-box">
-            <div class="review_point">
-            <span class="star star_left"></span>
-             <span class="star star_right"></span>
-         
-             <span class="star star_left"></span>
-             <span class="star star_right"></span>
-         
-             <span class="star star_left"></span>
-             <span class="star star_right"></span>
-         
-            <span class="star star_left"></span>
-            <span class="star star_right"></span>
-         
-            <span class="star star_left"></span>
-            <span class="star star_right"></span>
-         </div>
-          </div>
-        </div>
-      </div>
-      <div class="row justify-content-center">
-      	<div class="col-lg-12 col-md-6" data-wow-delay="0.1s">
-	      	<div class="icon-box">
-		      	<div class="row">
-					<div class="col-lg-3 col-md-3 col-sm-6">
-					<div class="achievement__item">
-					<img src="${path}/assets/img/icon/won.png" alt="" class="img-fluid1">
-					<h2 class="achieve-counter">50,000원</h2>
-					<p>이번달 결제 금액</p>
-					</div>
-					</div>
-					<div class="col-lg-3 col-md-3 col-sm-6">
-					<div class="achievement__item">
-					<img src="${path}/assets/img/icon/won.png" alt="" class="img-fluid1">
-					<h2 class="achieve-counter">20,000원</h2>
-					<p>지난달 결제 금액</p>
-					</div>
-					</div>
-					<div class="col-lg-3 col-md-3 col-sm-6">
-					<div class="achievement__item">
-					<img src="${path}/assets/img/icon/Money.png" alt="" class="img-fluid1">
-					<h2 class="achieve-counter">70,000원</h2>
-					<p>누적 금액</p>
-					</div>
-					</div>
-					<div class="col-lg-3 col-md-3 col-sm-6">
-					<div class="achievement__item">
-					<img src="${path}/assets/img/icon/rev3.png" alt="" class="img-fluid1">
-					<h2 class="achieve-counter">20.84%</h2>
-					<p>전월대비 상승률</p>
-					</div>
-					</div>
-			  	</div>
-	        </div>
-      	</div>
-      </div>
-    </section>
 </body>
 </html>
