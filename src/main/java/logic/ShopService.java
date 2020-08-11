@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import dao.ReviewDao;
 import dao.UserDao;
+import dao.WishlistDao;
 
 @Service
 public class ShopService {
@@ -14,6 +15,8 @@ public class ShopService {
 	private UserDao userDao;
 	@Autowired
 	private ReviewDao reviewDao;
+	@Autowired
+	private WishlistDao wishlistDao;
 	
 	public List<User> userList() {
 		return userDao.list();
@@ -28,4 +31,9 @@ public class ShopService {
 		review.setReviewno(++max);
 		reviewDao.insert(review);
 	}
+
+	public List<Class> getWishlist(String userid) {
+		return wishlistDao.list(userid);
+	}
+
 }
