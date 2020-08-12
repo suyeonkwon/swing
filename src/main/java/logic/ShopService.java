@@ -1,5 +1,6 @@
 package logic;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,16 +37,46 @@ public class ShopService {
 		reviewDao.insert(review);
 	}
 
-	public List<Class> getClassList(Integer state) {
-		return tutorDao.list(state);
+	/*----mypage(Tutor)----*/
+	public List<Class> getClassList(Class cl) {
+		return tutorDao.list(cl);
 	}
+	public int classCount(Class cl) {
+		return tutorDao.count(cl);
+	}	
+//	public List<Class> getResultClassList(Class cl) {
+//		int confirm = tutorDao.confirm(cl);   // 마지막 차수의 마지막 회차의 진행상태
+//		if(confirm == 2) {                  // 마지막 차수의 마지막 회차의 진행상태가 '완료' 일 경우
+//			
+//		}
+//		return tutorDao.rclist(cl);
+//	}
+	
+	
 
-	public int classCount(Integer state) {
-		return tutorDao.count(state);
+	
+	/*----WishList----*/
+	public void wishInsert(WishList wish) {
+		wishlistDao.insert(wish);
 	}
-
-	public List<Class> getWishlist(String userid) {
+	public List<WishList> getWishlist(String userid) {
 		return wishlistDao.list(userid);
 	}
+	public Date getStartTime(int classid) {
+		return wishlistDao.startTime(classid);
+	}
+	public int getStar(int classid) {
+		return wishlistDao.star(classid);
+	}
+	public int getParticiNum(int classid) {
+		return wishlistDao.particiNum(classid);
+	}
+	public void wishDelete(WishList wish) {
+		wishlistDao.delete(wish);
+	}
 
+	
+
+	
+	
 }

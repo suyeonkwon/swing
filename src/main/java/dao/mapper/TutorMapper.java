@@ -22,6 +22,12 @@ public interface TutorMapper {
 		"<if test='state > 0'> where state=#{state} </if>",
 		"</script>"})
 	int count(Map<String, Object> param);
-	
+
+	@Select("select seqstate from classinfo i join class c on i.classid=c.classid "
+			+ "where i.classno=max(classno) and i.classseq=max(classseq)")
+	int confirm(Map<String, Object> param);
+
+
+
 	
 }

@@ -88,52 +88,93 @@ $(".star").on('click',function(){
      var point = (idx+1)*0.5;
      $("#calc_point").html(point);
   });
+  
+  $(document).on("click", ".team-item.wow.fadeInRight.animated", function(){
+	  if($(this).next().css("display")=="none"){
+		  $(this).next().show();
+	  }else{
+		  $(this).next().hide();
+	  }
+  })
 </script>
 </head>
 <body>
 <section id="team" class="team">
       <div class="container">
           <div style="text-align: right;">
-           <a href="result.shop"><h2>내수업 목록</h2></a>
-          <a href="#" class="select">수업진행중(13)</a>&nbsp;|
-          <a href="#">수업완료(11)</a>&nbsp;
+          <a href="result.shop"><h2>내수업 목록</h2></a>
+          <c:choose>
+          	<c:when test="${param.state == 5}">
+          		<a href="result.shop">전체보기</a>&nbsp;|         		
+         		<a href="result.shop?state=5" class="select">수업진행중</a>&nbsp;|
+          		<a href="result.shop?state=6">수업완료</a>&nbsp;
+          	</c:when>
+          	<c:when test="${param.state == 6}">
+          		<a href="result.shop">전체보기</a>&nbsp;|
+         		<a href="result.shop?state=5" >수업진행중</a>&nbsp;|
+          		<a href="result.shop?state=6" class="select">수업완료</a>&nbsp;
+          	</c:when>
+          	<c:otherwise>
+          		<a href="result.shop" class="select">전체보기</a>&nbsp;|
+         		<a href="result.shop?state=5">수업진행중</a>&nbsp;|
+          		<a href="result.shop?state=6">수업완료</a>&nbsp;
+          	</c:otherwise>
+          </c:choose>
           <hr style="margin-top: 15px;">
           </div>
-          <div class="row bg-gray">
+          
+         <div class="row bg-gray">
+         <c:if test="${classcount > 0}">
          <div class="col-lg-12 col-md-12 col-xs-12">
-            <div class="team-item wow fadeInRight animated" data-wow-delay="0.2s" style="visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;"
-            onclick="location.href ='../class/detail.shop'" style="cursor:pointer;">
+            <c:forEach items="${classlist}" var="cl" varStatus="stat">
+            <div class="team-item wow fadeInRight animated" data-wow-delay="0.2s" 
+            	style="visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s; cursor:pointer;">
                <div class="team-img">
                   <img class="img-fluid" src="${path}/assets/img/team/team-3.jpg" alt="">
                </div>
-               <div class="contetn">
+               <div class="content">
                   <div class="info-text">
-                     <h3><a href="#">핸드메이드 강좌</a></h3>
-                     <p>이다빈(USER1)</p>
-                     <p>[수업시작일] 2020-09-15</p>
-                     <p>[위치] 서울시 금천구</p>
+                     <h3><a href="#">${cl.subject}</a></h3>
+                     <p>${ci.nickname}(${cl.userid})</p>
+                     <p>[수업시작일] <fmt:formatDate value="${cl.date}" pattern="yyyy-MM-dd" /></p>
+                     <p>[위치] ${cl.location1} ${cl.location2}</p>
                   </div>
                   <div class="detail">
-                  	<button>상세보기</button>&nbsp;&nbsp;|&nbsp;&nbsp;
-                  	<button>튜티리스트조회</button>
+                  	<button onclick="location.href='../class/detail.shop'">상세보기</button>&nbsp;&nbsp;
                   </div>
                </div>
-            </div>
-            <div>
+            </div>            
+            <div style="display:none">
             	<table class="table table-hover">
             	<tr><th>차수-회차</th><th>장소</th><th>날짜</th><th>시작시간</th><th>끝나는시간</th><th>수업진행상태</th><th>신청튜티리스트</th></tr>
-            	<tr><td>1차수-1회차</td><td>구디아카데미</td><td>2020-08-07</td><td>11:00</td><td>12:00</td><td><label class="badge badge-info">완료</label></td><td><button onclick="location.href='applylist.shop'">조회</button></td></tr>
-            	<tr><td>1차수-2회차</td><td>구디아카데미</td><td>2020-08-07</td><td>11:00</td><td>12:00</td><td><label class="badge badge-info">완료</label></td><td><button onclick="location.href='applylist.shop'">조회</button></td></tr>
-            	<tr><td>1차수-3회차</td><td>구디아카데미</td><td>2020-08-07</td><td>11:00</td><td>12:00</td><td><label class="badge badge-warning">진행</label></td><td><button onclick="location.href='applylist.shop'">조회</button></td></tr>
+            	
+            	<c:forEach items="${classinfolist}" var="info" varStatus="stat2">     	
+            	<fmt:formatDate value="${info.date}" pattern="yyyy-MM-dd" var="classdate" />
+            	<fmt:formatDate value="${info.starttime}" pattern="HH:mm" var="starttime" />
+            	<fmt:formatDate value="${info.endtime}" pattern="HH:mm" var="endtime" />
+            	<tr><td>${info.classno}차수-${info.classseq}회차</td><td>${info.place}</td><td>${classdate}</td><td>${starttime}</td><td>${endtime}</td>
+            		<td>
+            		<c:if test="${classdate > today}">
+            		<label class="badge badge-warning">진행예정</label></c:if>
+            		<c:if test="${classdate == today}">
+            		<label class="badge badge-warning">진행</label></c:if>
+            		<c:if test="${classdate < today}">
+            		<label class="badge badge-info">완료</label></c:if>
+            		</td>
+            		<td><button onclick="location.href='applylist.shop'">조회</button></td></tr>
+            	</c:forEach>           
+            	 	
             	</table>
             </div>
+         </c:forEach>   
          </div>
+<%-- 
          <div class="col-lg-12 col-md-12 col-xs-12" onclick="location.href ='../class/detail.shop'" style="cursor:pointer;">
             <div class="team-item wow fadeInRight animated" data-wow-delay="0.4s" style="visibility: visible;-webkit-animation-delay: 0.4s; -moz-animation-delay: 0.4s; animation-delay: 0.4s;">
                <div class="team-img">
                   <img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-5.jpg" alt="">
                </div>
-               <div class="contetn">
+               <div class="content">
                   <div class="info-text">
                      <h3><a href="#">핸드메이드 강좌</a></h3>
                      <p>이다빈(USER1)</p>
@@ -148,7 +189,7 @@ $(".star").on('click',function(){
                <div class="team-img">
                   <img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-7.jpg" alt="">
                </div>
-               <div class="contetn">
+               <div class="content">
                   <div class="info-text">
                   <h3><a href="#">핸드메이드 강좌</a></h3>
                   <p>이다빈(USER1)</p>
@@ -163,7 +204,7 @@ $(".star").on('click',function(){
                <div class="team-img">
                   <img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-1.jpg" alt="">
                </div>
-               <div class="contetn">
+               <div class="content">
                   <div class="info-text">
                      <h3><a href="#">핸드메이드 강좌</a></h3>
                      <p>이다빈(USER1)</p>
@@ -173,6 +214,13 @@ $(".star").on('click',function(){
                </div>
             </div>
          </div>
+--%>
+      </c:if>
+      <c:if test="${resultclasscount == 0}">
+         	<div style="font-align:center;">
+         	<p>승인완료된 수업이 없습니다.</p>
+         	</div>
+      </c:if>
       </div>
    </div>
 </section>

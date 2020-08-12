@@ -17,16 +17,31 @@ public class TutorDao {
 	private SqlSessionTemplate template;
 	Map<String, Object> param = new HashMap<String, Object>();
 	
-	public List<Class> list(Integer state) {
+	public List<Class> list(Class cl) {
 		param.clear();
-		param.put("state", state);
+		param.put("state", cl.getState());
 		return template.getMapper(TutorMapper.class).select(param);
 	}
 
-	public int count(Integer state) {
+	public int count(Class cl) {
 		param.clear();
-		param.put("state", state);
+		param.put("state", cl.getState());
 		return template.getMapper(TutorMapper.class).count(param);
 	}
+
+//	public List<Class> rclist(Class cl) {
+//		param.clear();
+//		param.put("seqstate", seqstate);
+//		return template.getMapper(TutorMapper.class).rclselect(cl);
+//	}
+
+	public int confirm(Class cl) {
+		param.clear();
+		param.put("classid", cl.getClassid());
+		return template.getMapper(TutorMapper.class).confirm(param);
+	}
+
+	
+
 	
 }
