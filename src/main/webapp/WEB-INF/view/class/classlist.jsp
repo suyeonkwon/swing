@@ -157,8 +157,8 @@
 		<div class="class_box">
 			<div class="class">
 				<div class="class_list" style="margin-right:20px;">
-					<a href="detail.shop">
-						<div class="img" style="background-image:url('${path}/assets/img/hero-img.png')">
+					<a href="detail.shop?classid=1">
+						<div class="img" style="background-image:url('${path}/assets/img/candle.jpg')">
 							<div class="d_day">10명 참여</div>
 						</div>
 						<div class="profile_box">
