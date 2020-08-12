@@ -1,5 +1,6 @@
-
- /*--------------------------------------------------------------
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+<link rel="stylesheet" href="style.css">
+/*--------------------------------------------------------------
 # Services
 --------------------------------------------------------------*/
 
@@ -238,7 +239,7 @@
   margin-top: 30px;
 }
 
-.login form input[type="text"] {
+.login form input[type="text"], input[type="password"] {
   background: #fff;
   border: 0;
   margin-top: 10px;
@@ -255,18 +256,16 @@
 }
 
 .login form input[type="submit"] {
-  position: absolute;
   top: 0;
   right: -2px;
   bottom: 0;
   border: 0;
   background: none;
   font-size: 16px;
-  padding: 0 20px;
   background: #49b5e7;
   color: #fff;
   transition: 0.3s;
-  border-radius: 0 4px 4px 0;
+  border-radius: 4px 4px 4px 4px;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 }
 

@@ -13,6 +13,7 @@ public class User {
 	private String major;
 	private String edufile;
 	
+	private String fileurl;
 	// getter, setter, toString
 	public String getUserid() {
 		return userid;
@@ -80,11 +81,17 @@ public class User {
 	public void setEdufile(String edufile) {
 		this.edufile = edufile;
 	}
+	public String getFileurl() {
+		return fileurl;
+	}
+	public void setFileurl(String fileurl) {
+		this.fileurl = fileurl;
+	}
 	@Override
 	public String toString() {
 		return "User [userid=" + userid + ", pass=" + pass + ", name=" + name + ", email=" + email + ", file=" + file
 				+ ", kbn=" + kbn + ", nickname=" + nickname + ", edulevel=" + edulevel + ", school=" + school
-				+ ", major=" + major + ", edufile=" + edufile + "]";
+				+ ", major=" + major + ", edufile=" + edufile + ", fileurl=" + fileurl + "]";
 	}
 }
 

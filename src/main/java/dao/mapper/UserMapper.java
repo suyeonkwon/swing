@@ -16,10 +16,16 @@ public interface UserMapper {
 			+ " values(#{userid},#{pass},#{name},#{email},#{file})")
 	void insert(User user);
 	
-	@Select("select * from user")
+	@Select({"<script>",
+			"select * from user ",
+			"<if test='userid != null'> where userid=#{userid} </if>",
+			"<if test='userid == null'> where userid!='admin' </if>",
+			"</script>"})
 	List<User> select(Map<String, Object> param);
+
 	
-	@Update("")
+	@Update("update user set pass=#{pass}, "
+				+" name=#{name}, email=#{email},file=#{file} where userid=#{userid}")
 	void update(User user);
 	
 	@Delete("")
