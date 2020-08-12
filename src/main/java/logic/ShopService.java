@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import dao.ClassDao;
 import dao.ClassInfoDao;
+import dao.LicenseDao;
 import dao.ReviewDao;
 import dao.UserDao;
 import dao.WishlistDao;
@@ -24,6 +25,8 @@ public class ShopService {
 	private ClassInfoDao classInfoDao;
 	@Autowired
 	private WishlistDao wishlistDao;
+	@Autowired
+	private LicenseDao licenseDao;
 
 	
 	public List<User> userList() {
@@ -82,5 +85,9 @@ public class ShopService {
 	}
 	public void wishDelete(WishList wish) {
 		wishlistDao.delete(wish);
+	}
+
+	public List<License> getLicense(String userid) {
+		return licenseDao.select(userid);
 	}
 }

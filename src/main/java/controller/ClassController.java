@@ -1,6 +1,7 @@
 package controller;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -15,8 +16,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import logic.Review;
 import logic.ShopService;
+import logic.User;
 import logic.Class;
 import logic.Classinfo;
+import logic.License;
 
 @Controller
 @RequestMapping("class")
@@ -57,17 +60,24 @@ public class ClassController {
 		ModelAndView mav = new ModelAndView();
 		try {
 			Class cls = service.getClass(classid);
+			User tutor = service.getUser(cls.getUserid());
 			List<Classinfo> clsinfo = service.getClassInfo(classid);
 			List<Review> review = service.getReview(classid);
+			List<User> reUser = new ArrayList<>();
+			List<License> license = service.getLicense(cls.getUserid());
 			double sum = 0;
 			for(Review re : review) {
 				sum+= re.getStar();
+				reUser.add(service.getUser(re.getUserid()));
 			}
 			double starAvg = sum/review.size();
 			mav.addObject("cls",cls);
+			mav.addObject("tutor",tutor);
 			mav.addObject("clsinfo", clsinfo);
 			mav.addObject("review",review);
 			mav.addObject("starAvg", starAvg);
+			mav.addObject("reUser",reUser);
+			mav.addObject("license",license);
 //			mav.addObject("user",user);
 		}catch(Exception e) {
 			e.printStackTrace();
