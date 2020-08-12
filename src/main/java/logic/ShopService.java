@@ -26,7 +26,18 @@ public class ShopService {
 	public void userInsert(User user) {		
 		userDao.insert(user);
 	}
+	public User getUser(String userid) {
+		return userDao.selectOne(userid);
+	}
 
+	public List<User> userlist() {
+		return userDao.list();
+	}
+
+	public void userUpdate(User user) {
+		userDao.update(user);
+	}
+	
 	public void reviewWrite(Review review) {
 		int max = reviewDao.maxnum();
 		review.setReviewno(++max);

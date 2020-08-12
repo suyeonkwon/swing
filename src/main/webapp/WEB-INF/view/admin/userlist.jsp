@@ -70,7 +70,7 @@
           <table class="table table-hover">
                       <thead>
                         <tr>
-                          <th>no.</th>
+                          <th></th>
                           <th>아이디</th>
                           <th>이름</th>
                           <th colspan="2">회원유형</th>
@@ -80,39 +80,27 @@
                         </tr>
                       </thead>
                       <tbody>
+                      <c:forEach items="${list}" var="user">
                         <tr>
-                          <td>1</td>
-                          <td>user1</td>
-                          <td>김모모</td>
+                          <td><c:if test="${user.file!=null}">
+                          <img style="width:64px; height: 64px; border-radius: 30px 30px 30px 30px;"src="../user/save/${user.userid}_${user.file}">
+                          </c:if></td>
+                          <td>${user.userid}</td>
+                          <td>${user.name}</td>
+                          <c:if test="${user.kbn=='1'}">
+                          <td><label class="badge badge-info">튜티</label><br><a href="classlist.shop?id=${user.userid}" class="text-info">수강목록보기</a></td>
                           <td></td>
-                          <td><label class="badge badge-warning">튜터</label><br><a href="classlist.shop" class="text-danger">수강목록보기</a></td>
-                          <td>momo@naver.com</td>
-                          <td><a href="#">수정</a></td>
-                          <td><a href="#">탈퇴</a></td>
+                          </c:if>
+                          <c:if test="${user.kbn=='2'}">
+                          <td></td>
+                          <td><label class="badge badge-warning">튜터</label><br><a href="classlist.shop?id=${user.userid}" class="text-danger">수강목록보기</a></td>
+                          </c:if>
+                          <td>${user.email}</td>
+                          <td><a href="../user/update.shop?id=${user.userid}">수정</a></td>
+                          <td><a href="../user/delete.shop?id=${user.userid}">탈퇴</a></td>
                           <td><input class="checkbox" type="checkbox"></td>
                         </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>user2</td>
-                          <td>박썬칩</td>
-                          <td><label class="badge badge-info">튜티</label><br><a href="classlist.shop" class="text-info">수강목록보기</a></td>
-                          <td><label class="badge badge-warning">튜터</label><br><a href="classlist.shop" class="text-danger">수강목록보기</a></td>
-                          <td>sun@naver.com</td>
-                          <td><a href="#">수정</a></td>
-                          <td><a href="#">탈퇴</a></td>
-                          <td><input class="checkbox" type="checkbox"></td>
-                         </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>user3</td>
-                          <td>설모</td>
-                          <td><label class="badge badge-info">튜티</label><br><a href="classlist.shop" class="text-info">수강목록보기</a></td>
-                          <td><label class="badge badge-warning">튜터</label><br><a href="classlist.shop" class="text-danger">수강목록보기</a></td>
-                          <td>kim31@naver.com</td>
-                          <td><a href="#">수정</a></td>
-                          <td><a href="#">탈퇴</a></td>
-                          <td><input class="checkbox" type="checkbox"></td>
-                        </tr>
+                     </c:forEach>
                       </tbody>
                     </table>
      </div>
