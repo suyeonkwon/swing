@@ -9,9 +9,10 @@
 <link href="${path}/assets/css/tutee.css" rel="stylesheet">
 <script type="text/javascript">
 function delwish(userid,classid) {
-	location.href="delete.shop?userid="+userid+"&classid="+classid
+	location.href="wishDelete.shop?userid="+userid+"&classid="+classid
 	alert("위시리스트에서 삭제되었습니다.");
 }
+
 </script>
 </head>
 <body>
@@ -21,11 +22,13 @@ function delwish(userid,classid) {
 			<h1>위시리스트</h1>
 		</div>
 		<div class="my-class-list">
+		<c:if test="${wishnum==0}">위시리스트 목록이 없습니다.</c:if>
 		<c:forEach var="wish" items="${wishlist}" varStatus="status">
 			<div class="class-box">
+			<!-- ${path}/class/picture/${wish.coverimg} -->
 				<div class="image" style="background-image:url('${path}/assets/img/hero-img.png')"></div>
 				<div class="information-box">
-					<h3>${wish.subject}</h3>
+					<h3><a href="${path}/class/detail.shop?classid=${wish.classid}">${wish.subject}</a></h3>
 					<div class="start-box">
 						<font class="class-type"><c:if test="${wish.type==1}">원데이 수업</c:if>
 												 <c:if test="${wish.type==2}">${wish.totaltime}회차 수업</c:if></font>
@@ -48,7 +51,7 @@ function delwish(userid,classid) {
 						<fmt:formatNumber value="${wish.totalprice}" type="currency"/>
 					</div>
 					<div class="btn-box">
-						<a class="btn tp1" href=>신청</a>
+						<a class="btn tp1" href="${path}/class/check.shop?classid=${wish.classid}">신청</a>
 						<a class="btn tp1" onclick="delwish('test',${wish.classid})">삭제</a>
 					</div>
 				</div>
