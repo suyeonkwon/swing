@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import logic.Review;
 import logic.ShopService;
 import logic.User;
+import logic.ApplyList;
 import logic.Class;
 import logic.Classinfo;
 import logic.License;
@@ -84,4 +85,50 @@ public class ClassController {
 		}
 		return mav;
 	}
+	@RequestMapping("check")
+	public ModelAndView check(Integer classid) {
+		ModelAndView mav = new ModelAndView();
+		try {
+			Class cls = service.getClass(classid);
+			User tutor = service.getUser(cls.getUserid());			
+			List<Classinfo> clsinfo = service.getClassInfo(classid);
+			mav.addObject("cls",cls);
+			mav.addObject("tutor",tutor);
+			mav.addObject("clsinfo", clsinfo);			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return mav;
+	}
+	@RequestMapping("apply")
+	public ModelAndView apply(Integer classid,Integer classno,HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		try {
+			Class cls = service.getClass(classid);
+			User tutor = service.getUser(cls.getUserid());	
+			User tutee = (User)session.getAttribute("loginUser");
+			mav.addObject("cls",cls);
+			mav.addObject("tutor",tutor);
+			mav.addObject("tutee",tutee);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return mav;
+	}
+	@RequestMapping("paysuccess")
+	public ModelAndView paysuccess(Integer classid,Integer classno,HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		User tutee = (User)session.getAttribute("loginUser");
+		try {
+			ApplyList apply = new ApplyList();
+			apply.setClassid(classid);
+			apply.setClassno(classno);
+			apply.setUserid(tutee.getUserid());
+			service.applyClass(apply);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return mav;
+	}
+	
 }

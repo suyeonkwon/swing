@@ -75,8 +75,8 @@
 			<!-- 여기까지 날짜,시간,장소 정보 -->
 			<a onclick="" class="btn_talk">실시간 톡</a>
 			<div class="btn_payment">
-				<a href="check.shop">
-					<span class="btntxt">수업 신청하기</span>
+				<a href="check.shop?classid=${param.classid}">
+					<span class="btntxt" id="checkbt">수업 신청하기</span>
 				</a>
 			</div>
 			<div class="price">

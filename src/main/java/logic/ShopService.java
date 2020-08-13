@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import dao.ApplyListDao;
 import dao.ClassDao;
 import dao.ClassInfoDao;
 import dao.LicenseDao;
@@ -27,6 +28,8 @@ public class ShopService {
 	private WishlistDao wishlistDao;
 	@Autowired
 	private LicenseDao licenseDao;
+	@Autowired
+	private ApplyListDao applylistDao;
 
 	
 	public List<User> userList() {
@@ -89,5 +92,12 @@ public class ShopService {
 
 	public List<License> getLicense(String userid) {
 		return licenseDao.select(userid);
+	}
+
+	public void applyClass(ApplyList apply) {
+		int maxnum = applylistDao.maxnum();
+		apply.setApplyno(++maxnum);
+		applylistDao.insert(apply);
+		
 	}
 }
