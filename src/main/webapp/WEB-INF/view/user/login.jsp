@@ -42,11 +42,12 @@ color: #777777;
           <div class="col-lg-3">
             <h4>로그인</h4>
             <p></p>
-            <form action="" method="post">
-              <input type="text" name="id" placeholder="아이디">
-              <input type="text" name="pass" placeholder="비밀번호">
-            </form>
-            <a href="#about" class="bnt">로그인</a>
+            
+			<form:form modelAttribute="user" method="post" action="login.shop">
+              <form:input path="userid" type="text" name="id" placeholder="아이디"/>
+              <form:password path="pass" tpye="password" name="pass" placeholder="비밀번호"/>
+            <input class="bnt" type="submit" value="로그인">
+			</form:form>
             <div class="div">
 	          <i class="bx bx-chevron-right"></i> <a href="join.shop">회원가입</a>
 	          <i class="bx bx-chevron-right"></i> <a href="find.shop">ID/PW찾기</a>

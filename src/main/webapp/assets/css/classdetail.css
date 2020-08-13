@@ -53,12 +53,12 @@
     width: 15px;
 }
 .class_price .regions .region .option .top .timedetail {
-    width: 132px;
+    width: 13em;
     letter-spacing: -0.7px;
     display: inline-block;
 }
 .class_price .regions .region .option .top .timedetail .indate {
-    width: 4.5em;
+    width: 5em;
     display: inline-block;
     color: #555;
 }
@@ -285,14 +285,21 @@
     color: #49b5e7;
     transition: all 0.3s ease 0s;
 }
-#container_detail .class_wrap .class_detail .review_box {
+.class_wrap .class_detail .review_box {
     text-align: center;
-    padding: 30px;
     background: #f2f2f2;
     font-size: 20px;
     font-weight: bold;
     color: #000;
     vertical-align: middle;
+    padding: 2em 0 1em 0;
+    /* display: inline-block; */
+}
+.class_wrap .class_detail .review_box p{
+    display: inline-block;
+    position: relative;
+    bottom: 1em;
+    margin: 0 1em;
 }
 .class_wrap .class_detail .section01 .review_list ul li {
     border-bottom: 1px solid #e5e5e5;
@@ -358,22 +365,22 @@
     bottom: 0.6em;
     font-weight: 600;
 }
-.pop_review .star_box .input_star .star{
+ .star{
   display:inline-block;
   width: 30px;height: 60px;
   cursor: pointer;
 }
-.pop_review .star_box .input_star .star_left{
+ .star_left{
   background: url('/swing/assets/img/icon/star.png') no-repeat 0 0; 
   background-size: 60px; 
   margin-right: -3px;
 }
-.pop_review .star_box .input_star .star_right{
+ .star_right{
   background: url('/swing/assets/img/icon/star.png') no-repeat -30px 0; 
   background-size: 60px; 
   margin-left: -3px;
 }
-.pop_review .star_box .input_star .star.on{
+ .star.on{
   background-image: url('/swing/assets/img/icon/star_on.png');
 }
 .pop_review .star_box .input_star p {
@@ -419,5 +426,23 @@
 }
 
 
-
+.info .starimg .star{
+  display:inline-block;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.info .starimg .star_left{
+  background: url('/swing/assets/img/icon/star.png') no-repeat 0 0;
+  background-size: 30px;
+  margin-right: -10px;
+}
+.info .starimg .star_right{
+  background: url('/swing/assets/img/icon/star.png') no-repeat -15px 0;
+  background-size: 30px;
+  margin-left: -9px;
+}
+.info .starimg .star.on{
+  background-image: url('/swing/assets/img/icon/star_on.png');
+}
 

@@ -8,26 +8,19 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import dao.mapper.ReviewMapper;
-import logic.Review;
+import dao.mapper.ClassInfoMapper;
+import logic.Classinfo;
 
 @Repository
-public class ReviewDao {
+public class ClassInfoDao {
 	@Autowired
 	private SqlSessionTemplate template;
 	private Map<String,Object> param = new HashMap<>();
 	
-
-	public int maxnum() {
-		return template.getMapper(ReviewMapper.class).maxnum();
-	}
-
-	public void insert(Review review) {
-		template.getMapper(ReviewMapper.class).insert(review);
-	}
-
-	public List<Review> select(Integer classid) {
+	public List<Classinfo> select(Integer classid) {
 		param.clear();
 		param.put("classid", classid);
-		return template.getMapper(ReviewMapper.class).select(classid);
-	}}
+		return template.getMapper(ClassInfoMapper.class).select(param); 
+	}
+
+}

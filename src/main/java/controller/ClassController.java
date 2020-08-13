@@ -1,6 +1,8 @@
 package controller;
 
-import javax.servlet.http.HttpServletRequest;
+
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import logic.Review;
 import logic.ShopService;
-import logic.User;
+import logic.Class;
+import logic.Classinfo;
 
 @Controller
 @RequestMapping("class")
@@ -45,6 +48,29 @@ public class ClassController {
 		}catch(Exception e) {
 			e.printStackTrace();
 			System.out.println("등록실패");
+		}
+		return mav;
+	}
+	
+	@GetMapping("detail")
+	public ModelAndView detail(Integer classid) {
+		ModelAndView mav = new ModelAndView();
+		try {
+			Class cls = service.getClass(classid);
+			List<Classinfo> clsinfo = service.getClassInfo(classid);
+			List<Review> review = service.getReview(classid);
+			double sum = 0;
+			for(Review re : review) {
+				sum+= re.getStar();
+			}
+			double starAvg = sum/review.size();
+			mav.addObject("cls",cls);
+			mav.addObject("clsinfo", clsinfo);
+			mav.addObject("review",review);
+			mav.addObject("starAvg", starAvg);
+//			mav.addObject("user",user);
+		}catch(Exception e) {
+			e.printStackTrace();
 		}
 		return mav;
 	}

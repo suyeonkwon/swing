@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import logic.Classinfo;
 import logic.ShopService;
+import logic.User;
 
 @Controller
 @RequestMapping("tutor")
@@ -24,27 +25,27 @@ public class TutorController {
 		ModelAndView mav = new ModelAndView();
 		return mav;
 	}
-	
-	@GetMapping("my")
-	public ModelAndView my(logic.Class cl) {
-		ModelAndView mav = new ModelAndView();
-		List<logic.Class> classlist = service.getClassList(cl);
-		int classcount = service.classCount(cl);
-		mav.addObject("Class", cl);
+
+	@RequestMapping("my")
+	public ModelAndView checkmy(Integer state, HttpSession session) {
+		ModelAndView mav = new ModelAndView();	
+		User loginUser = (User)session.getAttribute("loginUser");
+		List<logic.Class> classlist = service.getClassList(loginUser.getUserid(), state);
+		int classcount = service.classCount(loginUser.getUserid(), state);
 		mav.addObject("classlist", classlist);
 		mav.addObject("classcount", classcount);
 		return mav;
 	}
-	
+		
 	@RequestMapping("result")
 	public ModelAndView result(logic.Class cl) {
 		ModelAndView mav = new ModelAndView();		
 		List<logic.Class> classlist = service.getClassList(cl);
-//		List<Classinfo> classinfolist = service.getClassInfoList(cl);
+		List<Classinfo> classinfolist = service.getClassInfoList(cl);
 		int classcount = service.classCount(cl);
 		mav.addObject("Class", cl);
 		mav.addObject("classlist", classlist);
-//		mav.addObject("classinfolist", classinfolist);
+		mav.addObject("classinfolist", classinfolist);
 		mav.addObject("classcount", classcount);
 		return mav;
 	}

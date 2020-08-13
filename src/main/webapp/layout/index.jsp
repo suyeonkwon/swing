@@ -60,16 +60,26 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
+          <c:if test="${empty sessionScope.loginUser}">
           <li class="active"><a href="${path}/user/login.shop">로그인</a></li>
           <li><a href="${path}/user/join.shop">회원가입</a></li>
-          <li class="drop-down"><a href="">관리자</a>
+          </c:if>
+          
+          <c:if test="${!empty sessionScope.loginUser}">
+          <c:if test="${sessionScope.loginUser.userid=='admin'}">
+          <li><a href="${path}/admin/userlist.shop">회원목록</a></li>
+          <li><a href="${path}/admin/classlist.shop">수업목록</a></li>
+          <li><a href="${path}/admin/applylist.shop">수업신청목록</a></li>
+          <li><a href="${path}/admin/chart.shop">수익조회</a></li>
+          <li class="drop-down"><a href="">${sessionScope.loginUser.userid}님의 마이 페이지</a>
             <ul>
-              <li><a href="${path}/admin/userlist.shop">회원목록</a></li>
-              <li><a href="${path}/admin/classlist.shop">수업목록</a></li>
-              <li><a href="${path}/admin/applylist.shop">수업신청목록</a></li>
-              <li><a href="${path}/admin/chart.shop">수익조회</a></li>
+              <li><a href="${path}/user/info.shop?id=${sessionScope.loginUser.userid}">내 프로필</a></li>
+              <li><a href="${path}/user/password.shop">비밀번호 변경</a></li>
+              <li><a href="${path}/user/logout.shop">로그아웃</a></li>
             </ul>
           </li>
+          </c:if>
+          <c:if test="${sessionScope.loginUser.userid!='admin'}">
           <li class="drop-down"><a href="">튜 터</a>
             <ul>
               <li><a href="${path}/tutor/register.shop">튜터 등록</a></li>
@@ -82,15 +92,16 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
           <li><a href="${path}/tutee/applylist.shop">수업신청서</a></li>
           <li><a href="${path}/tutee/classlist.shop">수강목록</a></li>
           <li><a href="${path}/tutee/wishlist.shop">위시리스트</a></li>
-          <li class="drop-down"><a href="">마이 페이지</a>
+          <li class="drop-down"><a href="">${sessionScope.loginUser.userid}님의 마이 페이지</a>
             <ul>
-              <li><a href="${path}/user/info.shop">내 프로필</a></li>
+              <li><a href="${path}/user/info.shop?id=${sessionScope.loginUser.userid}">내 프로필</a></li>
               <li><a href="${path}/user/password.shop">비밀번호 변경</a></li>
               <li><a href="${path}/user/delete.shop">회원탈퇴</a></li>
-              <li><a href="${path}/user/login.shop">로그아웃</a></li>
+              <li><a href="${path}/user/logout.shop">로그아웃</a></li>
             </ul>
           </li>
-
+          </c:if>
+          </c:if>
         </ul>
       </nav><!-- .nav-menu -->
 

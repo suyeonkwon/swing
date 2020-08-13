@@ -10,9 +10,9 @@ public class Review {
 	private int classseq;
 	private String content;
 	private double star;
-	private Date regdate;
-	
+	private Date regdate;	
 	// getter, setter, toString
+
 	public int getReviewno() {
 		return reviewno;
 	}

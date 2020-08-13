@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import dao.mapper.TutorMapper;
 import logic.Class;
+import logic.Classinfo;
 
 @Repository
 public class TutorDao {
@@ -17,28 +18,30 @@ public class TutorDao {
 	private SqlSessionTemplate template;
 	Map<String, Object> param = new HashMap<String, Object>();
 	
-	public List<Class> list(Class cl) {
+	public List<Class> list(String userid, Integer state) {
 		param.clear();
-		param.put("state", cl.getState());
+		param.put("userid", userid);
+		param.put("state", state);
 		return template.getMapper(TutorMapper.class).select(param);
 	}
 
-	public int count(Class cl) {
+	public int count(String userid, Integer state) {
 		param.clear();
-		param.put("state", cl.getState());
+		param.put("userid", userid);
+		param.put("state", state);
 		return template.getMapper(TutorMapper.class).count(param);
 	}
 
-//	public List<Class> rclist(Class cl) {
-//		param.clear();
-//		param.put("seqstate", seqstate);
-//		return template.getMapper(TutorMapper.class).rclselect(cl);
-//	}
+	public int confirm(Integer classid) {
+		param.clear();
+		param.put("classid", classid);
+		return template.getMapper(TutorMapper.class).confirm(param);
+	}
 
-	public int confirm(Class cl) {
+	public List<Classinfo> classinfolist(Class cl) {
 		param.clear();
 		param.put("classid", cl.getClassid());
-		return template.getMapper(TutorMapper.class).confirm(param);
+		return template.getMapper(TutorMapper.class).getclassinfo(param);
 	}
 
 	

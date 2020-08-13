@@ -1,3 +1,4 @@
+
 package logic;
 
 public class User {
@@ -6,13 +7,14 @@ public class User {
 	private String name;
 	private String email;
 	private String file;
-	private int kbn;
+	private String kbn;
 	private String nickname;
 	private int edulevel;
 	private String school;
 	private String major;
 	private String edufile;
 	
+	private String fileurl;
 	// getter, setter, toString
 	public String getUserid() {
 		return userid;
@@ -44,10 +46,10 @@ public class User {
 	public void setFile(String file) {
 		this.file = file;
 	}
-	public int getKbn() {
+	public String getKbn() {
 		return kbn;
 	}
-	public void setKbn(int kbn) {
+	public void setKbn(String kbn) {
 		this.kbn = kbn;
 	}
 	public String getNickname() {
@@ -80,11 +82,18 @@ public class User {
 	public void setEdufile(String edufile) {
 		this.edufile = edufile;
 	}
+	public String getFileurl() {
+		return fileurl;
+	}
+	public void setFileurl(String fileurl) {
+		this.fileurl = fileurl;
+	}
 	@Override
 	public String toString() {
 		return "User [userid=" + userid + ", pass=" + pass + ", name=" + name + ", email=" + email + ", file=" + file
 				+ ", kbn=" + kbn + ", nickname=" + nickname + ", edulevel=" + edulevel + ", school=" + school
-				+ ", major=" + major + ", edufile=" + edufile + "]";
+				+ ", major=" + major + ", edufile=" + edufile + ", fileurl=" + fileurl + "]";
 	}
 }
+
 
