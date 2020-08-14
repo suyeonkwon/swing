@@ -79,30 +79,44 @@ div#calc_point {
 }
 </style>
 <script type="text/javascript">
-$(".star").on('click',function(){
-    var idx = $(this).index();
-    $(".star").removeClass("on");
-      for(var i=0; i<=idx; i++){
-         $(".star").eq(i).addClass("on");
-    }
-     var point = (idx+1)*0.5;
-     $("#calc_point").html(point);
-  });
+$(function(){
+	$(".star").on('click',function(){
+		var idx = $(this).index();
+		$(".star").removeClass("on");
+		for(var i=0; i<=idx; i++){
+			$(".star").eq(i).addClass("on");
+		}
+		var point = (idx+1)*0.5;
+		$("#calc_point").html(point);
+	});
   
-  $(document).on("click", ".team-item.wow.fadeInRight.animated", function(){
-	  if($(this).next().css("display")=="none"){
-		  $(this).next().show();
-	  }else{
-		  $(this).next().hide();
-	  }
-  })
+	$("#classbody").on("click", function(){  
+		
+		$("#infotable").toggle();
+	});
+  
+//  function addParam(classid){
+//	  $.ajax("result",{
+//		  "classid" : classid
+//	  })
+// }
+
+
+//		$('#classbody > input').click(function(){
+//			$.ajax("${path}/tutor/result.shop?state=${param.state}",{
+//				success: function(data){
+//					
+//				}
+//			})
+//		});
+})
 </script>
 </head>
 <body>
 <section id="team" class="team">
       <div class="container">
           <div style="text-align: right;">
-          <a href="result.shop"><h2>내수업 목록</h2></a>
+          <a href="result.shop"><h2>내 수업 목록</h2></a>
           <c:choose>
           	<c:when test="${param.state == 5}">
           		<a href="result.shop">전체보기</a>&nbsp;|         		
@@ -125,29 +139,31 @@ $(".star").on('click',function(){
           
          <div class="row bg-gray">
          <c:if test="${classcount > 0}">
-         <div class="col-lg-12 col-md-12 col-xs-12">
-            <c:forEach items="${classlist}" var="cl" varStatus="stat">
-            <div class="team-item wow fadeInRight animated" data-wow-delay="0.2s" 
+         <c:forEach items="${classlist}" var="cl" varStatus="stat">
+         <div class="col-lg-12 col-md-12 col-xs-12">            
+            <div id="classbody" class="team-item wow fadeInRight animated" data-wow-delay="0.2s" 
             	style="visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s; cursor:pointer;">
+               
+               <input type="hidden" name="classid" value="${cl.classid}">
+               
                <div class="team-img">
                   <img class="img-fluid" src="${path}/assets/img/team/team-3.jpg" alt="">
                </div>
-               <div class="content">
+               <div class="contetn">
                   <div class="info-text">
                      <h3><a href="#">${cl.subject}</a></h3>
-                     <p>${ci.nickname}(${cl.userid})</p>
+                     <p>${cl.nickname}(${cl.userid})</p>
                      <p>[수업시작일] <fmt:formatDate value="${cl.date}" pattern="yyyy-MM-dd" /></p>
                      <p>[위치] ${cl.location1} ${cl.location2}</p>
-                  </div>
+                  </div>                  
                   <div class="detail">
                   	<button onclick="location.href='../class/detail.shop'">상세보기</button>&nbsp;&nbsp;
                   </div>
                </div>
             </div>            
-            <div style="display:none">
+            <div id="infotable" style="display:none">
             	<table class="table table-hover">
-            	<tr><th>차수-회차</th><th>장소</th><th>날짜</th><th>시작시간</th><th>끝나는시간</th><th>수업진행상태</th><th>신청튜티리스트</th></tr>
-            	
+            	<tr><th>차수-회차</th><th>장소</th><th>날짜</th><th>시작시간</th><th>끝나는시간</th><th>수업진행상태</th><th>신청튜티리스트</th></tr>            	
             	<c:forEach items="${classinfolist}" var="info" varStatus="stat2">     	
             	<fmt:formatDate value="${info.date}" pattern="yyyy-MM-dd" var="classdate" />
             	<fmt:formatDate value="${info.starttime}" pattern="HH:mm" var="starttime" />
@@ -166,9 +182,10 @@ $(".star").on('click',function(){
             	 	
             	</table>
             </div>
-         </c:forEach>   
+         
          </div>
-<%-- 
+         </c:forEach>   
+<%--
          <div class="col-lg-12 col-md-12 col-xs-12" onclick="location.href ='../class/detail.shop'" style="cursor:pointer;">
             <div class="team-item wow fadeInRight animated" data-wow-delay="0.4s" style="visibility: visible;-webkit-animation-delay: 0.4s; -moz-animation-delay: 0.4s; animation-delay: 0.4s;">
                <div class="team-img">
@@ -181,9 +198,13 @@ $(".star").on('click',function(){
                      <p>[수업시작일] 2020-09-15</p>
                      <p>[위치] 서울시 금천구</p>
                   </div>
+                   <div class="detail">
+                  	<button onclick="location.href='../class/detail.shop'">상세보기</button>&nbsp;&nbsp;
+                  </div>
                </div>
             </div>
          </div>
+ 
          <div class="col-lg-12 col-md-12 col-xs-12" onclick="location.href ='../class/detail.shop'" style="cursor:pointer;">
             <div class="team-item wow fadeInRight animated" data-wow-delay="0.6s" style="visibility: visible;-webkit-animation-delay: 0.6s; -moz-animation-delay: 0.6s; animation-delay: 0.6s;">
                <div class="team-img">
@@ -216,7 +237,7 @@ $(".star").on('click',function(){
          </div>
 --%>
       </c:if>
-      <c:if test="${resultclasscount == 0}">
+      <c:if test="${classcount == 0}">
          	<div style="font-align:center;">
          	<p>승인완료된 수업이 없습니다.</p>
          	</div>

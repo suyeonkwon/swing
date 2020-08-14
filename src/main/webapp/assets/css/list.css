@@ -188,6 +188,16 @@ div#regionSub {
     text-align: center;
     opacity: 0.85;
 }
+.class .class_list .img .level {
+    width: 80px;
+    background-color: #B265A7;
+    color: white;
+    font-size: 14px;
+    height: 20px;
+    text-align: center;
+    opacity: 0.85;
+    /* margin: 0.5em 0; */
+}
 .class .class_list .profile_box {
     box-sizing: border-box;
     width: 80px;

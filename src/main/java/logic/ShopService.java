@@ -6,8 +6,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import dao.ApplyListDao;
 import dao.ClassDao;
 import dao.ClassInfoDao;
+import dao.LicenseDao;
 import dao.ReviewDao;
 import dao.TutorDao;
 import dao.UserDao;
@@ -27,6 +29,10 @@ public class ShopService {
 	private ClassInfoDao classInfoDao;
 	@Autowired
 	private WishlistDao wishlistDao;
+	@Autowired
+	private LicenseDao licenseDao;
+	@Autowired
+	private ApplyListDao applylistDao;
 
 	
 	public List<User> userList() {
@@ -55,34 +61,33 @@ public class ShopService {
 	}
 
 	/*----mypage(Tutor)----*/
-//	public List<Class> getClassList(Class cl) {
-//		int confirm = tutorDao.confirm(cl);   // 마지막 차수의 마지막 회차의 진행상태
-//		if(confirm == 0) {                  // 마지막 차수의 마지막 회차의 진행상태가 '완료' 일 경우
-//			cl.setState(6);
-//		}else {
-//			cl.setState(5);
-//		}
-//		return tutorDao.list(cl);
-//	}
-//	public int classCount(Class cl) {
-//		return tutorDao.count(cl);
-//	}	
-//	public List<Classinfo> getClassInfoList(Class cl) {
-//		return tutorDao.classinfolist(cl);
-//	}
-	public List<Class> getClassList(String userid, Integer state) {
-		
-//		int confirm = tutorDao.confirm(userid);
-//		if(confirm == 0) {                  // 마지막 차수의 마지막 회차의 진행상태가 '완료' 일 경우
-//			cl.setState(6);
-//		}else {
-//			cl.setState(5);
-//		}
+	public List<Class> getClassList(String userid, Integer state) {		//my.jsp
 		return tutorDao.list(userid, state);
 	}
 	public int classCount(String userid, Integer state) {
 		return tutorDao.count(userid, state);
 	}	
+	public List<Class> getClassList2(String userid, Integer state) {    //result.jsp
+		return tutorDao.list2(userid, state);
+	}
+	public int classCount2(String userid, Integer state) {
+		return tutorDao.count2(userid, state);
+	}
+	public List<Classinfo> getClassInfoList(Integer classid) {
+		return tutorDao.classinfolist(classid);
+	}
+//	public List<Class> getClassList(Class cl) {
+//	int confirm = tutorDao.confirm(cl);   // 마지막 차수의 마지막 회차의 진행상태
+//	if(confirm == 0) {                  // 마지막 차수의 마지막 회차의 진행상태가 '완료' 일 경우
+//		cl.setState(6);
+//	}else {
+//		cl.setState(5);
+//	}
+//	return tutorDao.list(cl);
+//}
+//public int classCount(Class cl) {
+//	return tutorDao.count(cl);
+//}	
 
 	
 
@@ -119,9 +124,17 @@ public class ShopService {
 		wishlistDao.delete(wish);
 	}
 
-	
-	
-	
+
+	public List<License> getLicense(String userid) {
+		return licenseDao.select(userid);
+	}
+
+	public void applyClass(ApplyList apply) {
+		int maxnum = applylistDao.maxnum();
+		apply.setApplyno(++maxnum);
+		applylistDao.insert(apply);
+		
+	}
 
 	
 	

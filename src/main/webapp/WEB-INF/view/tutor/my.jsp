@@ -25,7 +25,7 @@
     <section id="team" class="team">
       <div class="container">
           <div style="text-align: right;">
-          <a href="my.shop"><h2>내 수업 목록</h2></a>
+          <a href="my.shop"><h2>내 수업 승인상태</h2></a>
           <c:choose>
           	<c:when test="${param.state == 1}">
           		<a href="my.shop" >전체</a>&nbsp;|

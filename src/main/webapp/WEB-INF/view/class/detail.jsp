@@ -75,8 +75,8 @@
 			<!-- 여기까지 날짜,시간,장소 정보 -->
 			<a onclick="" class="btn_talk">실시간 톡</a>
 			<div class="btn_payment">
-				<a href="check.shop">
-					<span class="btntxt">수업 신청하기</span>
+				<a href="check.shop?classid=${param.classid}">
+					<span class="btntxt" id="checkbt">수업 신청하기</span>
 				</a>
 			</div>
 			<div class="price">
@@ -88,7 +88,7 @@
 		</div>
 		<!-- 상단 이미지 부분 -->
 		<div class="class_img">
-			<iframe width="840" height="540" scrolling="no" frameborder="0" src="${path}/assets/img/hero-img.png"></iframe>
+			<img src="${path}/assets/img/${cls.coverimg}">
 		</div>
 		<div class="class_d_wrqp">
 			<div id="class_navi" class="class_navi fixedLayer" style="left:0px;">
@@ -115,8 +115,10 @@
 			</script>
 			<div class="class_detail" id="sumary">
 				<div class="class_name">
-					<div class="tutor_img" style="background-image:url('');"></div>
-					<div class="name">튜터 이름</div>
+					<div class="tutor_img">
+						<img alt="" src="${path}/assets/img/${tutor.file}">
+					</div>
+					<div class="name">${tutor.name}</div>
 				</div>
 				<div class="class_title">
 					<div class="title">${cls.subject}</div>
@@ -148,7 +150,12 @@
 							<li class="ar" id="regionAll">${cls.location2}</li>
 							<li class="hu"><font color="#49b5e7">${cls.time}</font>시간/
 								<c:if test="${cls.totaltime!=1}">${cls.totaltime}</c:if>회</li>
-							<li class="gr">최대인원<font color="#49b5e7">2~${cls.maxtutee}명</font></li>
+							<li class="gr">
+								<c:if test="${cls.maxtutee==1}">1:1수업</c:if>
+								<c:if test="${cls.maxtutee>1}">
+									최대인원<font color="#49b5e7">2~${cls.maxtutee}명</font>
+								</c:if>
+							</li>
 							<li class="ohu"><font color="#49b5e7">￦${cls.price}</font>/시간</li>
 						</ul>
 					</div>
@@ -159,7 +166,12 @@
 					<h1>튜터정보</h1>
 					<div class="cert">
 						<ul>
-							<li class="com">OO대학교 OO학과</li>
+							<li class="com">${tutor.school}대학교 ${tutor.major}</li>
+							<c:if test="${license!=null}">
+								<c:forEach items="${license}" var="lc">
+									${lc.lctitle}
+								</c:forEach>
+							</c:if>
 						</ul>
 					</div>
 					<div class="d_info">
@@ -214,43 +226,30 @@
 							<div id="innerReviewDiv">
 								<c:if test="${review==null}">등록된 리뷰가 없습니다.</c:if>
 								<c:if test="${review!=null}">
-									<c:forEach items="${review}" var="re">
+									<c:set value="0" var="i"/>
+									<c:forEach items="${review}" var="re" varStatus="status">
 										<li>
 											<div class="review">
 												<div class="profilebox">
-													<div class="profile" style="background-image:url('')">
+													<div class="profile">
+														<img alt="" src="../user/save/${reUser[i].userid}_${reUser[i].file}">
 													</div>
 													<div class="name">
-														리뷰 작성자 이름
+														${reUser[i].name}
 													</div>
 												</div>
 												<div class="review_content">
 													<div class="content">
 														${re.content}
 													</div>
-													<div class="date">${re.regdate}</div>
+													<fmt:formatDate value="${re.regdate}" var="regdate" pattern="yyyy-MM-dd HH:mm:ss"/>
+													<div class="date">${regdate}</div>
 												</div>
 											</div>
 										</li>
+										<c:set var="i" value="${i+1}"/>
 									</c:forEach>
 								</c:if>
-								<li>
-									<div class="review">
-										<div class="profilebox">
-											<div class="profile" style="background-image:url('')">
-											</div>
-											<div class="name">
-												리뷰 작성자 이름
-											</div>
-										</div>
-										<div class="review_content">
-											<div class="content">
-												너무 너무 좋아요
-											</div>
-											<div class="date">2020-01-01 00:00:00</div>
-										</div>
-									</div>
-								</li>
 							</div>
 						</ul>
 					</div>

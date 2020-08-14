@@ -160,6 +160,7 @@
 					<a href="detail.shop?classid=1">
 						<div class="img" style="background-image:url('${path}/assets/img/candle.jpg')">
 							<div class="d_day">10명 참여</div>
+							<div class="level">입문자용</div>
 						</div>
 						<div class="profile_box">
 							<div class="profile" style="background-image:url('')"></div>

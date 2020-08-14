@@ -142,6 +142,11 @@
     padding: 0;
     overflow: hidden;
     position: relative;
+    /* background-image: url('/swing/assets/img/candle.jpg'); */
+}
+.class_wrap .class_img img {
+    width: 100%;
+    height: 100%;
 }
 /*navi*/
 .class_wrap .class_d_wrqp .class_navi {
@@ -182,11 +187,14 @@
     margin: 30px 0 40px 0;
 }
 .class_wrap .class_detail .class_name .tutor_img {
-    width: 180px;
-    height: 180px;
+    width: 12em;
+    height: 12em;
     border-radius: 100px;
     overflow: hidden;
-    background-color: blue;
+}
+.class_wrap .class_detail .class_name .tutor_img img{
+  width: 12em;
+  height: 12em;
 }
 .class_wrap .class_detail .class_name .name {
     width: 180px;
@@ -317,11 +325,15 @@
     line-height: 100%;
 }
 .class_wrap .class_detail .section01 .review_list .profilebox .profile {
-    width: 86px;
-    height: 86px;
+    width: 5.5em;
+    height: 5.5em;
     border-radius: 100px;
     overflow: hidden;
     background-color: blue;
+}
+.class_wrap .class_detail .section01 .review_list .profilebox .profile img{
+    width:5.5em;
+    height:5.5em;
 }
  .class_wrap .class_detail .section01 .review_list .profilebox .name {
 	padding-top:10px;
