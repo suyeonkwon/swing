@@ -30,4 +30,10 @@ public class ReviewDao {
 		param.clear();
 		param.put("classid", classid);
 		return template.getMapper(ReviewMapper.class).select(classid);
+	}
+
+	public int cnt(Integer classid) {
+		param.clear();
+		param.put("classid", classid);
+		return template.getMapper(ReviewMapper.class).cnt(classid);
 	}}

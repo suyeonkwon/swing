@@ -22,6 +22,11 @@ public class Class {
 	private int readcnt;
 	private int state;
 	private Date regdate;
+	//참여인원수
+	private int totaltutee;
+	//클래스 리뷰 평점, 갯수
+	private int staravg;
+	private int reviewcnt;
 	
 	// getter, setter, toString
 	public int getClassid() {
@@ -137,6 +142,26 @@ public class Class {
 	}
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
+	}
+	
+	public int getTotaltutee() {
+		return totaltutee;
+	}
+	public void setTotaltutee(int totaltutee) {
+		this.totaltutee = totaltutee;
+	}
+	
+	public int getStaravg() {
+		return staravg;
+	}
+	public void setStaravg(int staravg) {
+		this.staravg = staravg;
+	}
+	public int getReviewcnt() {
+		return reviewcnt;
+	}
+	public void setReviewcnt(int reviewcnt) {
+		this.reviewcnt = reviewcnt;
 	}
 	@Override
 	public String toString() {

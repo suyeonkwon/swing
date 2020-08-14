@@ -46,4 +46,9 @@ public class WishlistDao {
 		template.getMapper(WishlistMapper.class).delete(wish);
 	}
 
+	public int checkwish(WishList wish) {
+		return template.getMapper(WishlistMapper.class).check(wish);
+	}
+
+
 }

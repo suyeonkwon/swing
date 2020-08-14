@@ -18,4 +18,7 @@ public interface ReviewMapper {
 
 	@Select("select * from review where classid=#{classid}")
 	List<Review> select(Integer classid);
+
+	@Select("select ifnull(count(*),0) from review where classid=#{classid}")
+	int cnt(Integer classid);
 }

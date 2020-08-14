@@ -2,6 +2,7 @@ package logic;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -56,8 +57,6 @@ public class ShopService {
 		review.setReviewno(++max);
 		reviewDao.insert(review);
 	}
-
-
 	public Class getClass(Integer classid) {
 		return classDao.selectOne(classid);
 	}
@@ -100,4 +99,23 @@ public class ShopService {
 		applylistDao.insert(apply);
 		
 	}
+
+	public int checkwish(WishList wish) {
+		return wishlistDao.checkwish(wish);
+	}
+
+	public int classcount(String location1, String location2, Integer type, Integer maxtutee, Integer cate) {
+		return classDao.count(location1,location2,type,maxtutee,cate);
+	}
+
+	public List<Class> classList(Integer pageNum,Integer sorted, int limit, String location1, String location2, Integer type,
+			Integer maxtutee,Integer cate) {
+		return classDao.list(pageNum,sorted,limit,location1,location2,type,maxtutee,cate);
+	}
+
+	public int getReviewcnt(Integer classid) {
+		return reviewDao.cnt(classid);
+	}
+
+
 }

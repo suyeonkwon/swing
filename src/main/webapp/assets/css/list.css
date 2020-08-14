@@ -244,7 +244,7 @@ div#regionSub {
     position: absolute;
     /* margin-top: 20px; */
 }
-.class .class_list .info .info2 .star {
+.class .class_list .info .info2 .starbox {
     float: left;
     color: #ffc600;
 }
@@ -275,4 +275,23 @@ div#regionSub {
 
 .filter_head .sorted li {
     display: inline-block;
+}
+ .star{
+  display:inline-block;
+  width: 10px;
+  height: 20px;
+  cursor: pointer;
+}
+ .star_left{
+  background: url('/swing/assets/img/icon/star.png') no-repeat 0 0;
+  background-size: 20px;
+  margin-right: -3px;
+}
+ .star_right{
+  background: url('/swing/assets/img/icon/star.png') no-repeat -10px 0;
+  background-size: 20px;
+  margin-left: -3px;
+}
+ .star.on{
+  background-image: url('/swing/assets/img/icon/star_on.png');
 }

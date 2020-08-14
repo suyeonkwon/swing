@@ -36,4 +36,7 @@ public interface WishlistMapper {
 	@Insert("INSERT INTO wishlist(userid,classid) VALUES(#{userid},#{classid})")
 	void insert(WishList wish);
 
+	@Select("select ifnull(count(*),0) from wishlist where userid=#{userid} and classid=#{classid}")
+	int check(WishList wish);
+
 }
