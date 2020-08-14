@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Select;
 import logic.WishList;
 
 public interface WishlistMapper {
-	@Select("SELECT c.classid,c.userid,c.subject,c.location2,c.type,c.totalprice,c.totaltime " + 
+	@Select("SELECT w.classid,w.userid,c.subject,c.location2,c.type,c.totalprice,c.totaltime,c.coverimg " + 
 			"from class c JOIN wishlist w " + 
 			"ON c.classid = w.classid " + 
 			"WHERE w.userid = #{userid}")
@@ -28,7 +28,7 @@ public interface WishlistMapper {
 	@Select("SELECT DATE FROM classinfo " + 
 			"WHERE classid = #{classid} AND DATE > NOW() " + 
 			"LIMIT 1")
-	Date startTime(int classid);
+	Date startDate(int classid);
 	
 	@Delete("DELETE FROM wishlist WHERE userid=#{userid} AND classid=#{classid}")
 	void delete(WishList wish);

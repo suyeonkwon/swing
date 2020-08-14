@@ -77,8 +77,8 @@ public class ShopService {
 	public List<WishList> getWishlist(String userid) {
 		return wishlistDao.list(userid);
 	}
-	public Date getStartTime(int classid) {
-		return wishlistDao.startTime(classid);
+	public Date getStartDate(int classid) {
+		return wishlistDao.startDate(classid);
 	}
 	public int getStar(int classid) {
 		return wishlistDao.star(classid);
@@ -89,6 +89,10 @@ public class ShopService {
 	public void wishDelete(WishList wish) {
 		wishlistDao.delete(wish);
 	}
+	/*--tutee_classList--*/
+	public List<Course> getCourselist(String userid) {
+		return applylistDao.clist(userid);
+	}	
 
 	public List<License> getLicense(String userid) {
 		return licenseDao.select(userid);

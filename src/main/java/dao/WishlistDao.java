@@ -38,8 +38,8 @@ public class WishlistDao {
 		return template.getMapper(WishlistMapper.class).particiNum(classid);
 	}
 
-	public Date startTime(int classid) {
-		return template.getMapper(WishlistMapper.class).startTime(classid);
+	public Date startDate(int classid) {
+		return template.getMapper(WishlistMapper.class).startDate(classid);
 	}
 	
 	public void delete(WishList wish) {
