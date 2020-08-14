@@ -74,10 +74,8 @@ public class TuteeController {
 
 	/* 수강목록 */
 	@RequestMapping("classlist")
-	public ModelAndView classlist(Integer state, HttpSession session) {
+	public ModelAndView classlist(String userid,Integer state, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		User user = (User) session.getAttribute("loginUser");
-		String userid = user.getUserid();
 		try {
 			List<Course> list = service.getCourselist(userid);
 			Date now = new Date();
@@ -94,7 +92,6 @@ public class TuteeController {
 					}
 				}
 			}
-			System.out.println(classlist);
 			int classnum = classlist.size();
 			mav.addObject("state", state);
 			mav.addObject("classlist", classlist);
