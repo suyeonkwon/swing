@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Select;
 import logic.WishList;
 
 public interface WishlistMapper {
-	@Select("SELECT c.classid,c.userid,c.subject,c.location2,c.type,c.totalprice,c.totaltime " + 
+	@Select("SELECT w.classid,w.userid,c.subject,c.location2,c.type,c.totalprice,c.totaltime,c.coverimg " + 
 			"from class c JOIN wishlist w " + 
 			"ON c.classid = w.classid " + 
 			"WHERE w.userid = #{userid}")
@@ -18,17 +18,17 @@ public interface WishlistMapper {
 	
 	@Select("SELECT ifnull(avg(star),0) star FROM review " + 
 			"WHERE classid=#{classid}")
-	int star(int classid);
+	int star(Integer classid);
 	
 	@Select("SELECT COUNT(applyno) cnt FROM applylist a, class c " + 
 			"WHERE a.classid = c.classid " + 
 			"AND a.classid = #{classid}")
-	int particiNum(int classid);
+	int particiNum(Integer classid);
 	
 	@Select("SELECT DATE FROM classinfo " + 
 			"WHERE classid = #{classid} AND DATE > NOW() " + 
 			"LIMIT 1")
-	Date startTime(int classid);
+	Date startDate(Integer classid);
 	
 	@Delete("DELETE FROM wishlist WHERE userid=#{userid} AND classid=#{classid}")
 	void delete(WishList wish);

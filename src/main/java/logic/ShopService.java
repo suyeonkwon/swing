@@ -76,17 +76,24 @@ public class ShopService {
 	public List<WishList> getWishlist(String userid) {
 		return wishlistDao.list(userid);
 	}
-	public Date getStartTime(int classid) {
-		return wishlistDao.startTime(classid);
+	public Date getStartDate(Integer classid) {
+		return wishlistDao.startDate(classid);
 	}
-	public int getStar(int classid) {
+	public int getStar(Integer classid) {
 		return wishlistDao.star(classid);
 	}
-	public int getParticiNum(int classid) {
+	public int getParticiNum(Integer classid) {
 		return wishlistDao.particiNum(classid);
 	}
 	public void wishDelete(WishList wish) {
 		wishlistDao.delete(wish);
+	}
+	/*--tutee_classList--*/
+	public List<Course> getCourselist(String userid) {
+		return applylistDao.clist(userid);
+	}	
+	public int getCurseq(String userid, Integer applyno) {
+		return applylistDao.curseq(userid,applyno);
 	}
 
 	public List<License> getLicense(String userid) {
@@ -97,7 +104,13 @@ public class ShopService {
 		int maxnum = applylistDao.maxnum();
 		apply.setApplyno(++maxnum);
 		applylistDao.insert(apply);
-		
+	}
+
+	public List<User> getApplylist(Integer classid, Integer classno) {
+		return applylistDao.select(classid,classno);
+	}
+	public Course getClassDate(Integer classid, Integer classno) {
+		return classInfoDao.date(classid,classno);
 	}
 
 	public int checkwish(WishList wish) {
@@ -117,5 +130,5 @@ public class ShopService {
 		return reviewDao.cnt(classid);
 	}
 
-
+	
 }

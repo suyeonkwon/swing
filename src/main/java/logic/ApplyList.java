@@ -5,7 +5,6 @@ public class ApplyList {
 	private String userid;
 	private int classid;
 	private int classno;
-	private int classseq;
 	
 	// getter, setter, toString
 	public int getApplyno() {
@@ -32,15 +31,9 @@ public class ApplyList {
 	public void setClassno(int classno) {
 		this.classno = classno;
 	}
-	public int getClassseq() {
-		return classseq;
-	}
-	public void setClassseq(int classseq) {
-		this.classseq = classseq;
-	}
+
 	@Override
 	public String toString() {
-		return "ApplyList [applyno=" + applyno + ", userid=" + userid + ", classid=" + classid + ", classno=" + classno
-				+ ", classseq=" + classseq + "]";
+		return "ApplyList [applyno=" + applyno + ", userid=" + userid + ", classid=" + classid + ", classno=" + classno + "]";
 	}
 }
