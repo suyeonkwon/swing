@@ -30,15 +30,15 @@ public class WishlistDao {
 		return template.getMapper(WishlistMapper.class).select(userid);
 	}
 
-	public int star(int classid) {
+	public int star(Integer classid) {
 		return template.getMapper(WishlistMapper.class).star(classid);
 	}
 
-	public int particiNum(int classid) {
+	public int particiNum(Integer classid) {
 		return template.getMapper(WishlistMapper.class).particiNum(classid);
 	}
 
-	public Date startDate(int classid) {
+	public Date startDate(Integer classid) {
 		return template.getMapper(WishlistMapper.class).startDate(classid);
 	}
 	

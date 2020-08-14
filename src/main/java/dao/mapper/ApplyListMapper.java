@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Select;
 
 import logic.ApplyList;
 import logic.Course;
+import logic.User;
 
 public interface ApplyListMapper {
 	
@@ -39,5 +40,12 @@ public interface ApplyListMapper {
 
 	@Insert("insert into applylist(applyno, userid, classid, classno) values(#{applyno}, #{userid}, #{classid}, #{classno})")
 	void insert(ApplyList apply);
+
+	@Select("SELECT u.userid, u.name, u.email " + 
+			"FROM applylist a, user u " + 
+			"WHERE a.userid = u.userid " + 
+			"AND a.classid = #{classid} " + 
+			"AND a.classno = #{classno}")
+	List<User> select(Map<String, Object> param);
 	
 }

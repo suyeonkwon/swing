@@ -18,17 +18,17 @@ public interface WishlistMapper {
 	
 	@Select("SELECT ifnull(avg(star),0) star FROM review " + 
 			"WHERE classid=#{classid}")
-	int star(int classid);
+	int star(Integer classid);
 	
 	@Select("SELECT COUNT(applyno) cnt FROM applylist a, class c " + 
 			"WHERE a.classid = c.classid " + 
 			"AND a.classid = #{classid}")
-	int particiNum(int classid);
+	int particiNum(Integer classid);
 	
 	@Select("SELECT DATE FROM classinfo " + 
 			"WHERE classid = #{classid} AND DATE > NOW() " + 
 			"LIMIT 1")
-	Date startDate(int classid);
+	Date startDate(Integer classid);
 	
 	@Delete("DELETE FROM wishlist WHERE userid=#{userid} AND classid=#{classid}")
 	void delete(WishList wish);

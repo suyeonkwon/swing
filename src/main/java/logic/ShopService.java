@@ -2,6 +2,7 @@ package logic;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -77,13 +78,13 @@ public class ShopService {
 	public List<WishList> getWishlist(String userid) {
 		return wishlistDao.list(userid);
 	}
-	public Date getStartDate(int classid) {
+	public Date getStartDate(Integer classid) {
 		return wishlistDao.startDate(classid);
 	}
-	public int getStar(int classid) {
+	public int getStar(Integer classid) {
 		return wishlistDao.star(classid);
 	}
-	public int getParticiNum(int classid) {
+	public int getParticiNum(Integer classid) {
 		return wishlistDao.particiNum(classid);
 	}
 	public void wishDelete(WishList wish) {
@@ -105,6 +106,14 @@ public class ShopService {
 		int maxnum = applylistDao.maxnum();
 		apply.setApplyno(++maxnum);
 		applylistDao.insert(apply);
+	}
+
+	public List<User> getApplylist(Integer classid, Integer classno) {
+		return applylistDao.select(classid,classno);
+	}
+
+	public Course getClassDate(Integer classid, Integer classno) {
+		return classInfoDao.date(classid,classno);
 	}
 
 	

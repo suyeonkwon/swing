@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import dao.mapper.ClassInfoMapper;
 import logic.Classinfo;
+import logic.Course;
 
 @Repository
 public class ClassInfoDao {
@@ -21,6 +22,13 @@ public class ClassInfoDao {
 		param.clear();
 		param.put("classid", classid);
 		return template.getMapper(ClassInfoMapper.class).select(param); 
+	}
+
+	public Course date(Integer classid, Integer classno) {
+		param.clear();
+		param.put("classid", classid);
+		param.put("classno", classno);
+		return template.getMapper(ClassInfoMapper.class).date(param); 
 	}
 
 }

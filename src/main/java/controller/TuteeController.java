@@ -30,7 +30,7 @@ public class TuteeController {
 
 	/* 위시리스트 */
 	@RequestMapping("wishAdd") // 위시리스트 추가
-	public ModelAndView wishAdd(int classid, HttpSession session) {
+	public ModelAndView wishAdd(Integer classid, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		WishList wish = new WishList();
 		User user = (User) session.getAttribute("loginUser");
@@ -60,7 +60,7 @@ public class TuteeController {
 	}
 
 	@RequestMapping("wishDelete") // 위시리스트 삭제
-	public ModelAndView wishDelete(int classid, HttpSession session) {
+	public ModelAndView wishDelete(Integer classid, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		User user = (User) session.getAttribute("loginUser");
 		String userid = user.getUserid();
@@ -74,7 +74,7 @@ public class TuteeController {
 
 	/* 수강목록 */
 	@RequestMapping("classlist")
-	public ModelAndView classlist(int state, HttpSession session) {
+	public ModelAndView classlist(Integer state, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		User user = (User) session.getAttribute("loginUser");
 		String userid = user.getUserid();

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import dao.mapper.ApplyListMapper;
 import logic.ApplyList;
 import logic.Course;
+import logic.User;
 
 @Repository
 public class ApplyListDao {
@@ -36,6 +37,13 @@ public class ApplyListDao {
 		param.put("userid", userid);
 		param.put("applyno", applyno);
 		return template.getMapper(ApplyListMapper.class).curseq(param);
+	}
+
+	public List<User> select(Integer classid, Integer classno) {
+		param.clear();
+		param.put("classid", classid);
+		param.put("classno", classno);
+		return template.getMapper(ApplyListMapper.class).select(param);
 	}
 
 }
