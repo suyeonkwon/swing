@@ -93,6 +93,9 @@ public class ShopService {
 	public List<Course> getCourselist(String userid) {
 		return applylistDao.clist(userid);
 	}	
+	public int getCurseq(String userid, Integer applyno) {
+		return applylistDao.curseq(userid,applyno);
+	}
 
 	public List<License> getLicense(String userid) {
 		return licenseDao.select(userid);
@@ -102,6 +105,7 @@ public class ShopService {
 		int maxnum = applylistDao.maxnum();
 		apply.setApplyno(++maxnum);
 		applylistDao.insert(apply);
-		
 	}
+
+	
 }

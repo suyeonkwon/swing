@@ -84,6 +84,7 @@ public class TuteeController {
 			List<Course> classlist = new ArrayList<Course>();
 			for (Course c : list) {
 				if (state == 1) {
+					c.setClassseq(service.getCurseq(userid,c.getApplyno()));
 					if (c.getEnddate().after(now)) {
 						classlist.add(c);
 					}
@@ -93,6 +94,7 @@ public class TuteeController {
 					}
 				}
 			}
+			System.out.println(classlist);
 			int classnum = classlist.size();
 			mav.addObject("state", state);
 			mav.addObject("classlist", classlist);

@@ -1,6 +1,7 @@
 package dao.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
@@ -24,9 +25,19 @@ public interface ApplyListMapper {
 			"GROUP BY ci.classid, ci.classno")
 	List<Course> list(String userid);
 	
+	@Select("SELECT ifnull(MIN(ci.classseq),0) 'time' " + 
+			"FROM applylist a left join classinfo ci " + 
+			"on ci.classid = a.classid " + 
+			"and ci.classno = a.classno " + 
+			"AND concat(ci.date,' ',ci.endtime) > NOW() " + 
+			"and a.userid=#{userid}" + 
+			"and applyno=#{applyno}")
+	int curseq(Map<String, Object> param);
+	
 	@Select("select ifnull(max(applyno),0) from applylist")
 	int maxnum();
 
 	@Insert("insert into applylist(applyno, userid, classid, classno) values(#{applyno}, #{userid}, #{classid}, #{classno})")
 	void insert(ApplyList apply);
+	
 }

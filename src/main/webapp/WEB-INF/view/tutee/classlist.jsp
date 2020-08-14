@@ -36,7 +36,7 @@ a:hover {
 		<c:forEach var="course" items="${classlist}" varStatus="status">
 			<div class="class-box">
 				<div class="profile_box">
-					<div class="profile" style="background-image: url('')"></div>
+					<div class="profile" style="background-image: url('${path}/assets/img/${course.tutorimg}')"></div>
 					<div class="name">${course.tutor} 튜터</div>
 				</div>
 				<div class="information-box">
@@ -47,15 +47,15 @@ a:hover {
 					<div class="start-box">
 						<font class="class-type">
 							<c:if test="${course.type==1}">원데이 수업</c:if>
-							<c:if test="${course.type==2}">${course.totaltime}회차 수업	<c:if test="${state==2}">중 ${course.classseq}회 수업 진행 예정</c:if></c:if>
+							<c:if test="${course.type==2}">다회차 수업 - ${course.totaltime}회 <c:if test="${state==1}">중 ${course.classseq}회 진행 예정</c:if></c:if>
 						</font>
 					</div>
 					<div class="start-date">
 						<c:if test="${state==1}" >
-						수강종료일 : <fmt:formatDate value="${course.enddate}" pattern="yyyy-MM-dd" />
+						수강 종료일 : <fmt:formatDate value="${course.enddate}" pattern="yyyy-MM-dd" />
 						</c:if>
 						<c:if test="${state==2}" >
-						수강기간 : <fmt:formatDate value="${course.startdate}" pattern="yyyy-MM-dd" />~
+						수강 기간 : <fmt:formatDate value="${course.startdate}" pattern="yyyy-MM-dd" />~
 								<fmt:formatDate value="${course.enddate}" pattern="yyyy-MM-dd" />
 						</c:if>
 					</div>

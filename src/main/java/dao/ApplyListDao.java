@@ -31,4 +31,11 @@ public class ApplyListDao {
 		return template.getMapper(ApplyListMapper.class).maxnum();
 	}
 
+	public int curseq(String userid, Integer applyno) {
+		param.clear();
+		param.put("userid", userid);
+		param.put("applyno", applyno);
+		return template.getMapper(ApplyListMapper.class).curseq(param);
+	}
+
 }
