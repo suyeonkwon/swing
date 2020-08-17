@@ -88,7 +88,7 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
               <li><a href="${path}/tutor/applylist.shop">수업 신청 목록</a></li>
             </ul>
           </li>
-          <li><a href="${path}/talk/main.shop">실시간톡</a></li>
+          <li><a href="" onclick="window.open('${path}/talk/detail.shop','','width=500, height=650');">실시간톡</a></li>
           <li><a href="${path}/tutee/classlist.shop?userid=${sessionScope.loginUser.userid}&state=1">수강목록</a></li>
           <li><a href="${path}/tutee/wishlist.shop">위시리스트</a></li>
           <li class="drop-down"><a href="">${sessionScope.loginUser.userid}님의 마이 페이지</a>
