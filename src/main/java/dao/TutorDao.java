@@ -46,10 +46,24 @@ public class TutorDao {
 		return template.getMapper(TutorMapper.class).count2(param);
 	}
 	
-	public List<Classinfo> classinfolist(Integer classid) {
+	public List<Classinfo> classinfolist(String userid, Integer state) {
 		param.clear();
-		param.put("classid", classid);
+		param.put("userid", userid);
+		param.put("state", state);
 		return template.getMapper(TutorMapper.class).getclassinfo(param);
+	}
+
+	public void delete(String userid, Integer classid) {
+		param.clear();
+		param.put("userid", userid);
+		param.put("classid", classid);
+		template.getMapper(TutorMapper.class).delete(param);
+	}
+
+	public List<Class> listforConfirm(String userid) {
+		param.clear();
+		param.put("userid", userid);
+		return template.getMapper(TutorMapper.class).selectforConfirm(param);
 	}
 
 //	public int confirm(Integer classid) {

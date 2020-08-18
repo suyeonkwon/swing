@@ -17,26 +17,25 @@
 		<section id="counts" class="counts">
       <div class="container">
         <div class="text-center title">
-          <h4>♥나만의 [그립톡/키링/책갈피] 만들기♥ *레진공예*커플/우정 데이트 추천</h4>
+          <h4>${c.subject}</h4>
         </div>
         <div class="row counters">
           <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">서울</span>
+            <span data-toggle="counter-up">${c.location1} - ${c.location2}</span>
             <p>지역</p>
           </div>
 
-          <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">2020-07-29</span>
-            <p>날짜</p>
+          <div class="col-lg-6 col-6 text-center">
+            <span data-toggle="counter-up">
+            	<fmt:formatDate value="${date.startdate}" pattern="yyyy-MM-dd" />
+            	<c:if test="${c.type==2}">~<fmt:formatDate value="${date.enddate}" pattern="yyyy-MM-dd" /></c:if></span>
+            <p>강의 기간</p>
           </div>
 
           <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">오후1시</span>
-            <p>시간</p>
-          </div>
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">그룹수업</span>
+            <span data-toggle="counter-up">
+            	<c:if test="${c.type==1}">원데이 수업</c:if>
+				<c:if test="${c.type==2}">다회차 수업 (${c.totaltime}회) </c:if></span>
             <p>수업 형태</p>
           </div>
         </div>
@@ -45,12 +44,14 @@
 		<hr style="margin-top: 15px;">
 		</div>
 		<div class="row bg-gray">
-			<i class="bx bx-chevron-right"></i> 총 신청 인원수: 2명
+			<i class="bx bx-chevron-right"></i> 총 신청 인원수: ${applynum}
 	        <table class="table table-hover">
-				<tr><th>No.</th><th>이름</th><th>이메일</th><th>전화번호</th><th>레벨</th></tr>
-				<tr><td>1</td><td>user1</td><td>user1@aaa.bbb</td><td>01012345678</td><td><label class="badge badge-info">상</label></td></tr>
-				<tr><td>2</td><td>user2</td><td>user2@aaa.bbb</td><td>01056781234</td><td><label class="badge badge-warning">중</label></td></tr>
-				<tr><td>3</td><td>user2</td><td>user2@aaa.bbb</td><td>01056781234</td><td><label class="badge badge-secondary">하</label></td></tr>				
+				<tr><th>No.</th><th>아이디</th><th>이름</th><th>이메일</th></tr>
+				<c:set var="n" value="1"/>
+				<c:forEach var="a" items="${applylist}" varStatus="status">
+				<tr><td>${n}</td><td>${a.userid}</td><td>${a.name}</td><td>${a.email}</td></tr>
+				<c:set var="n" value="${n+1}" />
+				</c:forEach>
 			</table>
 		</div>
 	</div>

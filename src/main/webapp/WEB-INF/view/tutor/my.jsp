@@ -19,6 +19,16 @@
       //open(src,"",);
       location.href=src;
    }
+   
+   function deleteCheck(classid){
+	   if(confirm("해당 클래스를 정말 삭제하시겠습니까?") == true){
+		   location.href="classDelete.shop?classid="+classid;
+		   alert("해당 클래스가 삭제되었습니다.");
+		   
+	   }else{
+		   return false;
+	   }
+   }
 </script>
 </head>
 <body>
@@ -69,8 +79,8 @@
          <c:if test="${classcount > 0}">
          <c:forEach var="cl" items="${classlist}">
       	      	
-         <div class="col-lg-4" onclick="page('../class/detail.shop?classid=${cl.classid}')" style="cursor:pointer;">
-               <div class="team-img">
+         <div class="col-lg-4" style="cursor:pointer;">
+               <div class="team-img" onclick="page('../class/detail.shop?classid=${cl.classid}')">
                	  <c:if test="${cl.state == 1}">
                   	<label class="badge badge-success">등록진행중</label>
                   	<img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-3.jpg" alt="">
@@ -93,8 +103,17 @@
                      <h4><a href="../class/detail.shop?classid=${cl.classid}">${cl.subject}</a></h4>
                      <p>${cl.nickname}(${cl.userid})</p>
                      <p>[신청일시] <fmt:formatDate value="${cl.regdate}" pattern="yyyy-MM-dd HH:mm:ss" /></p>
-                     <p>[수업시작일] <fmt:formatDate value="${cl.date}" pattern="yyyy-MM-dd" /> </p>
                      <p>[위치] ${cl.location1} ${cl.location2}</p>
+                     <p>[수업형태] <c:if test="${cl.maxtutee == 1}"> 1:1 </c:if>
+                     			 <c:if test="${cl.maxtutee > 1 }"> 최대 ${cl.maxtutee}인</c:if>
+                     			 <c:if test="${cl.type == 1}">원데이 클래스</c:if>
+                     			 <c:if test="${cl.type == 2}">다회차 클래스</c:if></p>
+                   	 <c:if test="${cl.state == 3}">
+                   	 	<div style="float: right;">
+                   	 	<input type="button" value="수정" onclick="location.href='../tutor/register.shop'">&nbsp;
+                   	 	<input type="button" value="삭제" onclick="deleteCheck(${cl.classid})">
+                   	 	</div>
+                   	 </c:if>
                   </div>
                </div>
          </div>

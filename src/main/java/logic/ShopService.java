@@ -2,6 +2,7 @@ package logic;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -73,22 +74,15 @@ public class ShopService {
 	public int classCount2(String userid, Integer state) {
 		return tutorDao.count2(userid, state);
 	}
-	public List<Classinfo> getClassInfoList(Integer classid) {
-		return tutorDao.classinfolist(classid);
+	public List<Classinfo> getClassInfoList(String userid, Integer state) {
+		return tutorDao.classinfolist(userid, state);
 	}
-//	public List<Class> getClassList(Class cl) {
-//	int confirm = tutorDao.confirm(cl);   // 마지막 차수의 마지막 회차의 진행상태
-//	if(confirm == 0) {                  // 마지막 차수의 마지막 회차의 진행상태가 '완료' 일 경우
-//		cl.setState(6);
-//	}else {
-//		cl.setState(5);
-//	}
-//	return tutorDao.list(cl);
-//}
-//public int classCount(Class cl) {
-//	return tutorDao.count(cl);
-//}	
-
+	public void classDelete(String userid, Integer classid) {
+		tutorDao.delete(userid, classid);
+	}
+	public List<Class> getClassListforConfirm(String userid) {
+		return tutorDao.listforConfirm(userid);
+	}
 	
 
 	public Class getClass(Integer classid) {
@@ -111,17 +105,24 @@ public class ShopService {
 	public List<WishList> getWishlist(String userid) {
 		return wishlistDao.list(userid);
 	}
-	public Date getStartTime(int classid) {
-		return wishlistDao.startTime(classid);
+	public Date getStartDate(Integer classid) {
+		return wishlistDao.startDate(classid);
 	}
-	public int getStar(int classid) {
+	public int getStar(Integer classid) {
 		return wishlistDao.star(classid);
 	}
-	public int getParticiNum(int classid) {
+	public int getParticiNum(Integer classid) {
 		return wishlistDao.particiNum(classid);
 	}
 	public void wishDelete(WishList wish) {
 		wishlistDao.delete(wish);
+	}
+	/*--tutee_classList--*/
+	public List<Course> getCourselist(String userid) {
+		return applylistDao.clist(userid);
+	}	
+	public int getCurseq(String userid, Integer applyno) {
+		return applylistDao.curseq(userid,applyno);
 	}
 
 
@@ -133,9 +134,34 @@ public class ShopService {
 		int maxnum = applylistDao.maxnum();
 		apply.setApplyno(++maxnum);
 		applylistDao.insert(apply);
-		
+	}
+
+
+	public List<User> getApplylist(Integer classid, Integer classno) {
+		return applylistDao.select(classid,classno);
+	}
+	public Course getClassDate(Integer classid, Integer classno) {
+		return classInfoDao.date(classid,classno);
+	}
+
+	public int checkwish(WishList wish) {
+		return wishlistDao.checkwish(wish);
+	}
+
+	public int classcount(String location1, String location2, Integer type, Integer maxtutee, Integer cate) {
+		return classDao.count(location1,location2,type,maxtutee,cate);
+	}
+
+	public List<Class> classList(Integer pageNum,Integer sorted, int limit, String location1, String location2, Integer type,
+			Integer maxtutee,Integer cate) {
+		return classDao.list(pageNum,sorted,limit,location1,location2,type,maxtutee,cate);
+	}
+
+	public int getReviewcnt(Integer classid) {
+		return reviewDao.cnt(classid);
 	}
 
 	
+
 	
 }

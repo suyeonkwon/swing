@@ -112,6 +112,22 @@
 					var offset = $("#"+section).offset();
 					$('html,body').animate({scrollTop:offset.top},400);
 				}
+				
+				$(function(){
+					$('#wishBtn').click(function(){
+						$.ajax("${path}/class/checkwishlist.shop?classid=${param.classid}",{
+							success:function(data){
+								console.log(data);
+								//alert(data);
+								if(data==0){
+									$('#heart').attr("src",'${path}/assets/img/icon/heart_on.png')
+								}else{
+									$('#heart').attr("src",'${path}/assets/img/icon/heart.png')
+								}
+							}
+						})
+					})
+				})
 			</script>
 			<div class="class_detail" id="sumary">
 				<div class="class_name">
@@ -122,10 +138,10 @@
 				</div>
 				<div class="class_title">
 					<div class="title">${cls.subject}</div>
-					<a id="wishBtn" class="bnt_wishlist">찜하기</a>
+					<a id="wishBtn" class="bnt_wishlist"><img id="heart" src="${path}/assets/img/icon/heart.png">찜하기</a>
 					<div class="info">
 						<a class="starimg">
-							<input type="hidden" id="Avg" value="${starAvg}">
+							<input type="hidden" id="Avg" value="${cls.staravg}">
 							<span class="star star_left"></span>
 						    <span class="star star_right"></span>
 						
@@ -141,22 +157,29 @@
 						   <span class="star star_left"></span>
 						   <span class="star star_right"></span>
 						  <font style="vertical-align: inherit;position: relative;bottom: 0.5em;">
-						   (${fn:length(review)})
+						   (${cls.reviewcnt})
 						 </font>
 						</a>
 					</div>
 					<div class="info">
 						<ul>
-							<li class="ar" id="regionAll">${cls.location2}</li>
-							<li class="hu"><font color="#49b5e7">${cls.time}</font>시간/
+							<li class="ar" id="regionAll">
+								<img src="${path}/assets/img/icon/marker.png">
+								${cls.location2}</li>
+							<li class="hu">
+								<img src="${path}/assets/img/icon/clock.png" style="margin: 0 1.2em;">
+								<font color="#49b5e7">${cls.time}</font>시간/
 								<c:if test="${cls.totaltime!=1}">${cls.totaltime}</c:if>회</li>
 							<li class="gr">
+								<img src="${path}/assets/img/icon/people.png" style="margin: 0 2.1em;">
 								<c:if test="${cls.maxtutee==1}">1:1수업</c:if>
 								<c:if test="${cls.maxtutee>1}">
 									최대인원<font color="#49b5e7">2~${cls.maxtutee}명</font>
 								</c:if>
 							</li>
-							<li class="ohu"><font color="#49b5e7">￦${cls.price}</font>/시간</li>
+							<li class="ohu">
+								<img src="${path}/assets/img/icon/won2.png" style="margin: 0 2em;">
+								<font color="#49b5e7">￦${cls.price}</font>/시간</li>
 						</ul>
 					</div>
 				</div>
@@ -189,7 +212,7 @@
 			</div>
 			<div class="class_detail detail_sec_bor" id="review">
 				<div class="section01">
-					<h1>리뷰(${fn:length(review)})</h1>
+					<h1>리뷰(${cls.reviewcnt})</h1>
 					<a href="javascript:reviewPop()"class="btn_st" id="btn-write-review">리뷰쓰기</a>
 					<script>
 						function reviewPop(){
@@ -210,7 +233,7 @@
 						   <span class="star star_right"></span>
 						
 						   <span class="star star_left"></span>
-						   <span class="star star_right"></span> <p>${starAvg}</p>
+						   <span class="star star_right"></span> <p>${cls.staravg}</p>
 					</div>
 					<script type="text/javascript">
 						$(function(){
@@ -224,8 +247,8 @@
 					<div class="review_list">
 						<ul>
 							<div id="innerReviewDiv">
-								<c:if test="${review==null}">등록된 리뷰가 없습니다.</c:if>
-								<c:if test="${review!=null}">
+								<c:if test="${cls.reviewcnt==0}">등록된 리뷰가 없습니다.</c:if>
+								<c:if test="${cls.reviewcnt!=0}">
 									<c:set value="0" var="i"/>
 									<c:forEach items="${review}" var="re" varStatus="status">
 										<li>

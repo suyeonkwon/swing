@@ -22,6 +22,11 @@ public class Class {
 	private int readcnt;
 	private int state;
 	private Date regdate;
+	//참여인원수
+	private int totaltutee;
+	//클래스 리뷰 평점, 갯수
+	private int staravg;
+	private int reviewcnt;
 	
 	// tutor my.jsp 에 join을 통해 가져온 정보
 	private String nickname;
@@ -163,7 +168,25 @@ public class Class {
 	public void setDate(Date date) {
 		this.date = date;
 	}
+	public int getTotaltutee() {
+		return totaltutee;
+	}
+	public void setTotaltutee(int totaltutee) {
+		this.totaltutee = totaltutee;
+	}
 	
+	public int getStaravg() {
+		return staravg;
+	}
+	public void setStaravg(int staravg) {
+		this.staravg = staravg;
+	}
+	public int getReviewcnt() {
+		return reviewcnt;
+	}
+	public void setReviewcnt(int reviewcnt) {
+		this.reviewcnt = reviewcnt;
+	}
 	@Override
 	public String toString() {
 		return "Class [classid=" + classid + ", userid=" + userid + ", location1=" + location1 + ", location2="
