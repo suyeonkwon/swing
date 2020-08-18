@@ -73,7 +73,7 @@
 				</div>
 			</div>
 			<!-- 여기까지 날짜,시간,장소 정보 -->
-			<a onclick="" class="btn_talk">실시간 톡</a>
+			<a onclick="window.open('${path}/talk/newchat.shop?classid=${param.classid}','','width=500,height=650')" class="btn_talk">실시간 톡</a>
 			<div class="btn_payment">
 				<a href="check.shop?classid=${param.classid}">
 					<span class="btntxt" id="checkbt">수업 신청하기</span>

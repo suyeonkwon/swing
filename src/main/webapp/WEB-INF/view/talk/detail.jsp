@@ -14,14 +14,22 @@
 <script type="text/javascript">
 	$(function(){
 		var ws = new WebSocket("ws://${server}:${port}${path}/chatting.shop");
+		var jsonArray = new Array();
+		var TotalJson = new Array();
+		var finalObj = new Object();
 		//socket 연결시
 		ws.onopen=function(){
 			$("#chatStatus").text("info:connection opened")
 			$("#message").on("keydown",function(evt){
 				if(evt.keyCode==13){ //enter key 코드 값
 					var msg = $("#message").val();
-					ws.send(msg); //서버로 입력된 내용 전송
-					$("#message").val("");
+					var json=new Object();
+					json.message = msg;
+					json.date = new Date();
+					jsonArray.push(json);
+					ws.send(JSON.stringify(json));
+					alert(JSON.stringify(jsonArray))
+					$("#message").val("");//서버로 입력된 내용 전송
 				}
 			})
 		}
@@ -38,19 +46,6 @@
 			var current_session=$('#sessionuserid').val();
 			console.log('current session id:'+current_session);
 			if(sessionid==current_session){ //내가 보낸 message
-				/*
-				<dl class="my">
-				<dt>
-					<div class="profile" style="background-image:url'${path}/assets/img/user.png'">
-					</div>
-					<div class="name">튜티</div>
-				</dt>
-				<dd class="blo">
-					뚝썸유원지에서만 진행하시는 건가요?
-					<span class="date">2020-08-04 17:49:29</span>
-				</dd>
-				</dl>
-				*/
 				var printHTML = "<dl class='my'><dt>"+
 				"<div class='profile' style='background-image:url'/swing/assets/img/"
 				+profile+"'></div><div class='name'>"+name+"</div></dt>"+
@@ -58,20 +53,6 @@
 				"<span class='date'>"+date+"</span></dd></dl>"
 				$(".content").append(printHTML);
 			}else{ //상대방 메시지
-				/*
-							<dl class="other">
-				<dt>
-					<div class="profile" style="background-image:url'${path}/assets/img/user.png'">
-					</div>
-					<div class="name">튜터</div>
-				</dt>
-				<dd class="blo">
-					네 뚝섬유원지에서 진행될 예정입니다! 다만, 우천시 실내로 변경되어서
-					장소가 바뀌세요
-					<span class="date">2020-08-04 17:55:29</span>
-				</dd>			
-			</dl>
-				*/
 				var printHTML = "<dl class='other'><dt>"+
 				"<div class='profile' style='background-image:url'/swing/assets/img/"
 				+profile+"'></div><div class='name'>"+name+"</div></dt>"+
@@ -79,12 +60,22 @@
 				"<span class='date'>"+date+"</span></dd></dl>"
 				$(".content").append(printHTML);
 			}
-			console.log('chatting data:'+data);
+//			console.log('chatting data:'+data);
 		}
 		//socket 닫혔을시
 		ws.onclose = function(event){
 			$("#chatStatus").text("info:connection close");
 		}
+		$(window).bind("beforeunload",function(){
+			var obj = {
+					talk:jsonArray
+			}
+			$.ajax("${path}/talk/talkClose.shop?TotalJson="+encodeURI(JSON.stringify(obj)),{
+				success:function(data){
+					console.log(data);
+				}
+			})
+		});
 	})
 </script>  
 </head>
@@ -93,7 +84,7 @@
 	튜터님과의 대화
 	<a href="" class="btn_list">목록</a>
 </h1>
-<div id="qna_view" class="qna_view" style="height:474px;">
+<div id="qna_view" class="qna_view" style="height: 400px;overflow-y: scroll;">
 	<form method="POST" id="" enctype="multipart/form-data">
 		<div class="content">
 			<div class="info">
@@ -130,11 +121,8 @@
 </div>
 <div class="q_write">
 	<textarea id="message" name="Message"></textarea>
-	<a href="#" onclick="message();" class="qwbtn">전송</a>
+	<a href="#" onclick="" id="qwbtn" class="qwbtn">전송</a>
 </div>
 <p>
-<div id="chatStatus"></div>
-<textarea id="chatMsg" name="chatMsg" rows="15" cols="40"></textarea><br>
-메시지 입력: <input type="text" name="chatInput">
 </body>
 </html>
