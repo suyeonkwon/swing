@@ -9,8 +9,11 @@ import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.websocket.server.HandshakeRequest;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
@@ -18,13 +21,18 @@ import org.springframework.web.socket.WebSocketMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+import logic.ShopService;
 import logic.User;
 
 @Component
 public class EchoHandler extends TextWebSocketHandler implements InitializingBean{
+	@Autowired
+	private ShopService service;
+//	private JSONArray jsonarr;
 	//연결되는 클라이언트 목록
 	private Set<WebSocketSession> clients = new HashSet<WebSocketSession>();
 	private User user;
+//	private JSONArray jsonArray = new JSONArray();
 	@Override // 소켓에서 나한테 들어와서 연결되는 경우
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception{
 		super.afterConnectionEstablished(session);
@@ -39,12 +47,14 @@ public class EchoHandler extends TextWebSocketHandler implements InitializingBea
 	@Override //메세지 수신시 
 	public void handleMessage(WebSocketSession session,WebSocketMessage<?> message) throws Exception{
 		//클라이언트가 전송한 메세지 내용
-		JSONObject jsonObj = new JSONObject(); 
+		JSONParser jsonParser = new JSONParser();
+		JSONObject jsonObj = (JSONObject)jsonParser.parse((String)message.getPayload());
+//		JSONObject jsonObj = new JSONObject(); 
 		String loadMessage = (String)message.getPayload();
 		jsonObj.put("sessionid", user.getUserid());
-		jsonObj.put("message", loadMessage);
+//		jsonObj.put("message", loadMessage);
 		jsonObj.put("profile", user.getFile());
-		jsonObj.put("date", ""+new Date());
+//		jsonObj.put("date", ""+new Date());
 		jsonObj.put("name", user.getName());
 		String json = jsonObj.toJSONString();
 //		System.out.println(user.getUserid()+":"+loadMessage);

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dao.ApplyListDao;
+import dao.ChattingDao;
 import dao.ClassDao;
 import dao.ClassInfoDao;
 import dao.LicenseDao;
@@ -34,6 +35,8 @@ public class ShopService {
 	private LicenseDao licenseDao;
 	@Autowired
 	private ApplyListDao applylistDao;
+	@Autowired
+	private ChattingDao chattingDao;
 
 	
 	public List<User> userList() {
@@ -161,7 +164,12 @@ public class ShopService {
 		return reviewDao.cnt(classid);
 	}
 
-	
+	public void addChat(Chatting chatting) {
+		chattingDao.insert(chatting);	
+	}
 
-	
+	public int maxroom() {
+		return chattingDao.maxroom();
+	}
+
 }

@@ -20,7 +20,7 @@ public interface WishlistMapper {
 			"WHERE classid=#{classid}")
 	int star(Integer classid);
 	
-	@Select("SELECT COUNT(applyno) cnt FROM applylist a, class c " + 
+	@Select("SELECT COUNT(*) cnt FROM applylist a, class c " + 
 			"WHERE a.classid = c.classid " + 
 			"AND a.classid = #{classid}")
 	int particiNum(Integer classid);
