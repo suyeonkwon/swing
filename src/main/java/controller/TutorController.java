@@ -1,5 +1,6 @@
 package controller;
 
+import org.apache.ibatis.binding.BindingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import logic.Classinfo;
 import logic.Course;
+import logic.Class;
 import logic.ShopService;
 import logic.User;
 
@@ -89,6 +91,49 @@ public class TutorController {
 		User loginUser = (User) session.getAttribute("loginUser");
 		service.classDelete(loginUser.getUserid(),classid);
 		mav.setViewName("redirect:/tutor/my.shop");
+		return mav;
+	}
+	
+	@RequestMapping("register-class")
+	public ModelAndView registerClassView(Integer classid, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		try {
+			Class c = service.getClass(classid);
+			User tutor = service.getUser(c.getUserid());
+			String tutorimg = tutor.getFile();
+			int classno = service.maxClassno(classid); 
+			Classinfo ci = service.getClassInfoOne(classid,classno,1);
+			
+			if(classno==1 && ci.getDate()==null) {
+			} else {
+				classno++;
+			}
+			mav.addObject("c",c);
+			mav.addObject("tutorimg",tutorimg);
+			mav.addObject("newclassno",classno);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return mav;
+	}
+	
+	@RequestMapping("registerClassinfo")
+	public ModelAndView registerClass(Classinfo ci, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		try {
+			Class c = service.getClass(ci.getClassid());
+			System.out.println(ci);
+			if(c.getType()==1) { // 일일클래스이면
+				ci.setClassseq(1);
+				System.out.println(ci);
+				service.registerClassinfo(ci);
+			} else if(c.getType()==2){
+				
+			}
+			
+		} catch(BindingException e) {
+			e.printStackTrace();
+		}
 		return mav;
 	}
 }

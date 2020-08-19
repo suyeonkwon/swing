@@ -86,7 +86,6 @@ public class ShopService {
 	public List<Class> getClassListforConfirm(String userid) {
 		return tutorDao.listforConfirm(userid);
 	}
-	
 
 	public Class getClass(Integer classid) {
 		return classDao.selectOne(classid);
@@ -101,6 +100,7 @@ public class ShopService {
 	}
 
 
+	
 	/*----WishList----*/
 	public void wishInsert(WishList wish) {
 		wishlistDao.insert(wish);
@@ -124,8 +124,8 @@ public class ShopService {
 	public List<Course> getCourselist(String userid) {
 		return applylistDao.clist(userid);
 	}	
-	public int getCurseq(String userid, Integer applyno) {
-		return applylistDao.curseq(userid,applyno);
+	public int getCurseq(String userid, Integer classid,Integer classno) {
+		return applylistDao.curseq(userid,classid,classno);
 	}
 
 
@@ -171,5 +171,16 @@ public class ShopService {
 	public int maxroom() {
 		return chattingDao.maxroom();
 	}
+	
 
+	public int maxClassno(Integer classid) {
+		return classInfoDao.maxnum(classid);
+	}
+
+	public void registerClassinfo(Classinfo classinfo) {
+		classInfoDao.register(classinfo);
+	}	
+	public Classinfo getClassInfoOne(Integer classid, int classno, int classseq) {
+		return classInfoDao.selectOne(classid,classno,classseq);
+	}	
 }

@@ -12,7 +12,7 @@ import logic.User;
 
 public interface ApplyListMapper {
 	
-	@Select("SELECT a.applyno, u.nickname 'tutor', u.file 'tutorimg', a.classid, a.classno, " + 
+	@Select("SELECT u.nickname 'tutor', u.file 'tutorimg', a.classid, a.classno, " + 
 			"c.subject, c.location1, ci.place, c.type, c.totaltime, c.totalprice, " +
 			"concat(MIN(ci.DATE),' ',MIN(ci.starttime)) 'startdate', concat(MAX(ci.date),' ',MAX(ci.endtime)) 'enddate', " + 
 			"ifnull(COUNT(r.reviewno),0) 'reviewnum', ifnull(AVG(r.star),0) 'star' " + 
@@ -31,8 +31,9 @@ public interface ApplyListMapper {
 			"on ci.classid = a.classid " + 
 			"and ci.classno = a.classno " + 
 			"AND concat(ci.date,' ',ci.endtime) > NOW() " + 
-			"and a.userid=#{userid}" + 
-			"and applyno=#{applyno}")
+			"and a.userid=#{userid} " + 
+			"and a.classid=#{classid} " + 
+			"and a.classno=#{classno}")
 	int curseq(Map<String, Object> param);
 	
 	@Select("select ifnull(max(applyno),0) from applylist")

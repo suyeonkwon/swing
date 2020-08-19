@@ -1,6 +1,7 @@
 package logic;
 
 import java.util.Date;
+import java.util.List;
 
 public class Classinfo {
 	private int classid; // 수업 아이디
@@ -12,7 +13,15 @@ public class Classinfo {
 	private String place;
 	private String title;
 	private String curri;
+	// 클래스 정보 리스트 
+	private List<Classinfo> classinfos;
 	
+	public List<Classinfo> getClassinfos() {
+		return classinfos;
+	}
+	public void setClassinfos(List<Classinfo> classinfos) {
+		this.classinfos = classinfos;
+	}
 	// getter, setter, toString
 	public int getClassid() {
 		return classid;
@@ -68,6 +77,7 @@ public class Classinfo {
 	public void setCurri(String curri) {
 		this.curri = curri;
 	}
+	
 	@Override
 	public String toString() {
 		return "Classinfo [classid=" + classid + ", classno=" + classno + ", classseq=" + classseq + ", date=" + date

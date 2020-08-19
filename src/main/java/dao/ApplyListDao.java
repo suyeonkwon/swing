@@ -32,13 +32,14 @@ public class ApplyListDao {
 		return template.getMapper(ApplyListMapper.class).maxnum();
 	}
 
-	public int curseq(String userid, Integer applyno) {
+	public int curseq(String userid, Integer classid, Integer classno) {
 		param.clear();
 		param.put("userid", userid);
-		param.put("applyno", applyno);
+		param.put("classid", classid);
+		param.put("classno", classno);
 		return template.getMapper(ApplyListMapper.class).curseq(param);
 	}
-
+	
 	public List<User> select(Integer classid, Integer classno) {
 		param.clear();
 		param.put("classid", classid);
