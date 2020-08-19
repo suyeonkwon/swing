@@ -59,10 +59,10 @@ public interface TutorMapper {
 	void delete(Map<String, Object> param);
 
 	@Select({"<script>",
-		"SELECT c.classid, i.classno, max(i.classseq), c.userid, c.subject, c.coverimg, c.location1, c.location2, c.regdate, c.state",
+		"SELECT c.classid, max(i.classno), max(i.classseq), c.userid, c.subject, i.date, c.coverimg, c.location1, c.location2, c.regdate, c.state",
 		" FROM classinfo i JOIN class c ON i.classid=c.classid JOIN user u ON c.userid=u.userid",
-		" WHERE u.userid=#{param} AND c.state>4",
-		" GROUP BY c.classid, i.classno",
+		" WHERE u.userid=#{userid} AND c.state>4",
+		" GROUP BY c.classid",
 		"</script>"})
 	List<Class> selectforConfirm(Map<String, Object> param);
 

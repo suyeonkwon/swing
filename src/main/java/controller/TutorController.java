@@ -63,13 +63,29 @@ public class TutorController {
 		List<logic.Class> classlist = service.getClassList2(loginUser.getUserid(), state);
 		int classcount = service.classCount2(loginUser.getUserid(), state);
 		List<Classinfo> classinfolist = service.getClassInfoList(loginUser.getUserid(), state);
-		List<logic.Class> forConfirmList = service.getClassListforConfirm(loginUser.getUserid());
-		Date today = new Date();
-		for(int i=0; i<forConfirmList.size(); i++) {
-			if(forConfirmList.get(i).getDate().before(today)) {
-				forConfirmList.get(i).setState(6);
-			}
-		}
+		
+		
+//		Date today = new Date();
+//		if(classinfolist.get(classinfolist.size()).getDate().before(today)) {
+//			logic.Class cl = service.getClass(classinfolist.get(classinfolist.size()-1).getClassid());
+//			cl.setState(6);
+//		}
+		
+//		List<logic.Class> forConfirmList = service.getClassListforConfirm(loginUser.getUserid(), state);
+//		logic.Class cl = new logic.Class();
+//		Date today = new Date();
+//		System.out.println(forConfirmList.size());
+//		System.out.println(forConfirmList.get(0).getDate());
+//		for(int i=0; i<forConfirmList.size(); i++) {
+//			if(forConfirmList.get(i).getDate().before(today)) {
+//				cl = service.getClass(forConfirmList.get(i).getClassid());
+//				cl.setState(6);
+////				forConfirmList.get(i).setState(6);
+//				System.out.println(cl.getState());
+//				mav.addObject("cl", cl);
+//			}
+//		}
+		
 
 //		System.out.println(getdate);
 //		if(getdate.before(today)) {

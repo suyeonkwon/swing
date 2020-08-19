@@ -83,8 +83,8 @@ public class ShopService {
 	public void classDelete(String userid, Integer classid) {
 		tutorDao.delete(userid, classid);
 	}
-	public List<Class> getClassListforConfirm(String userid) {
-		return tutorDao.listforConfirm(userid);
+	public List<Class> getClassListforConfirm(String userid, Integer state) {
+		return tutorDao.listforConfirm(userid, state);
 	}
 	
 
