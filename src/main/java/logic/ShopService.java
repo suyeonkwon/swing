@@ -29,7 +29,7 @@ public class ShopService {
 	@Autowired
 	private ClassDao classDao;
 	@Autowired
-	private ClassInfoDao classInfoDao;
+	private ClassInfoDao classinfoDao;
 	@Autowired
 	private WishlistDao wishlistDao;
 	/*----User----*/
@@ -105,15 +105,15 @@ public class ShopService {
 	
 	/*----ClassInfo----*/
 	public List<Classinfo> classinfolist() {
-		return classInfoDao.list();
+		return classinfoDao.list();
 	}
 	
 	public List<Classinfo> classinfolistByState(int seqstate) {
-		return classInfoDao.listByState(seqstate);
+		return classinfoDao.listByState(seqstate);
 	}
 
 	public List<Classinfo> classinfolistById(String userid) {
-		return classInfoDao.listById(userid);
+		return classinfoDao.listById(userid);
 	}
 
 	/*----mypage(Tutor)----*/
@@ -158,7 +158,7 @@ public class ShopService {
 	}
 
 	public List<Classinfo> getClassInfo(Integer classid) {
-		return classInfoDao.select(classid);
+		return classinfoDao.select(classid);
 	}
 
 	public List<Review> getReview(Integer classid) {
@@ -210,7 +210,7 @@ public class ShopService {
 		return applylistDao.select(classid,classno);
 	}
 	public Course getClassDate(Integer classid, Integer classno) {
-		return classInfoDao.date(classid,classno);
+		return classinfoDao.date(classid,classno);
 	}
 
 	public int checkwish(WishList wish) {
@@ -260,17 +260,17 @@ public class ShopService {
 
 
 	public int maxClassno(Integer classid) {
-		return classInfoDao.maxnum(classid);
+		return classinfoDao.maxnum(classid);
 	}
 
 	public void firstClassinfo(Classinfo ci) {
-		classInfoDao.firstRegister(ci);
+		classinfoDao.firstRegister(ci);
 	}	
 	public void registerClassinfo(Classinfo ci) {
-		classInfoDao.register(ci);
+		classinfoDao.register(ci);
 	}	
 	public Classinfo getClassInfoOne(Integer classid, int classno, int classseq) {
-		return classInfoDao.selectOne(classid,classno,classseq);
+		return classinfoDao.selectOne(classid,classno,classseq);
 	}
 	
 	// tutor : yhl
