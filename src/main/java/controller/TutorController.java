@@ -1,6 +1,5 @@
 package controller;
 
-import org.apache.ibatis.binding.BindingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,7 +7,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import exception.Exception;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -16,6 +14,10 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.web.bind.annotation.ModelAttribute;
+
+import exception.Exception;
+import logic.Class;
 import logic.Classinfo;
 import logic.ClassinfoList;
 import logic.Course;
@@ -68,19 +70,14 @@ public class TutorController {
 		List<logic.Class> classlist = service.getClassList2(loginUser.getUserid(), state);
 		int classcount = service.classCount2(loginUser.getUserid(), state);
 		List<Classinfo> classinfolist = service.getClassInfoList(loginUser.getUserid(), state);
-		List<logic.Class> forConfirmList = service.getClassListforConfirm(loginUser.getUserid());
 		Date today = new Date();
-		for(int i=0; i<forConfirmList.size(); i++) {
-			if(forConfirmList.get(i).getDate().before(today)) {
-				forConfirmList.get(i).setState(6);
+		for(int i=0; i<classlist.size(); i++) {
+			logic.Class cl = service.getClass(classlist.get(i).getClassid());
+			Date classdate = service.getClDate(cl.getClassid());
+			if(classdate.before(today)) {
+				service.updateState(loginUser.getUserid(),cl.getClassid());
 			}
 		}
-
-//		System.out.println(getdate);
-//		if(getdate.before(today)) {
-//			logic.Class cl = service.getClass(classinfolist.get(classinfolist.size()-1).getClassid());
-//			cl.setState(6);
-//		}
 		mav.addObject("classlist", classlist);
 		mav.addObject("classinfolist", classinfolist);
 		mav.addObject("classcount", classcount);
@@ -94,6 +91,15 @@ public class TutorController {
 		User loginUser = (User) session.getAttribute("loginUser");
 		service.classDelete(loginUser.getUserid(),classid);
 		mav.setViewName("redirect:/tutor/my.shop");
+		return mav;
+	}
+	
+	@RequestMapping("outcome")
+	public ModelAndView outcome(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		User loginUser = (User) session.getAttribute("loginUser");
+		Map<String, Object> map = service.bargraph(loginUser.getUserid());
+		mav.addObject("map", map);
 		return mav;
 	}
 	
