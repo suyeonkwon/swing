@@ -52,4 +52,35 @@ public class ClassDao {
 		param.put("cate", cate);
 		return template.getMapper(ClassMapper.class).select(param);
 	}
+	
+	// 수업 등록
+		public void insert(Class clas) {
+			template.getMapper(ClassMapper.class).insert(clas);
+		}
+
+		public int checkclass(String userid) {
+			param.clear();
+			param.put("userid",userid);
+			int classid = 0;
+			try {
+				classid = template.getMapper(ClassMapper.class).checkclass(param);
+			}catch(Exception e) {
+				
+			}
+			return classid;
+		}
+
+		public void update(Class clas) {
+			template.getMapper(ClassMapper.class).update(clas);
+		}
+
+		public Integer temp(String userid) {
+			param.clear();
+			param.put("userid",userid);
+			return template.getMapper(ClassMapper.class).temp(param);
+		}
+
+		public int count2() {
+			return template.getMapper(ClassMapper.class).count2();
+		}
 }

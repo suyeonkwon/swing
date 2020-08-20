@@ -183,4 +183,39 @@ public class ShopService {
 	public Classinfo getClassInfoOne(Integer classid, int classno, int classseq) {
 		return classInfoDao.selectOne(classid,classno,classseq);
 	}	
+	
+	// tutor : yhl
+	public void userUpdate2(User user) {
+		userDao.update2(user);
+		
+	}
+
+	public void classInsert(Class clas) {
+		classDao.insert(clas);
+	}
+
+	public void licenseInsert(License license) {
+		licenseDao.insert(license);
+	}
+
+	public void classUpdate(Class clas) {
+		classDao.update(clas);
+		
+	}
+
+	public Integer classTemp(String userid) {
+		return classDao.temp(userid);
+	}
+
+	public License getLicenseOne(String userid) {
+		return licenseDao.selectOne(userid);
+	}
+
+	public int licenseCnt() {
+		return licenseDao.count();
+	}
+
+	public int classCnt() {
+		return classDao.count2();
+	}
 }
