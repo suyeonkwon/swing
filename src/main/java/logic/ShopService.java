@@ -13,6 +13,7 @@ import dao.ClassDao;
 import dao.ClassInfoDao;
 import dao.LicenseDao;
 import dao.ReviewDao;
+import dao.TutorDao;
 import dao.UserDao;
 import dao.WishlistDao;
 
@@ -22,6 +23,8 @@ public class ShopService {
 	private UserDao userDao;
 	@Autowired
 	private ReviewDao reviewDao;
+	@Autowired
+	private TutorDao tutorDao;
 	@Autowired
 	private ClassDao classDao;
 	@Autowired
@@ -60,6 +63,30 @@ public class ShopService {
 		review.setReviewno(++max);
 		reviewDao.insert(review);
 	}
+
+	/*----mypage(Tutor)----*/
+	public List<Class> getClassList(String userid, Integer state) {		//my.jsp
+		return tutorDao.list(userid, state);
+	}
+	public int classCount(String userid, Integer state) {
+		return tutorDao.count(userid, state);
+	}	
+	public List<Class> getClassList2(String userid, Integer state) {    //result.jsp
+		return tutorDao.list2(userid, state);
+	}
+	public int classCount2(String userid, Integer state) {
+		return tutorDao.count2(userid, state);
+	}
+	public List<Classinfo> getClassInfoList(String userid, Integer state) {
+		return tutorDao.classinfolist(userid, state);
+	}
+	public void classDelete(String userid, Integer classid) {
+		tutorDao.delete(userid, classid);
+	}
+	public List<Class> getClassListforConfirm(String userid) {
+		return tutorDao.listforConfirm(userid);
+	}
+
 	public Class getClass(Integer classid) {
 		return classDao.selectOne(classid);
 	}
@@ -72,6 +99,8 @@ public class ShopService {
 		return reviewDao.select(classid);
 	}
 
+
+	
 	/*----WishList----*/
 	public void wishInsert(WishList wish) {
 		wishlistDao.insert(wish);
@@ -95,9 +124,10 @@ public class ShopService {
 	public List<Course> getCourselist(String userid) {
 		return applylistDao.clist(userid);
 	}	
-	public int getCurseq(String userid, Integer applyno) {
-		return applylistDao.curseq(userid,applyno);
+	public int getCurseq(String userid, Integer classid,Integer classno) {
+		return applylistDao.curseq(userid,classid,classno);
 	}
+
 
 	public List<License> getLicense(String userid) {
 		return licenseDao.select(userid);
@@ -108,6 +138,7 @@ public class ShopService {
 		apply.setApplyno(++maxnum);
 		applylistDao.insert(apply);
 	}
+
 
 	public List<User> getApplylist(Integer classid, Integer classno) {
 		return applylistDao.select(classid,classno);
@@ -134,8 +165,6 @@ public class ShopService {
 	}
 
 	public void addChat(Chatting chatting) {
-		int maxtalk = chattingDao.maxtalk(chatting.getRoomno());
-		chatting.setTalkno(++maxtalk);
 		chattingDao.insert(chatting);	
 	}
 
@@ -143,21 +172,50 @@ public class ShopService {
 		return chattingDao.maxroom();
 	}
 
-	public List<Chatting> chattutee(String userid) {
-		return chattingDao.tutee(userid);
+
+	public int maxClassno(Integer classid) {
+		return classInfoDao.maxnum(classid);
 	}
 
-	public int newtalk(int roomno, String userid) {
-		return chattingDao.newtalk(roomno,userid);
-	}
-
-	public List<Chatting> chatlist(Integer roomno) {
-		return chattingDao.chatlist(roomno);
-	}
-
-	public void readchat(Integer roomno) {
-		chattingDao.readchat(roomno);
+	public void registerClassinfo(Classinfo classinfo) {
+		classInfoDao.register(classinfo);
+	}	
+	public Classinfo getClassInfoOne(Integer classid, int classno, int classseq) {
+		return classInfoDao.selectOne(classid,classno,classseq);
+	}	
+	
+	// tutor : yhl
+	public void userUpdate2(User user) {
+		userDao.update2(user);
 		
 	}
 
+	public void classInsert(Class clas) {
+		classDao.insert(clas);
+	}
+
+	public void licenseInsert(License license) {
+		licenseDao.insert(license);
+	}
+
+	public void classUpdate(Class clas) {
+		classDao.update(clas);
+		
+	}
+
+	public Integer classTemp(String userid) {
+		return classDao.temp(userid);
+	}
+
+	public License getLicenseOne(String userid) {
+		return licenseDao.selectOne(userid);
+	}
+
+	public int licenseCnt() {
+		return licenseDao.count();
+	}
+
+	public int classCnt() {
+		return classDao.count2();
+	}
 }

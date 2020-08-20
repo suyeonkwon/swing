@@ -8,7 +8,12 @@
 <title>수업중인목록</title>
 <link href="${path}/assets/css/tutee.css" rel="stylesheet">
 <script type="text/javascript">
-
+$(function(){
+	var idx = $('#Avg').val()/0.5;
+	for(var i=0; i<idx; i++){
+		$(".star").eq(i).addClass("on");
+	}
+})
 </script>
 <style type="text/css">
 a:hover {
@@ -55,16 +60,29 @@ a:hover {
 						수강 종료일 : <fmt:formatDate value="${course.enddate}" pattern="yyyy-MM-dd" />
 						</c:if>
 						<c:if test="${state==2}" >
-						수강 기간 : <fmt:formatDate value="${course.startdate}" pattern="yyyy-MM-dd" />~
-								<fmt:formatDate value="${course.enddate}" pattern="yyyy-MM-dd" />
+						수강 기간 : <fmt:formatDate value="${course.startdate}" pattern="yyyy-MM-dd" /><c:if test="${course.type==2}">~<fmt:formatDate value="${course.enddate}" pattern="yyyy-MM-dd" /></c:if>
 						</c:if>
 					</div>
 				<c:if test="${state==2}">
 					<div class="price">
-						<font class="class-start"><c:forEach begin="1" end="5" varStatus="vs">
-								<c:if test="${vs.current<=course.star}">★</c:if>
-								<c:if test="${vs.current>course.star}">☆</c:if>
-							</c:forEach>(${course.reviewnum})</font>
+						<font class="class-start">
+						<a class="starimg">
+							<input type="hidden" id="Avg" value="${course.star}">
+							<span class="star star_left"></span>
+						    <span class="star star_right"></span>
+						
+						    <span class="star star_left"></span>
+						    <span class="star star_right"></span>
+						
+						    <span class="star star_left"></span>
+						    <span class="star star_right"></span>
+						
+						   <span class="star star_left"></span>
+						   <span class="star star_right"></span>
+
+						   <span class="star star_left"></span>
+						   <span class="star star_right"></span>
+						</a>(${course.reviewnum})</font>
 						<font>\</font>
 						<fmt:formatNumber value="${course.totalprice}" type="currency"/>
 					</div>

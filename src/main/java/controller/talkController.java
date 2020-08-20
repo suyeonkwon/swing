@@ -98,7 +98,7 @@ public class talkController {
 		}
 		return "0";
 	}
-	
+	  
 	@RequestMapping("newchat")
 	public ModelAndView newchat(String classid) {
 		ModelAndView mav = new ModelAndView();

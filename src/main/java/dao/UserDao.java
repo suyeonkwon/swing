@@ -39,4 +39,9 @@ public class UserDao {
 	public List<User> list() {
 		return template.getMapper(UserMapper.class).select(null);
 	}
+	
+	//
+	public void update2(User user) {
+		template.getMapper(UserMapper.class).update2(user);
+	}
 }
