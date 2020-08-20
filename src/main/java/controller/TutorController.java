@@ -256,7 +256,7 @@ public class TutorController {
 			
 			mav.setViewName("/alert");
 			mav.addObject("msg","승인요청 되었습니다.");
-			mav.addObject("url","result.shop");
+			mav.addObject("url","register.shop");
 			return mav;
 		}
 		return mav;
