@@ -146,8 +146,8 @@ public class TutorController {
 	@RequestMapping("register")
 	public ModelAndView register(HttpSession session, String cid) {
 		ModelAndView mav = new ModelAndView();
-//		//User loginUser = (User)session.getAttribute("loginUser");
-		String userid = "yhl1"; //loginUser.getUserid();
+		User loginUser = (User)session.getAttribute("loginUser");
+		String userid = loginUser.getUserid();
 //		try {
 		User user = service.getUser(userid);
 		License license = service.getLicense(userid).get(0); //service.getLicense(userid).get(0);
@@ -178,8 +178,8 @@ public class TutorController {
 	public ModelAndView classEntry(User user, License license, Class clas, String button, Integer cid, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 
-//		User loginUser = (User)session.getAttribute("loginUser");
-		String userid = "yhl1";//loginUser.getUserid();
+		User loginUser = (User)session.getAttribute("loginUser");
+		String userid = loginUser.getUserid();
 		user.setUserid(userid);
 		license.setUserid(userid);
 		clas.setUserid(userid);
