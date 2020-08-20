@@ -70,19 +70,30 @@
 			var obj = {
 					talk:jsonArray
 			}
-			$.ajax("${path}/talk/talkClose.shop?TotalJson="+encodeURI(JSON.stringify(obj)),{
+			$.ajax("${path}/talk/talkClose.shop?roomno=${param.roomno}&classid=${param.classid}&TotalJson="+encodeURI(JSON.stringify(obj)),{
 				success:function(data){
 					console.log(data);
 				}
 			})
 		});
+		$('#btn_list').click(function(){
+			var obj2 = {
+					talk:jsonArray
+			}
+			$.ajax("${path}/talk/talkClose.shop?roomno=${param.roomno}&classid=${param.classid}&TotalJson="+encodeURI(JSON.stringify(obj2)),{
+				success:function(data){
+					console.log(data);
+					location.href="main.shop?userid=${sessionuser.userid}&type=tutee"
+				}
+			})			
+		})
 	})
 </script>  
 </head>
 <body>
 <h1 class="qna_title">
 	튜터님과의 대화
-	<a href="" class="btn_list">목록</a>
+	<div id="btn_list" class="btn_list">목록</div>
 </h1>
 <div id="qna_view" class="qna_view" style="height: 400px;overflow-y: scroll;">
 	<form method="POST" id="" enctype="multipart/form-data">
@@ -91,29 +102,36 @@
 				수업일정과 강의 내용에 대해 문의해보세요.<br>
 				(연락처 문의 또는 직접 알려주는 것은 불가)
 			</div>
-			<dl class="my">
-				<dt>
-					<div class="profile" style="background-image:url'${path}/assets/img/user.png'">
-					</div>
-					<div class="name">튜티</div>
-				</dt>
-				<dd class="blo">
-					뚝썸유원지에서만 진행하시는 건가요?
-					<span class="date">2020-08-04 17:49:29</span>
-				</dd>
-			</dl>
-			<dl class="other">
-				<dt>
-					<div class="profile" style="background-image:url'${path}/assets/img/user.png'">
-					</div>
-					<div class="name">튜터</div>
-				</dt>
-				<dd class="blo">
-					네 뚝섬유원지에서 진행될 예정입니다! 다만, 우천시 실내로 변경되어서
-					장소가 바뀌세요
-					<span class="date">2020-08-04 17:55:29</span>
-				</dd>			
-			</dl>
+			<c:if test="${chat!=null}">
+				<c:forEach items="${chat}" var="ch">
+					<c:if test="${ch.userid==sessionuser.userid}">
+						<dl class="my">
+							<dt>
+								<div class="profile" style="background-image:url'${ch.file}'">
+								</div>
+								<div class="name">${ch.name}</div>
+							</dt>
+							<dd class="blo">
+								${ch.chat}
+								<span class="date">${ch.chatdate}</span>
+							</dd>
+						</dl>
+					</c:if>
+					<c:if test="${ch.userid!=sessionuser.userid}">
+						<dl class="other">
+							<dt>
+								<div class="profile" style="background-image:url'${ch.file}'">
+								</div>
+								<div class="name">${ch.name}</div>
+							</dt>
+							<dd class="blo">
+								${ch.chat}
+								<span class="date">${ch.chatdate}</span>
+							</dd>			
+						</dl>
+					</c:if>
+				</c:forEach>
+			</c:if>
 		</div>
 		<!-- 리스트 끝 -->
 		<input type="hidden" id="sessionuserid" name="seuserid" value="${sessionuser.userid}">

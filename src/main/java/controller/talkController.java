@@ -2,6 +2,7 @@ package controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -22,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 import logic.Chatting;
 import logic.ShopService;
 import logic.User;
+import logic.Class;
 
 @Controller
 @RequestMapping("talk")
@@ -34,19 +36,40 @@ public class talkController {
 		ModelAndView mav = new ModelAndView();
 		return mav;
 	}
+	@RequestMapping("main")
+	public ModelAndView main(String userid,String type) {
+		ModelAndView mav = new ModelAndView();
+		int cnt=0;
+		if(type.equals("tutee")) {
+			List<Chatting> chat = service.chattutee(userid);
+			for(Chatting ch : chat) {
+				ch.setNewtalk(service.newtalk(ch.getRoomno(),userid));
+				cnt+=ch.getNewtalk();
+			}
+			mav.addObject("chat",chat);
+			mav.addObject("cnt",cnt);
+		}
+		return mav;
+	}
 	@RequestMapping("detail")
-	public ModelAndView detail(Integer roomno, Integer classid, HttpSession session) {
+	public ModelAndView detail(Integer roomno, Integer classid, Integer newtalk, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		User user = (User)session.getAttribute("loginUser");
+		if(newtalk==null||newtalk.toString().equals("")) {
+			newtalk=null;
+		}else if(newtalk>0) {
+			service.readchat(roomno);
+		}
+		List<Chatting> chat = service.chatlist(roomno);
 		System.out.println("user name:"+ user.getUserid());
 		System.out.println("normal chat page");
 		mav.addObject("sessionuser",user);
-		//mav.setViewName("redirect:detail.shop?roomno="+roomno+"&classid="+classid);
+		mav.addObject("chat",chat);
 		return mav;
 	}
 	@ResponseBody
 	@RequestMapping(value="talkClose")
-	public String talkClose(String TotalJson, HttpSession session) throws ParseException, java.text.ParseException {
+	public String talkClose(String TotalJson,Integer roomno, Integer classid, HttpSession session) throws ParseException, java.text.ParseException {
 		System.out.println(TotalJson);
 		JSONParser jsonParser = new JSONParser();
 		JSONObject jsonObj = (JSONObject)jsonParser.parse(TotalJson);
@@ -63,9 +86,9 @@ public class talkController {
 				Chatting chatting = new Chatting();
 				chatting.setChat(chat);
 				chatting.setChatdate(date);
-				chatting.setClassid(1);
-				chatting.setRoomno(1);
-				chatting.setTalkno(1);
+				chatting.setClassid(classid);
+				chatting.setRoomno(roomno);
+				chatting.setReadcheck(1);
 				chatting.setUserid(user.getUserid());
 				service.addChat(chatting);
 			}
@@ -75,7 +98,7 @@ public class talkController {
 		}
 		return "0";
 	}
-	
+	  
 	@RequestMapping("newchat")
 	public ModelAndView newchat(String classid) {
 		ModelAndView mav = new ModelAndView();
@@ -83,6 +106,12 @@ public class talkController {
 		int roomno = ++max;
 		mav.setViewName("redirect:detail.shop?roomno="+roomno+"&classid="+classid);
 		return mav;
+	}
+	@ResponseBody
+	@RequestMapping(value="check")
+	public String check(String userid) {
+		int check = service.newtalk(0,userid);
+		return check+"";
 	}
 	
 }

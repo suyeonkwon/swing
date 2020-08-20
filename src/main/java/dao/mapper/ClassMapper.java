@@ -3,7 +3,9 @@ package dao.mapper;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import logic.Class;
 
@@ -42,6 +44,23 @@ public interface ClassMapper {
 			"<if test='sorted==2'> ORDER BY (SELECT AVG(star) FROM review WHERE classid=class.classid) desc limit #{startrow},#{limit}</if>",
 			"</script>"})
 	List<Class> select(Map<String, Object> param);
+	
+	// 수업 등록
+		@Insert("insert into class "
+				+ " (classid, userid,location1,location2,category,type,maxtutee,subject,coverimg,price,time,totaltime,totalprice,tutorintro,classintro,level,readcnt,state,regdate) "
+				+ " values(#{classid}, #{userid},#{location1},#{location2},#{category},#{type},#{maxtutee},#{subject},#{coverimg},#{price},#{time},#{totaltime},#{totalprice},#{tutorintro},#{classintro},#{level},0,#{state},now())")
+		void insert(Class clas);
 
+		@Select("select classid from class where userid=#{userid} and state=1")
+		int checkclass(Map<String, Object> param);
+
+		@Update("update class set location1=#{location1},location2=#{location2},category=#{category},type=#{type},maxtutee=#{maxtutee},subject=#{subject},coverimg=#{coverimg},price=#{price},time=#{time},totaltime=#{totaltime},totalprice=#{totalprice},tutorintro=#{tutorintro},classintro=#{classintro},level=#{level},state=#{state},regdate=now() where classid=#{classid} ")
+		void update(Class clas);
+
+		@Select("select classid from class where userid=#{userid} and state=1")
+		Integer temp(Map<String, Object> param);
+
+		@Select("select count(*) from class")
+		int count2();
 
 }
