@@ -12,7 +12,8 @@ public class WishList {
 	private int type;
 	private int totaltime;
 	private int totalprice;
-	private Date starttime;
+	private String coverimg;
+	private Date startdate;
 	private int particinum;
 	private int star;
 	
@@ -59,11 +60,17 @@ public class WishList {
 	public void setTotalprice(int totalprice) {
 		this.totalprice = totalprice;
 	}
-	public Date getStarttime() {
-		return starttime;
+	public String getCoverimg() {
+		return coverimg;
 	}
-	public void setStarttime(Date starttime) {
-		this.starttime = starttime;
+	public void setCoverimg(String coverimg) {
+		this.coverimg = coverimg;
+	}
+	public Date getStartdate() {
+		return startdate;
+	}
+	public void setStartdate(Date startdate) {
+		this.startdate = startdate;
 	}
 	public int getParticinum() {
 		return particinum;
@@ -81,6 +88,8 @@ public class WishList {
 	public String toString() {
 		return "WishList [userid=" + userid + ", classid=" + classid + ", subject=" + subject + ", location2="
 				+ location2 + ", type=" + type + ", totaltime=" + totaltime + ", totalprice=" + totalprice
-				+ ", starttime=" + starttime + ", particinum=" + particinum + ", star=" + star + "]";
+				+ ", coverimg=" + coverimg + ", startdate=" + startdate + ", particinum=" + particinum + ", star="
+				+ star + "]";
 	}
+	
 }

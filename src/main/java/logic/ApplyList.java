@@ -1,12 +1,14 @@
 package logic;
 
+import java.util.Date;
+
 public class ApplyList {
 	private int applyno;
 	private String userid;
 	private int classid;
 	private int classno;
-	private int classseq;
-	
+	private Date applydate;
+
 	// getter, setter, toString
 	public int getApplyno() {
 		return applyno;
@@ -32,15 +34,15 @@ public class ApplyList {
 	public void setClassno(int classno) {
 		this.classno = classno;
 	}
-	public int getClassseq() {
-		return classseq;
+	public Date getApplydate() {
+		return applydate;
 	}
-	public void setClassseq(int classseq) {
-		this.classseq = classseq;
+	public void setApplydate(Date applydate) {
+		this.applydate = applydate;
 	}
 	@Override
 	public String toString() {
-		return "ApplyList [applyno=" + applyno + ", userid=" + userid + ", classid=" + classid + ", classno=" + classno
-				+ ", classseq=" + classseq + "]";
+		return "ApplyList [userid=" + userid + ", classid=" + classid + ", classno=" + classno + ", applydate="
+				+ applydate + "]";
 	}
 }

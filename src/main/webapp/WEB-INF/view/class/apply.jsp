@@ -25,11 +25,11 @@
 				</ul>
 			</div>
 			<div class="class_title">
-				클래스 제목
+				${cls.subject}
 			</div>
 			<div class="apply">
 				<div class="profile_box">
-					<div class="profile" style="background-image:url('')"></div>
+					<div class="profile" style="background-image:url('${path}/assets/img/${tutor.file}')"></div>
 					<p class="triangle-border top gray" style="margin-top:50px; text-align:center;">
 						수업에 오신걸 환영해요!<br>
 						결제는<br>
@@ -42,13 +42,15 @@
 							<div class="level3 bottom">
 								<div class="left" style="margin-top:15px;">전체 수업료</div>
 								<div class="right2">
-									<font style="font-size:14px; font-weight:500;">40,000원</font>
+									<fmt:formatNumber value="${cls.totalprice}" var="price" pattern="#,###"/>
+									<font style="font-size:14px; font-weight:500;">${price}원</font>
 								</div>
 							</div>
 							<div class="level bottom" style="padding-top:0.5em;">
 								<div class="left" style="width:20%;">결제금액</div>
 								<div class="right2">
-									<span id="payArea2">44,000</span>원
+									<fmt:formatNumber value="${(cls.totalprice*0.1)+cls.totalprice}" var="totalprice" pattern="#,###"/>
+									<span id="payArea2">${totalprice}</span>원
 									<font color="#666" style="font-size:12px;">(수업가격+VAT 10%)</font>
 								</div>
 							</div>
@@ -67,16 +69,16 @@
 			            pg : 'kakaopay',
 			            pay_method : 'card',
 			            merchant_uid : 'merchant_' + new Date().getTime(),
-			            name : 'KH Books 도서 결제',
-			            amount : '1000',
-			            buyer_email : 'ka7900x@naver.com',
-			            buyer_name : '권수연',      
+			            name : '${cls.subject}',
+			            amount : '${totalprice}',
+			            buyer_email : '${tutee.email}',
+			            buyer_name : '${tutee.name}',      
 			          //  buyer_tel:'010-1234-4039',
-			            m_redirect_url : 'http://www.naver.com' //결제 완료 후 보낼 컨트롤러 메소드명
+			          //  m_redirect_url : 'http://www.naver.com' //결제 완료 후 보낼 컨트롤러 메소드명
 			        }, function(rsp) {
 			            if ( rsp.success ) {
 			            	var msg="결제가 완료되었습니다."
-			            	location.href='paysuccess.shop'
+			            	location.href='paysuccess.shop?classid=${param.classid}&classno=${param.classno}'
 			            } else {
 			                msg = '결제에 실패하였습니다.';
 			                msg += '에러내용 : ' + rsp.error_msg;

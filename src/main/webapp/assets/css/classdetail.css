@@ -53,12 +53,12 @@
     width: 15px;
 }
 .class_price .regions .region .option .top .timedetail {
-    width: 132px;
+    width: 13em;
     letter-spacing: -0.7px;
     display: inline-block;
 }
 .class_price .regions .region .option .top .timedetail .indate {
-    width: 4.5em;
+    width: 5em;
     display: inline-block;
     color: #555;
 }
@@ -142,6 +142,11 @@
     padding: 0;
     overflow: hidden;
     position: relative;
+    /* background-image: url('/swing/assets/img/candle.jpg'); */
+}
+.class_wrap .class_img img {
+    width: 100%;
+    height: 100%;
 }
 /*navi*/
 .class_wrap .class_d_wrqp .class_navi {
@@ -182,11 +187,14 @@
     margin: 30px 0 40px 0;
 }
 .class_wrap .class_detail .class_name .tutor_img {
-    width: 180px;
-    height: 180px;
+    width: 12em;
+    height: 12em;
     border-radius: 100px;
     overflow: hidden;
-    background-color: blue;
+}
+.class_wrap .class_detail .class_name .tutor_img img{
+  width: 12em;
+  height: 12em;
 }
 .class_wrap .class_detail .class_name .name {
     width: 180px;
@@ -213,6 +221,11 @@
     float: right;
     margin-top: 9px;
 }
+.class_wrap .class_detail .class_title .bnt_wishlist img {
+  width:1.5em;
+  height:1.5em;
+  padding-bottom:0.2em;
+}
 .class_wrap .class_detail .class_title .info {
     line-height: 150%;
     margin-top: 20px;
@@ -227,8 +240,14 @@
     width: fit-content;
     text-align: center;
     float: left;
-    padding-top: 40px;
-    margin: 0 3%;
+    /* padding-top: 40px; */
+    margin: 0 1em;
+    /* justify-content: center; */
+}
+.class_wrap .class_detail .class_title .info ul li img{
+  width: 2.5em;
+  display: block;
+  /* margin-bottom: 0.5em; */
 }
 /*클래스 디테일 메인*/
 .class_wrap .detail_sec_bor {
@@ -285,14 +304,21 @@
     color: #49b5e7;
     transition: all 0.3s ease 0s;
 }
-#container_detail .class_wrap .class_detail .review_box {
+.class_wrap .class_detail .review_box {
     text-align: center;
-    padding: 30px;
     background: #f2f2f2;
     font-size: 20px;
     font-weight: bold;
     color: #000;
     vertical-align: middle;
+    padding: 2em 0 1em 0;
+    /* display: inline-block; */
+}
+.class_wrap .class_detail .review_box p{
+    display: inline-block;
+    position: relative;
+    bottom: 1em;
+    margin: 0 1em;
 }
 .class_wrap .class_detail .section01 .review_list ul li {
     border-bottom: 1px solid #e5e5e5;
@@ -310,11 +336,15 @@
     line-height: 100%;
 }
 .class_wrap .class_detail .section01 .review_list .profilebox .profile {
-    width: 86px;
-    height: 86px;
+    width: 5.5em;
+    height: 5.5em;
     border-radius: 100px;
     overflow: hidden;
     background-color: blue;
+}
+.class_wrap .class_detail .section01 .review_list .profilebox .profile img{
+    width:5.5em;
+    height:5.5em;
 }
  .class_wrap .class_detail .section01 .review_list .profilebox .name {
 	padding-top:10px;
@@ -358,22 +388,22 @@
     bottom: 0.6em;
     font-weight: 600;
 }
-.pop_review .star_box .input_star .star{
+ .star{
   display:inline-block;
   width: 30px;height: 60px;
   cursor: pointer;
 }
-.pop_review .star_box .input_star .star_left{
+ .star_left{
   background: url('/swing/assets/img/icon/star.png') no-repeat 0 0; 
   background-size: 60px; 
   margin-right: -3px;
 }
-.pop_review .star_box .input_star .star_right{
+ .star_right{
   background: url('/swing/assets/img/icon/star.png') no-repeat -30px 0; 
   background-size: 60px; 
   margin-left: -3px;
 }
-.pop_review .star_box .input_star .star.on{
+ .star.on{
   background-image: url('/swing/assets/img/icon/star_on.png');
 }
 .pop_review .star_box .input_star p {
@@ -419,5 +449,23 @@
 }
 
 
-
+.info .starimg .star{
+  display:inline-block;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.info .starimg .star_left{
+  background: url('/swing/assets/img/icon/star.png') no-repeat 0 0;
+  background-size: 30px;
+  margin-right: -10px;
+}
+.info .starimg .star_right{
+  background: url('/swing/assets/img/icon/star.png') no-repeat -15px 0;
+  background-size: 30px;
+  margin-left: -9px;
+}
+.info .starimg .star.on{
+  background-image: url('/swing/assets/img/icon/star_on.png');
+}
 
