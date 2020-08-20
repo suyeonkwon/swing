@@ -68,8 +68,8 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
           <c:if test="${!empty sessionScope.loginUser}">
           <c:if test="${sessionScope.loginUser.userid=='admin'}">
           <li><a href="${path}/admin/userlist.shop">회원목록</a></li>
-          <li><a href="${path}/admin/classlist.shop">수업목록</a></li>
-          <li><a href="${path}/admin/applylist.shop">수업신청목록</a></li>
+          <li><a href="${path}/admin/classlist.shop?get=0">수업목록</a></li>
+          <li><a href="${path}/admin/applylist.shop?get=0">수업신청목록</a></li>
           <li><a href="${path}/admin/chart.shop">수익조회</a></li>
           <li class="drop-down"><a href="">${sessionScope.loginUser.userid}님의 마이 페이지</a>
             <ul>
