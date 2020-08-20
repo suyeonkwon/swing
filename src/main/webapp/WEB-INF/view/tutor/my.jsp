@@ -100,7 +100,8 @@
                </div>
                <div class="contetn">
                   <div class="info-text">                
-                     <h4><a href="../class/detail.shop?classid=${cl.classid}">${cl.subject}</a></h4>
+                     <h4><c:if test="${cl.state == 4}"><a href="register-class.shop?classid=${cl.classid}">${cl.subject}</a></c:if>
+                     	 <c:if test="${cl.state < 4}"><a href="../class/detail.shop?classid=${cl.classid}">${cl.subject}</a></c:if></h4>
                      <p>${cl.nickname}(${cl.userid})</p>
                      <p>[신청일시] <fmt:formatDate value="${cl.regdate}" pattern="yyyy-MM-dd HH:mm:ss" /></p>
                      <p>[위치] ${cl.location1} ${cl.location2}</p>

@@ -31,4 +31,19 @@ public class ClassInfoDao {
 		return template.getMapper(ClassInfoMapper.class).date(param); 
 	}
 
+	public int maxnum(Integer classid) {
+		return template.getMapper(ClassInfoMapper.class).maxnum(classid);
+	}
+	
+	public void register(Classinfo classinfo) {
+		template.getMapper(ClassInfoMapper.class).register(classinfo);
+	}
+
+	public Classinfo selectOne(Integer classid, int classno, int classseq) {
+		param.clear();
+		param.put("classid", classid);
+		param.put("classno", classno);
+		param.put("classseq", classseq);
+		return template.getMapper(ClassInfoMapper.class).selectOne(param);
+	}
 }

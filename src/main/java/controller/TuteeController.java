@@ -82,7 +82,7 @@ public class TuteeController {
 			List<Course> classlist = new ArrayList<Course>();
 			for (Course c : list) {
 				if (state == 1) {
-					c.setClassseq(service.getCurseq(userid,c.getApplyno()));
+					c.setClassseq(service.getCurseq(userid,c.getClassid(),c.getClassno()));
 					if (c.getEnddate().after(now)) {
 						classlist.add(c);
 					}
