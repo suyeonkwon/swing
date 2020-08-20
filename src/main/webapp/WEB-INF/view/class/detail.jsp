@@ -34,7 +34,8 @@
 							</c:if>
 									<div class="top">
 										<div class="timedetail">
-											<fmt:formatDate value="${info.date}" var="date" pattern="MM.dd (E)"/>
+											<fmt:parseDate var="infodate" value="${info.date}" pattern="yyyy-MM-dd" />
+											<fmt:formatDate value="${infodate}" var="date" pattern="MM.dd (E)"/>
 											<div class="indate">${date}</div>
 											<fmt:parseDate value="${info.starttime}" var="starttime" pattern="HH:mm:ss"/>
 											<fmt:formatDate value="${starttime}" var="start" pattern="HH:mm"/>

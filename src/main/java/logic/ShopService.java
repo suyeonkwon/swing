@@ -33,6 +33,7 @@ public class ShopService {
 	@Autowired
 	private WishlistDao wishlistDao;
 	/*----User----*/
+	@Autowired
 	private LicenseDao licenseDao;
 	@Autowired
 	private ApplyListDao applylistDao;
