@@ -52,10 +52,61 @@
     background: #fff;
     color: #49b5e7;
 }
+
 #pop_qna .qna_cont {
     width: 100%;
-    height: 570px;
+    height: 440px;
     overflow-y: scroll;
+}
+#pop_qna .qna_cont .qna_list {
+    display: block;
+    border-bottom: 1px solid #dcdcdc;
+    padding: 5px;
+    overflow: hidden;
+    position: relative;
+}
+#pop_qna .qna_cont .qna_list .profile {
+    width: 20%;
+    float: left;
+    text-align: center;
+    padding-right: 1%;
+}
+#pop_qna .qna_cont .qna_list .profileimg {
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+}
+#pop_qna .qna_cont .qna_list .name {
+    color: #000;
+    font-size: 12px;
+}
+#pop_qna .qna_cont .qna_list .qtxt {
+    width: 70%;
+    float: left;
+    line-height: 150%;
+}
+#pop_qna .qna_cont .qna_list .qtxt h2 {
+    font-size: 14px;
+    color: #000;
+    font-weight: 600;
+    padding-bottom: 5px;
+}
+#pop_qna .qna_cont .qna_list .qtxt .q_intxt {
+    font-size: 12px;
+    line-height: 150%;
+    color: #666;
+    padding-bottom: 5px;
+    display: inline-block;
+}
+#pop_qna .newtalk{display: inline-block;float: right;padding: 0  5px;margin-right: 1em;background-color: #FFBF00;color: white;border-radius: 20px;}
+#pop_qna .qna_cont .qna_list .qtxt .date {
+    font-size: 11px;
+    color: #999;
 }
 /*detail.shop*/
 .qna_title {

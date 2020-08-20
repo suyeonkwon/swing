@@ -134,10 +134,30 @@ public class ShopService {
 	}
 
 	public void addChat(Chatting chatting) {
+		int maxtalk = chattingDao.maxtalk(chatting.getRoomno());
+		chatting.setTalkno(++maxtalk);
 		chattingDao.insert(chatting);	
 	}
 
 	public int maxroom() {
 		return chattingDao.maxroom();
 	}
+
+	public List<Chatting> chattutee(String userid) {
+		return chattingDao.tutee(userid);
+	}
+
+	public int newtalk(int roomno, String userid) {
+		return chattingDao.newtalk(roomno,userid);
+	}
+
+	public List<Chatting> chatlist(Integer roomno) {
+		return chattingDao.chatlist(roomno);
+	}
+
+	public void readchat(Integer roomno) {
+		chattingDao.readchat(roomno);
+		
+	}
+
 }
