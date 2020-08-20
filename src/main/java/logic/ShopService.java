@@ -1,6 +1,7 @@
 package logic;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -83,9 +84,23 @@ public class ShopService {
 	public void classDelete(String userid, Integer classid) {
 		tutorDao.delete(userid, classid);
 	}
-	public List<Class> getClassListforConfirm(String userid) {
-		return tutorDao.listforConfirm(userid);
+	public Date getClDate(Integer classid) {
+		return tutorDao.getClassDate(classid);
+	}	
+	public void updateState(String userid, int classid) {
+		tutorDao.updateState(userid, classid);
 	}
+	public Map<String, Object> bargraph(String userid) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		for(Map<String, Object> m : tutorDao.bargraph(userid)) {
+			map.put((String) m.get("subject"), m.get("cnt"));
+		}
+		return map;
+	}
+//	public List<Class> getClassListforConfirm(String userid, Integer state) {
+//		return tutorDao.listforConfirm(userid, state);
+//  }
+	
 
 	public Class getClass(Integer classid) {
 		return classDao.selectOne(classid);
@@ -241,4 +256,5 @@ public class ShopService {
 	public int classCnt() {
 		return classDao.count2();
 	}
+
 }

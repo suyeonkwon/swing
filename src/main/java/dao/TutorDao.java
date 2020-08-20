@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -60,17 +61,32 @@ public class TutorDao {
 		template.getMapper(TutorMapper.class).delete(param);
 	}
 
-	public List<Class> listforConfirm(String userid) {
+//	public List<Class> listforConfirm(String userid, Integer state) {
+//		param.clear();
+//		param.put("userid", userid);
+//		param.put("state", state);
+//		return template.getMapper(TutorMapper.class).selectforConfirm(param);
+//	}
+
+	public Date getClassDate(Integer classid) {
 		param.clear();
-		param.put("userid", userid);
-		return template.getMapper(TutorMapper.class).selectforConfirm(param);
+		param.put("classid", classid);
+		return template.getMapper(TutorMapper.class).confirm(param);
 	}
 
-//	public int confirm(Integer classid) {
-//		param.clear();
-//		param.put("classid", classid);
-//		return template.getMapper(TutorMapper.class).confirm(param);
-//	}
+	public void updateState(String userid, int classid) {
+		param.clear();
+		param.put("userid", userid);
+		param.put("classid", classid);
+		template.getMapper(TutorMapper.class).update(param);
+		
+	}
+
+	public List<Map<String, Object>> bargraph(String userid) {
+		param.clear();
+		param.put("userid", userid);
+		return template.getMapper(TutorMapper.class).bargraph(param);
+	}
 
 	
 
