@@ -27,10 +27,13 @@ public interface ClassInfoMapper {
 			"WHERE classid=#{classid}")
 	int maxnum(Integer classid);
 
-	@Select("UPDATE classinfo SET DATE=#{date}, starttime=#{starttime}, endtime=#{endtime}, place=#{place} " + 
+	@Select("INSERT INTO classinfo(classid,classno,classseq,date,starttime,endtime,place,title,curri,seqstate) " + 
+			"VALUES(#{classid},#{classno},#{classseq},#{date},#{starttime},#{endtime},#{place},#{title},#{curri},1) ")
+	void register(Classinfo classinfo);
+	
+	@Select("UPDATE classinfo SET DATE=#{date}, starttime=#{starttime}, endtime=#{endtime}, place=#{place}, seqstate=1 " + 
 			"WHERE classid = #{classid} " + 
 			"AND classno = #{classno} " + 
 			"AND classseq = #{classseq} ")
-	void register(Classinfo classinfo);
-	
+	void firstRegister(Classinfo classinfo);	
 }

@@ -150,18 +150,17 @@ $(function(){
             	<tr><th>차수-회차</th><th>장소</th><th>날짜</th><th>시작시간</th><th>끝나는시간</th><th>수업진행상태</th><th>신청튜티리스트</th></tr>            	
             	<c:forEach items="${classinfolist}" var="info" varStatus="stat2">     	
             	<c:if test="${cl.classid == info.classid}">
-            	<fmt:formatDate value="${info.date}" pattern="yyyy-MM-dd" var="classdate" />
-	            <fmt:parseDate value="${info.starttime}" pattern="HH:mm" var="starttime" />
+	           	<fmt:parseDate value="${info.starttime}" pattern="HH:mm" var="starttime" />
             	<fmt:parseDate value="${info.endtime}" pattern="HH:mm" var="endtime" />        
             	<fmt:formatDate value="${starttime}" pattern="HH:mm" var="starttime" />
             	<fmt:formatDate value="${endtime}" pattern="HH:mm" var="endtime" />
-            	<tr><td>${info.classno}차수-${info.classseq}회차</td><td>${info.place}</td><td>${classdate}</td><td>${starttime}</td><td>${endtime}</td>
+            	<tr><td>${info.classno}차수-${info.classseq}회차</td><td>${info.place}</td><td>${info.date}</td><td>${starttime}</td><td>${endtime}</td>
             		<td>
-            		<c:if test="${classdate > today}">
+            		<c:if test="${info.date > today}">
             		<label class="badge badge-warning">진행예정</label></c:if>
-            		<c:if test="${classdate == today}">
+            		<c:if test="${info.date == today}">
             		<label class="badge badge-warning">진행</label></c:if>
-            		<c:if test="${classdate < today}">
+            		<c:if test="${info.date < today}">
             		<label class="badge badge-info">완료</label></c:if>
             		</td>
             		<td><button onclick="location.href='applylist.shop?classid=${info.classid}&classno=${info.classno}'">조회</button></td></tr>

@@ -38,6 +38,10 @@ public class ClassInfoDao {
 	public void register(Classinfo classinfo) {
 		template.getMapper(ClassInfoMapper.class).register(classinfo);
 	}
+	
+	public void firstRegister(Classinfo ci) {
+		template.getMapper(ClassInfoMapper.class).firstRegister(ci);
+	}
 
 	public Classinfo selectOne(Integer classid, int classno, int classseq) {
 		param.clear();
