@@ -26,11 +26,38 @@
 font-size: 14px;
 }
 </style>
+<script type="text/javascript">
+function addclassinfo() {
+	var classInfoHtml = $("#region").html();
+	$("#regions").append("<div class='region' id='region'>"+classInfoHtml+"</div>")
+}
+
+function input(f,n){
+  if (f.checked) {
+	  for(i=2; i<=n; i++){
+		  $('#place'+i).val($('#place1').val());
+		  $('#starttime'+i).val($('#starttime1').val());
+		  $('#endtime'+i).val($('#endtime1').val());
+	  }
+  } 
+  else{
+	  for(i=2; i<=n; i++){
+		  $('#place'+i).val($('').val());
+		  $('#starttime'+i).val($('').val());
+		  $('#endtime'+i).val($('').val());
+	  }
+   }
+}
+
+function register() {
+	alert("해당 클래스 정보가 등록되었습니다.")
+}
+</script>
 </head>
 <body>
 <section>
 	<div class="container">
-	<form:form method="post" action="registerClassinfo.shop" enctype="multipart/form-data" name="classRegisterForm">
+	<form:form method="post" modelAttribute="classinfoList" action="registerClassinfo.shop?classid=${c.classid}" enctype="multipart/form-data" name="classRegisterForm">
 		<div class="tutor_cont">
 			<div class="title_box">
 				<h1>수업 등록
@@ -53,74 +80,74 @@ font-size: 14px;
 					<div class="head">
 						수업의 장소와 날짜 및 시간을 설정해주세요
 					</div>
-					<div class="regions">
+					<div class="regions" id="regions">
 						<div class="region" id="region">
 							<div class="option">
 								<div class="top">
 									<div class="text">
 										수업 : ${newclassno}차수
 									</div>
+									<div style="text-align:right">
+										<c:if test="${c.type==2}">
+										<input type="checkbox" name="checkbox" id="checkbox" onchange="input(this,${c.totaltime})"> 장소,시작시간,끝나는시간이 모두 같습니다.
+										</c:if>
+									</div>
 								</div>
 							</div>
-							<input type="hidden" name="classid" value="${c.classid}">
-							<input type="hidden" name="classno" value="${newclassno}">
 							<c:if test="${c.type==1}">
+							<form:hidden path="classinfos[0].classid" value="${c.classid}" />
+							<form:hidden path="classinfos[0].classno" value="${newclassno}" />
+							<form:hidden path="classinfos[0].classseq" value="${1}" />
 							<div class="option">
 								<div class="top">
 									<div class="text">
-										장소: <input type="text" name="place">
+										장소: <form:input path="classinfos[0].place" />
 									</div>
 								</div>
 							</div>
 							<div class="option">
 								<div class="top">
 									<div class="text">
-										날짜:	<input type="date" name="date">
+										날짜:	<form:input type="date" path="classinfos[0].date" />
 									</div>
 								</div>
 							</div>
 							<div class="option">
 								<div class="top">
 									<div class="text">
-										시간: <input type="time" name="starttime" /> 
-										~ <input type="time" name="endtime" /> 
+										시간: <form:input type="time" path="classinfos[0].starttime" /> 
+										~ <form:input type="time" path="classinfos[0].endtime" /> 
 									</div>
 								</div>
 							</div>
 							</c:if>
-							
 							
 							<c:if test="${c.type==2}">
 							<div class="option">
           						<table class="table table-hover">
 									<tr><th>회차</th><th>장소</th><th>날짜</th><th>시작시간</th><th>끝나는시간</th></tr>
-									<tr><td>1회차</td>
-										<td><input type="text"></td>
-										<td><input type="date"></td>
-										<td><input type="time"></td>
-										<td><input type="time"></td></tr>
-									<tr><td>2회차</td>
-										<td><input type="text"></td>
-										<td><input type="date"></td>
-										<td><input type="time"></td>
-										<td><input type="time"></td></tr>
-									<tr><td>3회차</td>
-										<td><input type="text"></td>
-										<td><input type="date"></td>
-										<td><input type="time"></td>
-										<td><input type="time"></td></tr>
+									<c:forEach var="i" begin="1" end="${c.totaltime}">
+										<form:hidden path="classinfos[${i}].classid" value="${c.classid}" />
+										<form:hidden path="classinfos[${i}].classno" value="${newclassno}" />
+										<form:hidden path="classinfos[${i}].classseq" value="${i}" />
+										<tr><td>${i}회차</td>
+											<td><form:input path="classinfos[${i}].place" id="place${i}"/></td>
+											<td><form:input type="date" path="classinfos[${i}].date"/></td>
+											<td><form:input type="time" path="classinfos[${i}].starttime" id="starttime${i}" /></td>
+											<td><form:input type="time" path="classinfos[${i}].endtime" id="endtime${i}" /></td></tr>
+									</c:forEach>
 								</table>
 							</div>
-							
 							</c:if>
 						</div>
 					</div>
 				</div>
 				<div class="sh_box class_price" style="border-top: 0; margin-top: 10px;">
-					<div style="text-align:center;"><img class="op" src="${path}/assets/img/icon/add3.png" style="width: 32px; height: 32px;"onclick="add()"></div>
+					<div style="text-align:center;"><img class="op" src="${path}/assets/img/icon/add3.png" style="width: 32px; height: 32px;"onclick="addclassinfo()"></div>
 				</div>
 			</div>
-			<div id="registerButton" class="next button" onclick="location.href='registerClassinfo.shop'">등록</div>
+			
+			<div id="registerButton" class="next button" onclick="javascript:document.classRegisterForm.submit()">등록</div>
 		</div>
 	</form:form>
 	</div>

@@ -1,6 +1,5 @@
 package controller;
 
-import org.apache.ibatis.binding.BindingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,10 +14,14 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.web.bind.annotation.ModelAttribute;
+
+import exception.Exception;
+import logic.Class;
 import logic.Classinfo;
+import logic.ClassinfoList;
 import logic.Course;
 import logic.License;
-import logic.Class;
 import logic.ShopService;
 import logic.User;
 
@@ -101,7 +104,7 @@ public class TutorController {
 	}
 	
 	@RequestMapping("register-class")
-	public ModelAndView registerClassView(Integer classid, HttpSession session) {
+	public ModelAndView registerClassView(Integer classid,@ModelAttribute ClassinfoList classinfoList, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		try {
 			Class c = service.getClass(classid);
@@ -116,6 +119,7 @@ public class TutorController {
 			}
 			mav.addObject("c",c);
 			mav.addObject("tutorimg",tutorimg);
+			mav.addObject("classinfoList",classinfoList);
 			mav.addObject("newclassno",classno);
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -124,24 +128,29 @@ public class TutorController {
 	}
 	
 	@RequestMapping("registerClassinfo")
-	public ModelAndView registerClass(Classinfo ci, HttpSession session) {
+	public ModelAndView registerClass(Integer classid, @ModelAttribute ClassinfoList classinfoList, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		try {
-			Class c = service.getClass(ci.getClassid());
-			System.out.println(ci);
-			if(c.getType()==1) { // 일일클래스이면
-				ci.setClassseq(1);
-				System.out.println(ci);
-				service.registerClassinfo(ci);
-			} else if(c.getType()==2){
-				
+			for(Classinfo ci : classinfoList.getClassinfos()) {
+				if(ci.getDate()!=null) {
+					Classinfo ciInfo = service.getClassInfoOne(classid, 1, ci.getClassseq()); // 클래스 제목, 커리 정보 가져오기
+					ci.setTitle(ciInfo.getTitle());
+					ci.setCurri(ciInfo.getCurri());
+					System.out.println(ci);
+					if(ci.getClassno()==1 && ciInfo.getDate()==null) { // 현재 클래스 정보 classno가 1이고 해당 클래스의 첫 클래스 정보의 날짜가 null이면 첫등록-> update
+						service.firstClassinfo(ci);
+						// 해당 클래스 state=5로 변경하기
+					} else{
+						service.registerClassinfo(ci);
+					}
+				}
 			}
-			
-		} catch(BindingException e) {
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		return mav;
+		throw new Exception("수업이 등록되었습니다.","result.shop");
 	}
+	
 	
 	
 	/* 수업 등록 페이지 접근시 작성 중인 수업 정보가 있는지 확인

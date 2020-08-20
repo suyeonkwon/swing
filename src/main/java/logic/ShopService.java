@@ -278,12 +278,15 @@ public class ShopService {
 		return classInfoDao.maxnum(classid);
 	}
 
-	public void registerClassinfo(Classinfo classinfo) {
-		classInfoDao.register(classinfo);
+	public void firstClassinfo(Classinfo ci) {
+		classInfoDao.firstRegister(ci);
+	}	
+	public void registerClassinfo(Classinfo ci) {
+		classInfoDao.register(ci);
 	}	
 	public Classinfo getClassInfoOne(Integer classid, int classno, int classseq) {
 		return classInfoDao.selectOne(classid,classno,classseq);
-	}	
+	}
 	
 	// tutor : yhl
 	public void userUpdate2(User user) {

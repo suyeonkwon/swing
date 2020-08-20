@@ -80,7 +80,7 @@
          <c:forEach var="cl" items="${classlist}">
       	      	
          <div class="col-lg-4" style="cursor:pointer;">
-               <div class="team-img" onclick="page('../class/detail.shop?classid=${cl.classid}')">
+                <div class="team-img" onclick="page('<c:if test="${cl.state == 4}">register-class.shop?classid=${cl.classid}</c:if><c:if test="${cl.state < 4}">../class/detail.shop?classid=${cl.classid}</c:if>')">
                	  <c:if test="${cl.state == 1}">
                   	<label class="badge badge-success">등록진행중</label>
                   	<img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-3.jpg" alt="">
