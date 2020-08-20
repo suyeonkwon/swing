@@ -78,7 +78,25 @@ div#calc_point {
 	float: right; margin-right: 20px;
 }
 </style>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
+<%--
+google.charts.load('current', {'packages':['bar']});
+google.charts.setOnLoadCallback(drawChart);
+function drawChart() {
+  var data = google.visualization.arrayToDataTable(
+		  [<c:forEach items="${map}" var="m">"${m.value}",</c:forEach>],
+		  );
+  var options = {
+		  chart: {
+			  title : '수업 별 신청 튜티 수(Top 5)'
+		  }
+  };
+  var chart = new google.charts.Bar(document.getElementById('chartarea'));
+  chart.draw(data, google.charts.Bar.convertOptions(options));
+	  
+}
+--%>
 $(".star").on('click',function(){
     var idx = $(this).index();
     $(".star").removeClass("on");
@@ -97,10 +115,41 @@ $(".star").on('click',function(){
         <div class="row justify-content-center">
           <div class="col-lg-6 col-md-6" data-wow-delay="0.1s">
             <div class="icon-box">
-            	그래프넣기
-              <h4 class="title">수업 조회수 및 신청수</h4>
+            	<canvas id="chartarea"></canvas>
+            	
+            	<h4 class="title">수업 별 신청 튜티 수</h4>
             </div>
           </div>
+       
+          <script type="text/javascript">
+          	var config = {
+          			type : 'bar',
+          			data : {
+          				datasets : [{
+          					data : [<c:forEach items="${map}" var="m">"${m.value}",</c:forEach>],
+          					backgroundColor : "darkblue"
+          				}],
+          				labels : [<c:forEach items="${map}" var="m">"${m.key}",</c:forEach>]
+          			},
+          			options : {
+          				responsive :true,
+          				legend : { display: false },
+          				title : { display: false },
+          				scales : {
+          					yAxes : [{
+          						ticks : {
+          							beginAtZero : true
+          						}
+          					}]
+          				}
+          			}
+          	};
+          	window.onload = function(){
+          		var ctx = document.getElementById("chartarea").getContext("2d");
+          		new Chart(ctx, config);
+          	}
+          </script>
+       
           <div class="col-lg-6 col-md-6" data-wow-delay="0.1s">
           <div class="icon-box">
             <div class="review_point">
