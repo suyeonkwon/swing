@@ -18,7 +18,7 @@ public interface TutorMapper {
 		" from class c join user u on c.userid=u.userid",
 		" where c.userid=#{userid} and u.kbn=2",
 		"<if test='state == null'> and c.state <![CDATA[<]]> 5 </if>",
-		"<if test='state != null'> and c.state=#{state} </if> ",
+		"<if test='state != null'> and c.state=#{state} </if> ", 
 		"</script>"})
 	List<Class> select(Map<String, Object> param);
 
