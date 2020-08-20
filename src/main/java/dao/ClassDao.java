@@ -8,8 +8,13 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import dao.mapper.ClassInfoMapper;
 import dao.mapper.ClassMapper;
+import dao.mapper.UserMapper;
 import logic.Class;
+import logic.Classinfo;
+import logic.Rank;
+import logic.User;
 
 @Repository
 public class ClassDao {

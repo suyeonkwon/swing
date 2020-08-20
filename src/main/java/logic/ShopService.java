@@ -8,16 +8,11 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-<<<<<<< HEAD
-import dao.ClassDao;
-import dao.ClassinfoDao;
-=======
-import dao.ApplyListDao;
-import dao.ChattingDao;
 import dao.ClassDao;
 import dao.ClassInfoDao;
+import dao.ApplyListDao;
+import dao.ChattingDao;
 import dao.LicenseDao;
->>>>>>> branch 'master' of https://github.com/NayoungKwon413/Swing
 import dao.ReviewDao;
 import dao.TutorDao;
 import dao.UserDao;
@@ -37,22 +32,12 @@ public class ShopService {
 	private ClassInfoDao classInfoDao;
 	@Autowired
 	private WishlistDao wishlistDao;
-	@Autowired
-<<<<<<< HEAD
-	private ClassDao classDao;
-	@Autowired
-	private ClassinfoDao classinfoDao;
-
 	/*----User----*/
-=======
 	private LicenseDao licenseDao;
 	@Autowired
 	private ApplyListDao applylistDao;
 	@Autowired
 	private ChattingDao chattingDao;
-
-	
->>>>>>> branch 'master' of https://github.com/NayoungKwon413/Swing
 	public List<User> userList() {
 		return userDao.list();
 	}
@@ -120,15 +105,15 @@ public class ShopService {
 	
 	/*----ClassInfo----*/
 	public List<Classinfo> classinfolist() {
-		return classinfoDao.list();
+		return classInfoDao.list();
 	}
 	
 	public List<Classinfo> classinfolistByState(int seqstate) {
-		return classinfoDao.listByState(seqstate);
+		return classInfoDao.listByState(seqstate);
 	}
 
 	public List<Classinfo> classinfolistById(String userid) {
-		return classinfoDao.listById(userid);
+		return classInfoDao.listById(userid);
 	}
 
 	/*----mypage(Tutor)----*/

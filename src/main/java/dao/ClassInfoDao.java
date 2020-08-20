@@ -50,4 +50,19 @@ public class ClassInfoDao {
 		param.put("classseq", classseq);
 		return template.getMapper(ClassInfoMapper.class).selectOne(param);
 	}
+
+	public List<Classinfo> list() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Classinfo> listByState(int seqstate) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Classinfo> listById(String userid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
