@@ -20,12 +20,12 @@ public class Class {
 	private String classintro;
 	private int level;
 	private int readcnt;
-	private int state;
+	private double state;
 	private Date regdate;
 	//참여인원수
 	private int totaltutee;
 	//클래스 리뷰 평점, 갯수
-	private int staravg;
+	private double staravg;
 	private int reviewcnt;
 	
 	// tutor my.jsp 에 join을 통해 가져온 정보
@@ -139,10 +139,10 @@ public class Class {
 	public void setReadcnt(int readcnt) {
 		this.readcnt = readcnt;
 	}
-	public int getState() {
+	public double getState() {
 		return state;
 	}
-	public void setState(int state) {
+	public void setState(double state) {
 		this.state = state;
 	}
 	public Date getRegdate() {
@@ -178,10 +178,10 @@ public class Class {
 		this.totaltutee = totaltutee;
 	}
 	
-	public int getStaravg() {
+	public double getStaravg() {
 		return staravg;
 	}
-	public void setStaravg(int staravg) {
+	public void setStaravg(double staravg) {
 		this.staravg = staravg;
 	}
 	public int getReviewcnt() {
