@@ -193,7 +193,6 @@ function cal(price, time, totaltime){
 	             <i class="icofont-google-map"></i>
 	               <h4>기본정보</h4>
 	               <p>프로필,별명,인증</p>
-	               <p>${server}</p>
 	          </div>
 	        </div>
         </div>
