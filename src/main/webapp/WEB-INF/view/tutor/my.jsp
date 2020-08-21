@@ -18,7 +18,7 @@
    function page(src){
       //open(src,"",);
       location.href=src;
-   }
+   } 
    
    function deleteCheck(classid){
 	   if(confirm("해당 클래스를 정말 삭제하시겠습니까?") == true){
