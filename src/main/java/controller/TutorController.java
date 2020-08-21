@@ -163,7 +163,11 @@ public class TutorController {
 		String userid = loginUser.getUserid();
 //		try {
 		User user = service.getUser(userid);
-		License license = service.getLicense(userid).get(0); //service.getLicense(userid).get(0);
+		License license = new License();
+		try {
+			license = service.getLicense(userid).get(0);
+		}catch(IndexOutOfBoundsException e) {
+		}
 		Class clas = new Class();
 		int classid = 0;
 		if( service.classTemp(userid) != null) {
