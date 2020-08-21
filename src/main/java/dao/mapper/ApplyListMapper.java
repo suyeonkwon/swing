@@ -48,5 +48,8 @@ public interface ApplyListMapper {
 			"AND a.classid = #{classid} " + 
 			"AND a.classno = #{classno}")
 	List<User> select(Map<String, Object> param);
+
+	@Select("select * from applylist where userid=#{userid} and classid=#{classid}")
+	ApplyList selectOne(Map<String, Object> param);
 	
 }

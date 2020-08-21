@@ -25,7 +25,7 @@
         <div class="q_menu">
 			<ul>
 				<li>
-					<a href="classlist.shop">
+					<a href="classlist.shop?cate=1">
 						<div class="icon baking">
 							<img alt src="${path}/assets/img/icon/Baking.png">
 						</div>
@@ -35,7 +35,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="classlist.shop">
+					<a href="classlist.shop?cate=2">
 						<div class="icon baking">
 							<img alt src="${path}/assets/img/icon/Pet.png">
 						</div>
@@ -45,7 +45,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="classlist.shop">
+					<a href="classlist.shop?cate=3">
 						<div class="icon baking">
 							<img alt src="${path}/assets/img/icon/Camera.png">
 						</div>
@@ -55,7 +55,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="classlist.shop">
+					<a href="classlist.shop?cate=4">
 						<div class="icon baking">
 							<img alt src="${path}/assets/img/icon/Handmade.png">
 						</div>
@@ -65,7 +65,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="classlist.shop">
+					<a href="classlist.shop?cate=5">
 						<div class="icon baking">
 							<img alt src="${path}/assets/img/icon/Wine.png">
 						</div>

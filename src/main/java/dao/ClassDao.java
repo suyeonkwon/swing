@@ -93,7 +93,7 @@ public class ClassDao {
 		
 		//dblee
 		public List<Class> list() {
-			return template.getMapper(ClassMapper.class).select(null);
+			return template.getMapper(ClassMapper.class).select2(null);
 		}
 		
 		public List<Class> list(int pageNum, int limit) {
@@ -106,7 +106,7 @@ public class ClassDao {
 		public List<Class> listByState(int state) {
 			param.clear();
 			param.put("state", state);
-			return template.getMapper(ClassMapper.class).select(param);
+			return template.getMapper(ClassMapper.class).select2(param);
 		}
 
 		public List<Class> listByState(int pageNum, int limit,int state) {
@@ -120,7 +120,7 @@ public class ClassDao {
 		public List<Class> listById(String userid) {
 			param.clear();
 			param.put("userid", userid);
-			return template.getMapper(ClassMapper.class).select(param);
+			return template.getMapper(ClassMapper.class).select2(param);
 		}
 		
 		public void updateState(int classid,int state) {
@@ -152,4 +152,5 @@ public class ClassDao {
 		public List<Map<Object, Object>> graph() {
 			return template.getMapper(ClassMapper.class).graph();
 		}
+
 }

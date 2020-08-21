@@ -269,7 +269,6 @@ public class ShopService {
 		return chattingDao.maxroom();
 	}
 
-
 	public int maxClassno(Integer classid) {
 		return classinfoDao.maxnum(classid);
 	}
@@ -318,7 +317,9 @@ public class ShopService {
 	public int classCnt() {
 		return classDao.count2();
 	}
-
+	public ApplyList getapply(int classid, String userid) {
+		return applylistDao.selectOne(classid,userid);
+	}
 	
 
 	

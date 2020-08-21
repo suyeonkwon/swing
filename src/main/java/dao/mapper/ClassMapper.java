@@ -44,7 +44,7 @@ public interface ClassMapper {
 		         "</if>",
 		         "<if test='cate!=null'> and category=#{cate}</if>",
 		         "<if test='sorted==1'> order by regdate desc limit #{startrow},#{limit} </if>",
-		         "<if test='sorted==2'> ORDER BY (SELECT AVG(별) FROM review WHERE classid=class.classid) desc limit #{startrow},#{limit}</if>",
+		         "<if test='sorted==2'> ORDER BY (SELECT AVG(star) FROM review WHERE classid=class.classid) desc limit #{startrow},#{limit}</if>",
 		         "</script>"})
 		   List<Class> select(Map<String, Object> param);
 		   
@@ -105,21 +105,27 @@ public interface ClassMapper {
 	@Select(" SELECT RANK() OVER (ORDER BY SUM(c.totalprice) DESC) AS rank, " + 
 			" sum(c.totalprice) totalprice, c.userid userid FROM class c, applylist u " + 
 			" WHERE c.classid = u.classid AND YEAR(u.applydate)=YEAR(NOW()) AND MONTH(u.applydate)=MONTH(NOW()) " + 
-			" GROUP BY c.userid ")
+			" GROUP BY c.userid " +
+			" ORDER BY rank " +
+			" LIMIT 0,3")
 	List<Rank> selectTutorRank();
 
 	@Select(" SELECT RANK() OVER (ORDER BY SUM(c.totalprice) DESC) AS rank, " + 
 			" sum(c.totalprice) totalprice, u.userid userid FROM class c, applylist u " + 
 			" WHERE c.classid = u.classid AND YEAR(u.applydate)=YEAR(NOW()) AND MONTH(u.applydate)=MONTH(NOW()) " + 
-			" GROUP BY u.userid ")
+			" GROUP BY u.userid " + 
+			" ORDER BY rank " +
+			" LIMIT 0,3")
 	List<Rank> selectTuteeRank();
 	
 	
 
 	@Select(" SELECT month(u.applydate) date,SUM(c.totalprice) total FROM class c, applylist u " + 
 			" WHERE c.classid = u.classid AND YEAR(u.applydate)=YEAR(NOW()) " + 
-			" GROUP BY u.applydate " + 
+			" GROUP BY month(u.applydate) " + 
 			" ORDER BY u.applydate ")	
 	List<Map<Object, Object>> graph();
+
+
 	
 }

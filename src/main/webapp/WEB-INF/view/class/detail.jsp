@@ -10,7 +10,7 @@
 <link href="${path}/assets/css/classdetail.css" rel="stylesheet">
 <style>
 	section {
-    height: 160em;
+    height: 200em;
 	}
 </style>
 </head>
@@ -165,7 +165,7 @@
 					<div class="info">
 						<ul>
 							<li class="ar" id="regionAll">
-								<img src="${path}/assets/img/icon/marker.png">
+								<img src="${path}/assets/img/icon/marker2.png">
 								${cls.location2}</li>
 							<li class="hu">
 								<img src="${path}/assets/img/icon/clock.png" style="margin: 0 1.2em;">
@@ -217,7 +217,7 @@
 					<a href="javascript:reviewPop()"class="btn_st" id="btn-write-review">리뷰쓰기</a>
 					<script>
 						function reviewPop(){
-							window.open('review.shop','','width=500,height=600,menubar=no,status=no,toolbar=no')
+							window.open('review.shop?classid=${param.classid}','','width=500,height=600,menubar=no,status=no,toolbar=no')
 						}
 					</script>
 					<div class="review_box">
@@ -256,10 +256,10 @@
 											<div class="review">
 												<div class="profilebox">
 													<div class="profile">
-														<img alt="" src="../user/save/${reUser[i].userid}_${reUser[i].file}">
+														<img alt="" src="../user/save/${re.userid}_${re.file}">
 													</div>
 													<div class="name">
-														${reUser[i].name}
+														${re.name}
 													</div>
 												</div>
 												<div class="review_content">

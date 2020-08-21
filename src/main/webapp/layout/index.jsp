@@ -54,7 +54,7 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <a href="${path}/class/main.shop" class="logo mr-auto"><img src="${path}/assets/img/logo.png" alt="" class="img-fluid"></a>
+      <a href="${path}/class/main.shop" class="logo mr-auto"><img src="${path}/assets/img/icon/ci3.png" alt="" class="img-fluid"></a>
       <!-- Uncomment below if you prefer to use text as a logo -->
       <!-- <h1 class="logo mr-auto"><a href="index.html">Butterfly</a></h1> -->
 

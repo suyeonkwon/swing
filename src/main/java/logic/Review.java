@@ -11,6 +11,9 @@ public class Review {
 	private String content;
 	private double star;
 	private Date regdate;	
+	//user name, file
+	private String name; 
+	private String file;
 	// getter, setter, toString
 
 	public int getReviewno() {
@@ -60,6 +63,18 @@ public class Review {
 	}
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getFile() {
+		return file;
+	}
+	public void setFile(String file) {
+		this.file = file;
 	}
 	@Override
 	public String toString() {

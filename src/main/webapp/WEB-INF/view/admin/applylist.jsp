@@ -74,7 +74,7 @@ body {
                   <img class="img-fluid" src="${path}/assets/img/team/team-3.jpg" alt="">
                </div>
                <div class="contetn">
-                  <div class="info-text" onclick="location.href ='../class/detail.shop'" style="cursor:pointer;">
+                  <div class="info-text" onclick="location.href ='../class/detail.shop?classid=${c.classid}'" style="cursor:pointer;">
                      <p style="color:#49b5e7; font-size: 11px;"><c:if test="${c.category==1}">요리베이킹</c:if>
                      <c:if test="${c.category==2}">반려동물</c:if>
                      <c:if test="${c.category==3}">사진</c:if>
@@ -90,12 +90,11 @@ body {
                      <c:if test="${c.level==2}">중/상급자</c:if>
                      <c:if test="${c.level==3}">고급/숙련자</c:if>)</p>
                      <p><img class="img16" src="${path}/assets/img/icon/marker.png">&nbsp;${c.location1}&nbsp;${c.location2}</p>             
-                     <p><img class="img16" src="${path}/assets/img/icon/stopwatch.png">총 ${c.totaltime}회<span style="color: #ccc8c8; font-size: 12px;">|</span>
+                     <p><img class="img16" src="${path}/assets/img/icon/stopwatch.png">총 ${c.totaltime}회
                      (회당 ${c.time}시간)</p>
                      <p><img class="img16" src="${path}/assets/img/icon/pricing.png">
-                     <fmt:formatNumber value="${c.price}" pattern="#,###"/>원
-                     <span style="color: #ccc8c8; font-size: 12px;">|</span>
-                     <fmt:formatNumber value="${c.totalprice}" pattern="#,###"/>원</p>
+                     <fmt:formatNumber value="${c.totalprice}" pattern="#,###"/>원
+                     (회당 <fmt:formatNumber value="${c.price}" pattern="#,###"/>원)</p>
                   </div>
                   <div style="float: right; margin-top: -40px;">
                   <c:if test="${param.get==0}">
