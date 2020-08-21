@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 
-import exception.Exception;
+import exception.RegisterException;
 import logic.Class;
 import logic.Classinfo;
 import logic.ClassinfoList;
@@ -112,11 +112,12 @@ public class TutorController {
 			String tutorimg = tutor.getFile();
 			int classno = service.maxClassno(classid); 
 			Classinfo ci = service.getClassInfoOne(classid,classno,1);
-			
-			if(classno==1 && ci.getDate()==null) {
-			} else {
+			// 현재 클래스 정보 classno가 1이고 해당 클래스의 첫 클래스 정보의 날짜가 null이면 classno 그대로 
+			// 아니면 classno 증가
+			if(!(classno==1 && ci.getDate()==null)) { 
 				classno++;
-			}
+			} 
+			
 			mav.addObject("c",c);
 			mav.addObject("tutorimg",tutorimg);
 			mav.addObject("classinfoList",classinfoList);
@@ -136,19 +137,20 @@ public class TutorController {
 					Classinfo ciInfo = service.getClassInfoOne(classid, 1, ci.getClassseq()); // 클래스 제목, 커리 정보 가져오기
 					ci.setTitle(ciInfo.getTitle());
 					ci.setCurri(ciInfo.getCurri());
-					System.out.println(ci);
-					if(ci.getClassno()==1 && ciInfo.getDate()==null) { // 현재 클래스 정보 classno가 1이고 해당 클래스의 첫 클래스 정보의 날짜가 null이면 첫등록-> update
+					if(ci.getClassno()==1 && ciInfo.getDate()==null) { // 현재 클래스 정보 classno가 1이면 첫등록-> update
 						service.firstClassinfo(ci);
-						// 해당 클래스 state=5로 변경하기
+						// 해당 클래스 state=5로 변경하기 (수업진행중)
+						service.updateState(ci.getClassid(), 5);
 					} else{
 						service.registerClassinfo(ci);
 					}
+					
 				}
 			}
 		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		throw new Exception("수업이 등록되었습니다.","result.shop");
+			throw new RegisterException("수업 등록에 실패하였습니다.","my.shop");
+		} 
+		throw new RegisterException("수업이 등록되었습니다.","result.shop");
 	}
 	
 	

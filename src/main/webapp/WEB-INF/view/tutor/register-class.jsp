@@ -27,11 +27,10 @@ font-size: 14px;
 }
 </style>
 <script type="text/javascript">
-function addclassinfo() {
+function addform() {
 	var classInfoHtml = $("#region").html();
 	$("#regions").append("<div class='region' id='region'>"+classInfoHtml+"</div>")
 }
-
 function input(f,n){
   if (f.checked) {
 	  for(i=2; i<=n; i++){
@@ -121,7 +120,6 @@ function register() {
 								</div>
 							</div>
 							</c:if>
-							
 							<c:if test="${c.type==2}">
 							<div class="option">
           						<table class="table table-hover">
@@ -131,8 +129,8 @@ function register() {
 										<form:hidden path="classinfos[${i}].classno" value="${newclassno}" />
 										<form:hidden path="classinfos[${i}].classseq" value="${i}" />
 										<tr><td>${i}회차</td>
-											<td><form:input path="classinfos[${i}].place" id="place${i}"/></td>
-											<td><form:input type="date" path="classinfos[${i}].date"/></td>
+											<td><form:input path="classinfos[${i}].place" id="place${i}" /></td>
+											<td><form:input type="date" path="classinfos[${i}].date" /></td>
 											<td><form:input type="time" path="classinfos[${i}].starttime" id="starttime${i}" /></td>
 											<td><form:input type="time" path="classinfos[${i}].endtime" id="endtime${i}" /></td></tr>
 									</c:forEach>
@@ -143,10 +141,10 @@ function register() {
 					</div>
 				</div>
 				<div class="sh_box class_price" style="border-top: 0; margin-top: 10px;">
-					<div style="text-align:center;"><img class="op" src="${path}/assets/img/icon/add3.png" style="width: 32px; height: 32px;"onclick="addclassinfo()"></div>
+					
+					<div style="text-align:center;"><img class="op" src="${path}/assets/img/icon/add3.png" style="width: 32px; height: 32px;" onclick="addform()"></div>
 				</div>
 			</div>
-			
 			<div id="registerButton" class="next button" onclick="javascript:document.classRegisterForm.submit()">등록</div>
 		</div>
 	</form:form>
