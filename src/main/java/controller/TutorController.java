@@ -169,6 +169,7 @@ public class TutorController {
 		}catch(IndexOutOfBoundsException e) {
 		}
 		Class clas = new Class();
+		
 		int classid = 0;
 		if( service.classTemp(userid) != null) {
 			classid = service.classTemp(userid);
@@ -192,7 +193,7 @@ public class TutorController {
 	 @RequestParam Map<String,Object> map
 	*/
 	@PostMapping("classEntry")
-	public ModelAndView classEntry(User user, License license, Class clas, String button, Integer cid, HttpSession session) {
+	public ModelAndView classEntry(User user, License license, Class clas, String button, Integer cid, Integer numtutee, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 
 		User loginUser = (User)session.getAttribute("loginUser");
@@ -208,7 +209,9 @@ public class TutorController {
 		}else if(button.equals("임시저장")) {
 			user.setKbn(1); // kbn(회원구분정보) : 1. 튜티 , 2.튜터
 			clas.setState(1); // state : 1.등록진행중 2.승인대기
-			
+			if(clas.getMaxtutee()==2) {
+				clas.setMaxtutee(numtutee);
+			}
 			// 유저 정보 업데이트
 			service.userUpdate2(user);  
 			// 자격증 정보 insert
@@ -244,6 +247,9 @@ public class TutorController {
 		}else if(button.equals("승인요청")) {
 			user.setKbn(2);
 			clas.setState(2);
+			if(clas.getMaxtutee()==2) {
+				clas.setMaxtutee(numtutee);
+			}
 			
 			// 유저 정보 업데이트
 			service.userUpdate2(user);  
