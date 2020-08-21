@@ -77,6 +77,66 @@ div#calc_point {
 .detail{
 	float: right; margin-right: 20px;
 }
+
+.achievement__item {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.fa {
+    background-image: url('${path}/assets/img/hero-img.png');
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.achievement__item span {
+    font-size: 40px;
+    color: #4c57d6;
+}
+.fa-user-o:before {
+    background-image: url('${path}/assets/img/hero-img.png');
+}
+.achieve-counter {
+    font-size: 32px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #0f394c;
+}
+.team .container h2 {
+    text-align: center;
+}
+
+.img-fluid1 {
+	width: 40px;
+	height: 40px;
+}
+
+
+.team .container .achievement__item h2{
+	margin-bottom:  0px;
+}
+
+.table td {
+    border-top: 0px solid #ebedf2;
+}
+.icon-box {
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    margin: 10px 10px 40px 10px;
+    background: #fff;
+    box-shadow: 0 10px 29px 0 rgba(68, 88, 144, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+.title {
+	font-size: 32px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #0f394c;
+}
 </style>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
@@ -114,9 +174,9 @@ $(".star").on('click',function(){
       <a id="grade" href="#"><h2>내 수업 성과</h2></a>
         <div class="row justify-content-center">
           <div class="col-lg-6 col-md-6" data-wow-delay="0.1s">
-            <div class="icon-box">
+            <div class="icon-box" align="center">
             	<canvas id="chartarea"></canvas>
-            	
+            	<br>
             	<h4 class="title">수업 별 신청 튜티 수</h4>
             </div>
           </div>
@@ -149,7 +209,7 @@ $(".star").on('click',function(){
           		new Chart(ctx, config);
           	}
           </script>
-       
+        
           <div class="col-lg-6 col-md-6" data-wow-delay="0.1s">
           <div class="icon-box">
             <div class="review_point">
@@ -178,28 +238,28 @@ $(".star").on('click',function(){
 					<div class="col-lg-3 col-md-3 col-sm-6">
 					<div class="achievement__item">
 					<img src="${path}/assets/img/icon/won.png" alt="" class="img-fluid1">
-					<h2 class="achieve-counter">50,000원</h2>
+					<h2 class="achieve-counter"><fmt:formatNumber value="${pricelist[1]}" pattern="#,###"/>원</h2>
 					<p>이번달 결제 금액</p>
 					</div>
 					</div>
 					<div class="col-lg-3 col-md-3 col-sm-6">
 					<div class="achievement__item">
 					<img src="${path}/assets/img/icon/won.png" alt="" class="img-fluid1">
-					<h2 class="achieve-counter">20,000원</h2>
+					<h2 class="achieve-counter"><fmt:formatNumber value="${pricelist[0]}" pattern="#,###"/>원</h2>
 					<p>지난달 결제 금액</p>
 					</div>
 					</div>
 					<div class="col-lg-3 col-md-3 col-sm-6">
 					<div class="achievement__item">
 					<img src="${path}/assets/img/icon/Money.png" alt="" class="img-fluid1">
-					<h2 class="achieve-counter">70,000원</h2>
+					<h2 class="achieve-counter"><fmt:formatNumber value="${pricelist[2]}" pattern="#,###"/>원</h2>
 					<p>누적 금액</p>
 					</div>
 					</div>
 					<div class="col-lg-3 col-md-3 col-sm-6">
 					<div class="achievement__item">
 					<img src="${path}/assets/img/icon/rev3.png" alt="" class="img-fluid1">
-					<h2 class="achieve-counter">20.84%</h2>
+					<h2 class="achieve-counter"><fmt:formatNumber value="${(pricelist[1]-pricelist[0]) / pricelist[0] * 100}" pattern="#.##" />%</h2>
 					<p>전월대비 상승률</p>
 					</div>
 					</div>

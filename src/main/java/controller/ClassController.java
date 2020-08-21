@@ -83,9 +83,7 @@ public class ClassController {
 			mav.addObject("reUser",reUser);
 			mav.addObject("license",license);
 //			mav.addObject("user",user);
-		}catch(NullPointerException e1) {
-			e1.printStackTrace();
-		}catch(Exception e) {
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		return mav;

@@ -88,6 +88,18 @@ public class TutorDao {
 		return template.getMapper(TutorMapper.class).bargraph(param);
 	}
 
+	public List<Integer> selectTotalPrice(String userid) {
+		param.clear();
+		param.put("userid", userid);
+		return template.getMapper(TutorMapper.class).selectTotPrice(userid);
+	}
+
+	public List<Map<String, Object>> avgStar(String userid) {
+		param.clear();
+		param.put("userid", userid);
+		return template.getMapper(TutorMapper.class).getAvgStar(param);
+	}
+
 	
 
 	

@@ -94,6 +94,7 @@ public class TuteeController {
 			}
 			int classnum = classlist.size();
 			mav.addObject("state", state);
+			mav.addObject("userid", userid);
 			mav.addObject("classlist", classlist);
 			mav.addObject("classnum", classnum);
 		} catch (Exception e) {
