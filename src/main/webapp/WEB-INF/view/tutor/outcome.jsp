@@ -136,7 +136,7 @@ div#calc_point {
     font-weight: bold;
     text-transform: uppercase;
     color: #0f394c;
-}
+} 
 .title {
 	font-size: 32px;
     font-weight: bold;
