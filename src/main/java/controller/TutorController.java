@@ -163,11 +163,11 @@ public class TutorController {
 	 * 
 	 */
 	@RequestMapping("register")
-	public ModelAndView register(HttpSession session, String cid) {
+	public ModelAndView register(HttpSession session, HttpServletRequest request,String cid) {
 		ModelAndView mav = new ModelAndView();
+		System.out.println(request.getServletContext().getRealPath("/"));
 		User loginUser = (User)session.getAttribute("loginUser");
 		String userid = loginUser.getUserid();
-//		try {
 		User user = service.getUser(userid);
 		License license = new License();
 		try {
@@ -199,7 +199,7 @@ public class TutorController {
 	 @RequestParam Map<String,Object> map
 	*/
 	@PostMapping("classEntry")
-	public ModelAndView classEntry(User user, License license, Class clas, String button, Integer cid, Integer numtutee, HttpSession session) {
+	public ModelAndView classEntry(User user, License license, Class clas, String button, Integer cid, Integer numtutee, HttpServletRequest request, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 
 		User loginUser = (User)session.getAttribute("loginUser");
@@ -208,7 +208,42 @@ public class TutorController {
 		license.setUserid(userid);
 		clas.setUserid(userid);
 		clas.setTotalprice(clas.getPrice()*clas.getTime()*clas.getTotaltime());
-		
+		System.out.println(user.getFile());
+		System.out.println(user.getFileurl());
+		if(user.getFileurl().length()>0) {
+	    	String path = request.getServletContext().getRealPath("/")+"user/save/";
+		    File f = new File(path);
+		    if(!f.exists()){
+	    	f.mkdirs();
+				    }
+				String str = user.getFileurl();
+				byte[] imagedata = java.util.Base64.getDecoder().decode(str.substring(str.indexOf(",") + 1));
+				BufferedImage bi = null;
+				try {
+					bi = ImageIO.read(new ByteArrayInputStream(imagedata));
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				int width = bi.getWidth();
+				int height = bi.getHeight();
+				BufferedImage thumb = new BufferedImage
+						(width,height,BufferedImage.TYPE_INT_RGB);
+				Graphics2D g = thumb.createGraphics();
+				g.drawImage(bi,0,0,width,height,null);
+				f = new File(path+user.getUserid()+"_"+user.getFile());
+				try {
+					ImageIO.write(thumb,"png",f);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				user.setFileurl("");
+	    }
+		System.out.println(user.getFile());
+		System.out.println(user.getFileurl());
+
 		if(button.equals("미리보기")) {
 			// 새창 열림
 			return mav;
