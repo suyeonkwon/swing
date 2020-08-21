@@ -115,7 +115,7 @@
                           <td>${user.userid}</td>
                           <td>${user.name}</td>
                           <c:if test="${user.kbn=='1'}">
-                          <td><label class="badge badge-info">튜티</label><br><a href="classlist.shop?get=0&id=${user.userid}" class="text-info">수강목록보기</a></td>
+                          <td><label class="badge badge-info">튜티</label><br><a href="../tutee/classlist.shop?userid=${user.userid}&state=1" class="text-info">수강목록보기</a></td>
                           <td></td>
                           </c:if>
                           <c:if test="${user.kbn=='2'}">
