@@ -99,7 +99,11 @@ public class TutorController {
 		ModelAndView mav = new ModelAndView();
 		User loginUser = (User) session.getAttribute("loginUser");
 		Map<String, Object> map = service.bargraph(loginUser.getUserid());
+		List<Integer> pricelist = service.getPriceList(loginUser.getUserid());
+		Map<String, Object> starmap = service.getAvgStar(loginUser.getUserid());
 		mav.addObject("map", map);
+		mav.addObject("pricelist", pricelist);
+		mav.addObject("starmap", starmap); 
 		return mav;
 	}
 	

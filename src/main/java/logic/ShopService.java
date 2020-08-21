@@ -149,6 +149,16 @@ public class ShopService {
 		}
 		return map;
 	}
+	public List<Integer> getPriceList(String userid) {
+		return tutorDao.selectTotalPrice(userid);
+	}
+	public Map<String, Object> getAvgStar(String userid) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		for(Map<String, Object> m : tutorDao.avgStar(userid)) {
+			map.put((String) m.get("subject"), m.get("star"));
+		}
+		return map;
+	}
 //	public List<Class> getClassListforConfirm(String userid, Integer state) {
 //		return tutorDao.listforConfirm(userid, state);
 //  }
@@ -308,5 +318,9 @@ public class ShopService {
 	public int classCnt() {
 		return classDao.count2();
 	}
+
+	
+
+	
 
 }
