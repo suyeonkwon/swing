@@ -59,7 +59,7 @@ body {
 		  </c:if>
 		  <c:if test="${classSize>0}">
          <c:forEach items="${list}" var="c">
-         <div class="col-lg-6 col-md-12 col-xs-12" onclick="location.href ='../class/detail.shop'" style="cursor:pointer;">
+         <div class="col-lg-6 col-md-12 col-xs-12" onclick="location.href ='../class/detail.shop?classid=${c.classid}'" style="cursor:pointer;">
             <div class="team-item wow fadeInRight animated" data-wow-delay="0.2s" style="visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;">
                <div class="team-img">
                   <img class="img-fluid" src="${path}/assets/img/team/team-2.jpg" alt="">
