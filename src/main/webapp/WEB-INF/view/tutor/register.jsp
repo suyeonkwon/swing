@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/jspHeader.jsp" %>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
+<c:set var="port" value="${pageContext.request.localPort}" />
+<c:set var="server" value="${pageContext.request.serverName}" />
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -86,6 +91,7 @@ $(document).ready(function(){
 	}else{
 		$("#numtutee").hide();
 	}
+	
 	$("#numclass").hide();
 	
 	$('input[name="maxtutee"]').change(function() {
@@ -187,6 +193,7 @@ function cal(price, time, totaltime){
 	             <i class="icofont-google-map"></i>
 	               <h4>기본정보</h4>
 	               <p>프로필,별명,인증</p>
+	               <p>${server}</p>
 	          </div>
 	        </div>
         </div>
@@ -195,10 +202,23 @@ function cal(price, time, totaltime){
 	    <div class="form-group">
 	    	<div class="title">프로필-</div>
 			<div style="margin: 30px 0">
-				<img class="upf_b button" src="${path}/assets/img/icon/camera1.png">
-                <div class="upf" id="picture-cover" style="background-image:url('save/${user.userid}_${user.file}')">
-                	<input type="hidden" id="ProfileThumbnailUrl" value="//img.taling.me/Content/Uploads/Profile/106bb03ba39eaf53e3243d4cc2f6575fd0328e49.jpg">
-                    <input type="file" id="picture" name="picture" style="width:150px;height:130px;opacity:0;">
+				<img class="upf_b button"  src="https://front-img.taling.me/Content/Images/tutor/Images/btn_pfimg.png">
+                <div class="upf" id="picture-cover" style="background-image: url('http://${server}:${port}${path}/user/save/${user.userid}_${user.file}')">
+	                <input type="file" id="picture" name="picture" style="width:150px;height:130px;opacity:0;" onchange="setThumbnail(event);" value=""/>  
+	                <input type="hidden" id="file" name="file" value=""/> 
+                    <input type="hidden" id="fileurl" name="fileurl" />
+                    <script> 
+		   			 function setThumbnail(event) { 
+						var reader = new FileReader(); 
+						reader.onload = function(event) {
+						document.getElementById("picture-cover").style.backgroundImage="url("+reader.result+")";
+		            	document.getElementById("fileurl").value= reader.result;
+	            	}; 
+	            	reader.readAsDataURL(event.target.files[0]); 
+	            	var fname =event.target.files[0].name;
+	            	document.getElementById("file").value= fname;
+            		}
+	        		</script>    
                 </div>
             </div>
 			<div class="title">별명-</div>
