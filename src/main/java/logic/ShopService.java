@@ -188,7 +188,7 @@ public class ShopService {
 	public Date getStartDate(Integer classid) {
 		return wishlistDao.startDate(classid);
 	}
-	public int getStar(Integer classid) {
+	public double getStar(Integer classid) {
 		return wishlistDao.star(classid);
 	}
 	public int getParticiNum(Integer classid) {
@@ -212,7 +212,7 @@ public class ShopService {
 
 	public void applyClass(ApplyList apply) {
 		int maxnum = applylistDao.maxnum();
-		apply.setApplyno(++maxnum);
+		//apply.setApplyno(++maxnum);
 		applylistDao.insert(apply);
 	}
 

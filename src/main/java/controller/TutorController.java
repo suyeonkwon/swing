@@ -151,10 +151,10 @@ public class TutorController {
 					if(ci.getClassno()==1 && ciInfo.getDate()==null) { // 현재 클래스 정보 classno가 1이면 첫등록-> update
 						service.firstClassinfo(ci);
 						// 해당 클래스 state=5로 변경하기 (수업진행중)
-						service.updateState(ci.getClassid(), 5);
 					} else{
 						service.registerClassinfo(ci);
 					}
+					service.updateState(ci.getClassid(), 5);
 					
 				}
 			}

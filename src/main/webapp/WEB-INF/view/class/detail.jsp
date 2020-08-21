@@ -239,7 +239,7 @@
 					<script type="text/javascript">
 						$(function(){
 							var idx = $('#Avg').val()/0.5;
-							for(var i=0; i<=idx; i++){
+							for(var i=0; i<idx; i++){
 								$(".star").eq(i).addClass("on");
 								$(".review_box .star").eq(i).addClass("on");
 							}
