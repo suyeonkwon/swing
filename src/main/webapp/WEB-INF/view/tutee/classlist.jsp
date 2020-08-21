@@ -32,8 +32,8 @@ a:hover {
 		<div class="title-box">
 			<h1>수강목록</h1>
 			<ul id="class_status">
-				<li><a href="classlist.shop?userid=${sessionScope.loginUser.userid}&state=1" <c:if test="${state==1}">class="select"</c:if> >수강중</a></li>
-				<li><a href="classlist.shop?userid=${sessionScope.loginUser.userid}&state=2" <c:if test="${state==2}">class="select"</c:if>>수강완료</a></li>
+				<li><a href="classlist.shop?userid=${userid}&state=1" <c:if test="${state==1}">class="select"</c:if> >수강중</a></li>
+				<li><a href="classlist.shop?userid=${userid}&state=2" <c:if test="${state==2}">class="select"</c:if>>수강완료</a></li>
 			</ul>
 		</div>
 		<div class="my-class-list">

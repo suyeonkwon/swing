@@ -142,7 +142,10 @@ $(function(){
                      <p>[위치] ${cl.location1} ${cl.location2}</p>
                   </div>                  
                   <div class="detail">
-                  	<button onclick="location.href='../class/detail.shop?classid=${cl.classid}'">상세보기</button>&nbsp;&nbsp;
+                  	<input type="button" value="수업추가하기" onclick="location.href='register-class.shop?classid=${cl.classid}'">&nbsp;&nbsp;
+                  	<input type="button" value="수업상세보기" onclick="location.href='../class/detail.shop?classid=${cl.classid}'">&nbsp;&nbsp;
+<%--                <button onclick="location.href='register-class.shop?classid=${cl.classid}'">수업 추가하기</button>&nbsp;&nbsp;
+                  	<button onclick="location.href='../class/detail.shop?classid=${cl.classid}'">상세보기</button>&nbsp;&nbsp;    --%>
                   </div>
                </div>
             </div>            

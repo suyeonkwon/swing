@@ -196,7 +196,7 @@ function cal(price, time, totaltime){
 	    	<div class="title">프로필-</div>
 			<div style="margin: 30px 0">
 				<img class="upf_b button" src="${path}/assets/img/icon/camera1.png">
-                <div class="upf" id="picture-cover" style="background-image:url('//img.taling.me/Content/Uploads/Profile/106bb03ba39eaf53e3243d4cc2f6575fd0328e49.jpg')">
+                <div class="upf" id="picture-cover" style="background-image:url('save/${user.userid}_${user.file}')">
                 	<input type="hidden" id="ProfileThumbnailUrl" value="//img.taling.me/Content/Uploads/Profile/106bb03ba39eaf53e3243d4cc2f6575fd0328e49.jpg">
                     <input type="file" id="picture" name="picture" style="width:150px;height:130px;opacity:0;">
                 </div>

@@ -1,8 +1,8 @@
 package exception;
 
-public class Exception extends RuntimeException{
+public class RegisterException extends RuntimeException{
 	private String url;
-	public Exception(String msg, String url) {
+	public RegisterException(String msg, String url) {
 		super(msg);
 		this.url=url;
 	}

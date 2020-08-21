@@ -65,7 +65,7 @@
 </style>
 </head>
 <body>
-<section id="team" class="team">
+<section id="team" class="team" style="margin-bottom: 200px;">
       <div class="container">
           <div style="text-align: right;">
 	          <a href="#info1"><h2 style="text-align: left;">수익 조회</h2></a>
@@ -105,7 +105,12 @@
               <div class="col-lg-6 grid-margin stretch-card">
                 <div class="card" style="height: 100%">
                   <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-                    <h4 class="card-title">Bar chart</h4>
+                    <h4 class="card-title">
+					<select name= "column" style="border: none; width: 30%; outline: none;">
+							<option value="">2020년</option>
+					</select>
+					<span style="width:70%; margin-right: 10px;">전체보기</span>
+					</h4>
                     <canvas id="chart-barChart" style="height: 204px; display: block; width: 408px;" width="408" height="204" class="chartjs-render-monitor"></canvas>
                     <script type="text/javascript">
                 	var randomColorFactor = function(){
@@ -160,7 +165,9 @@
                       <tbody>
                       <c:forEach items="${tutor}" var="t">
                         <tr>
-                          <td>${t.rank}</td>
+                          <td><c:if test="${t.rank==1}"><img src="${path}/assets/img/icon/icons8-medal-first-place-30.png"></c:if>
+                          <c:if test="${t.rank==2}"><img src="${path}/assets/img/icon/icons8-medal-second-place-30.png"></c:if>
+                          <c:if test="${t.rank==3}"><img src="${path}/assets/img/icon/icons8-medal-third-place-30.png"></c:if></td>
                           <td>${t.userid}</td>
                           <td><fmt:formatNumber value="${t.totalprice}" pattern="#,###"/>원</td>
                           <td>수강목록보기</td>
@@ -168,6 +175,7 @@
                        </c:forEach>
                       </tbody>
                     </table>
+                    <hr>
                     <div style="width: 100%">
 	                    <label class="badge badge-warning">튜티 랭킹</label>
 	                    <a href="#" style="float: right; margin-right: 10px; font-size: 12px;">전체보기</a>
@@ -176,7 +184,9 @@
                       <tbody>
                         <c:forEach items="${tutee}" var="t">
                         <tr>
-                          <td>${t.rank}</td>
+                          <td><c:if test="${t.rank==1}"><img src="${path}/assets/img/icon/icons8-medal-first-place-30.png"></c:if>
+                          <c:if test="${t.rank==2}"><img src="${path}/assets/img/icon/icons8-medal-second-place-30.png"></c:if>
+                          <c:if test="${t.rank==3}"><img src="${path}/assets/img/icon/icons8-medal-third-place-30.png"></c:if></td>
                           <td>${t.userid}</td>
                           <td><fmt:formatNumber value="${t.totalprice}" pattern="#,###"/>원</td>
                           <td>수강목록보기</td>
