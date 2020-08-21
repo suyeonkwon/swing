@@ -45,7 +45,7 @@ public interface TutorMapper {
 		"</script>"})
 	int count2(Map<String, Object> param);
 	
-	@Select("SELECT MAX(DATE) FROM classinfo where classid=#{classid} ")
+	@Select("SELECT MAX(DATE) FROM classinfo where classid=#{classid}")
 	Date confirm(Map<String, Object> param);
 
 	@Select({"<script>",
@@ -67,6 +67,23 @@ public interface TutorMapper {
 			+ " where u.userid=#{userid} group by c.classid"
 			+ " order by cnt desc limit 0,5")
 	List<Map<String, Object>> bargraph(Map<String, Object> param);
+
+	@Select("SELECT ifnull(sum(c.totalprice),0) tot1 FROM class c, applylist a" + 
+			"	WHERE c.classid = a.classid AND c.userid=#{userid}" + 
+			"	AND YEAR(a.applydate)=YEAR(NOW()) AND MONTH(a.applydate)=MONTH(NOW())-1" + 
+			"	union" + 
+			"	SELECT ifnull(sum(c.totalprice),0) tot2 FROM class c, applylist a" + 
+			"	WHERE c.classid = a.classid AND c.userid=#{userid}" + 
+			"	AND YEAR(a.applydate)=YEAR(NOW()) AND MONTH(a.applydate)=MONTH(NOW())" + 
+			"	union" + 
+			"	SELECT ifnull(SUM(c.totalprice),0) tot3 FROM class c, applylist a" + 
+			"	WHERE c.classid = a.classid AND c.userid=#{userid}")
+	List<Integer> selectTotPrice(String userid);
+
+	@Select("SELECT c.subject subject, round(AVG(r.star),1) star"
+			+ " FROM review r JOIN class c ON r.classid=c.classid" 
+			+ " WHERE c.userid=#{userid} ")
+	List<Map<String, Object>> getAvgStar(Map<String, Object> param);
 
 	
 //	@Select({"<script>",

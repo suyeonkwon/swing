@@ -22,32 +22,23 @@ import dao.WishlistDao;
 public class ShopService {
 	@Autowired
 	private UserDao userDao;
-	
 	@Autowired
 	private ReviewDao reviewDao;
-	
 	@Autowired
 	private TutorDao tutorDao;
-	
 	@Autowired
 	private ClassDao classDao;
-	
 	@Autowired
 	private ClassInfoDao classinfoDao;
-	
 	@Autowired
 	private WishlistDao wishlistDao;
-	
 	/*----User----*/
 	@Autowired
 	private LicenseDao licenseDao;
-	
 	@Autowired
 	private ApplyListDao applylistDao;
-	
 	@Autowired
 	private ChattingDao chattingDao;
-	
 	public List<User> userList() {
 		return userDao.list();
 	}
@@ -81,11 +72,11 @@ public class ShopService {
 
 	public List<Class> classlistById(String userid) {
 		return classDao.listById(userid);
-	}	
+	}
+
 	public void updateState(int classid,int state) {
 		classDao.updateState(classid,state);
 	}
-	/*--class end--*/
 	
 	public void reviewWrite(Review review) {
 		int max = reviewDao.maxnum();
@@ -155,6 +146,16 @@ public class ShopService {
 		Map<String, Object> map = new HashMap<String, Object>();
 		for(Map<String, Object> m : tutorDao.bargraph(userid)) {
 			map.put((String) m.get("subject"), m.get("cnt"));
+		}
+		return map;
+	}
+	public List<Integer> getPriceList(String userid) {
+		return tutorDao.selectTotalPrice(userid);
+	}
+	public Map<String, Object> getAvgStar(String userid) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		for(Map<String, Object> m : tutorDao.avgStar(userid)) {
+			map.put((String) m.get("subject"), m.get("star"));
 		}
 		return map;
 	}
@@ -316,13 +317,11 @@ public class ShopService {
 	public int classCnt() {
 		return classDao.count2();
 	}
-
 	public ApplyList getapply(int classid, String userid) {
 		return applylistDao.selectOne(classid,userid);
 	}
-//
-//	public List<Class> mainlist() {
-//		return classDao.mainlist
-//	}
+	
+
+	
 
 }

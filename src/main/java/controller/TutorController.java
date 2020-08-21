@@ -7,16 +7,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 
-import exception.Exception;
+import exception.RegisterException;
 import logic.Class;
 import logic.Classinfo;
 import logic.ClassinfoList;
@@ -99,7 +106,11 @@ public class TutorController {
 		ModelAndView mav = new ModelAndView();
 		User loginUser = (User) session.getAttribute("loginUser");
 		Map<String, Object> map = service.bargraph(loginUser.getUserid());
+		List<Integer> pricelist = service.getPriceList(loginUser.getUserid());
+		Map<String, Object> starmap = service.getAvgStar(loginUser.getUserid());
 		mav.addObject("map", map);
+		mav.addObject("pricelist", pricelist);
+		mav.addObject("starmap", starmap); 
 		return mav;
 	}
 	
@@ -112,11 +123,12 @@ public class TutorController {
 			String tutorimg = tutor.getFile();
 			int classno = service.maxClassno(classid); 
 			Classinfo ci = service.getClassInfoOne(classid,classno,1);
-			
-			if(classno==1 && ci.getDate()==null) {
-			} else {
+			// 현재 클래스 정보 classno가 1이고 해당 클래스의 첫 클래스 정보의 날짜가 null이면 classno 그대로 
+			// 아니면 classno 증가
+			if(!(classno==1 && ci.getDate()==null)) { 
 				classno++;
-			}
+			} 
+			
 			mav.addObject("c",c);
 			mav.addObject("tutorimg",tutorimg);
 			mav.addObject("classinfoList",classinfoList);
@@ -136,19 +148,20 @@ public class TutorController {
 					Classinfo ciInfo = service.getClassInfoOne(classid, 1, ci.getClassseq()); // 클래스 제목, 커리 정보 가져오기
 					ci.setTitle(ciInfo.getTitle());
 					ci.setCurri(ciInfo.getCurri());
-					System.out.println(ci);
-					if(ci.getClassno()==1 && ciInfo.getDate()==null) { // 현재 클래스 정보 classno가 1이고 해당 클래스의 첫 클래스 정보의 날짜가 null이면 첫등록-> update
+					if(ci.getClassno()==1 && ciInfo.getDate()==null) { // 현재 클래스 정보 classno가 1이면 첫등록-> update
 						service.firstClassinfo(ci);
-						// 해당 클래스 state=5로 변경하기
+						// 해당 클래스 state=5로 변경하기 (수업진행중)
+						service.updateState(ci.getClassid(), 5);
 					} else{
 						service.registerClassinfo(ci);
 					}
+					
 				}
 			}
 		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		throw new Exception("수업이 등록되었습니다.","result.shop");
+			throw new RegisterException("수업 등록에 실패하였습니다.","my.shop");
+		} 
+		throw new RegisterException("수업이 등록되었습니다.","result.shop");
 	}
 	
 	
@@ -157,14 +170,19 @@ public class TutorController {
 	 * 
 	 */
 	@RequestMapping("register")
-	public ModelAndView register(HttpSession session, String cid) {
+	public ModelAndView register(HttpSession session, HttpServletRequest request,String cid) {
 		ModelAndView mav = new ModelAndView();
+		System.out.println(request.getServletContext().getRealPath("/"));
 		User loginUser = (User)session.getAttribute("loginUser");
 		String userid = loginUser.getUserid();
-//		try {
 		User user = service.getUser(userid);
-		License license = service.getLicense(userid).get(0); //service.getLicense(userid).get(0);
+		License license = new License();
+		try {
+			license = service.getLicense(userid).get(0);
+		}catch(IndexOutOfBoundsException e) {
+		}
 		Class clas = new Class();
+		
 		int classid = 0;
 		if( service.classTemp(userid) != null) {
 			classid = service.classTemp(userid);
@@ -188,7 +206,7 @@ public class TutorController {
 	 @RequestParam Map<String,Object> map
 	*/
 	@PostMapping("classEntry")
-	public ModelAndView classEntry(User user, License license, Class clas, String button, Integer cid, HttpSession session) {
+	public ModelAndView classEntry(User user, License license, Class clas, String button, Integer cid, Integer numtutee, HttpServletRequest request, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 
 		User loginUser = (User)session.getAttribute("loginUser");
@@ -197,14 +215,51 @@ public class TutorController {
 		license.setUserid(userid);
 		clas.setUserid(userid);
 		clas.setTotalprice(clas.getPrice()*clas.getTime()*clas.getTotaltime());
-		
+		System.out.println(user.getFile());
+		System.out.println(user.getFileurl());
+		if(user.getFileurl().length()>0) {
+	    	String path = request.getServletContext().getRealPath("/")+"user/save/";
+		    File f = new File(path);
+		    if(!f.exists()){
+	    	f.mkdirs();
+				    }
+				String str = user.getFileurl();
+				byte[] imagedata = java.util.Base64.getDecoder().decode(str.substring(str.indexOf(",") + 1));
+				BufferedImage bi = null;
+				try {
+					bi = ImageIO.read(new ByteArrayInputStream(imagedata));
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				int width = bi.getWidth();
+				int height = bi.getHeight();
+				BufferedImage thumb = new BufferedImage
+						(width,height,BufferedImage.TYPE_INT_RGB);
+				Graphics2D g = thumb.createGraphics();
+				g.drawImage(bi,0,0,width,height,null);
+				f = new File(path+user.getUserid()+"_"+user.getFile());
+				try {
+					ImageIO.write(thumb,"png",f);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				user.setFileurl("");
+	    }
+		System.out.println(user.getFile());
+		System.out.println(user.getFileurl());
+
 		if(button.equals("미리보기")) {
 			// 새창 열림
 			return mav;
 		}else if(button.equals("임시저장")) {
 			user.setKbn(1); // kbn(회원구분정보) : 1. 튜티 , 2.튜터
 			clas.setState(1); // state : 1.등록진행중 2.승인대기
-			
+			if(clas.getMaxtutee()==2) {
+				clas.setMaxtutee(numtutee);
+			}
 			// 유저 정보 업데이트
 			service.userUpdate2(user);  
 			// 자격증 정보 insert
@@ -240,6 +295,9 @@ public class TutorController {
 		}else if(button.equals("승인요청")) {
 			user.setKbn(2);
 			clas.setState(2);
+			if(clas.getMaxtutee()==2) {
+				clas.setMaxtutee(numtutee);
+			}
 			
 			// 유저 정보 업데이트
 			service.userUpdate2(user);  

@@ -32,17 +32,17 @@ body {
 </head>
 <body>
 <script type="text/javascript">
-	function listdo(page,get,id){
-		f = document.sf;
-		f.pageNum.value = page;
-		f.get.value = get;
-		f.id.value = id;
-		console.log("page:"+page);
-		console.log("get:"+get);
-		console.log("id:"+id);
-		
-		f.submit();
-	}
+   function listdo(page,get,id){
+      f = document.sf;
+      f.pageNum.value = page;
+      f.get.value = get;
+      f.id.value = id;
+      console.log("page:"+page);
+      console.log("get:"+get);
+      console.log("id:"+id);
+      
+      f.submit();
+   }
 </script>
 <section id="team" class="team">
       <div class="container">
@@ -55,11 +55,11 @@ body {
           </div>
           <div class="row bg-gray">
           <c:if test="${classSize==0}">
-			목록이 없습니다.
-		  </c:if>
-		  <c:if test="${classSize>0}">
+         목록이 없습니다.
+        </c:if>
+        <c:if test="${classSize>0}">
          <c:forEach items="${list}" var="c">
-         <div class="col-lg-6 col-md-12 col-xs-12" onclick="location.href ='../class/detail.shop'" style="cursor:pointer;">
+         <div class="col-lg-6 col-md-12 col-xs-12" onclick="location.href ='../class/detail.shop?classid=${c.classid}'" style="cursor:pointer;">
             <div class="team-item wow fadeInRight animated" data-wow-delay="0.2s" style="visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;">
                <div class="team-img">
                   <img class="img-fluid" src="${path}/assets/img/team/team-2.jpg" alt="">
@@ -85,7 +85,7 @@ body {
                      <p>${c.time}<span style="color: #ccc8c8; font-size: 12px;">|</span>
                      ${c.totaltime}<span style="color: #ccc8c8; font-size: 12px;">|</span>
                      ${c.price}<span style="color: #ccc8c8; font-size: 12px;">|</span>${c.totalprice}</p>
-                  </div>
+                  </div> 
                </div>
             </div>
          </div>
@@ -93,22 +93,22 @@ body {
          </c:if>
       </div>
       <div class="row">
-	  <div class="back-next">
-	  <form action="applylist.shop" method="post" name="sf">
-		<input type="hidden" name="pageNum" value="1">
-		<input type="hidden" name="get" value="0">
-		<input type="hidden" name="id" value="">
+     <div class="back-next">
+     <form action="applylist.shop" method="post" name="sf">
+      <input type="hidden" name="pageNum" value="1">
+      <input type="hidden" name="get" value="0">
+      <input type="hidden" name="id" value="">
       </form>
-		<c:if test="${pageNum<=1}"><img src="../assets/img/icon/back.png"></c:if> 
-		<c:if test="${pageNum>1}"><a href="javascript:listdo(${pageNum-1},${param.get},'')"><img src="../assets/img/icon/back.png"></a></c:if> 
-		<c:forEach var="a" begin="${startpage}" end="${endpage}">
-		<c:if test="${pageNum==a}"><a>${a}</a></c:if>
-		<c:if test="${pageNum!=a}"><a href="javascript:listdo(${a},${param.get},'')">${a}</a></c:if>
-		</c:forEach> 
-		<c:if test="${pageNum>=maxpage}"><img src="../assets/img/icon/next.png"></c:if> 
-		<c:if test="${pageNum<maxpage}"><a href="javascript:listdo(${pageNum+1},${param.get},'')"><img src="../assets/img/icon/next.png"></a></c:if>
-	</div>
-	</div>
+      <c:if test="${pageNum<=1}"><img src="../assets/img/icon/back.png"></c:if> 
+      <c:if test="${pageNum>1}"><a href="javascript:listdo(${pageNum-1},${param.get},'')"><img src="../assets/img/icon/back.png"></a></c:if> 
+      <c:forEach var="a" begin="${startpage}" end="${endpage}">
+      <c:if test="${pageNum==a}"><a>${a}</a></c:if>
+      <c:if test="${pageNum!=a}"><a href="javascript:listdo(${a},${param.get},'')">${a}</a></c:if>
+      </c:forEach> 
+      <c:if test="${pageNum>=maxpage}"><img src="../assets/img/icon/next.png"></c:if> 
+      <c:if test="${pageNum<maxpage}"><a href="javascript:listdo(${pageNum+1},${param.get},'')"><img src="../assets/img/icon/next.png"></a></c:if>
+   </div>
+   </div>
    </div>
 </section>
 </body>
