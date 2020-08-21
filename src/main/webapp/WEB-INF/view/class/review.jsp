@@ -60,6 +60,7 @@ $(function(){
 	<form:form modelAttribute="review" name="form" id="form" method="post">
 	<%--<form:hidden path="classid"/>--%>
 	<input type="hidden" id="star" name="star" value="">
+	<input type="hidden" id="classid" name="classid" value="${param.classid}">
 	<div class="input">
 		<form:textarea path="content" class="input_content" 
 		cols="1" rows="1" maxlength="150" placeholder="리뷰를 남겨주세요"/>
@@ -77,6 +78,7 @@ $(function(){
 					url:'review.shop',
 					data:params,
 					success:function(data){
+						opener.parent.location.reload();
 						window.close();
 					},error:function(xhr,status){
 						alert(xhr+":"+status);

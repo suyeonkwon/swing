@@ -35,6 +35,7 @@ public class ClassController {
 	@RequestMapping("*") //  /index.shop 요청시 호출되는 메서드
 	public ModelAndView classForm() {
 		ModelAndView mav = new ModelAndView();
+//		List<Class> cls = service.mainlist();
 		return mav;
 	}
 	@GetMapping("review")
@@ -46,9 +47,12 @@ public class ClassController {
 	@PostMapping("review")
 	public ModelAndView review(Review review, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-//		User loginUser = (User)session.getAttribute("loginUser");
-//		review.setUserid(loginUser.getUserid());
-		review.setUserid("hong");
+		User loginUser = (User)session.getAttribute("loginUser");
+		System.out.println(review.getClassid());
+		ApplyList apply = service.getapply(review.getClassid(),loginUser.getUserid());
+		review.setUserid(loginUser.getUserid());
+		review.setClassno(apply.getClassno());
+//		review.setUserid("hong");
 		try {
 			service.reviewWrite(review);
 			mav.setViewName("redirect:detail.shop");
@@ -70,17 +74,17 @@ public class ClassController {
 			User tutor = service.getUser(cls.getUserid());
 			List<Classinfo> clsinfo = service.getClassInfo(classid);
 			List<Review> review = service.getReview(classid);
-			List<User> reUser = new ArrayList<>();
+//			List<User> reUser = new ArrayList<>();
 			List<License> license = service.getLicense(cls.getUserid());
 			double sum = 0;
-			for(Review re : review) {
-				reUser.add(service.getUser(re.getUserid()));
-			}
+//			for(Review re : review) {
+//				reUser.add(service.getUser(re.getUserid()));
+//			}
 			mav.addObject("cls",cls);
 			mav.addObject("tutor",tutor);
 			mav.addObject("clsinfo", clsinfo);
 			mav.addObject("review",review);
-			mav.addObject("reUser",reUser);
+//			mav.addObject("reUser",reUser);
 			mav.addObject("license",license);
 //			mav.addObject("user",user);
 		} catch(Exception e) {
@@ -88,6 +92,7 @@ public class ClassController {
 		}
 		return mav;
 	}
+	
 	@RequestMapping("check")
 	public ModelAndView check(Integer classid) {
 		ModelAndView mav = new ModelAndView();

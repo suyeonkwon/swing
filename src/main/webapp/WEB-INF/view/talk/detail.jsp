@@ -28,7 +28,7 @@
 					json.date = new Date();
 					jsonArray.push(json);
 					ws.send(JSON.stringify(json));
-					alert(JSON.stringify(jsonArray))
+					//alert(JSON.stringify(jsonArray))
 					$("#message").val("");//서버로 입력된 내용 전송
 				}
 			})

@@ -33,6 +33,9 @@ public class Class {
 	private String name;
 	private Date date;
 	
+	//tutor 프로필 img
+	private String file;
+	
 	// getter, setter
 	public int getClassid() {
 		return classid;
