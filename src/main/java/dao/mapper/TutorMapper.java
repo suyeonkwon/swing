@@ -82,7 +82,8 @@ public interface TutorMapper {
 
 	@Select("SELECT c.subject subject, round(AVG(r.star),1) star"
 			+ " FROM review r JOIN class c ON r.classid=c.classid" 
-			+ " WHERE c.userid=#{userid} ")
+			+ " WHERE c.userid=#{userid}"
+			+ " order by star desc limit 0,4")
 	List<Map<String, Object>> getAvgStar(Map<String, Object> param);
 
 	
