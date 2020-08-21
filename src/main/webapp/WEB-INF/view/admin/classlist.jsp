@@ -85,7 +85,7 @@ body {
                      <p>${c.time}<span style="color: #ccc8c8; font-size: 12px;">|</span>
                      ${c.totaltime}<span style="color: #ccc8c8; font-size: 12px;">|</span>
                      ${c.price}<span style="color: #ccc8c8; font-size: 12px;">|</span>${c.totalprice}</p>
-                  </div>
+                  </div> 
                </div>
             </div>
          </div>
