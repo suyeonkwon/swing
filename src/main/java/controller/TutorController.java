@@ -29,6 +29,7 @@ import logic.Classinfo;
 import logic.ClassinfoList;
 import logic.Course;
 import logic.License;
+import logic.Review;
 import logic.ShopService;
 import logic.User;
 
@@ -107,10 +108,10 @@ public class TutorController {
 		User loginUser = (User) session.getAttribute("loginUser");
 		Map<String, Object> map = service.bargraph(loginUser.getUserid());
 		List<Integer> pricelist = service.getPriceList(loginUser.getUserid());
-		Map<String, Object> starmap = service.getAvgStar(loginUser.getUserid());
+		List<Review> starlist = service.getAvgStar(loginUser.getUserid());
 		mav.addObject("map", map);
 		mav.addObject("pricelist", pricelist);
-		mav.addObject("starmap", starmap); 
+		mav.addObject("starlist", starlist); 
 		return mav;
 	}
 	

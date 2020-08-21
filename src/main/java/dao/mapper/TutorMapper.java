@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Update;
 
 import logic.Class;
 import logic.Classinfo;
+import logic.Review;
 
 public interface TutorMapper {
 
@@ -80,11 +81,12 @@ public interface TutorMapper {
 			"	WHERE c.classid = a.classid AND c.userid=#{userid}")
 	List<Integer> selectTotPrice(String userid);
 
-	@Select("SELECT c.subject subject, round(AVG(r.star),1) star"
+	@Select("SELECT c.subject subject, round(AVG(r.star),1) avgstar, rank() over(ORDER BY star DESC) rank"
 			+ " FROM review r JOIN class c ON r.classid=c.classid" 
 			+ " WHERE c.userid=#{userid}"
-			+ " order by star desc limit 0,4")
-	List<Map<String, Object>> getAvgStar(Map<String, Object> param);
+			+ " GROUP BY subject"
+			+ " limit 0,4")
+	List<Review> getAvgStar(Map<String, Object> param);
 
 	
 //	@Select({"<script>",
