@@ -20,6 +20,10 @@ public interface WishlistMapper {
 			"WHERE classid=#{classid}")
 	double star(Integer classid);
 	
+	@Select("SELECT ifnull(COUNT(reviewno),0) 'reviewnum' FROM review " + 
+			"WHERE classid=#{classid}")
+	int riviewnum(Integer classid);
+	
 	@Select("SELECT COUNT(*) cnt FROM applylist a, class c " + 
 			"WHERE a.classid = c.classid " + 
 			"AND a.classid = #{classid}")

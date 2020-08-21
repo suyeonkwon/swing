@@ -29,6 +29,7 @@ import logic.Classinfo;
 import logic.ClassinfoList;
 import logic.Course;
 import logic.License;
+import logic.Review;
 import logic.ShopService;
 import logic.User;
 
@@ -107,10 +108,10 @@ public class TutorController {
 		User loginUser = (User) session.getAttribute("loginUser");
 		Map<String, Object> map = service.bargraph(loginUser.getUserid());
 		List<Integer> pricelist = service.getPriceList(loginUser.getUserid());
-		Map<String, Object> starmap = service.getAvgStar(loginUser.getUserid());
+		List<Review> starlist = service.getAvgStar(loginUser.getUserid());
 		mav.addObject("map", map);
 		mav.addObject("pricelist", pricelist);
-		mav.addObject("starmap", starmap); 
+		mav.addObject("starlist", starlist); 
 		return mav;
 	}
 	
@@ -151,10 +152,10 @@ public class TutorController {
 					if(ci.getClassno()==1 && ciInfo.getDate()==null) { // 현재 클래스 정보 classno가 1이면 첫등록-> update
 						service.firstClassinfo(ci);
 						// 해당 클래스 state=5로 변경하기 (수업진행중)
-						service.updateState(ci.getClassid(), 5);
 					} else{
 						service.registerClassinfo(ci);
 					}
+					service.updateState(ci.getClassid(), 5);
 					
 				}
 			}
@@ -168,7 +169,7 @@ public class TutorController {
 	
 	/* 수업 등록 페이지 접근시 작성 중인 수업 정보가 있는지 확인
 	 * 
-	 */
+	 */ 
 	@RequestMapping("register")
 	public ModelAndView register(HttpSession session, HttpServletRequest request,String cid) {
 		ModelAndView mav = new ModelAndView();
@@ -215,8 +216,8 @@ public class TutorController {
 		license.setUserid(userid);
 		clas.setUserid(userid);
 		clas.setTotalprice(clas.getPrice()*clas.getTime()*clas.getTotaltime());
-		System.out.println(user.getFile());
-		System.out.println(user.getFileurl());
+		System.out.println("getFile1"+user.getFile());
+		System.out.println("getFileurl1.length"+user.getFileurl().length());
 		if(user.getFileurl().length()>0) {
 	    	String path = request.getServletContext().getRealPath("/")+"user/save/";
 		    File f = new File(path);
@@ -248,8 +249,8 @@ public class TutorController {
 				}
 				user.setFileurl("");
 	    }
-		System.out.println(user.getFile());
-		System.out.println(user.getFileurl());
+		System.out.println("getFile2"+user.getFile());
+		System.out.println("getFileurl2"+user.getFileurl());
 
 		if(button.equals("미리보기")) {
 			// 새창 열림

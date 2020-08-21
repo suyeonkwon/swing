@@ -19,7 +19,7 @@ public class Course {
 	private Date startdate;
 	private Date enddate;
 	private int reviewnum;
-	private int star;
+	private double star;
 	 
 	public int getApplyno() {
 		return applyno;
@@ -111,10 +111,10 @@ public class Course {
 	public void setreviewnum(int reviewnum) {
 		this.reviewnum = reviewnum;
 	}
-	public int getStar() {
+	public double getStar() {
 		return star;
 	}
-	public void setStar(int star) {
+	public void setStar(double star) {
 		this.star = star;
 	}
 	@Override

@@ -3,19 +3,12 @@ package logic;
 import java.util.Date;
 
 public class ApplyList {
-	private int applyno;
 	private String userid;
 	private int classid;
 	private int classno;
 	private Date applydate;
 
 	// getter, setter, toString
-	public int getApplyno() {
-		return applyno;
-	}
-	public void setApplyno(int applyno) {
-		this.applyno = applyno;
-	}
 	public String getUserid() {
 		return userid;
 	}

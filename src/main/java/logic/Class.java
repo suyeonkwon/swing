@@ -20,7 +20,7 @@ public class Class {
 	private String classintro;
 	private int level;
 	private int readcnt;
-	private int state;
+	private double state;
 	private Date regdate;
 	//참여인원수
 	private int totaltutee;
@@ -142,10 +142,10 @@ public class Class {
 	public void setReadcnt(int readcnt) {
 		this.readcnt = readcnt;
 	}
-	public int getState() {
+	public double getState() {
 		return state;
 	}
-	public void setState(int state) {
+	public void setState(double state) {
 		this.state = state;
 	}
 	public Date getRegdate() {
