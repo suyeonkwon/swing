@@ -168,7 +168,7 @@ public class TutorController {
 	
 	/* 수업 등록 페이지 접근시 작성 중인 수업 정보가 있는지 확인
 	 * 
-	 */
+	 */ 
 	@RequestMapping("register")
 	public ModelAndView register(HttpSession session, HttpServletRequest request,String cid) {
 		ModelAndView mav = new ModelAndView();
