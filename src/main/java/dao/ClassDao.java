@@ -152,4 +152,5 @@ public class ClassDao {
 		public List<Map<Object, Object>> graph() {
 			return template.getMapper(ClassMapper.class).graph();
 		}
+
 }

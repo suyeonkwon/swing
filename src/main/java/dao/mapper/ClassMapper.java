@@ -44,7 +44,7 @@ public interface ClassMapper {
 		         "</if>",
 		         "<if test='cate!=null'> and category=#{cate}</if>",
 		         "<if test='sorted==1'> order by regdate desc limit #{startrow},#{limit} </if>",
-		         "<if test='sorted==2'> ORDER BY (SELECT AVG(별) FROM review WHERE classid=class.classid) desc limit #{startrow},#{limit}</if>",
+		         "<if test='sorted==2'> ORDER BY (SELECT AVG(star) FROM review WHERE classid=class.classid) desc limit #{startrow},#{limit}</if>",
 		         "</script>"})
 		   List<Class> select(Map<String, Object> param);
 		   
@@ -121,5 +121,7 @@ public interface ClassMapper {
 			" GROUP BY u.applydate " + 
 			" ORDER BY u.applydate ")	
 	List<Map<Object, Object>> graph();
+
+
 	
 }

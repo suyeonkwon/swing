@@ -20,7 +20,7 @@ public class Course {
 	private Date enddate;
 	private int reviewnum;
 	private int star;
-	
+	 
 	public int getApplyno() {
 		return applyno;
 	}
