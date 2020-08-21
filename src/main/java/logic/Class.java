@@ -25,7 +25,7 @@ public class Class {
 	//참여인원수
 	private int totaltutee;
 	//클래스 리뷰 평점, 갯수
-	private int staravg;
+	private double staravg;
 	private int reviewcnt;
 	
 	// tutor my.jsp 에 join을 통해 가져온 정보
@@ -35,6 +35,9 @@ public class Class {
 	
 	//tutor 프로필 img
 	private String file;
+	
+	//wish여부 check
+	private int wish;
 	
 	// getter, setter
 	public int getClassid() {
@@ -178,10 +181,10 @@ public class Class {
 		this.totaltutee = totaltutee;
 	}
 	
-	public int getStaravg() {
+	public double getStaravg() {
 		return staravg;
 	}
-	public void setStaravg(int staravg) {
+	public void setStaravg(double staravg) {
 		this.staravg = staravg;
 	}
 	public int getReviewcnt() {
@@ -189,6 +192,19 @@ public class Class {
 	}
 	public void setReviewcnt(int reviewcnt) {
 		this.reviewcnt = reviewcnt;
+	}
+	
+	public String getFile() {
+		return file;
+	}
+	public void setFile(String file) {
+		this.file = file;
+	}
+	public int getWish() {
+		return wish;
+	}
+	public void setWish(int wish) {
+		this.wish = wish;
 	}
 	@Override
 	public String toString() {

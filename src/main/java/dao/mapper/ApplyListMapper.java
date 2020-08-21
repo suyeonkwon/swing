@@ -39,7 +39,7 @@ public interface ApplyListMapper {
 	@Select("select ifnull(max(applyno),0) from applylist")
 	int maxnum();
 
-	@Insert("insert into applylist(applyno, userid, classid, classno) values(#{applyno}, #{userid}, #{classid}, #{classno})")
+	@Insert("insert into applylist(userid, classid, classno,applydate) values(#{userid}, #{classid}, #{classno},now())")
 	void insert(ApplyList apply);
 
 	@Select("SELECT u.userid, u.name, u.email " + 

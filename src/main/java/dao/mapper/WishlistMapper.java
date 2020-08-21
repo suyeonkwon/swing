@@ -18,7 +18,7 @@ public interface WishlistMapper {
 	
 	@Select("SELECT ifnull(avg(star),0) star FROM review " + 
 			"WHERE classid=#{classid}")
-	int star(Integer classid);
+	double star(Integer classid);
 	
 	@Select("SELECT COUNT(*) cnt FROM applylist a, class c " + 
 			"WHERE a.classid = c.classid " + 

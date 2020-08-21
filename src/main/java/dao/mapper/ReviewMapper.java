@@ -21,7 +21,7 @@ public interface ReviewMapper {
 			"FROM review r " + 
 			"JOIN user u " + 
 			"ON r.userid=u.userid " + 
-			"WHERE r.classid=#{classid}")
+			"WHERE r.classid=#{classid} group by r.reviewno")
 	List<Review> select(Integer classid);
 
 	@Select("select ifnull(count(*),0) from review where classid=#{classid}")

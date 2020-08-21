@@ -153,4 +153,10 @@ public class ClassDao {
 			return template.getMapper(ClassMapper.class).graph();
 		}
 
+		public List<Class> mainlist(int type) {
+			param.clear();
+			param.put("type", type);
+			return template.getMapper(ClassMapper.class).mainlist(param);
+		}
+
 }
