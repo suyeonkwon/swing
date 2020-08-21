@@ -215,8 +215,8 @@ public class TutorController {
 		license.setUserid(userid);
 		clas.setUserid(userid);
 		clas.setTotalprice(clas.getPrice()*clas.getTime()*clas.getTotaltime());
-		System.out.println(user.getFile());
-		System.out.println(user.getFileurl());
+		System.out.println("getFile1"+user.getFile());
+		System.out.println("getFileurl1.length"+user.getFileurl().length());
 		if(user.getFileurl().length()>0) {
 	    	String path = request.getServletContext().getRealPath("/")+"user/save/";
 		    File f = new File(path);
@@ -248,8 +248,8 @@ public class TutorController {
 				}
 				user.setFileurl("");
 	    }
-		System.out.println(user.getFile());
-		System.out.println(user.getFileurl());
+		System.out.println("getFile2"+user.getFile());
+		System.out.println("getFileurl2"+user.getFileurl());
 
 		if(button.equals("미리보기")) {
 			// 새창 열림
