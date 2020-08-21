@@ -209,7 +209,7 @@ $(".star").on('click',function(){
           		new Chart(ctx, config);
           	}
           </script>
-       
+        
           <div class="col-lg-6 col-md-6" data-wow-delay="0.1s">
           <div class="icon-box">
             <div class="review_point">
