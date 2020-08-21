@@ -80,7 +80,8 @@
          <c:forEach var="cl" items="${classlist}">
       	      	
          <div class="col-lg-4" style="cursor:pointer;">
-                <div class="team-img" onclick="page('<c:if test="${cl.state == 4}">register-class.shop?classid=${cl.classid}</c:if><c:if test="${cl.state < 4}">../class/detail.shop?classid=${cl.classid}</c:if>')">
+                <div class="team-img" 
+                	 onclick="page('<c:if test="${cl.state == 4}">register-class.shop?classid=${cl.classid}</c:if><c:if test="${cl.state == 1}">register.shop</c:if>')">                	 
                	  <c:if test="${cl.state == 1}">
                   	<label class="badge badge-success">등록진행중</label>
                   	<img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-3.jpg" alt="">
@@ -100,8 +101,15 @@
                </div>
                <div class="contetn">
                   <div class="info-text">                
-                     <h4><c:if test="${cl.state == 4}"><a href="register-class.shop?classid=${cl.classid}">${cl.subject}</a></c:if>
-                     	 <c:if test="${cl.state < 4}"><a href="../class/detail.shop?classid=${cl.classid}">${cl.subject}</a></c:if></h4>
+                     <h4>
+                     <c:choose>
+                     	<c:when test="${cl.state == 1}"><a href="register.shop">${cl.subject}</a></c:when>
+                     	<c:when test="${cl.state == 4}"><a href="register-class.shop?classid=${cl.classid}">${cl.subject}</a></c:when>
+                     	<c:otherwise><a href="#">${cl.subject}</a></c:otherwise>
+                     </c:choose>
+                     </h4>
+<%--                     <c:if test="${cl.state == 4}"><a href="register-class.shop?classid=${cl.classid}">${cl.subject}</a></c:if>
+                     	 <c:if test="${cl.state < 4}"><a href="../class/detail.shop?classid=${cl.classid}">${cl.subject}</a></c:if></h4>--%>
                      <p>${cl.nickname}(${cl.userid})</p>
                      <p>[신청일시] <fmt:formatDate value="${cl.regdate}" pattern="yyyy-MM-dd HH:mm:ss" /></p>
                      <p>[위치] ${cl.location1} ${cl.location2}</p>
