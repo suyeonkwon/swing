@@ -36,6 +36,9 @@ public class Class {
 	//tutor 프로필 img
 	private String file;
 	
+	//wish여부 check
+	private int wish;
+	
 	// getter, setter
 	public int getClassid() {
 		return classid;
@@ -189,6 +192,19 @@ public class Class {
 	}
 	public void setReviewcnt(int reviewcnt) {
 		this.reviewcnt = reviewcnt;
+	}
+	
+	public String getFile() {
+		return file;
+	}
+	public void setFile(String file) {
+		this.file = file;
+	}
+	public int getWish() {
+		return wish;
+	}
+	public void setWish(int wish) {
+		this.wish = wish;
 	}
 	@Override
 	public String toString() {

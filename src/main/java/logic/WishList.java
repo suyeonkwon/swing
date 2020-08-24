@@ -96,6 +96,7 @@ public class WishList {
 		return "WishList [userid=" + userid + ", classid=" + classid + ", subject=" + subject + ", location2="
 				+ location2 + ", type=" + type + ", totaltime=" + totaltime + ", totalprice=" + totalprice
 				+ ", coverimg=" + coverimg + ", startdate=" + startdate + ", particinum=" + particinum + ", star="
-				+ star + ", reviewnum=" + reviewnum + "]";
+				+ star + "]";
 	}
+	
 }

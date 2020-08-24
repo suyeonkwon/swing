@@ -131,6 +131,12 @@ div#calc_point {
     box-shadow: 0 10px 29px 0 rgba(68, 88, 144, 0.1);
     transition: all 0.3s ease-in-out;
 }
+.icon-box h4{
+	font-size: 25px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #0f394c;
+} 
 .title {
 	font-size: 32px;
     font-weight: bold;
@@ -156,7 +162,7 @@ function drawChart() {
   chart.draw(data, google.charts.Bar.convertOptions(options));
 	  
 }
---%>
+
 $(".star").on('click',function(){
     var idx = $(this).index();
     $(".star").removeClass("on");
@@ -166,6 +172,19 @@ $(".star").on('click',function(){
      var point = (idx+1)*0.5;
      $("#calc_point").html(point);
   });
+--%>
+
+$(function(){
+	var review_point = $('.review_point');
+	$('.review_point').each(function(i,item) {
+		var idx = $('.avg').eq(i).val()/0.5;
+			var star = $('.review_point').eq(i);
+			for(var j=0; j<=idx; j++){
+		       $(this).children(".star").eq(j).addClass("on");
+		    }			     
+	})
+})
+
 </script>
 </head>
 <body>
@@ -211,8 +230,10 @@ $(".star").on('click',function(){
           </script>
         
           <div class="col-lg-6 col-md-6" data-wow-delay="0.1s">
-          <div class="icon-box">
+          <c:forEach items="${starlist}" var="sl">
+          <div class="icon-box"  align="center">
             <div class="review_point">
+            <input type="hidden" class="avg" value="${sl.avgstar}">
             <span class="star star_left"></span>
              <span class="star star_right"></span>
          
@@ -227,8 +248,15 @@ $(".star").on('click',function(){
          
             <span class="star star_left"></span>
             <span class="star star_right"></span>
-         </div>
+            
+         </div>  
+          <h4>
+          <c:if test="${sl.rank == 1}"><img src="${path}/assets/img/icon/icons8-medal-first-place-30.png"></c:if>
+          <c:if test="${sl.rank==2}"><img src="${path}/assets/img/icon/icons8-medal-second-place-30.png"></c:if>
+          <c:if test="${sl.rank==3}"><img src="${path}/assets/img/icon/icons8-medal-third-place-30.png"></c:if>
+          ${sl.subject}(${sl.avgstar})</h4>
           </div>
+          </c:forEach>
         </div>
       </div>
       <div class="row justify-content-center">

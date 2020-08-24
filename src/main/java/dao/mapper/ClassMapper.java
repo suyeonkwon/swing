@@ -126,6 +126,21 @@ public interface ClassMapper {
 			" ORDER BY u.applydate ")	
 	List<Map<Object, Object>> graph();
 
+	@Select({"<script>",
+			"SELECT c.classid, c.userid , c.location2 , c.subject , c.coverimg  , max(ci.date) DATE , u.file , u.name ,"+
+			" COUNT(distinct(a.userid) ) totaltutee,  AVG(r.star) staravg , COUNT(DISTINCT(r.reviewno)) reviewcnt " + 
+			"FROM class c " + 
+			"left outer JOIN classinfo ci ON c.classid = ci.classid " + 
+			"left outer JOIN user u ON c.userid = u.userid " + 
+			"left outer JOIN applylist a ON c.classid = a.classid " + 
+			"left outer JOIN review r ON r.classid = c.classid " + 
+			"GROUP BY c.classid",
+			"<if test='type==1'>ORDER BY totaltutee desc</if>",
+			"<if test='type==2'>ORDER BY c.regdate desc</if>",
+			"limit 3",
+			"</script>"})
+	List<Class> mainlist(Map<String, Object> param);
+
 
 	
 }

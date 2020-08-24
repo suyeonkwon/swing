@@ -139,7 +139,13 @@
 				</div>
 				<div class="class_title">
 					<div class="title">${cls.subject}</div>
-					<a id="wishBtn" class="bnt_wishlist"><img id="heart" src="${path}/assets/img/icon/heart.png">찜하기</a>
+					<a id="wishBtn" class="bnt_wishlist">
+					<c:if test="${cls.wish==0}">
+					<img id="heart" src="${path}/assets/img/icon/heart.png">찜하기</a>
+					</c:if>
+					<c:if test="${cls.wish==1}">
+					<img id="heart" src="${path}/assets/img/icon/heart_on.png">찜하기</a>
+					</c:if>
 					<div class="info">
 						<a class="starimg">
 							<input type="hidden" id="Avg" value="${cls.staravg}">
@@ -213,7 +219,7 @@
 			</div>
 			<div class="class_detail detail_sec_bor" id="review">
 				<div class="section01">
-					<h1>리뷰(${cls.reviewcnt})</h1>
+					<h1>리뷰(${fn:length(review)} )</h1>
 					<a href="javascript:reviewPop()"class="btn_st" id="btn-write-review">리뷰쓰기</a>
 					<script>
 						function reviewPop(){
@@ -234,7 +240,9 @@
 						   <span class="star star_right"></span>
 						
 						   <span class="star star_left"></span>
-						   <span class="star star_right"></span> <p>${cls.staravg}</p>
+						   <span class="star star_right"></span> 
+						   <fmt:formatNumber value="${cls.staravg}" var="staravg" pattern=".0"/>
+						   <p>${staravg}</p>
 					</div>
 					<script type="text/javascript">
 						$(function(){
@@ -250,7 +258,6 @@
 							<div id="innerReviewDiv">
 								<c:if test="${cls.reviewcnt==0}">등록된 리뷰가 없습니다.</c:if>
 								<c:if test="${cls.reviewcnt!=0}">
-									<c:set value="0" var="i"/>
 									<c:forEach items="${review}" var="re" varStatus="status">
 										<li>
 											<div class="review">
@@ -271,7 +278,6 @@
 												</div>
 											</div>
 										</li>
-										<c:set var="i" value="${i+1}"/>
 									</c:forEach>
 								</c:if>
 							</div>

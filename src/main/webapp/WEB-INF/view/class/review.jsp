@@ -75,7 +75,7 @@ $(function(){
 				var params = $("#form").serialize();
 				$.ajax({
 					type:"POST",
-					url:'review.shop',
+					url:'review.shop?classid=${param.classid}',
 					data:params,
 					success:function(data){
 						opener.parent.location.reload();
