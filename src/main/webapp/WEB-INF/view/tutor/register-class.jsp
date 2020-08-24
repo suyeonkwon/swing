@@ -27,6 +27,8 @@ font-size: 14px;
 }
 </style>
 <script type="text/javascript">
+var appcnt = ${newclassno}
+
 function addform() {
 	var classInfoHtml = $("#region").html();
 	$("#regions").append("<div class='region' id='region'>"+classInfoHtml+"</div>")
@@ -46,10 +48,6 @@ function input(f,n){
 		  $('#endtime'+i).val($('').val());
 	  }
    }
-}
-
-function register() {
-	alert("해당 클래스 정보가 등록되었습니다.")
 }
 </script>
 </head>
@@ -84,9 +82,15 @@ function register() {
 							<div class="option">
 								<div class="top">
 									<div class="text">
-										수업 : ${newclassno}차수
+										수업 : <div id="newclassno" style="display: inline;"></div>
+										<form:hidden path="classinfos[0].classid" value="${c.classid}" />
 									</div>
-									<div style="text-align:right">
+									<script>
+										$('#newclassno').attr("id", "newclassno"+appcnt);
+										$('#newclassno'+(appcnt-1)).attr("id", "newclassno"+appcnt);
+										$("#newclassno"+appcnt).html(appcnt+"차수")
+									</script>
+ 									<div style="text-align:right">
 										<c:if test="${c.type==2}">
 										<input type="checkbox" name="checkbox" id="checkbox" onchange="input(this,${c.totaltime})"> 장소,시작시간,끝나는시간이 모두 같습니다.
 										</c:if>
@@ -95,7 +99,11 @@ function register() {
 							</div>
 							<c:if test="${c.type==1}">
 							<form:hidden path="classinfos[0].classid" value="${c.classid}" />
-							<form:hidden path="classinfos[0].classno" value="${newclassno}" />
+							<form:hidden path="classinfos[0].classno" id="classnoInput" value="" />
+							<script>
+								$('#classnoInput').val(appcnt);
+								appcnt += 1
+							</script>
 							<form:hidden path="classinfos[0].classseq" value="${1}" />
 							<div class="option">
 								<div class="top">
@@ -126,7 +134,7 @@ function register() {
 									<tr><th>회차</th><th>장소</th><th>날짜</th><th>시작시간</th><th>끝나는시간</th></tr>
 									<c:forEach var="i" begin="1" end="${c.totaltime}">
 										<form:hidden path="classinfos[${i}].classid" value="${c.classid}" />
-										<form:hidden path="classinfos[${i}].classno" value="${newclassno}" />
+										<form:hidden path="classinfos[${i}].classno" id="classnoInput" value="" />
 										<form:hidden path="classinfos[${i}].classseq" value="${i}" />
 										<tr><td>${i}회차</td>
 											<td><form:input path="classinfos[${i}].place" id="place${i}" /></td>
@@ -141,9 +149,7 @@ function register() {
 					</div>
 				</div>
 				<div class="sh_box class_price" style="border-top: 0; margin-top: 10px;">
-					
-					<div style="text-align:center;"><img class="op" src="${path}/assets/img/icon/add3.png" style="width: 32px; height: 32px;" onclick="addform()"></div>
-				</div>
+					<div style="text-align:center;"><img class="op" src="${path}/assets/img/icon/add3.png" style="width: 32px; height: 32px;" onclick="addform()"></div></div>
 			</div>
 			<div id="registerButton" class="next button" onclick="javascript:document.classRegisterForm.submit()">등록</div>
 		</div>
