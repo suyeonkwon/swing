@@ -27,6 +27,7 @@ font-size: 14px;
 }
 </style>
 <script type="text/javascript">
+
 var appcnt = ${newclassno}
 
 function addform() {
