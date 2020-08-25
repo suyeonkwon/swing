@@ -151,18 +151,16 @@ public class TutorController {
 					ci.setCurri(ciInfo.getCurri());
 					if(ci.getClassno()==1 && ciInfo.getDate()==null) { // 현재 클래스 정보 classno가 1이면 첫등록-> update
 						service.firstClassinfo(ci);
-						// 해당 클래스 state=5로 변경하기 (수업진행중)
 					} else{
 						service.registerClassinfo(ci);
 					}
-					service.updateState(ci.getClassid(), 5);
-					
+					service.updateState(ci.getClassid(), 5); // 해당 클래스 state=5로 변경하기 (수업진행중
 				}
 			}
 		} catch(Exception e) {
 			throw new RegisterException("수업 등록에 실패하였습니다.","my.shop");
 		} 
-		throw new RegisterException("수업이 등록되었습니다.","result.shop");
+		throw new RegisterException("해당 수업 정보가 등록되었습니다.","result.shop");
 	}
 	
 	
