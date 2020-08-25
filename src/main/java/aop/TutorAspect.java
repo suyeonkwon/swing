@@ -14,7 +14,7 @@ import logic.User;
 @Aspect
 public class TutorAspect {
 	@Around
-	("execution(* controller.Tutor*.*(..))")
+	("execution(* controller.Tutor*.*(..))") 
 	public Object TuteeLoginCheck(ProceedingJoinPoint joinPoint) throws Throwable {
 		User loginUser  = null;
 		for(Object o : joinPoint.getArgs()) {
