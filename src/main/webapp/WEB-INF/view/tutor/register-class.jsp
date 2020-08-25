@@ -88,7 +88,7 @@ function input(f,n){
 							</div>
 							<c:if test="${c.type==1}">
 							<form:hidden path="classinfos[0].classid" value="${c.classid}" />
-							<form:hidden path="classinfos[0].classno" id="classnoInput" value="${newclassno}" />
+							<form:hidden path="classinfos[0].classno" value="${newclassno}" />
 							<form:hidden path="classinfos[0].classseq" value="${1}" />
 							<div class="option">
 								<div class="top">
