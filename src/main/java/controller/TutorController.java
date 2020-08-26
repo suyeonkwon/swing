@@ -225,7 +225,7 @@ public class TutorController {
 		User loginUser = (User)session.getAttribute("loginUser");
 		String userid = loginUser.getUserid();
 		user.setUserid(userid);
-		license.setUserid(userid);
+		
 		clas.setUserid(userid);
 		clas.setTotalprice(clas.getPrice()*clas.getTime()*clas.getTotaltime());
 		List<Classinfo> clasinfo = new ArrayList<Classinfo>();
@@ -247,9 +247,26 @@ public class TutorController {
 			// 유저 정보 업데이트
 			service.userUpdate2(user,request);  
 			// 자격증 정보 insert
-			int cnt = service.licenseCnt();
-			license.setLcno(++cnt);
-			service.licenseInsert(license);
+			
+			for(int i=0;i<license.getLctitlelist().size();i++) {
+				License temp = new License();
+				temp.setUserid(userid);
+				if(license.getLcnolist().get(i) != 0) { //update
+					temp.setLcno(license.getLcnolist().get(i));
+					temp.setLctitle(license.getLctitlelist().get(i));
+					temp.setLcfileurl(license.getLcfilelist().get(i));
+					service.licenseUpdate(temp,request);
+				}else if(license.getLcnolist().get(i) == 0){ //insert
+					
+					int cnt = service.licenseCnt();
+					temp.setLcno(++cnt);
+					temp.setLctitle(license.getLctitlelist().get(i));
+					temp.setLcfileurl(license.getLcfilelist().get(i));
+					service.licenseInsert(temp);
+				}
+				
+				
+			}
 			
 			if(cid == null) { // 새로 만들어지는 수업이라면 class insert,classinfo insert
 				int cnt2 = service.classCnt();

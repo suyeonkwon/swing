@@ -298,6 +298,13 @@ public class ShopService {
 	public void licenseInsert(License license) {
 		licenseDao.insert(license);
 	}
+	
+	public void licenseUpdate(License license, HttpServletRequest request) {
+		if(license.getLcfileurl() != null && !license.getLcfileurl().isEmpty()) {
+			uploadFileCreate2(license.getLcfileurl(),request,"user/license/",license.getUserid());
+			license.setLcfile(license.getLcfileurl().getOriginalFilename());
+		}
+	}
 
 	public void classUpdate(Class clas, HttpServletRequest request) {
 		if(clas.getCoverimgurl() != null && !clas.getCoverimgurl().isEmpty()) {
@@ -388,6 +395,8 @@ public class ShopService {
 	public List<Class> mainlist(int type) {
 		return classDao.mainlist(type);
 	}
+
+	
 	
 
 	
