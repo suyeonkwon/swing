@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -303,6 +305,20 @@ public class ShopService {
 	public void classinfoDelete(Integer cid) {
 		classinfoDao.delete(cid);
 	}
+	
+	public List<Classinfo> getClassinfo(Integer cid) {
+		return classinfoDao.getclassinfo(cid);
+	}
+	
+	public void userUpdate2(User user,HttpServletRequest request) {
+		if(user.getFileurl2() != null && !user.getFileurl2().isEmpty()) {
+			uploadFileCreate2(user.getFileurl2(),request,"user/save/",user.getUserid());
+			user.setFile(user.getFileurl2().getOriginalFilename());
+		}
+		userDao.update2(user);
+		
+	}
+	//
 
 	public Integer classTemp(String userid) {
 		return classDao.temp(userid);
