@@ -261,10 +261,7 @@ public class TutorController {
 					clasinfo.get(i).setClassid(cnt2+1);
 					service.classinfoInsert(clasinfo.get(i));
 				}
-				// classid 알아내서 임시저장시 보내야함
-				//cid = service.classTemp(userid);
-				//license.setClassid(cid);
-				//service.licenseInsert(license);
+				
 			}else { // 원래 임시저장된 수업이라면 class update,classinfo delete 후 insert
 				clas.setClassid(cid);
 				service.classUpdate(clas,request);
@@ -310,10 +307,7 @@ public class TutorController {
 					clasinfo.get(i).setClassid(cnt2+1);
 					service.classinfoInsert(clasinfo.get(i));
 				}
-				// classid 알아내서 임시저장시 보내야함
-				//cid = service.classTemp(userid);
-				//license.setClassid(cid);
-				//service.licenseInsert(license);
+				
 			}else { // 원래 임시저장된 수업이라면 class update
 				clas.setClassid(cid);
 				service.classUpdate(clas,request);
