@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.awt.Graphics2D;
@@ -13,6 +14,7 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -166,36 +168,48 @@ public class TutorController {
 	
 	
 	/* 수업 등록 페이지 접근시 작성 중인 수업 정보가 있는지 확인
-	 * 
-	 */ 
+	 */
 	@RequestMapping("register")
-	public ModelAndView register(HttpSession session, HttpServletRequest request,String cid) {
+	public ModelAndView register(Integer cid, HttpSession session,HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		System.out.println(request.getServletContext().getRealPath("/"));
 		User loginUser = (User)session.getAttribute("loginUser");
 		String userid = loginUser.getUserid();
-		User user = service.getUser(userid);
 		License license = new License();
-		try {
-			license = service.getLicense(userid).get(0);
-		}catch(IndexOutOfBoundsException e) {
-		}
 		Class clas = new Class();
-		
-		int classid = 0;
-		if( service.classTemp(userid) != null) {
-			classid = service.classTemp(userid);
-			clas = service.getClass(classid);
-		};
-		
-		System.out.println(user.toString());
-		System.out.println(license.toString());
-		System.out.println(clas.toString());
+		List<Classinfo> classinfo = new ArrayList<Classinfo>();
+		System.out.println("받은 cid:"+cid);
+		// cid없이 새 등록 -> user,license 는 userid 꺼 불러와 class빈 객체 등록
+		if(cid==null) {
+			try {
+				int cidtemp = service.checkClass(userid);
+				System.out.println("등록진행중수업확인:"+cidtemp);
+				if(cidtemp!=0) {
+					mav.setViewName("/alert");
+					mav.addObject("msg","등록진행 중인 수업이 있습니다.");
+					mav.addObject("url", "register.shop?cid="+cidtemp); 
+				}
+			}catch(Exception e) {
+				System.out.println("예외처리");
+				e.printStackTrace();
+			}
+		}
+		// 반려목록,등록진행중목록 -> user,license userid 불러와  class, classinfo cid 인 객체 불러와
+		if(cid!=null) {
+			loginUser = service.getUser(userid);
+			clas = service.getClass(cid);
+			classinfo = service.getClassinfo(cid);
+			mav.addObject("cid",cid);
+			System.out.println("전달한 cid:"+cid);
+		}
 		
 		mav.addObject("license", license);
-		mav.addObject("user",user);
+		mav.addObject("user",loginUser);
 		mav.addObject("clas",clas);
-		mav.addObject("cid",classid);
+		mav.addObject("classinfo",classinfo);
+		System.out.println("전달한 user:"+loginUser.toString());
+		System.out.println("전달한 class:"+clas.toString());
+		System.out.println("전달한 classinfo:"+classinfo.toString());
 		
 		return mav;
 	}
