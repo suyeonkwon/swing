@@ -107,30 +107,37 @@ hr{
 	                </div>
 	            </div>
 	        </div>
+	        <spring:hasBindErrors name="user">
+					<font color="red">
+						<c:forEach items="${errors.globalErrors}" var="error">
+							<spring:message code="${error.code}">
+							</spring:message></c:forEach>
+					</font>
+			</spring:hasBindErrors>
 		    <div class="form-group">
 				<div class="title"><span style="color:#f21616;">*</span>아이디-</div>
 					<form:input path="userid" class="form-cont" name="subject" id="subject" placeholder="아이디를 입력해주세요" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject"/>
-	                <div class="validate"></div>
+	                <font color="red"><form:errors path="userid"/></font>
 	        </div>
 	        <div class="form-group">
 				<div class="title"><span style="color:#f21616;">*</span>이름-</div>
 	                <form:input path="name" class="form-cont" name="subject" id="subject" placeholder="이름을 입력해주세요" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject"/>
-	                <div class="validate"></div>
+	                <font color="red"><form:errors path="name"/></font>
 	        </div>
 	        <div class="form-group">
 				<div class="title"><span style="color:#f21616;">*</span>비밀번호-</div>
 	                <form:input path="pass" class="form-cont" name="subject" id="subject" placeholder="비밀번호를 입력해주세요" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject"/>
-	                <div class="validate"></div>
+	                <font color="red"><form:errors path="pass"/></font>
 	        </div>
 	        <div class="form-group">
 				<div class="title"><span style="color:#f21616;">*</span>비밀번호 확인-</div>
-	                <input type="text" class="form-cont" name="subject" id="subject" placeholder="비밀번호를 한번 더 입력해주세요" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
-	                <div class="validate"></div>
+	                <form:input path="pass1" class="form-cont" name="subject" id="subject" placeholder="비밀번호를 한번 더 입력해주세요" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject"/>
+	                <font color="red"><form:errors path="pass1"/></font>
 	        </div>
 	        <div class="form-group">
 				<div class="title"><span style="color:#f21616;">*</span>이메일-</div>
 	                <form:input path="email" class="form-cont" name="subject" id="subject" placeholder="이메일을 입력해주세요" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject"/>
-	                <div class="validate"></div>
+	                <font color="red"><form:errors path="email"/></font>
 	        </div>
 			<hr> 
             <button type="submit">완료</button>

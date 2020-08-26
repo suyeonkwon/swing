@@ -16,10 +16,11 @@
             <div class="icon-box">
               <div class="icon"><i class="las la-file-alt" style="color: #3fcdc7;"></i></div>
               <h4 class="title"><a href="">회원 탈퇴</a></h4>
-	          <form action="" method="post">
-	              <input type="text" name="phone" placeholder="비밀번호를 입력해주세요.">
-	              <a href="#about" class="bnt">확인</a>
-	          </form>
+	        <form:form method="post" action="delete.shop">
+	          <input type="hidden" name="userid" value="${param.id}">
+              <input type="password" name="password" placeholder="비밀번호를 입력해주세요"/>
+            <input class="bnt" type="submit" value="로그인">
+			</form:form>
             </div>
           </div>
         </div>

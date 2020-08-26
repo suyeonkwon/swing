@@ -50,12 +50,24 @@ public class ShopService {
 		return userDao.selectOne(userid);
 	}
 
+	public User getUserByEmail(String email) {
+		return userDao.selectOneByEmail(email);
+	}
+
 	public List<User> userlist(int pageNum, int limit, String column, String find) {
 		return userDao.list(pageNum,limit,column,find);
 	}
 
 	public void userUpdate(User user) {
 		userDao.update(user);
+	}
+	
+	public int getTutorCount() {
+		return userDao.selectTutorCount();
+	}
+	
+	public int getTuteeCount() {
+		return userDao.selectTuteeCount();
 	}
 	
 	/*----Class----*/
@@ -237,6 +249,10 @@ public class ShopService {
 		return classDao.list(pageNum,sorted,limit,location1,location2,type,maxtutee,cate);
 	}
 
+	public List<Class> searchList(String find){
+		return classDao.searchlist(find);
+	}
+	
 	public int getReviewcnt(Integer classid) {
 		return reviewDao.cnt(classid);
 	}
@@ -317,6 +333,11 @@ public class ShopService {
 
 	public int classCnt() {
 		return classDao.count2();
+	}
+
+	public void deleteUser(String userid) {
+		userDao.delete(userid);
+		
 	}
 
 	

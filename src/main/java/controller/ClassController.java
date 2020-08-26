@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -197,6 +198,36 @@ public class ClassController {
 		mav.addObject("listcount",listcount);
 		mav.addObject("classlist",classlist);
 		mav.addObject("listno",listno);
+		mav.addObject("tutor",tutor);
+		return mav;
+	}
+
+	@PostMapping("searchlist")
+	public ModelAndView classlist(String text) {
+		ModelAndView mav = new ModelAndView();
+		System.out.println("find:"+text);
+		
+		List<Class> classlist = service.searchList(text);
+		List<User> tutor = new ArrayList<>();
+		int listcount = classlist.size();
+		
+		for(Class c : classlist) {
+			try {
+			c.setTotaltutee(service.getParticiNum(c.getClassid()));
+			c.setStaravg(service.getStar(c.getClassid()));
+			c.setReviewcnt(service.getReviewcnt(c.getClassid()));
+			tutor.add(service.getUser(c.getUserid()));
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
+		
+		System.out.println("searchList:"+classlist);
+		System.out.println("listcount:"+listcount);
+
+		mav.setViewName("redirect:classlist.shop");
+		mav.addObject("listcount",listcount);
+		mav.addObject("classlist",classlist);
 		mav.addObject("tutor",tutor);
 		return mav;
 	}

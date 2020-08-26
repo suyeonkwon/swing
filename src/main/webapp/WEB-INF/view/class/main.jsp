@@ -11,9 +11,9 @@
    <section id="hero" class="d-flex align-items-center">
     <div class="container">
       	<h1>Spread your wings! SWING</h1>
-		<form action="" method="post">
-			<input type="text" name="text">
-			<input type="submit" value="검색">
+		<form action="searchlist.shop" method="post">
+			<input type="text" name="text" style="outline: none;">
+			<input type="submit" value="검색" style="outline: none;">
 		</form>
     </div>
   </section><!-- End Hero -->

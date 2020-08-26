@@ -16,11 +16,13 @@
             <div class="icon-box">
               <div class="icon"><i class="las la-file-alt" style="color: #3fcdc7;"></i></div>
               <h4 class="title"><a href="">비밀번호 변경</a></h4>
-	          <form action="" method="post">
-	              <input type="text" name="phone" placeholder="비밀번호를 입력해주세요.">
-	              <input type="text" name="phone" placeholder="비밀번호를 한번 더 입력해주세요.">
-	              <a href="#about" class="bnt">확인</a>
-	          </form>
+	          <form:form method="post" action="password.shop">
+	          <input type="hidden" name="userid" value="${param.id}">
+              <input type="password" name="oldpass" placeholder="이전 비밀번호를 입력해주세요"/>
+              <input type="password" name="pass" placeholder="새로운 비밀번호를 입력해주세요"/>
+              <input type="password" name="pass1" placeholder="새로운 비밀번호를 한번 더 입력해주세요"/>
+            <input class="bnt" type="submit" value="로그인">
+			</form:form>
             </div>
           </div>
         </div>

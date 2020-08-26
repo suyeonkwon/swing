@@ -95,6 +95,12 @@ public class ClassDao {
 		public List<Class> list() {
 			return template.getMapper(ClassMapper.class).select2(null);
 		}
+
+		public List<Class> searchlist(String find) {
+			param.clear();
+			param.put("find",find);
+			return template.getMapper(ClassMapper.class).selectSearch(param);
+		}
 		
 		public List<Class> list(int pageNum, int limit) {
 			param.clear();

@@ -73,6 +73,12 @@ public interface ClassMapper {
 			"<if test='state != null'> where state=#{state} </if>",
 			"</script>"})
 	List<Class> select2(Map<String, Object> param);
+
+
+	@Select(" SELECT * FROM class WHERE location1 LIKE '%${find}%' " + 
+			" or(location2 LIKE '%${find}%' OR subject LIKE '%${find}%' OR " + 
+			" tutorintro LIKE '%${find}%' OR classintro LIKE '%${find}%') ")
+	List<Class> selectSearch(Map<String, Object> param);
 	
 	@Select({"<script>",
 		"select * from class",

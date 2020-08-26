@@ -99,10 +99,6 @@ hr{
 	                ${user.name}
 	        </div>
 	        <div class="form-group">
-				<div class="title">비밀번호-</div>
-	                ${user.pass}
-	        </div>
-	        <div class="form-group">
 				<div class="title">이메일-</div>
 	              	${user.email}
 	        </div>

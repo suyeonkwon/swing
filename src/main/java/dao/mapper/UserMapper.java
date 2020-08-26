@@ -31,11 +31,21 @@ public interface UserMapper {
 	List<User> select_(Map<String, Object> param);
 	
 	@Select({"<script>",
+			"select count(*) from user ",
+			"<if test='kbn != null'> where kbn=#{kbn} </if>",
+			"</script>"})
+	int selectCount(Map<String, Object> param);
+
+	@Select({"<script>",
 			"select * from user ",
 			"<if test='userid != null'> where userid=#{userid} </if>",
 			"<if test='userid == null'> where userid!='admin' </if>",
+			"<if test='email != null'> where email=#{email} </if>",
 			"</script>"})
 	List<User> select(Map<String, Object> param);
+	
+	@Select("select * from user where email=#{email}")
+	List<User> select2(Map<String, Object> param);
 	
 	@Select({"<script>",
 		"select count(*) from user",
@@ -48,8 +58,8 @@ public interface UserMapper {
 	@Update("update user set pass=#{pass}, "
 				+" name=#{name}, email=#{email},file=#{file} where userid=#{userid}")
 	void update(User user);
-	
-	@Delete("")
+
+	@Delete("delete from user where userid=#{userid}")
 	void delete(Map<String, Object> param);
 	
 	//
