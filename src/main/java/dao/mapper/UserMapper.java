@@ -56,6 +56,7 @@ public interface UserMapper {
 	@Update({"<script>",
 			"update user set nickname=#{nickname},school=#{school}, major=#{major}, kbn=#{kbn}",
 			"<if test='file!=null'>, file=#{file} </if>",
+			"<if test='edufile!=null'>, edufile=#{edufile} </if>",
 			" where userid=#{userid}",
 			"</script>"})
 	void update2(User user);

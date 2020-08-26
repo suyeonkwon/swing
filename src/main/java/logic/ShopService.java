@@ -321,13 +321,15 @@ public class ShopService {
 	}
 	
 	public void userUpdate2(User user,HttpServletRequest request) {
+		System.out.println("유저프로필이미지:" + user.getFileurl2());
+		System.out.println("유저학력이미지:" + user.getEdufileurl());
 		if(user.getFileurl2() != null && !user.getFileurl2().isEmpty()) {
 			uploadFileCreate2(user.getFileurl2(),request,"user/save/",user.getUserid());
 			user.setFile(user.getFileurl2().getOriginalFilename());
 		}
 		if(user.getEdufileurl() != null && !user.getEdufileurl().isEmpty()) {
 			uploadFileCreate2(user.getEdufileurl(),request,"user/edufile/",user.getUserid());
-			user.setFile(user.getEdufileurl().getOriginalFilename());
+			user.setEdufile(user.getEdufileurl().getOriginalFilename());
 		}
 		userDao.update2(user);
 		
