@@ -1,6 +1,8 @@
 
 package logic;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class User {
 	private String userid;
 	private String pass;
@@ -13,7 +15,7 @@ public class User {
 	private String school;
 	private String major;
 	private String edufile;
-	
+	private MultipartFile fileurl2;
 	private String fileurl;
 	// getter, setter, toString
 	public String getUserid() {
@@ -87,6 +89,13 @@ public class User {
 	}
 	public void setFileurl(String fileurl) {
 		this.fileurl = fileurl;
+	}
+	
+	public MultipartFile getFileurl2() {
+		return fileurl2;
+	}
+	public void setFileurl2(MultipartFile fileurl2) {
+		this.fileurl2 = fileurl2;
 	}
 	@Override
 	public String toString() {
