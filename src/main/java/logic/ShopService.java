@@ -326,6 +326,10 @@ public class ShopService {
 		userDao.update2(user);
 		
 	}
+	
+	public int checkClass(String userid) {
+		return classDao.checkclass(userid);
+	}
 	//
 
 	public Integer classTemp(String userid) {
