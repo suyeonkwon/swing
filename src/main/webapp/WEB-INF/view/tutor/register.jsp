@@ -238,13 +238,15 @@ function cal(price, time, totaltime){
             </div>
 			<div class="title">별명-</div>
                 <input type="text" class="form-cont" name="nickname" id="nickname" value="${user.nickname}" placeholder="별명" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
-                <div class="validate"></div>
+                <form:errors path="nickname"></form:errors>
+    
         </div>
 		<div class="form-group">
 		<!-- 인증 -->
 			<div class="title">학력-</div>
 				<p>최종학력</p>
 				<select name="edulevel">
+					<option value="0" <c:if test="${user.edulevel eq 0}">selected="selected"</c:if>>-최종학력-</option>
 					<option value="1" <c:if test="${user.edulevel eq 1}">selected="selected"</c:if>>고등학교</option>
 					<option value="2" <c:if test="${user.edulevel eq 2}">selected="selected"</c:if>>대학교</option>
 					<option value="3" <c:if test="${user.edulevel eq 3}">selected="selected"</c:if>>대학원</option>
