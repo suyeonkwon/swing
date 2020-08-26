@@ -224,8 +224,8 @@ function vaildation(kbn){
 			document.f.price.focus();
 			return false;
 		}
-		if(document.f.price.value==''){
-			alert('시간당 가격은 숫자만 입력 가능합니다.');
+		if(document.f.price.value<1){
+			alert('시간당 가격은 1원 이상 입력 가능합니다.');
 			document.f.price.focus();
 			return false;
 		}
@@ -234,8 +234,8 @@ function vaildation(kbn){
 			document.f.time.focus();
 			return false;
 		}
-		if(document.f.time.value==''){
-			alert('회당 수업시간은 숫자만 입력 가능합니다.');
+		if(document.f.time.value<1){
+			alert('회당 수업시간은  1시간 이상 입력 가능합니다.');
 			document.f.time.focus();
 			return false;
 		}
@@ -244,8 +244,8 @@ function vaildation(kbn){
 			document.f.totaltime.focus();
 			return false;
 		}
-		if(document.f.totaltime.value==''){
-			alert('총 수업횟수는 숫자만 입력 가능합니다.');
+		if(document.f.totaltime.value<1){
+			alert('총 수업횟수는 1이상 입력 가능합니다.');
 			document.f.totaltime.focus();
 			return false;
 		}
@@ -509,13 +509,13 @@ function vaildation(kbn){
 	    <div class="form-group">
 	    	<div class="title">시간당 가격-</div>
 			<div class="form-row">
-				<input type="text" class="form-cont" name="price" id="price" value="${clas.price}" id="price" placeholder="ex)30000" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" value="">
+				<input type="text" class="form-cont" name="price" id="price" value="${clas.price}" id="price" placeholder="ex)30000" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" value="" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
 				원
                 <div class="validate"></div>
 			</div>
 			<div class="title">1회당 수업 시간-</div>
             <div class="form-row">
-				<input type="text" class="form-cont" name="time" id="time" value="${clas.time}" id="time" placeholder="1회당 수업시간을 선택하세요" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
+				<input type="text" class="form-cont" name="time" id="time" value="${clas.time}" id="time" placeholder="1회당 수업시간을 선택하세요" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
 				시간
                 <div class="validate"></div>
 			</div>
@@ -525,7 +525,7 @@ function vaildation(kbn){
 			<div class="title">총 수업횟수-</div>
 			<!-- 원데이 클래스는 1회 / 다회차 수업은 n회 선택 가능 (최대 회차수는?) -->
             <div class="form-row">
-				<input type="text" class="form-cont" name="totaltime" id="totaltime" value="${clas.totaltime}" id="totaltime" placeholder="ex)1" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" <c:if test="${clas.type eq 1}">readonly</c:if> >
+				<input type="text" class="form-cont" name="totaltime" id="totaltime" value="${clas.totaltime}" id="totaltime" placeholder="ex)1" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" <c:if test="${clas.type eq 1}">readonly</c:if> >
 				회
                 <div class="validate"></div>
 			</div>
