@@ -304,6 +304,7 @@ public class ShopService {
 			uploadFileCreate2(license.getLcfileurl(),request,"user/license/",license.getUserid());
 			license.setLcfile(license.getLcfileurl().getOriginalFilename());
 		}
+		licenseDao.update(license);
 	}
 
 	public void classUpdate(Class clas, HttpServletRequest request) {

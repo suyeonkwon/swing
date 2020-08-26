@@ -256,6 +256,7 @@ public class TutorController {
 					temp.setLctitle(license.getLctitlelist().get(i));
 					temp.setLcfileurl(license.getLcfilelist().get(i));
 					service.licenseUpdate(temp,request);
+					System.out.println("저장된"+temp.toString());
 				}else if(license.getLcnolist().get(i) == 0){ //insert
 					
 					int cnt = service.licenseCnt();
@@ -263,6 +264,7 @@ public class TutorController {
 					temp.setLctitle(license.getLctitlelist().get(i));
 					temp.setLcfileurl(license.getLcfilelist().get(i));
 					service.licenseInsert(temp);
+					System.out.println("저장된"+temp.toString());
 				}
 				
 				
@@ -292,9 +294,9 @@ public class TutorController {
 				//service.licenseUpdate(license);
 			}
 			
-			System.out.println(user.toString());
-			System.out.println(clas.toString());
-			System.out.println(license.toString());
+			System.out.println("저장된"+user.toString());
+			System.out.println("저장된"+clas.toString());
+			
 			
 			mav.setViewName("/alert");
 			mav.addObject("msg","임시저장 되었습니다.");
@@ -337,9 +339,8 @@ public class TutorController {
 				//license.setClassid(cid);
 				//service.licenseUpdate(license);
 			}
-			System.out.println(user.toString());
-			System.out.println(clas.toString());
-			System.out.println(license.toString());
+			System.out.println("저장된"+user.toString());
+			System.out.println("저장된"+clas.toString());
 			
 			mav.setViewName("/alert");
 			mav.addObject("msg","승인요청 되었습니다.");
