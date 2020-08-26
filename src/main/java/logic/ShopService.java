@@ -295,7 +295,11 @@ public class ShopService {
 		classDao.insert(clas);
 	}
 
-	public void licenseInsert(License license) {
+	public void licenseInsert(License license, HttpServletRequest request) {
+		if(license.getLcfileurl() != null && !license.getLcfileurl().isEmpty()) {
+			uploadFileCreate2(license.getLcfileurl(),request,"user/license/",license.getUserid());
+			license.setLcfile(license.getLcfileurl().getOriginalFilename());
+		}
 		licenseDao.insert(license);
 	}
 	

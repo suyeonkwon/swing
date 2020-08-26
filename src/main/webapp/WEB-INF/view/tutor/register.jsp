@@ -263,24 +263,36 @@ function cal(price, time, totaltime){
 				<c:if test="${empty lclist}">
 					<c:set var="cnt" value="0"/>
 					<input type="hidden" name=lcnolist[0] value="0"/>
-                	<input type="text" class="form-cont" name="lctitlelist[0]" id="lctitlelist[0]" value="" placeholder="ex)토익900" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
-                	<input type="file" name="lcfilelist[0]" id="lcfilelist[0]" accept="image/*" style="display: none;"/>
+                	<input type="text" class="form-cont" name="lctitlelist[0]" id="lctitlelist0" value="" placeholder="ex)토익900" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
+                	<input type="file" name="lcfilelist[0]" id="lcfilelist0" accept="image/*" style="display: none;"/>
                 	<div class="validate"></div>
-                	<button type="button" onclick="onclick=document.all.lcfilelist[0].click()" style="width: 130px;">자격증명서 업로드</button>
+                	<button type="button" onclick="onclick=document.all.lcfilelist0.click()" style="width: 130px;">자격증명서 업로드</button>
 				</c:if>
 				<c:if test="${not empty lclist}">
 					<c:set var="cnt" value="0"/>
 					<c:forEach items="${lclist}" var="lc" varStatus="status">
-						<c:set var="cnt" value="${status.count}"/>
+						<c:set var="cnt" value="${status.index}"/>
 						<input type="hidden" name=lcnolist[${status.index}] value="${lc.lcno}"/>
-                		<input type="text" class="form-cont" name="lctitlelist[${status.index}]" id="lctitlelist[${status.index}]" value="${lc.lctitle}" placeholder="ex)토익900" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
-                		<input type="file" name="lcfilelist[${status.index}]" id="lcfilelist[${status.index}]" accept="image/*" style="display: none;"/>
+                		<input type="text" class="form-cont" name="lctitlelist[${status.index}]" id="lctitlelist${status.index}" value="${lc.lctitle}" placeholder="ex)토익900" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
+                		<input type="file" name="lcfilelist[${status.index}]" id="lcfilelist${status.index}" accept="image/*" style="display: none;"/>
                 		<div class="validate"></div>
-                		<button type="button" onclick="onclick=document.all.lcfilelist[${status.index}].click()" style="width: 130px;">자격증명서 업로드</button>
+                		<button type="button" onclick="onclick=document.all.lcfilelist${status.index}.click()" style="width: 130px;">자격증명서 업로드</button>
 					</c:forEach>
 				</c:if>
 				</div>
-				<button type="button" onclick="">자격증 추가</button>
+				<br>
+				<script>
+					function addlc(){
+						var html = "<c:set var='cnt' value='${cnt + 1}'/>"
+									+"<input type='hidden' name=lcnolist[${cnt}] value='0'/>"
+	                	 			+"<input type='text' class='form-cont' name='lctitlelist[${cnt}]' id='lctitlelist[${cnt}]' value='' placeholder='ex)토익900' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject'>"
+	                				+"<input type='file' name='lcfilelist[${cnt}]' id='lcfilelist[${cnt}]' accept='image/*' style='display: none;'/>"
+	                				+"<div class='validate'></div>"
+	                				+"<button type='button' onclick='onclick=document.all.lcfilelist[${cnt}].click()' style='width: 130px;'>자격증명서 업로드</button>";
+						$("#license").append(html);
+					}
+				</script>
+				<button type="button" onclick="addlc()">자격증 추가</button>
 		</div>
 		<hr> 
        </div>  
