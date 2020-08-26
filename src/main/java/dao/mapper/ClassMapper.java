@@ -48,23 +48,31 @@ public interface ClassMapper {
 		         "</script>"})
 		   List<Class> select(Map<String, Object> param);
 		   
+		   
 		   // 수업 등록
-		      @Insert("insert into class "
-		            + " (classid, userid,location1,location2,category,type,maxtutee,subject,coverimg,price,time,totaltime,totalprice,tutorintro,classintro,level,readcnt,state,regdate) "
-		            + " values(#{classid}, #{userid},#{location1},#{location2},#{category},#{type},#{maxtutee},#{subject},#{coverimg},#{price},#{time},#{totaltime},#{totalprice},#{tutorintro},#{classintro},#{level},0,#{state},now())")
-		      void insert(Class clas);
+		   @Insert("insert into class "
+		        + " (classid, userid,location1,location2,category,type,maxtutee,subject,coverimg,price,time,totaltime,totalprice,tutorintro,classintro,level,readcnt,state,regdate) "
+		        + " values(#{classid}, #{userid},#{location1},#{location2},#{category},#{type},#{maxtutee},#{subject},#{coverimg},#{price},#{time},#{totaltime},#{totalprice},#{tutorintro},#{classintro},#{level},0,#{state},now())")
+		   void insert(Class clas);
 
-		      @Select("select classid from class where userid=#{userid} and state=1")
-		      int checkclass(Map<String, Object> param);
+		   @Select("select classid from class where userid=#{userid} and state=1")
+		   int checkclass(Map<String, Object> param);
+		      
+		   @Update({"<script>",
+		    	  	"update class set location1=#{location1},location2=#{location2},category=#{category},"+
+		    	  	"type=#{type},maxtutee=#{maxtutee},subject=#{subject},price=#{price},time=#{time},"+
+		    	  	"totaltime=#{totaltime},totalprice=#{totalprice},tutorintro=#{tutorintro},classintro=#{classintro},"+
+		    	  	"level=#{level},state=#{state},regdate=now()"+
+		    	  	"<if test='coverimg!=null'>,coverimg=#{coverimg}</if>"+
+		    		" where classid=#{classid}"+
+		    	  	"</script>"})
+		   void update(Class clas);
 
-		      @Update("update class set location1=#{location1},location2=#{location2},category=#{category},type=#{type},maxtutee=#{maxtutee},subject=#{subject},coverimg=#{coverimg},price=#{price},time=#{time},totaltime=#{totaltime},totalprice=#{totalprice},tutorintro=#{tutorintro},classintro=#{classintro},level=#{level},state=#{state},regdate=now() where classid=#{classid} ")
-		      void update(Class clas);
+		   @Select("select classid from class where userid=#{userid} and state=1")
+		   Integer temp(Map<String, Object> param);
 
-		      @Select("select classid from class where userid=#{userid} and state=1")
-		      Integer temp(Map<String, Object> param);
-
-		      @Select("select count(*) from class")
-		      int count2();
+		   @Select("select count(*) from class")
+		   int count2();
 
 	@Select({"<script>",
 			"select * from class ",
