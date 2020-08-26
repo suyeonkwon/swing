@@ -15,6 +15,7 @@ public class User {
 	private String school;
 	private String major;
 	private String edufile;
+	private MultipartFile edufileurl;
 	private MultipartFile fileurl2;
 	private String fileurl;
 	// getter, setter, toString
@@ -96,6 +97,13 @@ public class User {
 	}
 	public void setFileurl2(MultipartFile fileurl2) {
 		this.fileurl2 = fileurl2;
+	}
+	
+	public MultipartFile getEdufileurl() {
+		return edufileurl;
+	}
+	public void setEdufileurl(MultipartFile edufileurl) {
+		this.edufileurl = edufileurl;
 	}
 	@Override
 	public String toString() {
