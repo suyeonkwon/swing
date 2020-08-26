@@ -243,6 +243,7 @@ function cal(price, time, totaltime){
 		<div class="form-group">
 		<!-- 인증 -->
 			<div class="title">학력-</div>
+				<p>최종학력</p>
 				<select name="edulevel">
 					<option value="1" <c:if test="${user.edulevel eq 1}">selected="selected"</c:if>>고등학교</option>
 					<option value="2" <c:if test="${user.edulevel eq 2}">selected="selected"</c:if>>대학교</option>
@@ -252,7 +253,29 @@ function cal(price, time, totaltime){
                 <div class="validate"></div>
                 <input type="text" class="form-cont" name="major" id="major" value="${user.major}" placeholder="ex)스윙학과" data-rule="email" data-msg="Please enter a valid email">
                 <div class="validate"></div>
-                <input type="hidden" name="edufile" />
+                <input type="hidden" id="imgurl3" value="http://${server}:${port}${path}/class/coverimg/${clas.coverimg}" />
+                <input type="file" name="edufileurl" id="edufileurl" accept="image/*" onchange="setThumbnail2(event);" style="display: none;"/>
+                <button type="button" onclick="onclick=document.all.edufileurl.click()">업로드</button>
+                <!--  -->
+                <div class="title">커버이미지-</div>
+				<input type="hidden" id="imgurl2" value="http://${server}:${port}${path}/class/coverimg/${clas.coverimg}" />
+				<img id="coverimg" style="width:400px; height:250px; border: 1px c7c7c7; border-radius: 7px; -moz-border-radius: 7px; -khtml-border-radius: 7px; -webkit-border-radius: 7px;" src="http://${server}:${port}${path}/class/coverimg/${clas.coverimg}">
+                <input type="file" name="coverimgurl" id="coverimgurl" accept="image/*" onchange="setThumbnail2(event);" style="display: none;"/>
+                <button type="button" onclick="onclick=document.all.coverimgurl.click()">업로드</button>
+			<script> 
+		    function setThumbnail2(event) { 
+		    	console.log("이벤트실행")
+				var reader = new FileReader(); 
+				reader.onload = function(event) {
+					console.log("reader");
+					document.getElementById("coverimg").src = reader.result;
+					document.getElementById("imgurl2").value = reader.result;
+	            }; 
+	            reader.readAsDataURL(event.target.files[0]); 
+	            var fname =event.target.files[0].name;
+	            console.log(fname);
+            }
+	        </script>
         </div>
 		<div class="form-group">
 			<div class="title">자격증-</div>
