@@ -184,6 +184,81 @@ function cal(price, time, totaltime){
 	}
 	
 }
+
+function vaildation(kbn){
+	alert("검증시작");
+	
+	if(kbn==2){
+		if(document.f.nickname.value==''){
+			alert('별명을 입력하세요.');
+			document.f.nickname.focus();
+			return false;
+		}
+		if(document.f.edulevel.value==0){
+			alert('최종학력을 설정하세요.');
+			document.f.edulevel.focus();
+			return false;
+		}
+		if(document.f.location1.value==''){
+			alert('지역을 설정하세요.');
+			document.f.location1.focus();
+			return false;
+		}
+		if(document.f.type.value==''){
+			alert('수업형태를 설정하세요.');
+			document.f.type.focus();
+			return false;
+		}
+		if(document.f.maxtutee.value==''){
+			alert('참여인원을 설정하세요.');
+			document.f.maxtutee.focus();
+			return false;
+		}
+		if(document.f.subject.value==''){
+			alert('수업 제목을 입력하세요.');
+			document.f.subject.focus();
+			return false;
+		}
+		if(document.f.price.value==''){
+			alert('시간당 가격을 설정하세요.');
+			document.f.price.focus();
+			return false;
+		}
+		if(document.f.price.value==''){
+			alert('시간당 가격은 숫자만 입력 가능합니다.');
+			document.f.price.focus();
+			return false;
+		}
+		if(document.f.time.value==''){
+			alert('회당 수업시간을 설정하세요.');
+			document.f.time.focus();
+			return false;
+		}
+		if(document.f.time.value==''){
+			alert('회당 수업시간은 숫자만 입력 가능합니다.');
+			document.f.time.focus();
+			return false;
+		}
+		if(document.f.totaltime.value==''){
+			alert('총 수업횟수를 설정하세요.');
+			document.f.totaltime.focus();
+			return false;
+		}
+		if(document.f.totaltime.value==''){
+			alert('총 수업횟수는 숫자만 입력 가능합니다.');
+			document.f.totaltime.focus();
+			return false;
+		}
+		if(document.f.level.value==''){
+			alert('수업레벨을 설정하세요.');
+			document.f.level.focus();
+			return false;
+		}
+	}
+	
+	document.f.action = "classEntry.shop?kbn="+kbn;
+	document.f.submit();
+}
 </script>
 </head>
 <body>
@@ -200,7 +275,7 @@ function cal(price, time, totaltime){
      </div>
  </section>
 <section id="tutor-regi" class="tutor-regi">
-<form method="post" action="classEntry.shop" enctype="multipart/form-data">
+<form method="post" action="classEntry.shop" enctype="multipart/form-data" name="f">
 <input type="hidden" name="cid" value="${cid}" />
 <div class="container">
 	<div class="row">
@@ -238,8 +313,11 @@ function cal(price, time, totaltime){
             </div>
 			<div class="title">별명-</div>
                 <input type="text" class="form-cont" name="nickname" id="nickname" value="${user.nickname}" placeholder="별명" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
-                <form:errors path="nickname"></form:errors>
-    
+                <spring:hasBindErrors name="user">
+                	<c:if test="${errors.hasFieldErrors('nickname')}">
+                		<strong>${errors.getFieldError('nickname').defaultMessage}</strong>
+                	</c:if>
+                </spring:hasBindErrors>    
         </div>
 		<div class="form-group">
 		<!-- 인증 -->
@@ -323,8 +401,6 @@ function cal(price, time, totaltime){
                 <div class="validate"></div>
                 <select id="location2" name="location2">
                 	<option value="">지역을 선택하세요</option>
-                	<option value="1">test1</option>
-                	<option value="2">test2</option>
                 </select>
                 <div class="validate"></div>
             <script>
@@ -527,7 +603,10 @@ function cal(price, time, totaltime){
                     "childForm", "width=570, height=350, resizable = no, scrollbars = no");    
         }
     </script>
-	<div class="row" style="float: center;"><button type="button" name="button" value="미리보기" onclick="openChild()">미리보기</button><button type="submit" name="button" value="임시저장">임시저장</button><button type="submit" name="button" value="승인요청">승인요청</button></div>
+	<div class="row" style="float: center;">
+	<button type="button" name="button" value="미리보기" onclick="openChild()">미리보기</button>
+	<button type="button" name="button" value="임시저장" onclick="vaildation(1)">임시저장</button>
+	<button type="button" name="button" value="승인요청" onclick="vaildation(2)">승인요청</button></div>
 </div>
 </form>
 </section>
