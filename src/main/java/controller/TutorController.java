@@ -22,6 +22,7 @@ import java.util.Map;
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 
@@ -219,13 +220,13 @@ public class TutorController {
 	 1.유저 정보 update 2. 자격증 정보 insert 3. 수업 정보 insert
 	*/
 	@PostMapping("classEntry")
-	public ModelAndView classEntry(User user, License license, Class clas, @RequestParam(name="title") List<String> titlelist,@RequestParam(name="curri") List<String> currilist, String button, Integer cid, Integer numtutee, HttpSession session, HttpServletRequest request) {
+	public ModelAndView classEntry(User user, License license, Class clas, Integer cid, @RequestParam(name="title") List<String> titlelist,@RequestParam(name="curri") List<String> currilist, Integer numtutee, HttpSession session, HttpServletRequest request) {
+		String kbn = request.getParameter("kbn");
 		ModelAndView mav = new ModelAndView();
 		System.out.println(request.getServletContext().getRealPath("/"));
 		User loginUser = (User)session.getAttribute("loginUser");
 		String userid = loginUser.getUserid();
 		user.setUserid(userid);
-		
 		clas.setUserid(userid);
 		clas.setTotalprice(clas.getPrice()*clas.getTime()*clas.getTotaltime());
 		List<Classinfo> clasinfo = new ArrayList<Classinfo>();
@@ -238,7 +239,9 @@ public class TutorController {
 			clasinfo.add(temp);
 		}
 		System.out.println("모든회차정보:"+clasinfo.toString());
-		if(button.equals("임시저장")) {
+		System.out.println("cid:"+cid);
+
+		if(kbn.equals("1")) {
 			user.setKbn(1); // kbn(회원구분정보) : 1. 튜티 , 2.튜터
 			clas.setState(1); // state : 1.등록진행중 2.승인대기
 			if(clas.getMaxtutee()==2) {
@@ -301,7 +304,7 @@ public class TutorController {
 			mav.addObject("url", "register.shop?cid="+cid); 
 			return mav;
 			
-		}else if(button.equals("승인요청")) {
+		}else if(kbn.equals("2")) {
 			user.setKbn(2);
 			clas.setState(2);
 			if(clas.getMaxtutee()==2) {
@@ -370,4 +373,5 @@ public class TutorController {
 		mav.addObject(session);
 		return mav;
 	}
+	
 }
