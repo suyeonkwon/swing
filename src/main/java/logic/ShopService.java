@@ -290,7 +290,7 @@ public class ShopService {
 	public void classInsert(Class clas, HttpServletRequest request) {
 		if(clas.getCoverimgurl() != null && !clas.getCoverimgurl().isEmpty()) {
 			uploadFileCreate(clas.getCoverimgurl(),request,"class/coverimg/",clas.getClassid());
-			clas.setCoverimg(clas.getClassid()+"_"+clas.getCoverimgurl().getOriginalFilename());
+			clas.setCoverimg(clas.getCoverimgurl().getOriginalFilename());
 		}
 		classDao.insert(clas);
 	}
@@ -302,7 +302,7 @@ public class ShopService {
 	public void classUpdate(Class clas, HttpServletRequest request) {
 		if(clas.getCoverimgurl() != null && !clas.getCoverimgurl().isEmpty()) {
 			uploadFileCreate(clas.getCoverimgurl(),request,"class/coverimg/",clas.getClassid());
-			clas.setCoverimg(clas.getClassid()+"_"+clas.getCoverimgurl().getOriginalFilename());
+			clas.setCoverimg(clas.getCoverimgurl().getOriginalFilename());
 		}
 		classDao.update(clas);
 		
@@ -324,6 +324,10 @@ public class ShopService {
 		if(user.getFileurl2() != null && !user.getFileurl2().isEmpty()) {
 			uploadFileCreate2(user.getFileurl2(),request,"user/save/",user.getUserid());
 			user.setFile(user.getFileurl2().getOriginalFilename());
+		}
+		if(user.getEdufileurl() != null && !user.getEdufileurl().isEmpty()) {
+			uploadFileCreate2(user.getEdufileurl(),request,"user/edufile/",user.getUserid());
+			user.setFile(user.getEdufileurl().getOriginalFilename());
 		}
 		userDao.update2(user);
 		
