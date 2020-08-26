@@ -186,8 +186,6 @@ function cal(price, time, totaltime){
 }
 
 function vaildation(kbn){
-	alert("검증시작");
-	
 	if(kbn==2){
 		if(document.f.nickname.value==''){
 			alert('별명을 입력하세요.');
