@@ -336,4 +336,11 @@ public class TutorController {
 		}
 		return mav;
 	}
+	
+	@RequestMapping("detail")
+	public ModelAndView detail(HttpSession session){
+		ModelAndView mav = new ModelAndView();
+		mav.addObject(session);
+		return mav;
+	}
 }
