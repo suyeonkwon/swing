@@ -2,6 +2,8 @@ package logic;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Class {
 	private int classid;
 	private String userid;
@@ -12,6 +14,7 @@ public class Class {
 	private int maxtutee;
 	private String subject;
 	private String coverimg;
+	private MultipartFile coverimgurl;
 	private int price; // 시간당 가격
 	private int time;  // 회당 수업시간
 	private int totaltime; // 총 수업 횟수
@@ -205,6 +208,13 @@ public class Class {
 	}
 	public void setWish(int wish) {
 		this.wish = wish;
+	}
+	
+	public MultipartFile getCoverimgurl() {
+		return coverimgurl;
+	}
+	public void setCoverimgurl(MultipartFile coverimgurl) {
+		this.coverimgurl = coverimgurl;
 	}
 	@Override
 	public String toString() {
