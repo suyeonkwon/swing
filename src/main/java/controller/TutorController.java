@@ -311,9 +311,25 @@ public class TutorController {
 			// 유저 정보 업데이트
 			service.userUpdate2(user,request);  
 			// 자격증 정보 insert
-			int cnt = service.licenseCnt();
-			license.setLcno(++cnt);
-			service.licenseInsert(license,request);
+			for(int i=0;i<license.getLctitlelist().size();i++) {
+				License temp = new License();
+				temp.setUserid(userid);
+				if(license.getLcnolist().get(i) != 0) { //update
+					temp.setLcno(license.getLcnolist().get(i));
+					temp.setLctitle(license.getLctitlelist().get(i));
+					temp.setLcfileurl(license.getLcfilelist().get(i));
+					service.licenseUpdate(temp,request);
+					System.out.println("저장된"+temp.toString());
+				}else if(license.getLcnolist().get(i) == 0){ //insert
+					
+					int cnt = service.licenseCnt();
+					temp.setLcno(++cnt);
+					temp.setLctitle(license.getLctitlelist().get(i));
+					temp.setLcfileurl(license.getLcfilelist().get(i));
+					service.licenseInsert(temp,request);
+					System.out.println("저장된"+temp.toString());
+				}
+			}
 			
 			if(cid == 0) { // 새로 만들어지는 수업이라면 class insert, classinfo insert
 				int cnt2 = service.classCnt();
