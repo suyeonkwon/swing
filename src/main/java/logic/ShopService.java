@@ -295,6 +295,14 @@ public class ShopService {
 		classDao.update(clas);
 		
 	}
+	
+	public void classinfoInsert(Classinfo classinfo) {
+		classinfoDao.insert(classinfo);
+	}
+
+	public void classinfoDelete(Integer cid) {
+		classinfoDao.delete(cid);
+	}
 
 	public Integer classTemp(String userid) {
 		return classDao.temp(userid);
