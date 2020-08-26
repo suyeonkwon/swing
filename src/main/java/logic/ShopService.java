@@ -1,5 +1,6 @@
 package logic;
 
+import java.io.File;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import dao.ClassDao;
 import dao.ClassInfoDao;
@@ -329,6 +331,32 @@ public class ShopService {
 	
 	public int checkClass(String userid) {
 		return classDao.checkclass(userid);
+	}
+	
+	private void uploadFileCreate(MultipartFile pictureurl, HttpServletRequest request, String path, int id) {
+		String orgFile = id+"_"+pictureurl.getOriginalFilename();
+		String uploadPath = request.getServletContext().getRealPath("/") +  path;
+	
+		File fpath = new File(uploadPath);
+		if(!fpath.exists()) fpath.mkdirs();
+		try {
+			pictureurl.transferTo(new File(uploadPath + orgFile));
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void uploadFileCreate2(MultipartFile pictureurl, HttpServletRequest request, String path, String id) {
+		String orgFile = id+"_"+pictureurl.getOriginalFilename();
+		String uploadPath = request.getServletContext().getRealPath("/") +  path;
+	
+		File fpath = new File(uploadPath);
+		if(!fpath.exists()) fpath.mkdirs();
+		try {
+			pictureurl.transferTo(new File(uploadPath + orgFile));
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 	//
 
