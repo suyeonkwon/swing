@@ -458,9 +458,9 @@ function cal(price, time, totaltime){
                 <input type="radio" name="level" id="level3" value="3" <c:if test="${clas.level eq 3}"> checked="checked" </c:if> data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">상급자                      
                 <div class="validate"></div>
         </div>
+        <div class="title">회차소개-</div>
 		<div class="form-group" id="seqlist" >
 		<!-- 인증 -->
-		<h3>클래스인포의 값 : ${classinfo} /끝</h3>
 		<c:if test="${empty classinfo}">
 			<div id="seq1">
 			<p>1회차</p>
