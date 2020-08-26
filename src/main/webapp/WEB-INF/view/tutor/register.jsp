@@ -115,7 +115,7 @@ $(document).ready(function(){
 	        	}
 	        }
 	    });
-	});
+	});	
 	
 	$('input[name="type"]').change(function() {
 	    // 모든 radio를 순회한다.
@@ -127,16 +127,19 @@ $(document).ready(function(){
 	 
 	        if(value==1){
 	        	if(checked){
-	        		$("#numclass").hide();
-		        	$("#numclass").val(1);
 		        	$("#totaltime").val(1);
 			 		$("#totaltime").attr('readonly',true)
+			 		$('#seqlist').empty();
+			 		var form = "<p>1회차</p>"
+	    	    	+ "<input type='text' class='form-cont' name='title' id='title1' placeholder='회차 제목' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject'>"
+	    	        + "<input type='text' class='form-cont' name='curri' id='curri1' placeholder='회차 상세 내용' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject'>";
+	    	    	$("<div>").attr("id","seq1").html(form).appendTo("#seqlist");
+	    	    	$("typevalue").val("원데이 클래스");
 	        	}
 	        }else if(value==2){
 				if(checked){
-					$("#numclass").val(0); 
-					$("#numclass").show();
 					$("#totaltime").attr('readonly',false);
+					$("typevalue").val("다회차 수업");
 	        	}
 	        }
 	    });
@@ -156,6 +159,21 @@ $(document).ready(function(){
     	totaltime = $(this).val();
     	cal(price,time,totaltime);
 	});
+	
+	$("#totaltime").on("change", function() {
+		var classeq = $(this).val();
+		var max = ++classeq
+		console.log("classeq:"+classeq);
+    	$('#seqlist').empty();
+    	for(i=1;i<max;i++){
+    		console.log("회차:"+i);
+    		var form = "<p>"+i+"회차</p>"
+    	    	+ "<input type='text' class='form-cont' name='title' id='title"+i+"' placeholder='회차 제목' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject'>"
+    	        + "<input type='text' class='form-cont' name='curri' id='curri"+i+"' placeholder='회차 상세 내용' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject'>";
+    	    $("<div>").attr("id","seq"+i).html(form).appendTo("#seqlist");
+    	}
+	});
+	
 });
 
 function cal(price, time, totaltime){
@@ -201,21 +219,19 @@ function cal(price, time, totaltime){
 	    <div class="form-group">
 	    	<div class="title">프로필-</div>
 			<div style="margin: 30px 0">
+				<input type="hidden" id="imgurl1" value="http://${server}:${port}${path}/user/save/${user.userid}_${user.file}"/>
 				<img class="upf_b button"  src="https://front-img.taling.me/Content/Images/tutor/Images/btn_pfimg.png">
                 <div class="upf" id="picture-cover" style="background-image: url('http://${server}:${port}${path}/user/save/${user.userid}_${user.file}')">
-	                <input type="file" id="picture" name="picture" style="width:150px;height:130px;opacity:0;" onchange="setThumbnail(event);" value=""/>  
-	                <input type="hidden" id="file" name="file" value=""/> 
-                    <input type="hidden" id="fileurl" name="fileurl" />
+	                <input type="file" id="fileurl2" name="fileurl2" style="width:150px;height:130px;opacity:0;" onchange="setThumbnail(event);" value=""/>  
                     <script> 
 		   			 function setThumbnail(event) { 
 						var reader = new FileReader(); 
 						reader.onload = function(event) {
 						document.getElementById("picture-cover").style.backgroundImage="url("+reader.result+")";
-		            	document.getElementById("fileurl").value= reader.result;
+						document.getElementById("imgurl1").value = reader.result;
 	            	}; 
 	            	reader.readAsDataURL(event.target.files[0]); 
 	            	var fname =event.target.files[0].name;
-	            	document.getElementById("file").value= fname;
             		}
 	        		</script>    
                 </div>
@@ -263,10 +279,55 @@ function cal(price, time, totaltime){
 	    <!-- 기본정보 -->
 	    <div class="form-group">
 	    	<div class="title">지역-</div>
-				<input type="text" class="form-cont" name="location1" id="location1" value="${clas.location1}" placeholder="ex)서울" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
+	    		<select id="location1" name="location1">
+	    			<option value="">지역</option>
+					<option value="서울" <c:if test="${clas.location1 eq '서울'}">selected="selected"</c:if>>서울</option>
+					<option value="경기" <c:if test="${clas.location1 eq '경기'}">selected="selected"</c:if>>경기</option>
+					<option value="인천" <c:if test="${clas.location1 eq '인천'}">selected="selected"</c:if>>인천</option>
+	    		</select>
                 <div class="validate"></div>
-                <input type="text" class="form-cont" name="location2" id="location2" value="${clas.location2}" placeholder="ex)금천구" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
+                <select id="location2" name="location2">
+                	<option value="">지역을 선택하세요</option>
+                	<option value="1">test1</option>
+                	<option value="2">test2</option>
+                </select>
                 <div class="validate"></div>
+            <script>
+            $(function(){
+				$('#location1').change(function(){
+					var area = $(this).val();
+					var msg = "";
+					if(area=='서울'){
+						msg = "<select id='location2'>"+
+							"<option value='강남'>강남</option>"+
+							"<option value='건대'>건대</option>"+
+							"<option value='잠실'>잠실</option>"+
+							"<option value='종로'>종로</option>"+
+							"<option value='홍대'>홍대</option>"+
+							"</select>";
+					}else if(area=='경기'){
+						msg = "<select id='location2'>"+
+						"<option value='분당'>분당</option>"+
+						"<option value='부천'>부천</option>"+
+						"<option value='수원'>수원</option>"+
+						"<option value='안산'>안산</option>"+
+						"<option value='안양'>안양</option>"+
+						"<option value='일산'>일산</option>"+
+						"</select>";
+					}else if(area=='인천'){
+						msg = "<select id='location2'>"+
+						"<option value='부평'>부평</option>"+
+						"<option value='송도'>송도</option>"+
+						"</select>"
+					}else{
+						msg="<select id='area'>"+
+							"<option value=''>지역을 선택하세요</option>"+
+							"</select>";
+					}
+					$("#location2").html(msg);
+				})
+			})
+            </script>
 			<div class="title">카테고리-</div>
 				<select name="category">
 					<option value="1" <c:if test="${clas.category eq 1}">selected="selected"</c:if>>요리/베이킹</option>
@@ -280,17 +341,17 @@ function cal(price, time, totaltime){
 		<div class="form-group">
 		<!-- 인증 -->
 			<div class="title">수업형태-</div>
+				<input type="hidden" id="typevalue" <c:if test="${clas.type eq 1}">value="원데이 클래스"</c:if><c:if test="${clas.type eq 2}">value="다회차 수업"</c:if> />
                 <input type="radio" name="type" value="1" <c:if test="${clas.type eq 1}"> checked="checked" </c:if> data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">원데이 클래스
                 <!-- 다회차 클릭시 밑에 회차정보 갯수만큼 뜸 -->
                 <input type="radio" name="type" value="2" <c:if test="${clas.type eq 2}"> checked="checked" </c:if> data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">다회차 수업
-        		<!-- <input type="text" class="form-cont" name="numclass" id="numclass" value="1" />회 -->
         </div>
 		<div class="form-group">
 			<div class="title">참여인원-</div>
                 <input type="radio" name="maxtutee" value="1" <c:if test="${clas.maxtutee eq 1}"> checked="checked" </c:if> data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">1:1
                 <!-- 그룹 클릭시 인원 선택 뜸 -->
                 <input type="radio" name="maxtutee" value="2" <c:if test="${clas.maxtutee > 1}"> checked="checked" </c:if> data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">그룹수업
-                <input type="text" class="form-cont" name="numtutee" id="numtutee" value="" />명
+                <input type="text" class="form-cont" name="numtutee" id="numtutee" value="${clas.maxtutee}" />명
 		</div>
 		<div class="form-group">
 			<div class="title">수업제목-</div>
@@ -299,8 +360,24 @@ function cal(price, time, totaltime){
 		</div>
 		<div class="form-group">
 			<div class="title">커버이미지-</div>
-				<img style="width:400px; height:250px; border: 1px c7c7c7; border-radius: 7px; -moz-border-radius: 7px; -khtml-border-radius: 7px; -webkit-border-radius: 7px;" src="${path}/assets/img/portfolio/portfolio-1.jpg">
-                <button type="submit">업로드</button>
+				<input type="hidden" id="imgurl2" value="http://${server}:${port}${path}/class/coverimg/${clas.coverimg}" />
+				<img id="coverimg" style="width:400px; height:250px; border: 1px c7c7c7; border-radius: 7px; -moz-border-radius: 7px; -khtml-border-radius: 7px; -webkit-border-radius: 7px;" src="http://${server}:${port}${path}/class/coverimg/${clas.coverimg}">
+                <input type="file" name="coverimgurl" id="coverimgurl" accept="image/*" onchange="setThumbnail2(event);" style="display: none;"/>
+                <button type="button" onclick="onclick=document.all.coverimgurl.click()">업로드</button>
+			<script> 
+		    function setThumbnail2(event) { 
+		    	console.log("이벤트실행")
+				var reader = new FileReader(); 
+				reader.onload = function(event) {
+					console.log("reader");
+					document.getElementById("coverimg").src = reader.result;
+					document.getElementById("imgurl2").value = reader.result;
+	            }; 
+	            reader.readAsDataURL(event.target.files[0]); 
+	            var fname =event.target.files[0].name;
+	            console.log(fname);
+            }
+	        </script>
 		</div>
 		<hr> 
        </div>  
@@ -321,13 +398,13 @@ function cal(price, time, totaltime){
 	    <div class="form-group">
 	    	<div class="title">시간당 가격-</div>
 			<div class="form-row">
-				<input type="text" class="form-cont" name="price" value="${clas.price}" id="price" placeholder="ex)30000" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" value="">
+				<input type="text" class="form-cont" name="price" id="price" value="${clas.price}" id="price" placeholder="ex)30000" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" value="">
 				원
                 <div class="validate"></div>
 			</div>
 			<div class="title">1회당 수업 시간-</div>
             <div class="form-row">
-				<input type="text" class="form-cont" name="time" value="${clas.time}" id="time" placeholder="1회당 수업시간을 선택하세요" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
+				<input type="text" class="form-cont" name="time" id="time" value="${clas.time}" id="time" placeholder="1회당 수업시간을 선택하세요" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
 				시간
                 <div class="validate"></div>
 			</div>
@@ -337,7 +414,7 @@ function cal(price, time, totaltime){
 			<div class="title">총 수업횟수-</div>
 			<!-- 원데이 클래스는 1회 / 다회차 수업은 n회 선택 가능 (최대 회차수는?) -->
             <div class="form-row">
-				<input type="text" class="form-cont" name="totaltime" value="${clas.totaltime}" id="totaltime" placeholder="ex)1" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" <c:if test="${clas.type eq 1}">readonly</c:if> >
+				<input type="text" class="form-cont" name="totaltime" id="totaltime" value="${clas.totaltime}" id="totaltime" placeholder="ex)1" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" <c:if test="${clas.type eq 1}">readonly</c:if> >
 				회
                 <div class="validate"></div>
 			</div>
@@ -370,10 +447,10 @@ function cal(price, time, totaltime){
 	    <!-- 기본정보 -->
 	    <div class="form-group">
 	    	<div class="title">튜터소개-</div>
-				<textarea class="form-cont" name="tutorintro" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="튜터소개">${clas.tutorintro}</textarea>
+				<textarea class="form-cont" name="tutorintro" id="tutorintro" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="튜터소개">${clas.tutorintro}</textarea>
 	            <div class="validate"></div>
 			<div class="title">수업소개-</div>
-                <textarea class="form-cont" name="classintro" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="수업소개">${clas.classintro}</textarea>
+                <textarea class="form-cont" name="classintro" id="classintro" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="수업소개">${clas.classintro}</textarea>
                 <div class="validate"></div>
             <div class="title">수업레벨-</div>
             	<input type="radio" name="level" id="level1" value="1" <c:if test="${clas.level eq 1}"> checked="checked" </c:if> data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">입문자
@@ -381,19 +458,38 @@ function cal(price, time, totaltime){
                 <input type="radio" name="level" id="level3" value="3" <c:if test="${clas.level eq 3}"> checked="checked" </c:if> data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">상급자                      
                 <div class="validate"></div>
         </div>
-		<div class="form-group">
+		<div class="form-group" id="seqlist" >
 		<!-- 인증 -->
-		<!-- 	<div class="title">1회차-</div>
+		<c:forEach items="${classinfo}" var="info" varStatus="status">
+			<div id="seq${status.count}">
+			<p>${status.count}회차</p>
+	    	<input type="text" class="form-cont" name="title" id="title${status.count}" value="${info.title}" placeholder='회차 제목' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject'>
+	    	<input type="text" class="form-cont" name="curri" id="curri${status.count}" value="${info.curri}" placeholder='회차 상세 내용' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject'>
+			</div>
+		</c:forEach>
+		<!-- 	0824 : 1220
+				<div class="title">1회차-</div>
                 <input type="text" class="form-cont" name="subject" id="subject" placeholder="수업 제목" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
                 <div class="validate"></div>
                 <input type="email" class="form-cont" name="email" id="email" placeholder="수업 상세 내용" data-rule="email" data-msg="Please enter a valid email">
                 <div class="validate"></div>
         -->
         </div>
-       </div>  
+        </div>  
 	</div>
 	<hr> 
-	<div class="row" style="float: center;"><button type="submit" name="button" value="미리보기">미리보기</button><button type="submit" name="button" value="임시저장">임시저장</button><button type="submit" name="button" value="승인요청">승인요청</button></div>
+	<script type="text/javascript">
+        var openWin;
+        function openChild()
+        {
+            // window.name = "부모창 이름"; 
+            window.name = "parentForm";
+            // window.open("open할 window", "자식창 이름", "팝업창 옵션");
+            openWin = window.open("detail.shop",
+                    "childForm", "width=570, height=350, resizable = no, scrollbars = no");    
+        }
+    </script>
+	<div class="row" style="float: center;"><button type="button" name="button" value="미리보기" onclick="openChild()">미리보기</button><button type="submit" name="button" value="임시저장">임시저장</button><button type="submit" name="button" value="승인요청">승인요청</button></div>
 </div>
 </form>
 </section>
