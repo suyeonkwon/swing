@@ -158,4 +158,11 @@ public class ClassDao {
 		public List<Map<Object, Object>> graph() {
 			return template.getMapper(ClassMapper.class).graph();
 		}
+
+		public List<Class> mainlist(int type) {
+			param.clear();
+			param.put("type", type);
+			return template.getMapper(ClassMapper.class).mainlist(param);
+		}
+
 }

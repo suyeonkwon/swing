@@ -14,10 +14,8 @@ public interface ApplyListMapper {
 	
 	@Select("SELECT u.nickname 'tutor', u.file 'tutorimg', a.classid, a.classno, " + 
 			"c.subject, c.location1, ci.place, c.type, c.totaltime, c.totalprice, " +
-			"concat(MIN(ci.DATE),' ',MIN(ci.starttime)) 'startdate', concat(MAX(ci.date),' ',MAX(ci.endtime)) 'enddate', " + 
-			"ifnull(COUNT(r.reviewno),0) 'reviewnum', ifnull(AVG(r.star),0) 'star' " + 
-			"FROM user u, class c, classinfo ci, applylist a LEFT join review r " + 
-			"on r.classid = a.classid " + 
+			"concat(MIN(ci.DATE),' ',MIN(ci.starttime)) 'startdate', concat(MAX(ci.date),' ',MAX(ci.endtime)) 'enddate' " + 
+			"FROM user u, class c, classinfo ci, applylist a " +  
 			"WHERE c.classid = a.classid " + 
 			"AND c.userid = u.userid " + 
 			"AND ci.classid = a.classid " + 
@@ -39,7 +37,7 @@ public interface ApplyListMapper {
 	@Select("select ifnull(max(applyno),0) from applylist")
 	int maxnum();
 
-	@Insert("insert into applylist(applyno, userid, classid, classno) values(#{applyno}, #{userid}, #{classid}, #{classno})")
+	@Insert("insert into applylist(userid, classid, classno,applydate) values(#{userid}, #{classid}, #{classno},now())")
 	void insert(ApplyList apply);
 
 	@Select("SELECT u.userid, u.name, u.email " + 
@@ -48,5 +46,8 @@ public interface ApplyListMapper {
 			"AND a.classid = #{classid} " + 
 			"AND a.classno = #{classno}")
 	List<User> select(Map<String, Object> param);
+
+	@Select("select * from applylist where userid=#{userid} and classid=#{classid}")
+	ApplyList selectOne(Map<String, Object> param);
 	
 }

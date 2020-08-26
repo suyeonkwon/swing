@@ -2,6 +2,8 @@ package logic;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Class {
 	private int classid;
 	private String userid;
@@ -12,6 +14,7 @@ public class Class {
 	private int maxtutee;
 	private String subject;
 	private String coverimg;
+	private MultipartFile coverimgurl;
 	private int price; // 시간당 가격
 	private int time;  // 회당 수업시간
 	private int totaltime; // 총 수업 횟수
@@ -20,18 +23,24 @@ public class Class {
 	private String classintro;
 	private int level;
 	private int readcnt;
-	private int state;
+	private double state;
 	private Date regdate;
 	//참여인원수
 	private int totaltutee;
 	//클래스 리뷰 평점, 갯수
-	private int staravg;
+	private double staravg;
 	private int reviewcnt;
 	
 	// tutor my.jsp 에 join을 통해 가져온 정보
 	private String nickname;
 	private String name;
 	private Date date;
+	
+	//tutor 프로필 img
+	private String file;
+	
+	//wish여부 check
+	private int wish;
 	
 	// getter, setter
 	public int getClassid() {
@@ -136,10 +145,10 @@ public class Class {
 	public void setReadcnt(int readcnt) {
 		this.readcnt = readcnt;
 	}
-	public int getState() {
+	public double getState() {
 		return state;
 	}
-	public void setState(int state) {
+	public void setState(double state) {
 		this.state = state;
 	}
 	public Date getRegdate() {
@@ -175,10 +184,10 @@ public class Class {
 		this.totaltutee = totaltutee;
 	}
 	
-	public int getStaravg() {
+	public double getStaravg() {
 		return staravg;
 	}
-	public void setStaravg(int staravg) {
+	public void setStaravg(double staravg) {
 		this.staravg = staravg;
 	}
 	public int getReviewcnt() {
@@ -186,6 +195,26 @@ public class Class {
 	}
 	public void setReviewcnt(int reviewcnt) {
 		this.reviewcnt = reviewcnt;
+	}
+	
+	public String getFile() {
+		return file;
+	}
+	public void setFile(String file) {
+		this.file = file;
+	}
+	public int getWish() {
+		return wish;
+	}
+	public void setWish(int wish) {
+		this.wish = wish;
+	}
+	
+	public MultipartFile getCoverimgurl() {
+		return coverimgurl;
+	}
+	public void setCoverimgurl(MultipartFile coverimgurl) {
+		this.coverimgurl = coverimgurl;
 	}
 	@Override
 	public String toString() {

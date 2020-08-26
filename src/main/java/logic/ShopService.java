@@ -1,12 +1,16 @@
 package logic;
 
+import java.io.File;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import dao.ClassDao;
 import dao.ClassInfoDao;
@@ -50,24 +54,12 @@ public class ShopService {
 		return userDao.selectOne(userid);
 	}
 
-	public User getUserByEmail(String email) {
-		return userDao.selectOneByEmail(email);
-	}
-
 	public List<User> userlist(int pageNum, int limit, String column, String find) {
 		return userDao.list(pageNum,limit,column,find);
 	}
 
 	public void userUpdate(User user) {
 		userDao.update(user);
-	}
-	
-	public int getTutorCount() {
-		return userDao.selectTutorCount();
-	}
-	
-	public int getTuteeCount() {
-		return userDao.selectTuteeCount();
 	}
 	
 	/*----Class----*/
@@ -164,12 +156,8 @@ public class ShopService {
 	public List<Integer> getPriceList(String userid) {
 		return tutorDao.selectTotalPrice(userid);
 	}
-	public Map<String, Object> getAvgStar(String userid) {
-		Map<String, Object> map = new HashMap<String, Object>();
-		for(Map<String, Object> m : tutorDao.avgStar(userid)) {
-			map.put((String) m.get("subject"), m.get("star"));
-		}
-		return map;
+	public List<Review> getAvgStar(String userid) {
+		return tutorDao.avgStar(userid);
 	}
 //	public List<Class> getClassListforConfirm(String userid, Integer state) {
 //		return tutorDao.listforConfirm(userid, state);
@@ -200,7 +188,7 @@ public class ShopService {
 	public Date getStartDate(Integer classid) {
 		return wishlistDao.startDate(classid);
 	}
-	public int getStar(Integer classid) {
+	public double getStar(Integer classid) {
 		return wishlistDao.star(classid);
 	}
 	public int getParticiNum(Integer classid) {
@@ -223,8 +211,6 @@ public class ShopService {
 	}
 
 	public void applyClass(ApplyList apply) {
-		int maxnum = applylistDao.maxnum();
-		apply.setApplyno(++maxnum);
 		applylistDao.insert(apply);
 	}
 
@@ -249,10 +235,6 @@ public class ShopService {
 		return classDao.list(pageNum,sorted,limit,location1,location2,type,maxtutee,cate);
 	}
 
-	public List<Class> searchList(String find){
-		return classDao.searchlist(find);
-	}
-	
 	public int getReviewcnt(Integer classid) {
 		return reviewDao.cnt(classid);
 	}
@@ -285,7 +267,6 @@ public class ShopService {
 		return chattingDao.maxroom();
 	}
 
-
 	public int maxClassno(Integer classid) {
 		return classinfoDao.maxnum(classid);
 	}
@@ -306,18 +287,96 @@ public class ShopService {
 		
 	}
 
-	public void classInsert(Class clas) {
+	public void classInsert(Class clas, HttpServletRequest request) {
+		if(clas.getCoverimgurl() != null && !clas.getCoverimgurl().isEmpty()) {
+			uploadFileCreate(clas.getCoverimgurl(),request,"class/coverimg/",clas.getClassid());
+			clas.setCoverimg(clas.getCoverimgurl().getOriginalFilename());
+		}
 		classDao.insert(clas);
 	}
 
-	public void licenseInsert(License license) {
+	public void licenseInsert(License license, HttpServletRequest request) {
+		if(license.getLcfileurl() != null && !license.getLcfileurl().isEmpty()) {
+			uploadFileCreate2(license.getLcfileurl(),request,"user/license/",license.getUserid());
+			license.setLcfile(license.getLcfileurl().getOriginalFilename());
+		}
 		licenseDao.insert(license);
 	}
+	
+	public void licenseUpdate(License license, HttpServletRequest request) {
+		if(license.getLcfileurl() != null && !license.getLcfileurl().isEmpty()) {
+			uploadFileCreate2(license.getLcfileurl(),request,"user/license/",license.getUserid());
+			license.setLcfile(license.getLcfileurl().getOriginalFilename());
+		}
+		licenseDao.update(license);
+	}
 
-	public void classUpdate(Class clas) {
+	public void classUpdate(Class clas, HttpServletRequest request) {
+		if(clas.getCoverimgurl() != null && !clas.getCoverimgurl().isEmpty()) {
+			uploadFileCreate(clas.getCoverimgurl(),request,"class/coverimg/",clas.getClassid());
+			clas.setCoverimg(clas.getCoverimgurl().getOriginalFilename());
+		}
 		classDao.update(clas);
 		
 	}
+	
+	public void classinfoInsert(Classinfo classinfo) {
+		classinfoDao.insert(classinfo);
+	}
+
+	public void classinfoDelete(Integer cid) {
+		classinfoDao.delete(cid);
+	}
+	
+	public List<Classinfo> getClassinfo(Integer cid) {
+		return classinfoDao.getclassinfo(cid);
+	}
+	
+	public void userUpdate2(User user,HttpServletRequest request) {
+		System.out.println("유저프로필이미지:" + user.getFileurl2());
+		System.out.println("유저학력이미지:" + user.getEdufileurl());
+		if(user.getFileurl2() != null && !user.getFileurl2().isEmpty()) {
+			uploadFileCreate2(user.getFileurl2(),request,"user/save/",user.getUserid());
+			user.setFile(user.getFileurl2().getOriginalFilename());
+		}
+		if(user.getEdufileurl() != null && !user.getEdufileurl().isEmpty()) {
+			uploadFileCreate2(user.getEdufileurl(),request,"user/edufile/",user.getUserid());
+			user.setEdufile(user.getEdufileurl().getOriginalFilename());
+		}
+		userDao.update2(user);
+		
+	}
+	
+	public int checkClass(String userid) {
+		return classDao.checkclass(userid);
+	}
+	
+	private void uploadFileCreate(MultipartFile pictureurl, HttpServletRequest request, String path, int id) {
+		String orgFile = id+"_"+pictureurl.getOriginalFilename();
+		String uploadPath = request.getServletContext().getRealPath("/") +  path;
+	
+		File fpath = new File(uploadPath);
+		if(!fpath.exists()) fpath.mkdirs();
+		try {
+			pictureurl.transferTo(new File(uploadPath + orgFile));
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void uploadFileCreate2(MultipartFile pictureurl, HttpServletRequest request, String path, String id) {
+		String orgFile = id+"_"+pictureurl.getOriginalFilename();
+		String uploadPath = request.getServletContext().getRealPath("/") +  path;
+	
+		File fpath = new File(uploadPath);
+		if(!fpath.exists()) fpath.mkdirs();
+		try {
+			pictureurl.transferTo(new File(uploadPath + orgFile));
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	//
 
 	public Integer classTemp(String userid) {
 		return classDao.temp(userid);
@@ -334,12 +393,15 @@ public class ShopService {
 	public int classCnt() {
 		return classDao.count2();
 	}
-
-	public void deleteUser(String userid) {
-		userDao.delete(userid);
-		
+	public ApplyList getapply(int classid, String userid) {
+		return applylistDao.selectOne(classid,userid);
 	}
 
+	public List<Class> mainlist(int type) {
+		return classDao.mainlist(type);
+	}
+
+	
 	
 
 	

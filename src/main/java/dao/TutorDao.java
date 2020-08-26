@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import dao.mapper.TutorMapper;
 import logic.Class;
 import logic.Classinfo;
+import logic.Review;
 
 @Repository
 public class TutorDao {
@@ -94,7 +95,7 @@ public class TutorDao {
 		return template.getMapper(TutorMapper.class).selectTotPrice(userid);
 	}
 
-	public List<Map<String, Object>> avgStar(String userid) {
+	public List<Review> avgStar(String userid) {
 		param.clear();
 		param.put("userid", userid);
 		return template.getMapper(TutorMapper.class).getAvgStar(param);

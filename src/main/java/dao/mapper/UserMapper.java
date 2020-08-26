@@ -63,7 +63,11 @@ public interface UserMapper {
 	void delete(Map<String, Object> param);
 	
 	//
-	@Update("update user set nickname=#{nickname}, "
-			+" school=#{school}, major=#{major}, file=#{file}, kbn=#{kbn} where userid=#{userid}")
+	@Update({"<script>",
+			"update user set nickname=#{nickname},school=#{school}, major=#{major}, kbn=#{kbn}, edulevel=#{edulevel}",
+			"<if test='file!=null'>, file=#{file} </if>",
+			"<if test='edufile!=null'>, edufile=#{edufile} </if>",
+			" where userid=#{userid}",
+			"</script>"})
 	void update2(User user);
 }

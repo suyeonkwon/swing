@@ -36,5 +36,10 @@ public class LicenseDao {
 	public int count() {
 		return template.getMapper(LicenseMapper.class).count();
 	}
+	
+	public void update(License license) {
+		template.getMapper(LicenseMapper.class).update(license);
+		
+	}
 
 }

@@ -18,7 +18,7 @@
    function page(src){
       //open(src,"",);
       location.href=src;
-   }
+   } 
    
    function deleteCheck(classid){
 	   if(confirm("해당 클래스를 정말 삭제하시겠습니까?") == true){
@@ -80,7 +80,8 @@
          <c:forEach var="cl" items="${classlist}">
       	      	
          <div class="col-lg-4" style="cursor:pointer;">
-                <div class="team-img" onclick="page('<c:if test="${cl.state == 4}">register-class.shop?classid=${cl.classid}</c:if><c:if test="${cl.state < 4}">../class/detail.shop?classid=${cl.classid}</c:if>')">
+                <div class="team-img" 
+                	 onclick="page('<c:if test="${cl.state == 4}">register-class.shop?classid=${cl.classid}</c:if><c:if test="${cl.state == 1}">register.shop</c:if>')">                	 
                	  <c:if test="${cl.state == 1}">
                   	<label class="badge badge-success">등록진행중</label>
                   	<img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-3.jpg" alt="">
@@ -100,8 +101,15 @@
                </div>
                <div class="contetn">
                   <div class="info-text">                
-                     <h4><c:if test="${cl.state == 4}"><a href="register-class.shop?classid=${cl.classid}">${cl.subject}</a></c:if>
-                     	 <c:if test="${cl.state < 4}"><a href="../class/detail.shop?classid=${cl.classid}">${cl.subject}</a></c:if></h4>
+                     <h4>
+                     <c:choose>
+                     	<c:when test="${cl.state == 1}"><a href="register.shop">${cl.subject}</a></c:when>
+                     	<c:when test="${cl.state == 4}"><a href="register-class.shop?classid=${cl.classid}">${cl.subject}</a></c:when>
+                     	<c:otherwise><a href="#">${cl.subject}</a></c:otherwise>
+                     </c:choose>
+                     </h4>
+<%--                     <c:if test="${cl.state == 4}"><a href="register-class.shop?classid=${cl.classid}">${cl.subject}</a></c:if>
+                     	 <c:if test="${cl.state < 4}"><a href="../class/detail.shop?classid=${cl.classid}">${cl.subject}</a></c:if></h4>--%>
                      <p>${cl.nickname}(${cl.userid})</p>
                      <p>[신청일시] <fmt:formatDate value="${cl.regdate}" pattern="yyyy-MM-dd HH:mm:ss" /></p>
                      <p>[위치] ${cl.location1} ${cl.location2}</p>
@@ -119,91 +127,6 @@
                </div>
          </div>
          </c:forEach>	
-<%--         	
-         <div class="col-lg-4" onclick="page('../class/detail.shop')" style="cursor:pointer;">
-               <div class="team-img">
-                    <label class="badge badge-danger">반&nbsp;려</label>
-                  <img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-5.jpg" alt="">
-               </div>
-               <div class="contetn">
-                  <div class="info-text">
-                     <h3><a href="#">핸드메이드 강좌</a></h3>
-                     <p>이다빈(USER1)</p>
-                     <p>[신청일시] 2020-08-05 18:15:01</p>
-                     <p>[수업시작일] 2020-09-15</p>
-                     <p>[위치] 서울시 금천구</p>
-                  </div>
-                  <div style="float: right;">
-                      <button type="button">수정</button>
-                     <button type="button">삭제</button>
-                  </div>
-               </div>
-         </div>
-         <div class="col-lg-4" onclick="page('../class/detail.shop')" style="cursor:pointer;">
-               <div class="team-img">
-                    <label class="badge badge-danger">반&nbsp;려</label>
-                  <img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-7.jpg" alt="">
-               </div>
-               <div class="contetn">
-                  <div class="info-text">
-                  <h3><a href="#">핸드메이드 강좌</a></h3>
-                  <p>이다빈(USER1)</p>
-                  <p>[신청일시] 2020-08-05 18:15:01</p>
-                  <p>[수업시작일] 2020-09-15</p>
-                  <p>[위치] 서울시 금천구</p>
-               </div>
-               <div style="float: right;">
-                      <button type="button">수정</button>
-                     <button type="button">삭제</button>
-               </div>
-               </div>
-         </div>
-         <div class="col-lg-4" onclick="page('../class/detail.shop')" style="cursor:pointer;">
-               <div class="team-img">
-                  <label class="badge badge-success">승인대기중</label>
-                  <img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-1.jpg" alt="">
-               </div>
-               <div class="contetn">
-                  <div class="info-text">
-                     <h3><a href="#">핸드메이드 강좌</a></h3>
-                     <p>이다빈(USER1)</p>
-                     <p>[신청일시] 2020-08-05 18:15:01</p>
-                     <p>[수업시작일] 2020-09-15</p>
-                     <p>[위치] 서울시 금천구</p>
-                  </div>
-               </div>
-            </div>
-         <div class="col-lg-4" onclick="page('../tutor/register-one.shop')" style="cursor:pointer;">
-               <div class="team-img">
-                    <label class="badge badge-success">승인완료</label>
-                  <img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-2.jpg" alt="">
-               </div>
-            <div class="contetn">
-               <div class="info-text">
-                  <h3><a href="#">핸드메이드 강좌</a></h3>
-                  <p>이다빈(USER1)</p>
-                  <p>[신청일시] 2020-08-05 18:15:01</p>
-                  <p>[수업시작일] 2020-09-15</p>
-                  <p>[위치] 서울시 금천구</p>
-               </div>
-            </div>
-         </div>
-         <div class="col-lg-4" onclick="page('../tutor/register-multi.shop')" style="cursor:pointer;">
-            <div class="team-img">
-                    <label class="badge badge-success">승인완료</label>
-                  <img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-4.jpg" alt="">
-            </div>
-            <div class="contetn">
-               <div class="info-text">
-                  <h3><a href="#">핸드메이드 강좌</a></h3>
-                  <p>이다빈(USER1)</p>
-                  <p>[신청일시] 2020-08-05 18:15:01</p>
-                  <p>[수업시작일] 2020-09-15</p>
-                  <p>[위치] 서울시 금천구</p>
-               </div>
-            </div>
-         </div>
- --%>
          </c:if>
          <c:if test="${classcount == 0}">
          	<div style="font-align:center;">
@@ -213,7 +136,6 @@
          
       </div>
      </div>
-    </section>
-    
+    </section>  
 </body>
 </html>

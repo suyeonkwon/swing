@@ -47,4 +47,11 @@ public class ApplyListDao {
 		return template.getMapper(ApplyListMapper.class).select(param);
 	}
 
+	public ApplyList selectOne(int classid, String userid) {
+		param.clear();
+		param.put("classid", classid);
+		param.put("userid", userid);
+		return template.getMapper(ApplyListMapper.class).selectOne(param);
+	}
+
 }

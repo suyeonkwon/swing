@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import logic.License;
 
@@ -21,4 +22,11 @@ public interface LicenseMapper {
 
 	@Select("select count(*) from license")
 	int count();
+	
+	@Update({"<script>",
+			"update license set lctitle=#{lctitle}",
+			"<if test='lcfile!=null'>, lcfile=#{lcfile} </if>",
+			"where lcno=#{lcno} and userid=#{userid}",
+			"</script>"})
+	void update(License license);
 }

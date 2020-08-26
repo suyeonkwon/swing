@@ -9,9 +9,11 @@
 <link href="${path}/assets/css/tutee.css" rel="stylesheet">
 <script type="text/javascript">
 $(function(){
-	var idx = $('#Avg').val()/0.5;
-	for(var i=0; i<idx; i++){
-		$(".star").eq(i).addClass("on");
+	for(var n=0; n< ${classnum}; n++){
+		var idx = $('#Avg'+n).val()/0.5;
+		for(var i=0; i<idx; i++){
+			$(".star"+n).eq(i).addClass("on");
+		}
 	}
 })
 </script>
@@ -67,30 +69,30 @@ a:hover {
 					<div class="price">
 						<font class="class-start">
 						<a class="starimg">
-							<input type="hidden" id="Avg" value="${course.star}">
-							<span class="star star_left"></span>
-						    <span class="star star_right"></span>
+							<input type="hidden" id="Avg${status.index}" value="${course.star}">
+							<span class="star star${status.index} star_left"></span>
+						    <span class="star star${status.index} star_right"></span>
 						
-						    <span class="star star_left"></span>
-						    <span class="star star_right"></span>
+						    <span class="star star${status.index} star_left"></span>
+						    <span class="star star${status.index} star_right"></span>
 						
-						    <span class="star star_left"></span>
-						    <span class="star star_right"></span>
+						    <span class="star star${status.index} star_left"></span>
+						    <span class="star star${status.index} star_right"></span>
 						
-						   <span class="star star_left"></span>
-						   <span class="star star_right"></span>
+						   <span class="star star${status.index} star_left"></span>
+						   <span class="star star${status.index} star_right"></span>
 
-						   <span class="star star_left"></span>
-						   <span class="star star_right"></span>
+						   <span class="star star${status.index} star_left"></span>
+						   <span class="star star${status.index} star_right"></span>
 						</a>(${course.reviewnum})</font>
 						<font>\</font>
 						<fmt:formatNumber value="${course.totalprice}" type="currency"/>
 					</div>
 					<div class="btn-box">
-					<a href="javascript:reviewPop()"class="btn tp1">리뷰쓰기</a>
+					<a href="javascript:reviewPop(${course.classid})"class="btn tp1" id="btn-write-review">리뷰쓰기</a>
 					<script>
-						function reviewPop(){
-							window.open('../class/review.shop','','width=500,height=600,menubar=no,status=no,toolbar=no')
+						function reviewPop(classid){
+							window.open('${path}/class/review.shop?classid='+classid,'','width=500,height=600,menubar=no,status=no,toolbar=no')
 						}
 					</script>
 					</div>

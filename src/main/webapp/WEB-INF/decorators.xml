@@ -11,5 +11,7 @@
 		<pattern>/admin/reason*</pattern>
 		<pattern>/board/imgupload*</pattern>
 		<pattern>/ajax/*</pattern>
+		<pattern>/class/review*</pattern>
+		<pattern>/popup/*</pattern>
 	</excludes>
 </decorators>
