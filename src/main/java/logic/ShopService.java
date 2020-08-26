@@ -285,7 +285,11 @@ public class ShopService {
 		
 	}
 
-	public void classInsert(Class clas) {
+	public void classInsert(Class clas, HttpServletRequest request) {
+		if(clas.getCoverimgurl() != null && !clas.getCoverimgurl().isEmpty()) {
+			uploadFileCreate(clas.getCoverimgurl(),request,"class/coverimg/",clas.getClassid());
+			clas.setCoverimg(clas.getClassid()+"_"+clas.getCoverimgurl().getOriginalFilename());
+		}
 		classDao.insert(clas);
 	}
 
@@ -293,7 +297,11 @@ public class ShopService {
 		licenseDao.insert(license);
 	}
 
-	public void classUpdate(Class clas) {
+	public void classUpdate(Class clas, HttpServletRequest request) {
+		if(clas.getCoverimgurl() != null && !clas.getCoverimgurl().isEmpty()) {
+			uploadFileCreate(clas.getCoverimgurl(),request,"class/coverimg/",clas.getClassid());
+			clas.setCoverimg(clas.getClassid()+"_"+clas.getCoverimgurl().getOriginalFilename());
+		}
 		classDao.update(clas);
 		
 	}
