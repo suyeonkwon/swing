@@ -2,13 +2,16 @@ package logic;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class License {
 	private int lcno;
 	private String userid;
 	private String lctitle;
 	private String lcfile;
+	private MultipartFile lcfileurl;
 	private List<String> lctitlelist;
-	private List<String> lcfilelist;
+	private List<MultipartFile> lcfilelist;
 	
 	// getter, setter, toString
 	public int getLcno() {
@@ -42,11 +45,18 @@ public class License {
 	public void setLctitlelist(List<String> lctitlelist) {
 		this.lctitlelist = lctitlelist;
 	}
-	public List<String> getLcfilelist() {
+	public List<MultipartFile> getLcfilelist() {
 		return lcfilelist;
 	}
-	public void setLcfilelist(List<String> lcfilelist) {
+	public void setLcfilelist(List<MultipartFile> lcfilelist) {
 		this.lcfilelist = lcfilelist;
+	}
+	
+	public MultipartFile getLcfileurl() {
+		return lcfileurl;
+	}
+	public void setLcfileurl(MultipartFile lcfileurl) {
+		this.lcfileurl = lcfileurl;
 	}
 	@Override
 	public String toString() {
