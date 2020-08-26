@@ -175,7 +175,7 @@ public class TutorController {
 		System.out.println(request.getServletContext().getRealPath("/"));
 		User loginUser = (User)session.getAttribute("loginUser");
 		String userid = loginUser.getUserid();
-		License license = new License();
+		List<License> lclist = service.getLicense(userid);
 		Class clas = new Class();
 		List<Classinfo> classinfo = new ArrayList<Classinfo>();
 		System.out.println("받은 cid:"+cid);
@@ -203,10 +203,11 @@ public class TutorController {
 			System.out.println("전달한 cid:"+cid);
 		}
 		
-		mav.addObject("license", license);
+		mav.addObject("lclist", lclist);
 		mav.addObject("user",loginUser);
 		mav.addObject("clas",clas);
 		mav.addObject("classinfo",classinfo);
+		System.out.println("전달한 license:"+lclist.toString());
 		System.out.println("전달한 user:"+loginUser.toString());
 		System.out.println("전달한 class:"+clas.toString());
 		System.out.println("전달한 classinfo:"+classinfo.toString());

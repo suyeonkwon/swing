@@ -10,6 +10,7 @@ public class License {
 	private String lctitle;
 	private String lcfile;
 	private MultipartFile lcfileurl;
+	private List<Integer> lcnolist;
 	private List<String> lctitlelist;
 	private List<MultipartFile> lcfilelist;
 	
@@ -57,6 +58,13 @@ public class License {
 	}
 	public void setLcfileurl(MultipartFile lcfileurl) {
 		this.lcfileurl = lcfileurl;
+	}
+	
+	public List<Integer> getLcnolist() {
+		return lcnolist;
+	}
+	public void setLcnolist(List<Integer> lcnolist) {
+		this.lcnolist = lcnolist;
 	}
 	@Override
 	public String toString() {

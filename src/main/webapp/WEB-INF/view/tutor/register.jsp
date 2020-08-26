@@ -259,10 +259,13 @@ function cal(price, time, totaltime){
         </div>
 		<div class="form-group">
 			<div class="title">자격증-</div>
-                <input type="text" class="form-cont" name="lctitle" id="lctitle" value="${license.lctitle}" placeholder="ex)토익900" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
-                <input type="hidden" name="lcfile">
+				<c:if test="${empty lclist}">
+				<input type="hidden" name=lcnolist[0] value="0"/>
+                <input type="text" class="form-cont" name="lctitlelist[0]" id="lctitlelist[0]" value="" placeholder="ex)토익900" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
+                <input type="file" name="lcfilelist[0]" id="lcfilelist[0]" accept="image/*" style="display: none;"/>
                 <div class="validate"></div>
-                <button type="submit">업로드</button>
+                <button type="button" onclick="onclick=document.all.lcfilelist[0].click()" style="width: 130px;">자격증명서 업로드</button>
+				</c:if>
 		</div>
 		<hr> 
        </div>  
