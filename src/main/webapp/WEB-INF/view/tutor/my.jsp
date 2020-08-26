@@ -127,91 +127,6 @@
                </div>
          </div>
          </c:forEach>	
-<%--         	
-         <div class="col-lg-4" onclick="page('../class/detail.shop')" style="cursor:pointer;">
-               <div class="team-img">
-                    <label class="badge badge-danger">반&nbsp;려</label>
-                  <img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-5.jpg" alt="">
-               </div>
-               <div class="contetn">
-                  <div class="info-text">
-                     <h3><a href="#">핸드메이드 강좌</a></h3>
-                     <p>이다빈(USER1)</p>
-                     <p>[신청일시] 2020-08-05 18:15:01</p>
-                     <p>[수업시작일] 2020-09-15</p>
-                     <p>[위치] 서울시 금천구</p>
-                  </div>
-                  <div style="float: right;">
-                      <button type="button">수정</button>
-                     <button type="button">삭제</button>
-                  </div>
-               </div>
-         </div>
-         <div class="col-lg-4" onclick="page('../class/detail.shop')" style="cursor:pointer;">
-               <div class="team-img">
-                    <label class="badge badge-danger">반&nbsp;려</label>
-                  <img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-7.jpg" alt="">
-               </div>
-               <div class="contetn">
-                  <div class="info-text">
-                  <h3><a href="#">핸드메이드 강좌</a></h3>
-                  <p>이다빈(USER1)</p>
-                  <p>[신청일시] 2020-08-05 18:15:01</p>
-                  <p>[수업시작일] 2020-09-15</p>
-                  <p>[위치] 서울시 금천구</p>
-               </div>
-               <div style="float: right;">
-                      <button type="button">수정</button>
-                     <button type="button">삭제</button>
-               </div>
-               </div>
-         </div>
-         <div class="col-lg-4" onclick="page('../class/detail.shop')" style="cursor:pointer;">
-               <div class="team-img">
-                  <label class="badge badge-success">승인대기중</label>
-                  <img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-1.jpg" alt="">
-               </div>
-               <div class="contetn">
-                  <div class="info-text">
-                     <h3><a href="#">핸드메이드 강좌</a></h3>
-                     <p>이다빈(USER1)</p>
-                     <p>[신청일시] 2020-08-05 18:15:01</p>
-                     <p>[수업시작일] 2020-09-15</p>
-                     <p>[위치] 서울시 금천구</p>
-                  </div>
-               </div>
-            </div>
-         <div class="col-lg-4" onclick="page('../tutor/register-one.shop')" style="cursor:pointer;">
-               <div class="team-img">
-                    <label class="badge badge-success">승인완료</label>
-                  <img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-2.jpg" alt="">
-               </div>
-            <div class="contetn">
-               <div class="info-text">
-                  <h3><a href="#">핸드메이드 강좌</a></h3>
-                  <p>이다빈(USER1)</p>
-                  <p>[신청일시] 2020-08-05 18:15:01</p>
-                  <p>[수업시작일] 2020-09-15</p>
-                  <p>[위치] 서울시 금천구</p>
-               </div>
-            </div>
-         </div>
-         <div class="col-lg-4" onclick="page('../tutor/register-multi.shop')" style="cursor:pointer;">
-            <div class="team-img">
-                    <label class="badge badge-success">승인완료</label>
-                  <img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-4.jpg" alt="">
-            </div>
-            <div class="contetn">
-               <div class="info-text">
-                  <h3><a href="#">핸드메이드 강좌</a></h3>
-                  <p>이다빈(USER1)</p>
-                  <p>[신청일시] 2020-08-05 18:15:01</p>
-                  <p>[수업시작일] 2020-09-15</p>
-                  <p>[위치] 서울시 금천구</p>
-               </div>
-            </div>
-         </div>
- --%>
          </c:if>
          <c:if test="${classcount == 0}">
          	<div style="font-align:center;">
@@ -221,7 +136,6 @@
          
       </div>
      </div>
-    </section>
-    
+    </section>  
 </body>
 </html>

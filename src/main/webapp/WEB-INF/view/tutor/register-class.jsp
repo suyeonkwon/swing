@@ -43,12 +43,21 @@ function input(f,n){
      }
    }
 }
+function goPopup(){
+	var pop = window.open("../popup/jusoPopup.shop","pop","width=570, height=420, scrollbars=yes, resizable=yes");
+}
+function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo){
+	document.classRegisterForm.zipNo.value = zipNo;
+	document.classRegisterForm.roadFullAddr.value = roadFullAddr;
+	document.classRegisterForm.addrDetail.value = addrDetail;
+	self.close();
+}
 </script>
 </head>
 <body>
 <section>
    <div class="container">
-   <form:form method="post" modelAttribute="classinfoList" action="registerClassinfo.shop?classid=${c.classid}" enctype="multipart/form-data" name="classRegisterForm">
+   <form:form method="post" modelAttribute="classinfoList" action="registerClassinfo.shop?classid=${c.classid}" enctype="multipart/form-data" id="classRegisterForm" name="classRegisterForm">
       <div class="tutor_cont">
          <div class="title_box">
             <h1>수업 등록
@@ -93,7 +102,14 @@ function input(f,n){
                      <div class="option">
                         <div class="top">
                            <div class="text">
-                              장소: <form:input path="classinfos[0].place" />
+                 
+                 <%-- callback까지 되는데 db 저장이 안됨 ㅠㅠ --%>
+                 <div id="callBackDiv">           
+                              장소: <input type="text" name="zipNo" path="classinfos[0].zipcode" onclick="goPopup()" placeholder="우편번호 클릭 후 검색" readonly="true"/><br>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="roadFullAddr" path="classinfos[0].address" style="width:500px;" placeholder="주소" readonly="true" ><br>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="addrDetail" path="classinfos[0].place" style="width:500px;" placeholder="상세주소" >
+                </div>
+                
                            </div>
                         </div>
                      </div>
@@ -122,7 +138,14 @@ function input(f,n){
                               <form:hidden path="classinfos[${i}].classno" value="${newclassno}" />
                               <form:hidden path="classinfos[${i}].classseq" value="${i}" />
                               <tr><td>${i}회차</td>
-                                 <td><form:input path="classinfos[${i}].place" id="place${i}" /></td>
+                 
+                 <%-- 원데이 장소 주소등록은 되는데 다회차 폼에서는 안됨 ㅠㅠ --%>                
+                                 <td><div id="callBackDiv">           
+                              장소: <input type="text" name="zipNo" path="classinfos[${i}].zipcode" style="width:100px;" onclick="goPopup()" placeholder="우편번호 클릭 후 검색" readonly="true"><br>
+                      <input type="text" name="roadFullAddr" path="classinfos[${i}].address" placeholder="주소" readonly="true" ><br>
+                      <input type="text" name="addrDetail" path="classinfos[${i}].place" placeholder="상세주소" >
+                </div></td>
+                
                                  <td><form:input type="date" path="classinfos[${i}].date" /></td>
                                  <td><form:input type="time" path="classinfos[${i}].starttime" id="starttime${i}" /></td>
                                  <td><form:input type="time" path="classinfos[${i}].endtime" id="endtime${i}" /></td></tr>
