@@ -161,8 +161,12 @@
 							maxtutee="";
 						}
 						//alert(type);
-						location.href="classlist.shop?location1="+location1+"&location2="+location2+
-								"&type="+type+"&maxtutee="+maxtutee+"&text="+document.all.text.value;
+						var url = "classlist.shop?location1="+location1+"&location2="+location2+
+						"&type="+type+"&maxtutee="+maxtutee;
+						if(${text!=null}) {
+							url = url+"&text="+document.all.text.value;
+						}
+						location.href = url;
 					})
 				})
 				</script>
