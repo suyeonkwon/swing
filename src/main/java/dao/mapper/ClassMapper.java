@@ -38,7 +38,7 @@ public interface ClassMapper {
 		   int count(Map<String, Object> param);
 
 		   @Select({"<script>",
-		         "select * from class where 1=1",
+		         "select * from class where 1=1 and state=5",
 		         "<if test='location1!=null'>and location1=#{location1}</if>",
 		         "<if test='location2!=null'>AND location2=#{location2}</if>",
 		         "<if test='type!=null'>AND type=#{type}</if>",
