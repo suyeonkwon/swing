@@ -90,6 +90,7 @@ $(document).ready(function(){
 		$("#numtutee").show();
 	}else{
 		$("#numtutee").hide();
+		$("#num").hide();
 	}
 	
 	$("#numclass").hide();
@@ -105,6 +106,7 @@ $(document).ready(function(){
 	        if(value==1){
 	        	if(checked){
 	        		$("#numtutee").hide();
+	        		$("#num").hide();
 		        	$("#numtutee").val(1);
 		        	
 	        	}
@@ -112,6 +114,7 @@ $(document).ready(function(){
 				if(checked){
 					$("#numtutee").val(0);
 					$("#numtutee").show();
+					$("#num").show();
 	        	}
 	        }
 	    });
@@ -129,6 +132,7 @@ $(document).ready(function(){
 	        	if(checked){
 		        	$("#totaltime").val(1);
 			 		$("#totaltime").attr('readonly',true)
+			 		document.getElementById("cal").textContent = price + "원 X " + time + "시간 X 1회";
 			 		$('#seqlist').empty();
 			 		var form = "<p>1회차</p>"
 	    	    	+ "<input type='text' class='form-cont' name='title' id='title1' placeholder='회차 제목' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject'>"
@@ -169,7 +173,7 @@ $(document).ready(function(){
     		console.log("회차:"+i);
     		var form = "<p>"+i+"회차</p>"
     	    	+ "<input type='text' class='form-cont' name='title' id='title"+i+"' placeholder='회차 제목' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject'>"
-    	        + "<input type='text' class='form-cont' name='curri' id='curri"+i+"' placeholder='회차 상세 내용' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject'>";
+    	        + "<textarea class='form-cont' name='curri' id='curri"+i+"' rows='5' data-rule='required' data-msg='Please write something for us' placeholder='회차 상세 내용'></textarea>"
     	    $("<div>").attr("id","seq"+i).html(form).appendTo("#seqlist");
     	}
 	});
@@ -345,7 +349,6 @@ function vaildation(kbn){
 		<div class="form-group">
 		<!-- 인증 -->
 			<div class="title">학력-</div>
-				<p>최종학력</p>
 				<select name="edulevel">
 					<option value="0" <c:if test="${user.edulevel eq 0}">selected="selected"</c:if>>-최종학력-</option>
 					<option value="1" <c:if test="${user.edulevel eq 1}">selected="selected"</c:if>>고등학교</option>
@@ -358,7 +361,7 @@ function vaildation(kbn){
                 <div class="validate"></div>
                 <input type="hidden" id="imgurl3" value="http://${server}:${port}${path}/class/coverimg/${user.edufile}" />
                 <input type="file" name="edufileurl" id="edufileurl" accept="image/*" style="display: none;"/>
-                <button type="button" onclick="onclick=document.all.edufileurl.click()" style="width: 130px;">학력증명서 업로드</button>
+                <button type="button" onclick="document.all.edufileurl.click()" style="width: 130px;">학력증명서 업로드</button>
         </div>
 		<div class="form-group">
 			<div class="title">자격증-</div>
@@ -369,7 +372,7 @@ function vaildation(kbn){
                 	<input type="text" class="form-cont" name="lctitlelist[0]" id="lctitlelist0" value="" placeholder="ex)토익900" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
                 	<input type="file" name="lcfilelist[0]" id="lcfilelist0" accept="image/*" style="display: none;"/>
                 	<div class="validate"></div>
-                	<button type="button" onclick="onclick=document.all.lcfilelist0.click()" style="width: 130px;">자격증명서 업로드</button>
+                	<button type="button" onclick="document.all.lcfilelist0.click()" style="width: 130px;">자격증명서 업로드</button>
 				</c:if>
 				<c:if test="${not empty lclist}">
 					<c:set var="cnt" value="0"/>
@@ -379,7 +382,7 @@ function vaildation(kbn){
                 		<input type="text" class="form-cont" name="lctitlelist[${status.index}]" id="lctitlelist${status.index}" value="${lc.lctitle}" placeholder="ex)토익900" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
                 		<input type="file" name="lcfilelist[${status.index}]" id="lcfilelist${status.index}" accept="image/*" style="display: none;"/>
                 		<div class="validate"></div>
-                		<button type="button" onclick="onclick=document.all.lcfilelist${status.index}.click()" style="width: 130px;">자격증명서 업로드</button>
+                		<button type="button" onclick="document.all.lcfilelist${status.index}.click()" style="width: 130px;">자격증명서 업로드</button>
 					</c:forEach>
 				</c:if>
 				</div>
@@ -391,7 +394,7 @@ function vaildation(kbn){
 	                	 			+"<input type='text' class='form-cont' name='lctitlelist[${cnt}]' id='lctitlelist[${cnt}]' value='' placeholder='ex)토익900' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject'>"
 	                				+"<input type='file' name='lcfilelist[${cnt}]' id='lcfilelist[${cnt}]' accept='image/*' style='display: none;'/>"
 	                				+"<div class='validate'></div>"
-	                				+"<button type='button' onclick='onclick=document.all.lcfilelist[${cnt}].click()' style='width: 130px;'>자격증명서 업로드</button>";
+	                				+"<button type='button' onclick='document.all.lcfilelist[${cnt}].click()' style='width: 130px;'>자격증명서 업로드</button>";
 						$("#license").append(html);
 					}
 				</script>
@@ -485,7 +488,7 @@ function vaildation(kbn){
                 <input type="radio" name="maxtutee" value="1" <c:if test="${clas.maxtutee eq 1}"> checked="checked" </c:if> data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">1:1
                 <!-- 그룹 클릭시 인원 선택 뜸 -->
                 <input type="radio" name="maxtutee" value="2" <c:if test="${clas.maxtutee > 1}"> checked="checked" </c:if> data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">그룹수업
-                <input type="text" class="form-cont" name="numtutee" id="numtutee" value="${clas.maxtutee}" />명
+                <input type="text" class="form-cont" name="numtutee" id="numtutee" value="${clas.maxtutee}" /><p id="num">명</p>
 		</div>
 		<div class="form-group">
 			<div class="title">수업제목-</div>
@@ -497,7 +500,7 @@ function vaildation(kbn){
 				<input type="hidden" id="imgurl2" value="http://${server}:${port}${path}/class/coverimg/${clas.classid}_${clas.coverimg}" />
 				<img id="coverimg" style="width:400px; height:250px; border: 1px c7c7c7; border-radius: 7px; -moz-border-radius: 7px; -khtml-border-radius: 7px; -webkit-border-radius: 7px;" src="http://${server}:${port}${path}/class/coverimg/${clas.classid}_${clas.coverimg}">
                 <input type="file" name="coverimgurl" id="coverimgurl" accept="image/*" onchange="setThumbnail2(event);" style="display: none;"/>
-                <button type="button" onclick="onclick=document.all.coverimgurl.click()">업로드</button>
+                <button type="button" onclick="document.all.coverimgurl.click()">업로드</button>
 			<script> 
 		    function setThumbnail2(event) { 
 		    	console.log("이벤트실행")
@@ -559,7 +562,6 @@ function vaildation(kbn){
                 <div style="padding: 30px;">
                 	<p id="cal">0원 X 0시간 X 0회</p>
                 	<p id="cal2" style="text-align: right;">총 0원</p>
-					<p style="text-align: right;">연결 수수료 0원</p>
 				</div>
 				</div>
 		</div>
@@ -599,7 +601,7 @@ function vaildation(kbn){
 			<div id="seq1">
 			<p>1회차</p>
 	    	<input type="text" class="form-cont" name="title" id="title1" value="" placeholder='회차 제목' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject'>
-	    	<input type="text" class="form-cont" name="curri" id="curri1" value="" placeholder='회차 상세 내용' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject'>
+	    	<textarea class="form-cont" name="curri" id="curri1" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="회차 상세 내용"></textarea>
 			</div>
 		</c:if>
 		<c:if test="${not empty classinfo}">
@@ -607,7 +609,7 @@ function vaildation(kbn){
 			<div id="seq${status.count}">
 			<p>${status.count}회차</p>
 	    	<input type="text" class="form-cont" name="title" id="title${status.count}" value="${info.title}" placeholder='회차 제목' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject'>
-	    	<input type="text" class="form-cont" name="curri" id="curri${status.count}" value="${info.curri}" placeholder='회차 상세 내용' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject'>
+	    	<textarea class="form-cont" name="curri" id="curri${status.count}" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="회차 상세 내용">${info.curri}</textarea>
 			</div>
 		</c:forEach>
 		</c:if>

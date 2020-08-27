@@ -81,7 +81,7 @@ public interface ClassMapper {
 		   Integer temp(Map<String, Object> param);
 
 		   @Select("select max(classid) from class")
-		   int count2();
+		   Integer count2();
 
 	@Select({"<script>",
 			"select * from class ",
