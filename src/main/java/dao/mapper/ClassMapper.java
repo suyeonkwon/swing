@@ -21,7 +21,7 @@ public interface ClassMapper {
 		   List<Class> selectOne(Map<String, Object> param);
 
 		   @Select({"<script>",
-		         "select count(*) from class where 1=1",
+		         "select count(*) from class where 1=1 and state=5",
 		         "<if test='location1!=null'>and location1=#{location1}</if>",
 		         "<if test='location2!=null'>AND location2=#{location2}</if>",
 		         "<if test='type!=null'>AND type=#{type}</if>",
@@ -30,11 +30,15 @@ public interface ClassMapper {
 		            "<if test='maxtutee==2'> and maxtutee>1</if>"+
 		         "</if>",
 		         "<if test='cate!=null'> and category=#{cate}</if>",
+		         "<if test='text!=null'>"+
+		         " and (location1 LIKE '%${text}%' or location2 LIKE '%${text}%' OR subject LIKE '%${text}%' OR " + 
+		         " tutorintro LIKE '%${text}%' OR classintro LIKE '%${text}%') "+
+		         "</if>",
 		         "</script>"})
 		   int count(Map<String, Object> param);
 
 		   @Select({"<script>",
-		         "select * from class where 1=1",
+		         "select * from class where 1=1 and state=5",
 		         "<if test='location1!=null'>and location1=#{location1}</if>",
 		         "<if test='location2!=null'>AND location2=#{location2}</if>",
 		         "<if test='type!=null'>AND type=#{type}</if>",
@@ -42,6 +46,11 @@ public interface ClassMapper {
 		            "<if test='maxtutee==1'> and maxtutee=1</if>"+
 		            "<if test='maxtutee==2'> and maxtutee>1</if>"+
 		         "</if>",
+		         "<if test='text!=null'>"+
+				         " and (location1 LIKE '%${text}%' " + 
+				         " or location2 LIKE '%${text}%' OR subject LIKE '%${text}%' OR " + 
+				         " tutorintro LIKE '%${text}%' OR classintro LIKE '%${text}%') "+
+				 "</if>",
 		         "<if test='cate!=null'> and category=#{cate}</if>",
 		         "<if test='sorted==1'> order by regdate desc limit #{startrow},#{limit} </if>",
 		         "<if test='sorted==2'> ORDER BY (SELECT AVG(star) FROM review WHERE classid=class.classid) desc limit #{startrow},#{limit}</if>",
@@ -71,7 +80,7 @@ public interface ClassMapper {
 		   @Select("select classid from class where userid=#{userid} and state=1")
 		   Integer temp(Map<String, Object> param);
 
-		   @Select("select count(*) from class")
+		   @Select("select max(classid) from class")
 		   int count2();
 
 	@Select({"<script>",
@@ -83,10 +92,10 @@ public interface ClassMapper {
 	List<Class> select2(Map<String, Object> param);
 
 
-	@Select(" SELECT * FROM class WHERE location1 LIKE '%${find}%' " + 
-			" or(location2 LIKE '%${find}%' OR subject LIKE '%${find}%' OR " + 
-			" tutorintro LIKE '%${find}%' OR classintro LIKE '%${find}%') ")
-	List<Class> selectSearch(Map<String, Object> param);
+//	@Select(" SELECT * FROM class WHERE location1 LIKE '%${find}%' " + 
+//			" or(location2 LIKE '%${find}%' OR subject LIKE '%${find}%' OR " + 
+//			" tutorintro LIKE '%${find}%' OR classintro LIKE '%${find}%') ")
+//	List<Class> selectSearch(Map<String, Object> param);
 	
 	@Select({"<script>",
 		"select * from class",
@@ -148,6 +157,7 @@ public interface ClassMapper {
 			"left outer JOIN user u ON c.userid = u.userid " + 
 			"left outer JOIN applylist a ON c.classid = a.classid " + 
 			"left outer JOIN review r ON r.classid = c.classid " + 
+			"where c.state=5 ",
 			"GROUP BY c.classid",
 			"<if test='type==1'>ORDER BY totaltutee desc</if>",
 			"<if test='type==2'>ORDER BY c.regdate desc</if>",

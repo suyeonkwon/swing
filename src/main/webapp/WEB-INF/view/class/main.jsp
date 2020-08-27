@@ -33,8 +33,9 @@
    <section id="hero" class="d-flex align-items-center">
     <div class="container">
       	<h1>Spread your wings! SWING</h1>
-		<form action="searchlist.shop" method="post">
-			<input type="text" name="text" style="outline: none;">
+		<form action="classlist.shop?text='${param.text}'" method="get">
+			<input type="hidden" name="pageNum" value="1">
+			<input type="text" name="text" style="outline: none;" value="${param.text}">
 			<input type="submit" value="검색" style="outline: none;">
 		</form>
     </div>

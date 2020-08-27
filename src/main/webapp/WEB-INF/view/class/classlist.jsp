@@ -161,8 +161,12 @@
 							maxtutee="";
 						}
 						//alert(type);
-						location.href="classlist.shop?location1="+location1+"&location2="+location2+
-								"&type="+type+"&maxtutee="+maxtutee;
+						var url = "classlist.shop?location1="+location1+"&location2="+location2+
+						"&type="+type+"&maxtutee="+maxtutee;
+						if(${text!=null}) {
+							url = url+"&text="+document.all.text.value;
+						}
+						location.href = url;
 					})
 				})
 				</script>
@@ -183,7 +187,12 @@
 		</div>
 		<div class="class_box">
 			<div class="class">
-			<c:if test='${listcount>0}'><%--등록된 게시물 있음 --%>
+			<c:if test="${listcount>0}"><%--등록된 게시물 있음 --%>
+			
+			<c:if test="${text!=null}">
+			<form:hidden path="text" name="text" value="${text}"/>
+			</c:if>
+			
 				<c:set value="0" var="i"/>
 				<c:forEach items="${classlist}" var="cls" varStatus="status">
 					<c:if test="${status.count%3==2}">
@@ -245,6 +254,9 @@
 					</div>	
 					<c:set var="i" value="${i+1}"/>
 				</c:forEach>
+			</c:if>
+			<c:if test="${listcount==0}"> <%-- 등록된 게시물 없음 --%>
+			<p>해당하는 수업이 없습니다.</p>
 			</c:if>
 			</div>
 		</div>

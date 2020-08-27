@@ -81,9 +81,9 @@ public class ShopService {
 	
 
 	/*----Class----*/
-	public List<Class> searchList(String find){
-		return classDao.searchlist(find);
-	}
+//	public List<Class> searchList(String find){
+//		return classDao.searchlist(find);
+//	}
 	
 	/*----Class----*/
 	public List<Class> classlist() {
@@ -249,13 +249,13 @@ public class ShopService {
 		return wishlistDao.checkwish(wish);
 	}
 
-	public int classcount(String location1, String location2, Integer type, Integer maxtutee, Integer cate) {
-		return classDao.count(location1,location2,type,maxtutee,cate);
+	public int classcount(String location1, String location2, Integer type, Integer maxtutee, Integer cate, String text) {
+		return classDao.count(location1,location2,type,maxtutee,cate,text);
 	}
 
 	public List<Class> classList(Integer pageNum,Integer sorted, int limit, String location1, String location2, Integer type,
-			Integer maxtutee,Integer cate) {
-		return classDao.list(pageNum,sorted,limit,location1,location2,type,maxtutee,cate);
+			Integer maxtutee,Integer cate, String text) {
+		return classDao.list(pageNum,sorted,limit,location1,location2,type,maxtutee,cate, text);
 	}
 
 	public int getReviewcnt(Integer classid) {
@@ -332,6 +332,10 @@ public class ShopService {
 			license.setLcfile(license.getLcfileurl().getOriginalFilename());
 		}
 		licenseDao.update(license);
+	}
+	
+	public void licenseDelete(Integer lcno) {
+		licenseDao.delete(lcno);
 	}
 
 	public void classUpdate(Class clas, HttpServletRequest request) {
@@ -423,6 +427,16 @@ public class ShopService {
 	public List<Class> mainlist(int type) {
 		return classDao.mainlist(type);
 	}
+
+	public int getroomno(String classid, String userid) {
+		return chattingDao.roomno(classid,userid);
+	}
+
+	public List<Chatting> getchat(String userid, String type) {
+		return chattingDao.getchat(userid,type);
+	}
+
+	
 
 	
 	
