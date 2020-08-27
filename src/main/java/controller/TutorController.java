@@ -69,6 +69,7 @@ public class TutorController {
 		User loginUser = (User)session.getAttribute("loginUser");
 		List<logic.Class> classlist = service.getClassList(loginUser.getUserid(), state);
 		int classcount = service.classCount(loginUser.getUserid(), state);
+		System.out.println(classcount);
 		mav.addObject("classlist", classlist);
 		mav.addObject("classcount", classcount);
 		return mav;
@@ -262,7 +263,7 @@ public class TutorController {
 				}else if(license.getLcnolist().get(i) == 0){ //insert
 					
 					int cnt = service.licenseCnt();
-					temp.setLcno(++cnt);
+					temp.setLcno(++cnt); 
 					temp.setLctitle(license.getLctitlelist().get(i));
 					temp.setLcfileurl(license.getLcfilelist().get(i));
 					service.licenseInsert(temp,request);
@@ -333,7 +334,7 @@ public class TutorController {
 				}
 			}
 			
-			if(cid == 0) { // 새로 만들어지는 수업이라면 class insert, classinfo insert
+			if(cid == null) { // 새로 만들어지는 수업이라면 class insert, classinfo insert
 				int cnt2 = service.classCnt();
 				cid = cnt2 + 1;
 				clas.setClassid(cnt2+1);

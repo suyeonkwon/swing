@@ -33,8 +33,13 @@ public class LicenseDao {
 		return  template.getMapper(LicenseMapper.class).selectone(param);
 	}
 
-	public int count() {
-		return template.getMapper(LicenseMapper.class).count();
+	public Integer count() {
+		try {
+			int cnt = template.getMapper(LicenseMapper.class).count();
+			return cnt;
+		}catch(NullPointerException e) {
+			return 0;
+		}
 	}
 	
 	public void update(License license) {

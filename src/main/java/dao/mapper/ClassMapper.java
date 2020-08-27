@@ -60,8 +60,8 @@ public interface ClassMapper {
 		   
 		   // 수업 등록
 		   @Insert("insert into class "
-		        + " (classid, userid,location1,location2,category,type,maxtutee,subject,coverimg,price,time,totaltime,totalprice,tutorintro,classintro,level,readcnt,state,regdate) "
-		        + " values(#{classid}, #{userid},#{location1},#{location2},#{category},#{type},#{maxtutee},#{subject},#{coverimg},#{price},#{time},#{totaltime},#{totalprice},#{tutorintro},#{classintro},#{level},0,#{state},now())")
+		        + " (classid, userid,location1,location2,category,type,maxtutee,subject,coverimg,price,time,totaltime,totalprice,tutorintro,classintro,level,state,regdate) "
+		        + " values(#{classid}, #{userid},#{location1},#{location2},#{category},#{type},#{maxtutee},#{subject},#{coverimg},#{price},#{time},#{totaltime},#{totalprice},#{tutorintro},#{classintro},#{level},#{state},now())")
 		   void insert(Class clas);
 
 		   @Select("select classid from class where userid=#{userid} and state=1")
@@ -81,7 +81,7 @@ public interface ClassMapper {
 		   Integer temp(Map<String, Object> param);
 
 		   @Select("select max(classid) from class")
-		   int count2();
+		   Integer count2();
 
 	@Select({"<script>",
 			"select * from class ",
@@ -151,7 +151,7 @@ public interface ClassMapper {
 
 	@Select({"<script>",
 			"SELECT c.classid, c.userid , c.location2 , c.subject , c.coverimg  , max(ci.date) DATE , u.file , u.name ,"+
-			" COUNT(distinct(a.userid) ) totaltutee,  AVG(r.star) staravg , COUNT(DISTINCT(r.reviewno)) reviewcnt " + 
+			" COUNT(distinct(a.userid) ) totaltutee,  AVG(r.star) staravg , COUNT(*) reviewcnt " + 
 			"FROM class c " + 
 			"left outer JOIN classinfo ci ON c.classid = ci.classid " + 
 			"left outer JOIN user u ON c.userid = u.userid " + 
@@ -164,7 +164,7 @@ public interface ClassMapper {
 			"limit 3",
 			"</script>"})
 	List<Class> mainlist(Map<String, Object> param);
-
+  
 
 	
 }

@@ -55,7 +55,7 @@ public class ClassController {
 					c.setWish(service.checkwish(wish));
 				}
 			}
-			System.out.println(hotlist.get(0).getWish());
+//			System.out.println(hotlist.get(0).getWish());
 			mav.addObject("hotlist", hotlist);
 			mav.addObject("latestlist", latestlist);
 		}catch(Exception e) {
@@ -65,7 +65,7 @@ public class ClassController {
 	}
 	
 	@GetMapping("review")
-	public String form(Model model) {
+	public String form(Model model, Integer classid, HttpSession session) {
 		model.addAttribute(new Review());
 		return null;
 	}
@@ -75,7 +75,7 @@ public class ClassController {
 		ModelAndView mav = new ModelAndView();
 		User loginUser = (User)session.getAttribute("loginUser");
 		System.out.println("classid=" + classid);
-		ApplyList apply = service.getapply(classid,loginUser.getUserid());
+		ApplyList apply = service.getapply(classid,1,loginUser.getUserid());
 		review.setUserid(loginUser.getUserid());
 		review.setClassno(apply.getClassno());
 //		review.setUserid("hong");
@@ -212,30 +212,36 @@ public class ClassController {
 		if(text==null||text.toString().equals("")) {
 			text=null;
 		}
-		int limit=15;
-		int listcount = service.classcount(location1,location2,type,maxtutee,cate,text);
-		List<Class> classlist = service.classList(pageNum,sorted,limit,location1,location2,type,maxtutee,cate,text);
-		List<User> tutor = new ArrayList<>();
-		for(Class c : classlist) {
-			c.setTotaltutee(service.getParticiNum(c.getClassid()));
-			c.setStaravg(service.getStar(c.getClassid()));
-			c.setReviewcnt(service.getReviewcnt(c.getClassid()));
-			tutor.add(service.getUser(c.getUserid()));
+		try {
+			int limit=15;
+			int listcount = service.classcount(location1,location2,type,maxtutee,cate,text);
+			System.out.println(listcount);
+			List<Class> classlist = service.classList(pageNum,sorted,limit,location1,location2,type,maxtutee,cate,text);
+//			System.out.println(classlist.get(0).getSubject());
+			List<User> tutor = new ArrayList<>();
+			for(Class c : classlist) {
+				c.setTotaltutee(service.getParticiNum(c.getClassid()));
+				c.setStaravg(service.getStar(c.getClassid()));
+				c.setReviewcnt(service.getReviewcnt(c.getClassid()));
+				tutor.add(service.getUser(c.getUserid()));
+			}
+			int maxpage = (int)((double)listcount/limit+0.95);
+			int startpage =((int)(pageNum/10.0+0.9)-1)*10+1;
+			int endpage = startpage+9;
+			if(endpage>maxpage) endpage=maxpage;
+			int listno = listcount-(pageNum-1)*limit;
+			mav.addObject("text",text);
+			mav.addObject("pageNum",pageNum);  
+			mav.addObject("maxpage",maxpage);
+			mav.addObject("startpage",startpage);
+			mav.addObject("endpage",endpage);
+			mav.addObject("listcount",listcount);
+			mav.addObject("classlist",classlist);
+			mav.addObject("listno",listno);
+			mav.addObject("tutor",tutor);
+		}catch(Exception e) {
+			e.printStackTrace();
 		}
-		int maxpage = (int)((double)listcount/limit+0.95);
-		int startpage =((int)(pageNum/10.0+0.9)-1)*10+1;
-		int endpage = startpage+9;
-		if(endpage>maxpage) endpage=maxpage;
-		int listno = listcount-(pageNum-1)*limit;
-		mav.addObject("text",text);
-		mav.addObject("pageNum",pageNum);  
-		mav.addObject("maxpage",maxpage);
-		mav.addObject("startpage",startpage);
-		mav.addObject("endpage",endpage);
-		mav.addObject("listcount",listcount);
-		mav.addObject("classlist",classlist);
-		mav.addObject("listno",listno);
-		mav.addObject("tutor",tutor);
 		return mav;
 	}
 

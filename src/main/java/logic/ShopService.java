@@ -251,7 +251,7 @@ public class ShopService {
 
 	public int classcount(String location1, String location2, Integer type, Integer maxtutee, Integer cate, String text) {
 		return classDao.count(location1,location2,type,maxtutee,cate,text);
-	}
+	}  
 
 	public List<Class> classList(Integer pageNum,Integer sorted, int limit, String location1, String location2, Integer type,
 			Integer maxtutee,Integer cate, String text) {
@@ -413,15 +413,15 @@ public class ShopService {
 		return licenseDao.selectOne(userid);
 	}
 
-	public int licenseCnt() {
+	public Integer licenseCnt() {
 		return licenseDao.count();
 	}
 
 	public int classCnt() {
 		return classDao.count2();
 	}
-	public ApplyList getapply(int classid, String userid) {
-		return applylistDao.selectOne(classid,userid);
+	public ApplyList getapply(Integer classid, Integer classno, String userid) {
+		return applylistDao.selectOne(classid,classno,userid);
 	}
 
 	public List<Class> mainlist(int type) {
@@ -432,15 +432,7 @@ public class ShopService {
 		return chattingDao.roomno(classid,userid);
 	}
 
-	public List<Chatting> getchat(String userid, String type) {
+	public List<Chatting> getchat(String userid, int type) {
 		return chattingDao.getchat(userid,type);
 	}
-
-	
-
-	
-	
-
-	
-
 }
