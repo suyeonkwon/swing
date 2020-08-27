@@ -65,7 +65,7 @@ public class ClassController {
 	}
 	
 	@GetMapping("review")
-	public String form(Model model) {
+	public String form(Model model, Integer classid, HttpSession session) {
 		model.addAttribute(new Review());
 		return null;
 	}
@@ -75,7 +75,7 @@ public class ClassController {
 		ModelAndView mav = new ModelAndView();
 		User loginUser = (User)session.getAttribute("loginUser");
 		System.out.println("classid=" + classid);
-		ApplyList apply = service.getapply(classid,loginUser.getUserid());
+		ApplyList apply = service.getapply(classid,1,loginUser.getUserid());
 		review.setUserid(loginUser.getUserid());
 		review.setClassno(apply.getClassno());
 //		review.setUserid("hong");

@@ -420,8 +420,8 @@ public class ShopService {
 	public int classCnt() {
 		return classDao.count2();
 	}
-	public ApplyList getapply(int classid, String userid) {
-		return applylistDao.selectOne(classid,userid);
+	public ApplyList getapply(Integer classid, Integer classno, String userid) {
+		return applylistDao.selectOne(classid,classno,userid);
 	}
 
 	public List<Class> mainlist(int type) {
