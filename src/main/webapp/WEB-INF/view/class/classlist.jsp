@@ -185,7 +185,7 @@
 			<div class="class">
 			<c:if test='${listcount>0}'><%--등록된 게시물 있음 --%>
 			
-			<%-- 에러 부분 --%>
+			<%-- 에러 부분  --%>
 			<form:hidden path="text" name="text" value="${text}"/>
 			
 				<c:set value="0" var="i"/>
