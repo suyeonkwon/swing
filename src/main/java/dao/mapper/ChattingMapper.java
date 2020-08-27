@@ -33,7 +33,7 @@ public interface ChattingMapper {
 			"where userid!=#{userid} and readcheck=1 ",
 			"<if test='roomno==0'> and roomno IN (SELECT roomno FROM chatting WHERE userid=#{userid}) </if>",
 			"<if test='roomno!=0'> and roomno=#{roomno}</if>",
-			"</script>"})
+			"</script>"}) 
 	int newtalk(Map<String, Object> param);
 
 	@Select("SELECT c.roomno, c.userid, c.classid, c.chat, c.chatdate, c.readcheck, u.file, u.name " + 
