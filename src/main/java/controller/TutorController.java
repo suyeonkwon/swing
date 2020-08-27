@@ -262,7 +262,7 @@ public class TutorController {
 				}else if(license.getLcnolist().get(i) == 0){ //insert
 					
 					int cnt = service.licenseCnt();
-					temp.setLcno(++cnt);
+					temp.setLcno(++cnt); 
 					temp.setLctitle(license.getLctitlelist().get(i));
 					temp.setLcfileurl(license.getLcfilelist().get(i));
 					service.licenseInsert(temp,request);

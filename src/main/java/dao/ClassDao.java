@@ -89,7 +89,12 @@ public class ClassDao {
 		}
 
 		public int count2() {
-			return template.getMapper(ClassMapper.class).count2();
+			try {
+				int cnt = template.getMapper(ClassMapper.class).count2();
+				return cnt;
+			}catch(NullPointerException e) {
+				return 0;
+			}
 		}
 		
 		

@@ -22,7 +22,7 @@ public interface LicenseMapper {
 	License selectone(Map<String, Object> param);
 
 	@Select("select max(lcno) from license")
-	int count();
+	Integer count();
 	
 	@Update({"<script>",
 			"update license set lctitle=#{lctitle}",

@@ -413,7 +413,7 @@ public class ShopService {
 		return licenseDao.selectOne(userid);
 	}
 
-	public int licenseCnt() {
+	public Integer licenseCnt() {
 		return licenseDao.count();
 	}
 
