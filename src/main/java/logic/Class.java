@@ -29,7 +29,6 @@ public class Class {
 	//클래스 리뷰 평점, 갯수
 	private double staravg;
 	private int reviewcnt;
-	
 	// tutor my.jsp 에 join을 통해 가져온 정보
 	private String nickname;
 	private String name;
