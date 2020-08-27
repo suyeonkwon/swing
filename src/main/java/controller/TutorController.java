@@ -132,7 +132,6 @@ public class TutorController {
 			if(!(classno==1 && ci.getDate()==null)) { 
 				classno++;
 			} 
-			
 			mav.addObject("c",c);
 			mav.addObject("tutorimg",tutorimg);
 			mav.addObject("classinfoList",classinfoList);
