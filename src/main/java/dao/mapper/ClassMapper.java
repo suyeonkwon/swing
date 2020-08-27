@@ -21,7 +21,7 @@ public interface ClassMapper {
 		   List<Class> selectOne(Map<String, Object> param);
 
 		   @Select({"<script>",
-		         "select count(*) from class where 1=1",
+		         "select count(*) from class where 1=1 and state=5",
 		         "<if test='location1!=null'>and location1=#{location1}</if>",
 		         "<if test='location2!=null'>AND location2=#{location2}</if>",
 		         "<if test='type!=null'>AND type=#{type}</if>",
