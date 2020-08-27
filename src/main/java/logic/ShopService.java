@@ -432,15 +432,7 @@ public class ShopService {
 		return chattingDao.roomno(classid,userid);
 	}
 
-	public List<Chatting> getchat(String userid, String type) {
+	public List<Chatting> getchat(String userid, int type) {
 		return chattingDao.getchat(userid,type);
 	}
-
-	
-
-	
-	
-
-	
-
 }

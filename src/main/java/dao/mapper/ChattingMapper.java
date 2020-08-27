@@ -57,9 +57,9 @@ public interface ChattingMapper {
 			"AS rowidx FROM chatting " + 
 			") AS c1, user AS u, class AS c " + 
 			"WHERE rowidx = 1 AND c1.roomno IN",
-			"<if test='type==\"tutee\"'>(SELECT roomno FROM chatting WHERE userid=#{userid}) AND c1.classid=c.classid AND " + 
-			"c.userid = u.userid</if>",
-			"<if test='type=\"tutor\"'>(SELECT distinct(ch.roomno) FROM chatting ch JOIN class c ON ch.classid = c.classid WHERE c.userid='yeon') AND " + 
+			"<if test='type==0'>(SELECT roomno FROM chatting WHERE userid=#{userid}) AND c1.classid=c.classid AND " + 
+			"c.userid = u.userid AND c.userid!=#{userid}</if>",
+			"<if test='type==1'>(SELECT distinct(ch.roomno) FROM chatting ch JOIN class c ON ch.classid = c.classid WHERE c.userid=#{userid}) AND " + 
 			"u.userid = c1.userid</if>",
 			"</script>"})
 	List<Chatting> getchat(Map<String, Object> param);
