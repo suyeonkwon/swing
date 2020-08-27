@@ -187,7 +187,7 @@
 		</div>
 		<div class="class_box">
 			<div class="class">
-			<c:if test='${listcount>0}'><%--등록된 게시물 있음 --%>
+			<c:if test="${listcount>0}"><%--등록된 게시물 있음 --%>
 			
 			<c:if test="${text!=null}">
 			<form:hidden path="text" name="text" value="${text}"/>
@@ -254,6 +254,9 @@
 					</div>	
 					<c:set var="i" value="${i+1}"/>
 				</c:forEach>
+			</c:if>
+			<c:if test="${listcount==0}"> <%-- 등록된 게시물 없음 --%>
+			<p>해당하는 수업이 없습니다.</p>
 			</c:if>
 			</div>
 		</div>
