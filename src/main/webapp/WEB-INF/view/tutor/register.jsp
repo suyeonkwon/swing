@@ -247,9 +247,34 @@ function vaildation(kbn){
 			document.f.totaltime.focus();
 			return false;
 		}
+		if(document.f.totaltime.value>8){
+			alert('총 수업횟수는 최대 8회차까지 입력 가능합니다.');
+			document.f.totaltime.focus();
+			return false;
+		}
+		if(document.f.tutorintro.value==''){
+			alert('튜터 소개를 입력하세요.');
+			document.f.tutorintro.focus();
+			return false;
+		}
+		if(document.f.classintro.value==''){
+			alert('수업 소개를 입력하세요.');
+			document.f.classintro.focus();
+			return false;
+		}
 		if(document.f.level.value==''){
 			alert('수업레벨을 설정하세요.');
 			document.f.level.focus();
+			return false;
+		}
+		if(document.f.title.value==''){
+			alert('회차 제목을 입력하세요');
+			document.f.title.focus();
+			return false;
+		}
+		if(document.f.curri.value==''){
+			alert('회차 내용을 입력하세요');
+			document.f.curri.focus();
 			return false;
 		}
 	}

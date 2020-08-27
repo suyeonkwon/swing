@@ -3,6 +3,7 @@ package dao.mapper;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -20,7 +21,7 @@ public interface LicenseMapper {
 	@Select("select * from license where userid=#{userid}")
 	License selectone(Map<String, Object> param);
 
-	@Select("select count(*) from license")
+	@Select("select max(lcno) from license")
 	int count();
 	
 	@Update({"<script>",
@@ -29,4 +30,7 @@ public interface LicenseMapper {
 			"where lcno=#{lcno} and userid=#{userid}",
 			"</script>"})
 	void update(License license);
+	
+	@Delete("delete from license where lcno=#{lcno}")
+	void delete(Integer lcno);
 }
