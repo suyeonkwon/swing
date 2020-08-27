@@ -39,6 +39,7 @@
 	String lnbrSlno  = request.getParameter("lnbrSlno");
 	/** 2017년 3월 추가제공 **/
 	String emdNo  = request.getParameter("emdNo");
+	String num  = request.getParameter("num");
 %>
 <script type="text/javascript">
 	function init(){
@@ -54,7 +55,7 @@
 			//document.form.action="http://www.juso.go.kr/addrlink/addrMobileLinkUrl.do"; //모바일 웹인 경우, 인터넷망
 			document.form.submit();
 		}else{
-			opener.jusoCallBack("<%=roadFullAddr%>","<%=roadAddrPart1%>","<%=addrDetail%>","<%=roadAddrPart2%>","<%=engAddr%>","<%=jibunAddr%>","<%=zipNo%>", "<%=admCd%>", "<%=rnMgtSn%>", "<%=bdMgtSn%>", "<%=detBdNmList%>", "<%=bdNm%>", "<%=bdKdcd%>", "<%=siNm%>", "<%=sggNm%>", "<%=emdNm%>", "<%=liNm%>", "<%=rn%>", "<%=udrtYn%>", "<%=buldMnnm%>", "<%=buldSlno%>", "<%=mtYn%>", "<%=lnbrMnnm%>", "<%=lnbrSlno%>", "<%=emdNo%>");
+			opener.jusoCallBack("<%=num%>","<%=roadFullAddr%>");
 			window.close();
 		}
 	}

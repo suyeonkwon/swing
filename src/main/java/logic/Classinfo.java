@@ -9,8 +9,6 @@ public class Classinfo {
 	private String date;
 	private String starttime;
 	private String endtime;
-	private String zipcode;
-	private String address;
 	private String place;
 	private String title;
 	private String curri;
@@ -57,18 +55,6 @@ public class Classinfo {
 	public void setEndtime(String endtime) {
 		this.endtime = endtime;
 	}
-	public String getZipcode() {
-		return zipcode;
-	}
-	public void setZipcode(String zipcode) {
-		this.zipcode = zipcode;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
 	public String getPlace() {
 		return place;
 	}
@@ -103,7 +89,6 @@ public class Classinfo {
 	@Override
 	public String toString() {
 		return "Classinfo [classid=" + classid + ", classno=" + classno + ", classseq=" + classseq + ", date=" + date
-				+ ", starttime=" + starttime + ", endtime=" + endtime + ", zipcode=" + zipcode + ", address=" + address
-				+ ", place=" + place + ", title=" + title + ", curri=" + curri + "]";
+				+ ", starttime=" + starttime + ", endtime=" + endtime + ", place=" + place + ", title=" + title + ", curri=" + curri + "]";
 	}
 }

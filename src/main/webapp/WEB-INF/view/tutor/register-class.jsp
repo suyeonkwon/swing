@@ -18,11 +18,17 @@
 .table th{
    background-color: #e3e1e1;
    text-align: center;
+   vertical-align:middle;
+   width:100px;
 }
 .table td{
    border-bottom: 1px solid #e3e1e1;
 }
+.table .section{
+   border-bottom: 2px solid #999999;
+}
 .table{
+border-top : 2px solid #999999;
 font-size: 14px;
 }
 </style>
@@ -43,13 +49,12 @@ function input(f,n){
      }
    }
 }
-function goPopup(){
-	var pop = window.open("../popup/jusoPopup.shop","pop","width=570, height=420, scrollbars=yes, resizable=yes");
+
+function goPopup(i){
+	var pop = window.open("../popup/jusoPopup.shop?num="+i,"pop","width=570, height=420, scrollbars=yes, resizable=yes");
 }
-function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo){
-	document.classRegisterForm.zipNo.value = zipNo;
-	document.classRegisterForm.roadFullAddr.value = roadFullAddr;
-	document.classRegisterForm.addrDetail.value = addrDetail;
+function jusoCallBack(num,roadFullAddr){
+	$('#place'+num).val(roadFullAddr)
 	self.close();
 }
 </script>
@@ -72,13 +77,12 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
                <div class="profile" style="background-image:url('${path}/assets/img/${tutorimg}')"></div>
                <p class="triangle-border top gray" style="margin-top:50px">
                   곧 수업이 등록됩니다!<br>
-                  <span>장소,날짜,시간</span>
-                  을 선책해주세요
+                  <span>장소,날짜,시간</span>을 선책해주세요.
                </p>
             </div>
             <div class="sh_box class_price">
                <div class="head">
-                  수업의 장소와 날짜 및 시간을 설정해주세요
+                  수업의 장소와 날짜 및 시간을 설정해주세요.
                </div>
                <div class="regions" id="regions">
                   <div class="region" id="region">
@@ -102,29 +106,32 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
                      <div class="option">
                         <div class="top">
                            <div class="text">
-                 
-                 <%-- callback까지 되는데 db 저장이 안됨 ㅠㅠ --%>
                  <div id="callBackDiv">           
-                              장소: <input type="text" name="zipNo" path="classinfos[0].zipcode" onclick="goPopup()" placeholder="우편번호 클릭 후 검색" readonly="true"/><br>
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="roadFullAddr" path="classinfos[0].address" style="width:500px;" placeholder="주소" readonly="true" ><br>
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="addrDetail" path="classinfos[0].place" style="width:500px;" placeholder="상세주소" >
-                </div>
-                
+                              장소: <form:input path="classinfos[0].place" id="place0" value="" style="width:500px;" placeholder="클릭 후 주소 검색" readonly="true" onclick="goPopup(0)"/>          
+                 </div>
                            </div>
                         </div>
                      </div>
                      <div class="option">
                         <div class="top">
                            <div class="text">
-                              날짜:   <form:input type="date" path="classinfos[0].date" />
+                              날짜:   <form:input type="date" path="classinfos[0].date" id="date0" />
                            </div>
                         </div>
                      </div>
                      <div class="option">
                         <div class="top">
                            <div class="text">
-                              시간: <form:input type="time" path="classinfos[0].starttime" /> 
-                              ~ <form:input type="time" path="classinfos[0].endtime" /> 
+                              시간: <form:input type="time" path="classinfos[0].starttime" id="starttime0"/>
+                              <script>
+                              $('#starttime0').change(function(){
+                            	 date = new Date($('#date0').val() + ' ' +$('#starttime0').val());
+                            	 date.setHours(date.getHours()+ ${c.time});
+                            	 $('#endtime0').val(date.getHours()+":"+date.getMinutes());
+                              });                           		
+                             </script>
+                              ~ <form:input type="time" path="classinfos[0].endtime" id="endtime0"/> 
+                             
                            </div>
                         </div>
                      </div>
@@ -132,24 +139,28 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
                      <c:if test="${c.type==2}">
                      <div class="option">
                             <table class="table table-hover">
-                           <tr><th>회차</th><th>장소</th><th>날짜</th><th>시작시간</th><th>끝나는시간</th></tr>
                            <c:forEach var="i" begin="1" end="${c.totaltime}">
                               <form:hidden path="classinfos[${i}].classid" value="${c.classid}" />
                               <form:hidden path="classinfos[${i}].classno" value="${newclassno}" />
                               <form:hidden path="classinfos[${i}].classseq" value="${i}" />
-                              <tr><td>${i}회차</td>
-                 
-                 <%-- 원데이 장소 주소등록은 되는데 다회차 폼에서는 안됨 ㅠㅠ --%>                
-                                 <td><div id="callBackDiv">           
-                              장소: <input type="text" name="zipNo" path="classinfos[${i}].zipcode" style="width:100px;" onclick="goPopup()" placeholder="우편번호 클릭 후 검색" readonly="true"><br>
-                      <input type="text" name="roadFullAddr" path="classinfos[${i}].address" placeholder="주소" readonly="true" ><br>
-                      <input type="text" name="addrDetail" path="classinfos[${i}].place" placeholder="상세주소" >
-                </div></td>
-                
-                                 <td><form:input type="date" path="classinfos[${i}].date" /></td>
-                                 <td><form:input type="time" path="classinfos[${i}].starttime" id="starttime${i}" /></td>
-                                 <td><form:input type="time" path="classinfos[${i}].endtime" id="endtime${i}" /></td></tr>
-                           </c:forEach>
+                              <tr><th rowspan="2" class="section">${i}회차</th>          
+                                  <td style="border-bottom:0px;" colspan="2"><div id="callBackDiv">           
+                              		장소: <form:input path="classinfos[${i}].place" id="place${i}" value="" style="width:500px;" placeholder="클릭 후 주소 검색" readonly="true" onclick="goPopup(${i})"/>   
+                					</div></td></tr>
+                			  <tr><td class="section">날짜 : <form:input type="date" path="classinfos[${i}].date" id="date${i}"/></td>
+                              	  <td class="section">시간 : <form:input type="time" path="classinfos[${i}].starttime" id="starttime${i}" onchange="timechange(${i})" />
+                              	  <script>
+                              	  function timechange(i){
+                              		 $('#starttime'+i).change(function(){
+                                    	 date = new Date($('#date'+i).val() + ' ' +$('#starttime'+i).val());
+                                    	 date.setHours(date.getHours()+ ${c.time});
+                                    	 $('#endtime'+i).val(date.getHours()+":"+date.getMinutes());
+                                     });
+                              	  }
+                             	  </script>
+                              	  ~<form:input type="time" path="classinfos[${i}].endtime" id="endtime${i}" value="" /></td>
+                              </tr>
+                		  </c:forEach>
                         </table>
                      </div>
                      </c:if>
