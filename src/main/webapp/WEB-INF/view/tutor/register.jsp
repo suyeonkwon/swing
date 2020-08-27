@@ -173,7 +173,7 @@ $(document).ready(function(){
     		console.log("회차:"+i);
     		var form = "<p>"+i+"회차</p>"
     	    	+ "<input type='text' class='form-cont' name='title' id='title"+i+"' placeholder='회차 제목' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject'>"
-    	        + "<input type='text' class='form-cont' name='curri' id='curri"+i+"' placeholder='회차 상세 내용' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject'>";
+    	        + "<textarea class='form-cont' name='curri' id='curri"+i+"' rows='5' data-rule='required' data-msg='Please write something for us' placeholder='회차 상세 내용'></textarea>"
     	    $("<div>").attr("id","seq"+i).html(form).appendTo("#seqlist");
     	}
 	});
@@ -601,7 +601,7 @@ function vaildation(kbn){
 			<div id="seq1">
 			<p>1회차</p>
 	    	<input type="text" class="form-cont" name="title" id="title1" value="" placeholder='회차 제목' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject'>
-	    	<input type="text" class="form-cont" name="curri" id="curri1" value="" placeholder='회차 상세 내용' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject'>
+	    	<textarea class="form-cont" name="curri" id="curri1" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="회차 상세 내용"></textarea>
 			</div>
 		</c:if>
 		<c:if test="${not empty classinfo}">
@@ -609,7 +609,7 @@ function vaildation(kbn){
 			<div id="seq${status.count}">
 			<p>${status.count}회차</p>
 	    	<input type="text" class="form-cont" name="title" id="title${status.count}" value="${info.title}" placeholder='회차 제목' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject'>
-	    	<input type="text" class="form-cont" name="curri" id="curri${status.count}" value="${info.curri}" placeholder='회차 상세 내용' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject'>
+	    	<textarea class="form-cont" name="curri" id="curri${status.count}" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="회차 상세 내용">${info.curri}</textarea>
 			</div>
 		</c:forEach>
 		</c:if>
