@@ -186,7 +186,7 @@ public class ClassController {
 	}
 	@RequestMapping("classlist")
 	public ModelAndView classlist(Integer pageNum, String location1, String location2, Integer type, 
-			Integer maxtutee,Integer sorted,Integer cate) {
+			Integer maxtutee,Integer sorted,Integer cate, String text) {
 		ModelAndView mav = new ModelAndView();
 		if(pageNum==null||pageNum.toString().equals("")) {
 			pageNum=1;
@@ -209,65 +209,64 @@ public class ClassController {
 		if(maxtutee==null||maxtutee.toString().equals("")) {
 			maxtutee=null;
 		}
-		try {
-			int limit=15;
-			int listcount = service.classcount(location1,location2,type,maxtutee,cate);
-			List<Class> classlist = service.classList(pageNum,sorted,limit,location1,location2,type,maxtutee,cate);
-			List<User> tutor = new ArrayList<>();
-			for(Class c : classlist) {
-				c.setTotaltutee(service.getParticiNum(c.getClassid()));
-				c.setStaravg(service.getStar(c.getClassid()));
-				c.setReviewcnt(service.getReviewcnt(c.getClassid()));
-				tutor.add(service.getUser(c.getUserid()));
-			}
-			int maxpage = (int)((double)listcount/limit+0.95);
-			int startpage =((int)(pageNum/10.0+0.9)-1)*10+1;
-			int endpage = startpage+9;
-			if(endpage>maxpage) endpage=maxpage;
-			int listno = listcount-(pageNum-1)*limit;
-			mav.addObject("pageNum",pageNum);
-			mav.addObject("maxpage",maxpage);
-			mav.addObject("startpage",startpage);
-			mav.addObject("endpage",endpage);
-			mav.addObject("listcount",listcount);
-			mav.addObject("classlist",classlist);
-			mav.addObject("listno",listno);
-			mav.addObject("tutor",tutor);
-		}catch(Exception e) {
-			e.printStackTrace();
+		if(text==null||text.toString().equals("")) {
+			text=null;
 		}
-
-		return mav;
-	}
-
-	@PostMapping("searchlist")
-	public ModelAndView classlist(String text) {
-		ModelAndView mav = new ModelAndView();
-		System.out.println("find:"+text);
-		
-		List<Class> classlist = service.searchList(text);
+		int limit=15;
+		int listcount = service.classcount(location1,location2,type,maxtutee,cate,text);
+		List<Class> classlist = service.classList(pageNum,sorted,limit,location1,location2,type,maxtutee,cate,text);
 		List<User> tutor = new ArrayList<>();
-		int listcount = classlist.size();
-		
 		for(Class c : classlist) {
-			try {
 			c.setTotaltutee(service.getParticiNum(c.getClassid()));
 			c.setStaravg(service.getStar(c.getClassid()));
 			c.setReviewcnt(service.getReviewcnt(c.getClassid()));
 			tutor.add(service.getUser(c.getUserid()));
-			}catch (Exception e) {
-				// TODO: handle exception
-			}
 		}
-		
-		System.out.println("searchList:"+classlist);
-		System.out.println("listcount:"+listcount);
-
-		mav.setViewName("redirect:classlist.shop");
+		int maxpage = (int)((double)listcount/limit+0.95);
+		int startpage =((int)(pageNum/10.0+0.9)-1)*10+1;
+		int endpage = startpage+9;
+		if(endpage>maxpage) endpage=maxpage;
+		int listno = listcount-(pageNum-1)*limit;
+		mav.addObject("text",text);
+		mav.addObject("pageNum",pageNum);
+		mav.addObject("maxpage",maxpage);
+		mav.addObject("startpage",startpage);
+		mav.addObject("endpage",endpage);
 		mav.addObject("listcount",listcount);
 		mav.addObject("classlist",classlist);
+		mav.addObject("listno",listno);
 		mav.addObject("tutor",tutor);
 		return mav;
 	}
+
+//	@PostMapping("searchlist")
+//	public ModelAndView classlist(String text) {
+//		ModelAndView mav = new ModelAndView();
+//		System.out.println("find:"+text);
+//		
+//		List<Class> classlist = service.searchList(text);
+//		List<User> tutor = new ArrayList<>();
+//		int listcount = classlist.size();
+//		
+//		for(Class c : classlist) {
+//			try {
+//			c.setTotaltutee(service.getParticiNum(c.getClassid()));
+//			c.setStaravg(service.getStar(c.getClassid()));
+//			c.setReviewcnt(service.getReviewcnt(c.getClassid()));
+//			tutor.add(service.getUser(c.getUserid()));
+//			}catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//		}
+//		
+//		System.out.println("searchList:"+classlist);
+//		System.out.println("listcount:"+listcount);
+//
+//		mav.addObject("listcount",listcount);
+//		mav.addObject("classlist",classlist);
+//		mav.addObject("tutor",tutor);
+//		mav.setViewName("redirect:classlist.shop");
+//		return mav;
+//	}
 	
 }
