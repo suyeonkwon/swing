@@ -96,7 +96,7 @@
                   <c:if test="${cl.state == 4}">
                   	<label class="badge badge-success">승인완료</label>
                   	
-                  </c:if>
+                  </c:if> 
                   <img class="img-fluid" src="http://${imgpath}:${port}${path}/class/coverimg/${cl.classid}_${cl.coverimg}" alt="">
                </div>
                <div class="contetn">
