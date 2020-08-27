@@ -189,6 +189,7 @@
 			<c:if test="${text!=null}">
 			<form:hidden path="text" name="text" value="${text}"/>
 			</c:if>
+			
 				<c:set value="0" var="i"/>
 				<c:forEach items="${classlist}" var="cls" varStatus="status">
 					<c:if test="${status.count%3==2}">

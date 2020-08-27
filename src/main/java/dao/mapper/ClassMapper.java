@@ -157,6 +157,7 @@ public interface ClassMapper {
 			"left outer JOIN user u ON c.userid = u.userid " + 
 			"left outer JOIN applylist a ON c.classid = a.classid " + 
 			"left outer JOIN review r ON r.classid = c.classid " + 
+			"where c.state=5 ",
 			"GROUP BY c.classid",
 			"<if test='type==1'>ORDER BY totaltutee desc</if>",
 			"<if test='type==2'>ORDER BY c.regdate desc</if>",
