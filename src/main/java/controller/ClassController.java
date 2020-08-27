@@ -228,7 +228,7 @@ public class ClassController {
 		if(endpage>maxpage) endpage=maxpage;
 		int listno = listcount-(pageNum-1)*limit;
 		mav.addObject("text",text);
-		mav.addObject("pageNum",pageNum);
+		mav.addObject("pageNum",pageNum);  
 		mav.addObject("maxpage",maxpage);
 		mav.addObject("startpage",startpage);
 		mav.addObject("endpage",endpage);

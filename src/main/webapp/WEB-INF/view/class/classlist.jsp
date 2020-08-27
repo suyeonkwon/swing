@@ -273,7 +273,7 @@
 		      <c:if test="${pageNum<=1}"><img src="../assets/img/icon/back.png"></c:if> 
 		      <c:if test="${pageNum>1}">
 		      	<a href="javascript:listdo('${pageNum-1}')">
-		      	<img src="../assets/img/icon/back.png"></a></c:if> 
+		      	<img src="../assets/img/icon/back.png"></a></c:if>    
 		      <c:forEach var="a" begin="${startpage}" end="${endpage}">
 		      <c:if test="${pageNum==a}"><a>${a}</a></c:if>
 		      <c:if test="${pageNum!=a}">
