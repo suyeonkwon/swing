@@ -78,7 +78,6 @@
          <div class="row">
          <c:if test="${classcount > 0}">
          <c:forEach var="cl" items="${classlist}">
-      	      	
          <div class="col-lg-4" style="cursor:pointer;">
                 <div class="team-img" 
                 	 onclick="page('<c:if test="${cl.state == 4}">register-class.shop?classid=${cl.classid}</c:if><c:if test="${cl.state == 1}">register.shop</c:if>')">                	 
