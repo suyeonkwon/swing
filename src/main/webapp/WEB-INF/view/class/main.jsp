@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/jspHeader.jsp" %>
-<c:set var="path" value="${pageContext.request.contextPath}"/>
-<c:set var="port" value="${pageContext.request.localPort}" />
-<c:set var="server" value="${pageContext.request.serverName}"/> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -121,7 +118,7 @@
       						<li class="swiper-slide" style="margin-left:50px; margin-right:0;">
       					</c:if>
       							<a href="detail.shop?classid=${cls.classid}">
-      								<div class="img" style="background-image:url('${path}/assets/img/${cls.coverimg}');"></div>
+      								<div class="img" style="background-image:url('http://${server}:${port}${path}/class/coverimg/${cls.classid}_${cls.coverimg}');"></div>
       								<p class="t1">${cls.subject}</p>
       								<div class="t2">
       									<span class="profile">
