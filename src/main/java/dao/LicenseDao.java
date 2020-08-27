@@ -41,5 +41,10 @@ public class LicenseDao {
 		template.getMapper(LicenseMapper.class).update(license);
 		
 	}
+	public void delete(Integer lcno) {
+		param.clear();
+		param.put("lcno", lcno);
+		template.getMapper(LicenseMapper.class).delete(lcno);
+	}
 
 }

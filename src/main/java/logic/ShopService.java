@@ -333,6 +333,10 @@ public class ShopService {
 		}
 		licenseDao.update(license);
 	}
+	
+	public void licenseDelete(Integer lcno) {
+		licenseDao.delete(lcno);
+	}
 
 	public void classUpdate(Class clas, HttpServletRequest request) {
 		if(clas.getCoverimgurl() != null && !clas.getCoverimgurl().isEmpty()) {
@@ -423,6 +427,16 @@ public class ShopService {
 	public List<Class> mainlist(int type) {
 		return classDao.mainlist(type);
 	}
+
+	public int getroomno(String classid, String userid) {
+		return chattingDao.roomno(classid,userid);
+	}
+
+	public List<Chatting> getchat(String userid, String type) {
+		return chattingDao.getchat(userid,type);
+	}
+
+	
 
 	
 	
