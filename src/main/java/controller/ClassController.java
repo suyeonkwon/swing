@@ -37,26 +37,30 @@ public class ClassController {
 	public ModelAndView classForm(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		int type=1;
-		List<Class> hotlist = service.mainlist(type);
-		type=2;
-		List<Class> latestlist = service.mainlist(type);
-		User user = (User)session.getAttribute("loginUser");
-		if(user!=null) {
-			WishList wish = new WishList();
-			for(Class c : hotlist) {
-				wish.setUserid(user.getUserid());
-				wish.setClassid(c.getClassid());
-				c.setWish(service.checkwish(wish));
+		try {
+			List<Class> hotlist = service.mainlist(type);
+			type=2;
+			List<Class> latestlist = service.mainlist(type);
+			User user = (User)session.getAttribute("loginUser");
+			if(user!=null) {
+				WishList wish = new WishList();
+				for(Class c : hotlist) {
+					wish.setUserid(user.getUserid());
+					wish.setClassid(c.getClassid());
+					c.setWish(service.checkwish(wish));
+				}
+				for(Class c : latestlist) {
+					wish.setUserid(user.getUserid());
+					wish.setClassid(c.getClassid());
+					c.setWish(service.checkwish(wish));
+				}
 			}
-			for(Class c : latestlist) {
-				wish.setUserid(user.getUserid());
-				wish.setClassid(c.getClassid());
-				c.setWish(service.checkwish(wish));
-			}
+			System.out.println(hotlist.get(0).getWish());
+			mav.addObject("hotlist", hotlist);
+			mav.addObject("latestlist", latestlist);
+		}catch(Exception e) {
+			e.printStackTrace();
 		}
-		System.out.println(hotlist.get(0).getWish());
-		mav.addObject("hotlist", hotlist);
-		mav.addObject("latestlist", latestlist);
 		return mav;
 	}
 	
