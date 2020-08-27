@@ -61,7 +61,6 @@ function jusoCallBack(num,roadFullAddr){
 	$('#place'+num).val(roadFullAddr)
 	self.close();
 }
-
 </script>
 </head>
 <body>
