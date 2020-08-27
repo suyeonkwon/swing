@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/jspHeader.jsp" %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -85,20 +84,20 @@
                 	 onclick="page('<c:if test="${cl.state == 4}">register-class.shop?classid=${cl.classid}</c:if><c:if test="${cl.state == 1}">register.shop</c:if>')">                	 
                	  <c:if test="${cl.state == 1}">
                   	<label class="badge badge-success">등록진행중</label>
-                  	<img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-3.jpg" alt="">
                   </c:if>
                   <c:if test="${cl.state == 2}">
                   	<label class="badge badge-success">승인대기중</label>
-                  	<img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-1.jpg" alt="">
+                  	
                   </c:if>
                   <c:if test="${cl.state == 3}">
                   	<label class="badge badge-danger">반&nbsp;려</label>
-                  	<img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-5.jpg" alt="">
+                  
                   </c:if>
                   <c:if test="${cl.state == 4}">
                   	<label class="badge badge-success">승인완료</label>
-                  	<img class="img-fluid" src="${path}/assets/img/portfolio/portfolio-2.jpg" alt="">
+                  	
                   </c:if>
+                  <img class="img-fluid" src="http://${imgpath}:${port}${path}/class/coverimg/${cl.classid}_${cl.coverimg}" alt="">
                </div>
                <div class="contetn">
                   <div class="info-text">                

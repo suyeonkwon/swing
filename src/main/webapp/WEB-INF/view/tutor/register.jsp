@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/jspHeader.jsp" %>
-<c:set var="path" value="${pageContext.request.contextPath}"/>
-<c:set var="port" value="${pageContext.request.localPort}" />
-<c:set var="server" value="${pageContext.request.serverName}" />
-
-
 <!DOCTYPE html>
 <html>
 <head>
