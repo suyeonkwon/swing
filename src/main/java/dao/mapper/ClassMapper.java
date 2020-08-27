@@ -60,8 +60,8 @@ public interface ClassMapper {
 		   
 		   // 수업 등록
 		   @Insert("insert into class "
-		        + " (classid, userid,location1,location2,category,type,maxtutee,subject,coverimg,price,time,totaltime,totalprice,tutorintro,classintro,level,readcnt,state,regdate) "
-		        + " values(#{classid}, #{userid},#{location1},#{location2},#{category},#{type},#{maxtutee},#{subject},#{coverimg},#{price},#{time},#{totaltime},#{totalprice},#{tutorintro},#{classintro},#{level},0,#{state},now())")
+		        + " (classid, userid,location1,location2,category,type,maxtutee,subject,coverimg,price,time,totaltime,totalprice,tutorintro,classintro,level,state,regdate) "
+		        + " values(#{classid}, #{userid},#{location1},#{location2},#{category},#{type},#{maxtutee},#{subject},#{coverimg},#{price},#{time},#{totaltime},#{totalprice},#{tutorintro},#{classintro},#{level},#{state},now())")
 		   void insert(Class clas);
 
 		   @Select("select classid from class where userid=#{userid} and state=1")
