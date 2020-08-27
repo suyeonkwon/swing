@@ -30,6 +30,10 @@ public interface ClassMapper {
 		            "<if test='maxtutee==2'> and maxtutee>1</if>"+
 		         "</if>",
 		         "<if test='cate!=null'> and category=#{cate}</if>",
+		         "<if test='text!=null'>"+
+		         " and (location1 LIKE '%${text}%' or location2 LIKE '%${text}%' OR subject LIKE '%${text}%' OR " + 
+		         " tutorintro LIKE '%${text}%' OR classintro LIKE '%${text}%') "+
+		         "</if>",
 		         "</script>"})
 		   int count(Map<String, Object> param);
 
@@ -42,6 +46,11 @@ public interface ClassMapper {
 		            "<if test='maxtutee==1'> and maxtutee=1</if>"+
 		            "<if test='maxtutee==2'> and maxtutee>1</if>"+
 		         "</if>",
+		         "<if test='text!=null'>"+
+				         " and (location1 LIKE '%${text}%' " + 
+				         " or location2 LIKE '%${text}%' OR subject LIKE '%${text}%' OR " + 
+				         " tutorintro LIKE '%${text}%' OR classintro LIKE '%${text}%') "+
+				 "</if>",
 		         "<if test='cate!=null'> and category=#{cate}</if>",
 		         "<if test='sorted==1'> order by regdate desc limit #{startrow},#{limit} </if>",
 		         "<if test='sorted==2'> ORDER BY (SELECT AVG(star) FROM review WHERE classid=class.classid) desc limit #{startrow},#{limit}</if>",
@@ -83,10 +92,10 @@ public interface ClassMapper {
 	List<Class> select2(Map<String, Object> param);
 
 
-	@Select(" SELECT * FROM class WHERE location1 LIKE '%${find}%' " + 
-			" or(location2 LIKE '%${find}%' OR subject LIKE '%${find}%' OR " + 
-			" tutorintro LIKE '%${find}%' OR classintro LIKE '%${find}%') ")
-	List<Class> selectSearch(Map<String, Object> param);
+//	@Select(" SELECT * FROM class WHERE location1 LIKE '%${find}%' " + 
+//			" or(location2 LIKE '%${find}%' OR subject LIKE '%${find}%' OR " + 
+//			" tutorintro LIKE '%${find}%' OR classintro LIKE '%${find}%') ")
+//	List<Class> selectSearch(Map<String, Object> param);
 	
 	@Select({"<script>",
 		"select * from class",

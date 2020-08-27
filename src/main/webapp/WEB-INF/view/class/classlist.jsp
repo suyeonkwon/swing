@@ -162,7 +162,7 @@
 						}
 						//alert(type);
 						location.href="classlist.shop?location1="+location1+"&location2="+location2+
-								"&type="+type+"&maxtutee="+maxtutee;
+								"&type="+type+"&maxtutee="+maxtutee+"&text="+document.all.text.value;
 					})
 				})
 				</script>
@@ -184,6 +184,10 @@
 		<div class="class_box">
 			<div class="class">
 			<c:if test='${listcount>0}'><%--등록된 게시물 있음 --%>
+			
+			<%-- 에러 부분 --%>
+			<form:hidden path="text" name="text" value="${text}"/>
+			
 				<c:set value="0" var="i"/>
 				<c:forEach items="${classlist}" var="cls" varStatus="status">
 					<c:if test="${status.count%3==2}">
