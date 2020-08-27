@@ -333,7 +333,7 @@ public class TutorController {
 				}
 			}
 			
-			if(cid == 0) { // 새로 만들어지는 수업이라면 class insert, classinfo insert
+			if(cid == null) { // 새로 만들어지는 수업이라면 class insert, classinfo insert
 				int cnt2 = service.classCnt();
 				cid = cnt2 + 1;
 				clas.setClassid(cnt2+1);
