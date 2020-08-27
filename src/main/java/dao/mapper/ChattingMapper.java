@@ -48,7 +48,7 @@ public interface ChattingMapper {
 	int maxtalk(Map<String, Object> param);
 
 	@Select("select distinct(roomno) from chatting where classid=#{classid} and userid=#{userid}")
-	int roomno(Map<String, Object> param);
+	int roomno(Map<String, Object> param);  
 
 	@Select({"<script>",
 			"SELECT distinct(c1.roomno), c1.classid,c1.talkno, c1.chat, c1.userid, c1.chatdate, c1.readcheck, u.file, u.name, c.subject " + 

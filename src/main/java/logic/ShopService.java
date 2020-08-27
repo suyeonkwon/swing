@@ -251,7 +251,7 @@ public class ShopService {
 
 	public int classcount(String location1, String location2, Integer type, Integer maxtutee, Integer cate, String text) {
 		return classDao.count(location1,location2,type,maxtutee,cate,text);
-	}
+	}  
 
 	public List<Class> classList(Integer pageNum,Integer sorted, int limit, String location1, String location2, Integer type,
 			Integer maxtutee,Integer cate, String text) {

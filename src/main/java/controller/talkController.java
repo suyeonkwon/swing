@@ -147,6 +147,6 @@ public class talkController {
 	public String check(String userid) {
 		int check = service.newtalk(0,userid);
 		return check+"";
-	}
+	}  
 	
 }

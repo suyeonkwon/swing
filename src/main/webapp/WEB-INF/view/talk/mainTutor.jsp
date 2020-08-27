@@ -11,7 +11,7 @@
 <link href="${path}/assets/css/talk.css" rel="stylesheet">
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 </head>
-<body>
+<body>  
 <input type="hidden" id="cnt" value="${cnt}">
 	<div id="pop_qna">
 		<div class="q_tab">

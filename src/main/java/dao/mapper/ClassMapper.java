@@ -164,7 +164,7 @@ public interface ClassMapper {
 			"limit 3",
 			"</script>"})
 	List<Class> mainlist(Map<String, Object> param);
-
+  
 
 	
 }

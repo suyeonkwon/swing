@@ -72,5 +72,5 @@ public class ChattingDao {
 		param.put("type", type);
 		return template.getMapper(ChattingMapper.class).getchat(param);
 	}
-
+  
 }
