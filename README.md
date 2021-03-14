@@ -4,8 +4,7 @@
 
 재능 기부 플랫폼
 
-<img width="758" alt="moduMain" src="https://user-images.githubusercontent.com/79051126/107883342-da363b80-6f31-11eb-9ac1-76508d9e069c.PNG">
-
+<img width="758" alt="SWING메인" src="https://user-images.githubusercontent.com/79051126/111083449-0654d480-8551-11eb-8d33-e95358e0d84f.PNG">
 
 ### Built With
 
