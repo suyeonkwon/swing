@@ -1,0 +1,312 @@
+@charset "UTF-8";
+#category {
+    width: 100%;
+    /* height: 15vh; */
+    background: #ffffff;
+    position: relative;
+}
+#category .container {
+    /* padding-top: 84px; */
+    text-align: center;
+    /* border: 1px solid gray; */
+}
+.cate_list ul {
+    display: flex;
+    width: 100%;
+    margin: 15px auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 61px;
+    z-index: 50;
+}
+.cate_list ul li {
+    background: #fff;
+    width: 100%;
+    text-align: center;
+    padding: 22px 0;
+    font-size: 16px;
+    color: #555;
+    letter-spacing: -0.4px;
+    border-bottom: 1px solid #c9c9c9;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+a:visited {
+    color: #000;
+    text-decoration: none;
+}
+.catesub.filter {
+    background: #f0f9fd;
+    z-index: 100;
+    width: 100%;
+    border-bottom: 1px solid rgb(201,201,201);
+    /* display: block; */
+    /* justify-content: right; */
+    padding: 0 5%;
+    /* border: 1px solid; */
+    /* padding: 1em 0; */
+}
+.catesub {
+    position: static;
+    height: 210px;
+    /* width: 1200px; */
+    top: 76px;
+    position: relative;
+    /* z-index: 10; */
+    padding: 1%;
+}
+.catesub.filter .inbox .left {
+    padding-top: 13px;
+    /* position: fixed; */
+    left: 0;
+    /* padding-left: 100px; */
+    float: left;
+    width: 15%;
+    font-size: 1em;
+    color: #333;
+    letter-spacing: -0.4px;
+    font-weight: bold;
+    /* display: inline-block; */
+    display: block;
+    text-align: center;
+}
+.catesub.filter .inbox .right {
+    float: left;
+    width: 75%;
+    /* display: inline-block; */
+    padding-top: 13px;
+}
+.catesub.filter .inbox .right2 {
+    float: left;
+    display: inline-block;
+    padding-top: 13px;
+    width: 70%;
+}
+div#regionSub {
+    width: 5%;
+}
+.catesub.filter .inbox select {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: #555;
+    padding: 5px 15px;
+    font-size: 0.7em;
+    height: 44px;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin: 0 5px;
+}
+.catesub.filter .inbox .right .days li {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 0 5px;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 15px 15px;
+    cursor: pointer;
+    width: fit-content;
+    display: inline-block;
+    font-size: 0.7em;
+}
+.catesub.filter .inbox .right .days li.on {
+    color: #49b5e7;
+    border: 1px solid #49b5e7;
+}
+.catesub.filter .inbox .right ul{
+    display:inline-block;
+    margin-bottom: 0;
+}
+.catesub.filter .inbox .right .filter_button {
+    background: #49b5e7;
+    border-radius: 4px;
+    display: inline-block;
+    padding: 14px 20px;
+    font-size: 14px;
+    color: #fff;
+    float: right;
+    position: relative;
+    top: -55px;
+    /* right: 8.5%; */
+}
+
+/*수업 목록 리스트 css*/
+.filter_head {
+    padding-top: 9%;
+    /* float: right; */
+    display: inline-block;
+}
+.num_class {
+    /* color: #333; */
+    font-size: 14px;
+    /* text-align: right; */
+    /* padding: 10px; */
+    /* float: left; */
+    /* display: inline; */
+    position: relative;
+    right: -500px;
+    top: -40px;
+    /* border: 1px solid; */
+}
+.class_box {
+    background-color: white;
+    box-sizing: border-box;
+    padding-bottom: 20px;
+    /* width: 1040px; */
+    margin: 0;
+}
+.class {
+    padding-bottom: 20px;
+    overflow: hidden;
+}
+.class .class_list {
+    height: 320px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    width: calc(94.231% / 3);
+    float: left;
+    cursor: pointer;
+    background-color: white;
+    margin-bottom: 30px;
+    position: relative;
+}
+.class .class_list .img {
+    height: 200px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-sizing: border-box;
+    padding-top: 10px;
+}
+.class .class_list .img .d_day {
+    width: 80px;
+    background-color: #333873;
+    color: white;
+    font-size: 14px;
+    height: 20px;
+    text-align: center;
+    opacity: 0.85;
+}
+.class .class_list .img .level {
+    width: 80px;
+    background-color: #B265A7;
+    color: white;
+    font-size: 14px;
+    height: 20px;
+    text-align: center;
+    opacity: 0.85;
+    /* margin: 0.5em 0; */
+}
+.class .class_list .profile_box {
+    box-sizing: border-box;
+    width: 80px;
+    float: right;
+    margin-left: 240px;
+    position: absolute;
+    height: 100px;
+    margin-top: -27px;
+    text-align: center;
+    /* margin-bottom: 20px; */
+}
+.class .class_list .profile_box .name {
+    width: 100%;
+    margin-top: 50px;
+    overflow: hidden;
+    color: black;
+}
+.class .class_list .title {
+    float: left;
+    width: 64%;
+    margin-left: 5%;
+    margin-top: 14px;
+    height: 40px;
+    font-size: 14px;
+    overflow: hidden;
+    color: black;
+    font-weight: bold;
+    line-height: 1.4;
+    text-align: left;
+}
+.class .class_list .price {
+    margin-top: 60px;
+    padding: 0 0 0px 15px;
+    font-size:16px;
+    color: #49b5e7;
+    font-weight:bold;
+    /* display:inline; */
+    text-align: left;
+}
+.class .class_list .info .info2 {
+    padding: 5px;
+    overflow: hidden;
+    padding-left: 15px;
+    position: absolute;
+    /* margin-top: 20px; */
+}
+.class .class_list .info .info2 .starbox {
+    float: left;
+    color: #ffc600;
+}
+.class .class_list .info .info2 .review {
+    float: left;
+    color: #999;
+}
+.class .class_list .info .info2 .location {
+    float: left;
+    border-left: 1px solid #ccc;
+    padding-left: 10px;
+    color: #999;
+}
+.class .class_list .profile {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    /* top: 10px; */
+    float: left;
+    margin-left: 17px;
+    background-color: lightgray;
+}
+.sorted {position: relative;left: -460px;/* border: 1px solid; */font-size: 14px;}
+
+.filter_head .sorted li {
+    display: inline-block;
+}
+ .star{
+  display:inline-block;
+  width: 10px;
+  height: 20px;
+  cursor: pointer;
+}
+ .star_left{
+  background: url('/swing/assets/img/icon/star.png') no-repeat 0 0;
+  background-size: 20px;
+  margin-right: -3px;
+}
+ .star_right{
+  background: url('/swing/assets/img/icon/star.png') no-repeat -10px 0;
+  background-size: 20px;
+  margin-left: -3px;
+}
+ .star.on{
+  background-image: url('/swing/assets/img/icon/star_on.png');
+}
+/*페이징*/
+.back-next{
+	width:100%;
+	text-align:center;
+	font-size: 16px;
+}
+.back-next a{
+	padding:5px 5px;
+}
+.back-next img{
+	width:16px; height:16px;
+}
+.back-next a:not([href]):not([tabindex]) {
+    color: #000;
+}

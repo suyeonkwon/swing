@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="euc-kr" ?>
+<!-- /WEB-INF/decorators.xml -->
+<decorators defaultdir="/layout">
+	<decorator name="main" page="index.jsp">
+		<pattern>*.shop</pattern>
+	</decorator>
+	<decorator name="talk" page="talkLayout.jsp">
+		<pattern>/talk/*</pattern>
+	</decorator>
+	<excludes>
+		<pattern>/admin/reason*</pattern>
+		<pattern>/admin/deletePop*</pattern>
+		<pattern>/board/imgupload*</pattern>
+		<pattern>/ajax/*</pattern>
+		<pattern>/class/review*</pattern>
+		<pattern>/popup/*</pattern>
+	</excludes>
+</decorators>

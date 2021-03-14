@@ -1,0 +1,509 @@
+@charset "UTF-8";
+.fixedLayerRemote {
+    /* position: fixed !important; */
+    /* top: 0px !important; */
+    /* background: #ffffff !important; */
+    /* z-index: 100 !important; */
+}
+.fixedLayer {
+    position: fixed !important;
+    top: 82px !important;
+    background: #ffffff !important;
+    z-index: 100 !important;
+}
+.class_wrap {
+    padding-top: 5%;
+    position: relative;
+}
+.class_wrap .class_price {
+    width: 14.6%;
+    float: right;
+    background: #fff;
+    padding: 20px 20px 10px 20px;
+    /* height: 1000px; */
+    display: inline-block;
+}
+.class_price .regions .title {
+    color: #333;
+    font-size: 1em;
+    font-weight: bold;
+}
+.class_price .regions .region {
+    height: 130px;
+    margin: 20px 0;
+    overflow-x: hidden;
+    overflow: hidden;
+}
+.class_price .regions .region .option:first-child {
+    border-top: 1px solid #ddd;
+}
+.class_price .regions .region .option .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: #555555;
+    font-size: 0.8em;
+    padding: 13px 0;
+    border-bottom: 1px solid #ddd;
+}
+.class_price .regions .region .option .region2 {
+    background-color: lightgray;
+    /* height: 100px; */
+    padding: 1em;
+    text-align: center;
+    font-size: 0.7em;
+}
+.class_price .regions .region .region2{
+    background-color:#f1f1f1;
+    padding: 1em;
+    font-size: 14px;
+
+}
+.class_price .regions .region .option .top .drop {
+    cursor: pointer;
+}
+.class_price .regions .region .option .top .drop img {
+    width: 15px;
+}
+.class_price .regions .region .option .top .timedetail {
+    width: 13em;
+    letter-spacing: -0.7px;
+    display: inline-block;
+}
+.class_price .regions .region .option .timedetail .indate {
+    width: 5em;
+    display: inline-block;
+    color: #555;
+}
+.class_price .regions .region .option .top span {
+    color: #ddd;
+}
+
+.class_price .regions .region .option .top .region_name {
+    color: #555;
+    display: inline-block;
+    max-width: 77px;
+    overflow: hidden;
+}
+.class_price .regions #more {
+    position: relative;
+    margin-bottom: 20px;
+    cursor: pointer;
+    /* margin-top: 10px; */
+    text-align: center;
+    color: #333;
+    font-weight: bold;
+    letter-spacing: -0.35px;
+    font-size: 14px;
+}
+.class_price .more {
+    cursor: pointer;
+    text-align: center;
+    padding-top: 10px;
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+}
+.class_wrap .class_price .btn_talk {
+    color: #49b5e7;
+    height: 65px;
+    line-height: 65px;
+    text-align: center;
+    display: inline-block;
+    width: 99px;
+    border: 1px solid #49b5e7;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+.class_wrap .class_price .btn_payment {
+    display: inline-block;
+    width: 50%;
+    margin-left: 10px;
+    margin-top: -1px;
+}
+.class_wrap .class_price .btn_payment a {
+    text-align: center;
+    display: block;
+    background: #49b5e7;
+    padding: 18px 0;
+    color: #fff;
+    line-height: 200%;
+    transition: all 0.3s ease 0s;
+}
+.class_wrap .class_price .btn_payment .btntxt_s {
+    font-size: 18px;
+    font-weight: bold;
+}
+.class_wrap .class_price .price {
+    padding: 30px 0 10px 0;
+    overflow: hidden;
+    line-height: 150%;
+}
+.class_wrap .class_price .price .hp1 {
+    color: #333;
+    text-align: center;
+}
+.class_wrap .class_price .price .tp1 {
+    color: #49b5e7;
+    text-align: center;
+    font-weight: bold;
+}
+.class_wrap .class_img {
+    width: 75%;
+    height: 540px;
+    background: #000;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    /* background-image: url('/swing/assets/img/candle.jpg'); */
+}
+.class_wrap .class_img img {
+    width: 100%;
+    height: 100%;
+}
+/*navi*/
+.class_wrap .class_d_wrqp .class_navi {
+    width: 840px;
+    background: #fff;
+    color: #000;
+    /* position: absolute; */
+    /* left: 0; */
+    top: 0;
+    z-index: 1;
+    border-bottom: 1px solid #999;
+}
+.class_wrap .class_d_wrqp .class_navi ul li {
+    width: 24%; 
+    display: inline-block;
+    text-align: center;
+    padding: 20px 0 20px 0;
+}
+.class_wrap .class_d_wrqp .class_navi ul li a {
+    width: 160px;
+    color: #999;
+    text-align: center;
+    font-size: 18px;
+    padding: 17px 0 17px 0;
+}
+/*클래스 디테일 서머리*/
+.class_wrap .class_detail {
+    width: 840px;
+    float: left;
+    background: #fff;
+    padding: 0 80px 0 80px;
+}
+.class_wrap .class_detail .class_name {
+    width: 180px;
+    float: left;
+    color: #000;
+    text-align: center;
+    margin: 30px 0 40px 0;
+}
+.class_wrap .class_detail .class_name .tutor_img {
+    width: 12em;
+    height: 12em;
+    border-radius: 100px;
+    overflow: hidden;
+}
+.class_wrap .class_detail .class_name .tutor_img img{
+  width: 12em;
+  height: 12em;
+}
+.class_wrap .class_detail .class_name .name {
+    width: 180px;
+    font-size: 20px;
+    line-height: 200%;
+    margin-top: 20px;
+}
+.class_wrap .class_detail .class_title {
+    width: 460px;
+    float: right;
+    padding-top: 40px;
+    margin: 30px 0 40px 0;
+}
+.class_wrap .class_detail .class_title .title {
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 130%;
+    color: #000;
+}
+.class_wrap .class_detail .class_title .bnt_wishlist {
+    padding: 10px 12px;
+    border-radius: 3px;
+    border: 1px solid #d0d0d0;
+    float: right;
+    margin-top: 9px;
+}
+.class_wrap .class_detail .class_title .bnt_wishlist img {
+  width:1.5em;
+  height:1.5em;
+  padding-bottom:0.2em;
+}
+.class_wrap .class_detail .class_title .info {
+    line-height: 150%;
+    margin-top: 20px;
+}
+.class_wrap .class_detail .class_title .info ul {
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    overflow: hidden;
+    padding: 20px 0;
+}
+.class_wrap .class_detail .class_title .info ul li {
+    width: fit-content;
+    text-align: center;
+    float: left;
+    /* padding-top: 40px; */
+    margin: 0 1em;
+    /* justify-content: center; */
+}
+.class_wrap .class_detail .class_title .info ul li img{
+  width: 2.5em;
+  display: block;
+  /* margin-bottom: 0.5em; */
+}
+/*클래스 디테일 메인*/
+.class_wrap .detail_sec_bor {
+    border-top: 1px solid #e3e3e3;
+    overflow: hidden;
+}
+.class_wrap .class_detail {
+    width: 840px;
+    float: left;
+    background: #fff;
+    padding: 0 80px 0 80px;
+    /* position: relative; */
+}
+.class_wrap .class_detail .section01 {
+    margin: 80px 0;
+    position: relative;
+}
+.class_wrap .class_detail .section01 h1 {
+    font-size: 30px;
+    color: #000;
+    line-height: 200%;
+}
+.class_wrap .class_detail .section01 .cert {
+    margin-top: 30px;
+}
+.class_wrap .class_detail .section01 .cert ul li {
+    background: url(https://front-img.taling.me/Content/Images/class/icon_info08.png) left top no-repeat;
+    color: #999;
+    font-size: 20px;
+    padding: 5px 10px 5px 20px;
+    margin-bottom: 10px;
+}
+.class_wrap .class_detail .section01 .cert ul li.com {
+    background: url(https://front-img.taling.me/Content/Images/class/icon_info07.png) left top no-repeat;
+    color: #666;
+    font-size: 16px;
+}
+.class_wrap .class_detail .section01 .d_info {
+    margin-top: 30px;
+    font-size: 16px;
+    color: #666;
+    line-height: 180%;
+    clear: both;
+}
+.class_wrap .class_detail .section01 .curriculum_cont {
+    /* background: url(https://front-img.taling.me/Content/Images/class/bg_step_cont.png) left top repeat-y; */
+    margin-left: -50px;
+}
+.class_wrap .class_detail .section01 .curriculum_cont h2 {
+    background: url('/swing/assets/img/icon/step.png') no-repeat;
+    font-size: 24px;
+    color: #49b5e7;
+    line-height: 100%;
+    padding-left: 50px;
+    margin: 80px 0 30px 0;
+}
+.class_wrap .class_detail .section01 .curriculum_cont .step_cont {
+    padding-left: 50px;
+}
+.class_wrap .class_detail .section01 .curriculum_cont .step_cont dd {
+    font-size: 16px;
+    color: #666;
+    line-height: 180%;
+}
+/*리뷰*/
+.class_detail .section01 .btn_st {
+    position: absolute;
+    right: 0;
+    top: 10px;
+    padding: 7px 15px 7px 15px;
+    border: 1px solid #49b5e7;
+    line-height: 100%;
+    font-size: 14px;
+    color: #49b5e7;
+    transition: all 0.3s ease 0s;
+}
+.class_wrap .class_detail .review_box {
+    text-align: center;
+    background: #f2f2f2;
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+    vertical-align: middle;
+    padding: 2em 0 1em 0;
+    /* display: inline-block; */
+}
+.class_wrap .class_detail .review_box p{
+    display: inline-block;
+    position: relative;
+    bottom: 1em;
+    margin: 0 1em;
+}
+.class_wrap .class_detail .section01 .review_list ul li {
+    border-bottom: 1px solid #e5e5e5;
+    padding: 30px 0;
+    overflow: hidden;
+    cursor: default;
+}
+ .class_wrap .class_detail .section01 .review_list .profilebox {
+    width: 86px;
+    float: left;
+    text-align: center;
+    font-size: 16px;
+    color: #000;
+    cursor: default;
+    line-height: 100%;
+}
+.class_wrap .class_detail .section01 .review_list .profilebox .profile {
+    width: 5.5em;
+    height: 5.5em;
+    border-radius: 100px;
+    overflow: hidden;
+    background-color: blue;
+}
+.class_wrap .class_detail .section01 .review_list .profilebox .profile img{
+    width:5.5em;
+    height:5.5em;
+}
+ .class_wrap .class_detail .section01 .review_list .profilebox .name {
+	padding-top:10px;
+}
+.class_wrap .class_detail .section01 .review_list .review_content {
+    width: 580px;
+    float: right;
+    line-height: 160%;
+    font-size: 14px;
+    cursor: default;
+    line-height: 160%;
+    letter-spacing: -1px;
+    padding: 20px 0 0 20px;
+}
+.class_wrap .class_detail .section01 .review_list .review_content .date {
+    color: #ccc;
+}
+/*paging*/
+.class_wrap .class_detail .section01 .review_list .paging {
+    text-align: center;
+    margin: 1.5em 0;
+}
+/*리뷰 팝업창*/
+.pop_review .top {
+	background-color: #49b5e7;color: white;padding: 0.5em 1em;font-weight: 600;
+}
+.pop_review .star_box{
+    text-align: center;
+    border-bottom: 1px solid #dadada;
+}
+.pop_review .star_box .title{
+    margin: 1.2em 0;
+    font-weight: 600;
+    font-size: 1.4em;
+}
+.pop_review .star_box .input_star .review_point {
+    display: inline-block;
+}
+.pop_review .star_box .input_star #calc_point {
+    display: inline-block;
+    font-size: 2em;
+    padding-left: 0.4em;
+    /* vertical-align: text-bottom; */
+    position: relative;
+    bottom: 0.6em;
+    font-weight: 600;
+}
+ .star{
+  display:inline-block;
+  width: 30px;height: 60px;
+  cursor: pointer;
+}
+ .star_left{
+  background: url('/swing/assets/img/icon/star.png') no-repeat 0 0; 
+  background-size: 60px; 
+  margin-right: -3px;
+}
+ .star_right{
+  background: url('/swing/assets/img/icon/star.png') no-repeat -30px 0; 
+  background-size: 60px; 
+  margin-left: -3px;
+}
+ .star.on{
+  background-image: url('/swing/assets/img/icon/star_on.png');
+}
+.pop_review .star_box .input_star p {
+    font-size: 0.8em;
+    color: dimgray;
+    margin-top: 0;
+}
+.pop_review .input {
+    padding: 2em 3em;
+}
+.pop_review .input textarea{
+	width:100%;
+	resize:none;
+	min-height: 10em;
+	line-height:1.6em;
+	max-height:9em;
+	border-radius: 5px;
+	border: 1px solid #dadada;
+}
+.pop_review .input #counter {
+    position: absolute;
+    right: 3.5em;
+    bottom: 13.5em;
+    color: gray;
+}
+.pop_review .bottom{
+	text-align:center;
+}
+.pop_review .bottom .button {
+    text-align: center;
+    display: inline-block;
+    padding: 0.4em 2em;
+    line-height: 200%;
+}
+.pop_review .bottom #nextButton {
+    background: #49b5e7;
+    color: #fff;
+}
+.pop_review .bottom #cancelButton {
+    border: 1px solid #49b5e7;
+    color: #49b5e7;
+    /* margin-left: 10em; */
+}
+
+
+.info .starimg .star{
+  display:inline-block;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.info .starimg .star_left{
+  background: url('/swing/assets/img/icon/star.png') no-repeat 0 0;
+  background-size: 30px;
+  margin-right: -10px;
+}
+.info .starimg .star_right{
+  background: url('/swing/assets/img/icon/star.png') no-repeat -15px 0;
+  background-size: 30px;
+  margin-left: -9px;
+}
+.info .starimg .star.on{
+  background-image: url('/swing/assets/img/icon/star_on.png');
+}
+
+

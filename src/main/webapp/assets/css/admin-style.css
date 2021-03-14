@@ -1,0 +1,396 @@
+@charset "UTF-8";
+
+
+.table {
+    margin-bottom: 0;
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+    border-collapse: collapse;
+    text-align: center;
+}
+.table th, .table td {
+    vertical-align: middle;
+    font-size: 0.875rem;
+    line-height: 1;
+    white-space: nowrap;
+    padding: 0.9375rem;
+    vertical-align: top;
+    border-top: 1px solid #ebedf2;
+}
+.table th .badge, .table td .badge {
+    margin-bottom: 0;
+}
+.badge-success{
+    border: 1px solid #1bcfb4;
+    color: #ffffff;
+}
+.badge-info{
+    border: 1px solid #198ae3;
+    color: #ffffff;
+}
+.badge-warning{
+    border: 1px solid #fed713;
+    color: #ffffff;
+}
+.badge-danger {
+    border: 1px solid #fe7c96;
+    color: #ffffff;
+}
+.badge {
+    border-radius: .125rem;
+    font-size: 11px;
+    font-weight: initial;
+    line-height: 1;
+    padding: .375rem .5625rem;
+    font-family: "ubuntu-medium", sans-serif;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+a {
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a a:focus {
+  outline: none;
+}
+
+p {
+  font-weight: 400;
+  margin: 0px;
+  font-size: 14px;
+}
+
+ul, ol {
+  list-style: outside none none;
+  margin: 0;
+  padding: 0;
+}
+
+ul li, ol li {
+  list-style: none;
+}
+
+a:not([href]):not([tabindex]) {
+  color: #fff;
+}
+
+.section-header {
+  margin-bottom: 30px;
+}
+
+.section-header p {
+  text: center;
+  font-weight: 400;
+  line-height: 26px;
+}
+
+.section-title {
+  font-size: 30px;
+  color: #222222;
+  display: inline-block;
+  font-weight: 700;
+  position: relative;
+}
+
+.section-padding {
+  padding: 60px 0;
+}
+
+hr {
+  border-top: 1px dotted #ddd;
+}
+
+
+/* Team Item */
+.team-item:hover {
+  box-shadow: 0 10px 22px 10px rgba(27, 38, 49, 0.1);
+}
+
+.team-item {
+  margin: 15px 0;
+  border-radius: 0px;
+  box-shadow: 0px 2px 18px 0px rgba(198, 198, 198, 0.3);
+  transition: all 0.3s ease-in-out 0s;
+  -moz-transition: all 0.3s ease-in-out 0s;
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  -o-transition: all 0.3s ease-in-out 0s;
+  background: #fff;
+}
+
+.team-item .team-img {
+  float: left;
+  width: 200px;
+  margin-right: 30px;
+}
+
+.team-item .contetn {
+  padding: 15px 10px;
+  height: 200px;
+}
+
+.team-item .social-icons {
+  padding-top: 11px;
+  transition: all 0.3s ease-in-out 0s;
+  -moz-transition: all 0.3s ease-in-out 0s;
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  -o-transition: all 0.3s ease-in-out 0s;
+}
+
+.team-item .social-icons li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.team-item .social-icons li a {
+  letter-spacing: 0px;
+  outline: 0 !important;
+}
+
+.team-item .social-icons li a i {
+  font-size: 18px;
+  display: block;
+  transition: all 0.3s ease-in-out 0s;
+  -moz-transition: all 0.3s ease-in-out 0s;
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  -o-transition: all 0.3s ease-in-out 0s;
+}
+
+.team-item .social-icons li .lni-facebook-filled {
+  color: #3b5998;
+}
+
+.team-item .social-icons li .lni-twitter-filled {
+  color: #00aced;
+}
+
+.team-item .social-icons li .lni-instagram-filled {
+  color: #fb3958;
+}
+
+.team-item .info-text {
+  margin-bottom: 10px;
+}
+
+.team-item .info-text h3 {
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.team-item .info-text h3 a {
+  color: #333;
+}
+
+.team-item .info-text h3 a:hover {
+  color: #F63854;
+}
+
+.team-item .info-text p {
+  margin: 0;
+  color: #888;
+}
+
+.team-item:hover .team-overlay {
+  opacity: 1;
+}
+
+
+
+
+
+.btn-gradient-danger:not(.btn-gradient-light) {
+    color: #ffffff;
+}
+.btn-gradient-secondary:not(.btn-gradient-light) {
+    color: #ffffff;
+}
+
+
+.btn-gradient-success:not(.btn-gradient-light) {
+    color: #ffffff;
+}
+
+.btn-gradient-primary:not(.btn-gradient-light) {
+    color: #ffffff;
+}
+.btn.btn-rounded {
+    border-radius: 10px;
+}
+.mr-3, .template-demo > .btn, .template-demo > .btn-toolbar, .mx-3 {
+    margin-right: 1rem !important;
+}
+.mt-3, .template-demo > .btn, .template-demo > .btn-toolbar, .my-3 {
+    margin-top: 1rem !important;
+}
+button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disabled), [type="submit"]:not(:disabled) {
+    cursor: pointer;
+}
+.btn-gradient-primary {
+    background: -webkit-gradient(linear, left top, right top, from(#da8cff), to(#9a55ff));
+    background: linear-gradient(to right, #da8cff, #9a55ff);
+    border: 0;
+    -webkit-transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease;
+}
+.btn-gradient-success {
+    background: -webkit-gradient(linear, left top, right top, from(#84d9d2), to(#07cdae));
+    background: linear-gradient(to right, #84d9d2, #07cdae);
+    border: 0;
+    -webkit-transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease;
+}
+.btn-gradient-secondary {
+    background: -webkit-gradient(linear, left top, right top, from(#e7ebf0), to(#868e96));
+    background: linear-gradient(to right, #e7ebf0, #868e96);
+    border: 0;
+    -webkit-transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease;
+}
+.btn-gradient-secondary1 {
+    background: -webkit-gradient(linear, left top, right top, from(#e7ebf0), to(#868e96));
+    background: linear-gradient(to right, #e7ebf0, #868e96);
+    border: 0;
+    -webkit-transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease;
+}
+.btn-gradient-danger {
+    background: -webkit-gradient(linear, left top, right top, from(#ffbf96), to(#fe7096));
+    background: linear-gradient(to right, #ffbf96, #fe7096);
+    border: 0;
+    -webkit-transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease;
+}
+.btn {
+    font-size: 0.875rem;
+    line-height: 1;
+}
+.btn, .btn-group.open .dropdown-toggle, .btn:active, .btn:focus, .btn:hover, .btn:visited, a, a:active, a:checked, a:focus, a:hover, a:visited, body, button, button:active, button:hover, button:visited, div, input, input:active, input:focus, input:hover, input:visited, select, select:active, select:focus, select:visited, textarea, textarea:active, textarea:focus, textarea:hover, textarea:visited {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    color: #343a40;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    line-height: 1;
+    border-radius: 0.1875rem;
+    -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+button, [type="button"], [type="reset"], [type="submit"] {
+    -webkit-appearance: button;
+}
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus, button, button:active, button:checked, button:focus, button:hover, button:visited {
+    outline: 0;
+    outline-offset: 0;
+}
+button, select {
+    text-transform: none;
+}
+button, input {
+    overflow: visible;
+}
+input, button, select, optgroup, textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+button {
+    border-radius: 0;
+}
+
+button:hover  {
+opacity: 0.85;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.badge-success{
+    border: 1px solid #49b5e7;
+    background-color: #49b5e7;
+    color: #ffffff;
+}
+.badge-info{
+    border: 1px solid #198ae3;
+    color: #ffffff;
+}
+.badge-warning{
+    border: 1px solid #fed713;
+    color: #ffffff;
+}
+.badge-danger {
+    border: 1px solid #adacad;
+    background-color: #adacad;
+    color: #ffffff;
+}
+.badge {
+    border-radius: .125rem;
+    font-size: 14px;
+    font-weight: initial;
+    line-height: 1;
+    padding: .375rem .5625rem;
+    font-family: "ubuntu-medium", sans-serif;
+}
+
+
+
+
+.back-next{
+	width:100%;
+	text-align:center;
+	font-size: 16px;
+}
+.back-next a{
+	padding:5px 5px;
+}
+.back-next img{
+	width:16px; height:16px;
+}
+.back-next a:not([href]):not([tabindex]) {
+    color: #000;
+}

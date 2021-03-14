@@ -1,0 +1,252 @@
+@charset "UTF-8";
+.triangle-border {
+    position: relative;
+    margin: 1em 0 3em;
+    padding: 20px;
+    border-radius: 10px;
+    line-height: 1.43;
+    background-color: #f2f2f2;
+}
+.triangle-border span {
+    color: #49b5e7;
+}
+.triangle-border.top:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -13px;
+    bottom: auto;
+    left: 0;
+    right: 0;
+    width: 0;
+    margin: 0 auto;
+    border-style: solid;
+    border-width: 0 13px 13px;
+    border-color: #f2f2f2 transparent;
+}
+.tutor_cont .gray {
+    background-color: #f1f1f1;
+}
+.tutor_cont .title_box {
+    overflow: hidden;
+    margin-top: 30px;
+    padding: 19px 0;
+    border-bottom: 1px solid #c9c9c9;
+}
+.tutor_cont .title_box h3 {
+    float: left;
+    overflow: hidden;
+    display: inline-block;
+    font-size: 26px;
+    color: #333;
+}
+.tutor_cont .class_title {
+    margin: 30px 0;
+    color: #333;
+    font-size: 20px;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+    font-weight: 600;
+}
+.container .title_box ul {
+    display: flex;
+    position: absolute;
+    margin-top: 15px;
+    right: 0;
+    overflow: visible;
+    top: 115px;
+    right: 20%;
+}
+.container .title_box ul li {
+    cursor: pointer;
+    font-size: 1.2em;
+    color: #555;
+    letter-spacing: -0.4px;
+    margin: 0 30px;
+    box-sizing: border-box;
+    text-align: center;
+    padding-bottom: 20px;
+    font-weight: 600;
+}
+.tutor_cont .apply {
+    overflow: hidden;
+}
+.tutor_cont .profile_box {
+    width: 30%;
+    float: left;
+    border: 1px solid #ddd;
+    padding: 31px;
+}
+.tutor_cont .profile_box .profile {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    margin: 0 auto;
+    background-size: cover;
+    background-position: center;
+}
+.tutor_cont .sh_box {
+    width: 65%;
+    float: right;
+    border-top: 1px solid #d8d9db;
+}
+.tutor_cont .sh_box .head {
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+    padding: 0;
+    padding-top: 15px;
+}
+.tutor_cont .sh_box .head img {
+    width: 1.5em;
+    vertical-align: middle;
+    margin: 0 10px 3px 0;
+}
+.class_price .regions .region {
+    margin-top: 20px;
+    overflow: hidden;
+}
+.class_price .regions .region .option .top {
+    color: #555555;
+    font-size: 14px;
+    padding: 13px 0;
+    border-bottom: 1px solid #ddd;
+    padding-left: 25px;
+    overflow: hidden;
+}
+.class_price .regions .region .option .top label {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    margin-top: 3px;
+    margin-right: 5px;
+    background-size: cover;
+    background-image: url('/swing/assets/img/icon/select.png');
+    margin-left: -25px;
+    cursor: pointer;
+    float: left;
+}
+.class_price .regions .region .option .top label.on{
+	background-image: url('/swing/assets/img/icon/selected.png');
+}
+.class_price .regions .region .option.select .top label {
+    background-image: url(https://front-img.taling.me/Content/Images/mClassRegi2/radio_selected@2x.png);
+}
+.class_price .regions .region .option .top .text {
+    width: 98%;
+    float: left;
+    margin-left: 10px;
+    font-size: 15px;
+}
+.class_price .regions .region .option .top span {
+    color: #ddd;
+}
+.class_price .regions .region .option .top font {
+    color: #555;
+}
+.tutor_cont .next {
+    background: #49b5e7;
+    color: #fff;
+    padding: 20px 30px;
+    width: 230px;
+    margin: 40px auto;
+    font-size: 16px;
+    border-radius: 6px;
+    text-align: center;
+}
+/*apply*/
+.top {
+    /* border-top: 1px solid #eee; */
+}
+.level {
+    height: 80px;
+}
+.level .left {
+    float: left;
+    width: 100px;
+    font-weight: 500;
+    font-size: 16px;
+    margin-top: 20px;
+    line-height: 20px;
+    padding-left: 10px;
+}
+.level .right {
+    float: left;
+    width: 500px;
+    font-weight: 400;
+    font-size: 16px;
+    margin-top: 20px;
+    padding-left: 20px;
+}
+.level .levelbox {
+    padding: 5px 0 5px 0;
+    float: left;
+    width: 31%;
+    border: 1px solid #d8d8d8;
+    text-align: center;
+    margin-right: 5px;
+    background: #fff;
+    color: #999;
+    line-height: 25px;
+}
+.level::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.level .box_num {
+    position: relative;
+    width: 114px;
+    height: 32px;
+}
+.box_num .btn_length {
+    position: absolute;
+    top: 0;
+    width: 32px;
+    height: 32px;
+    background-size: cover;
+    background-position: center;
+}
+.box_num .inp_length {
+    width: calc(100% - 55px);
+    height: 100%;
+    padding: 0 0 0 32px;
+    border: none;
+    text-align: right;
+}
+/*결제*/
+.bottom {
+    border-bottom: 1px solid #dadada;
+}
+
+ .level3 {
+ padding-top: 0.5em;height: 4.5em;
+ }
+ 
+.level3 .left {
+    float: left;
+    width: 20%;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    padding-left: 10px;
+    /* margin-bottom: 1em; */
+}
+.right2 {
+    /* float: left; */
+    width: 70%;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 20px;
+    color: #49b5e7;
+    text-align: left;
+    position: relative;
+    top: 25%;
+    /* padding-bottom: 1em; */
+    /* margin-bottom: 10px; */
+}
+.success {
+    text-align: center;
+    padding: 12em 0;
+}
